@@ -3,7 +3,7 @@ from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai import Agent, RunContext
 from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
-from typing import TypedDict, Annotated, List, Any
+from typing import TypedDict, Annotated, List, Dict, Any, Optional
 from langgraph.config import get_stream_writer
 from langgraph.types import interrupt
 from dotenv import load_dotenv
@@ -26,8 +26,8 @@ from archon.advisor_agent import advisor_agent, AdvisorDeps
 from archon.refiner_agents.prompt_refiner_agent import prompt_refiner_agent
 from archon.refiner_agents.tools_refiner_agent import tools_refiner_agent, ToolsRefinerDeps
 from archon.refiner_agents.agent_refiner_agent import agent_refiner_agent, AgentRefinerDeps
-from archon.agent_tools import list_documentation_pages_tool
-from utils.utils import get_env_var, get_clients, ensure_workbench_dir
+from archon.agent_tools import list_documentation_pages_tool, search_mcp_templates, detect_mcp_needs
+from utils.utils import get_env_var, get_clients
 
 # Load environment variables
 load_dotenv()
@@ -39,12 +39,16 @@ provider = get_env_var('LLM_PROVIDER') or 'OpenAI'
 base_url = get_env_var('BASE_URL') or 'https://api.openai.com/v1'
 api_key = get_env_var('LLM_API_KEY') or 'no-llm-api-key-provided'
 
-# Always use OpenAI models
-is_openai = True
-is_anthropic = False
+is_anthropic = provider == "Anthropic"
+is_openai = provider == "OpenAI"
 
 reasoner_llm_model_name = get_env_var('REASONER_MODEL') or 'o3-mini'
-reasoner_llm_model = OpenAIModel(reasoner_llm_model_name)
+# Initialize the reasoner model based on provider
+if is_anthropic:
+    reasoner_llm_model = AnthropicModel(reasoner_llm_model_name, api_key=api_key)
+else:
+    # OpenAI model initialization without extra parameters
+    reasoner_llm_model = OpenAIModel(reasoner_llm_model_name)
 
 reasoner = Agent(  
     reasoner_llm_model,
@@ -52,7 +56,12 @@ reasoner = Agent(
 )
 
 primary_llm_model_name = get_env_var('PRIMARY_MODEL') or 'gpt-4o-mini'
-primary_llm_model = OpenAIModel(primary_llm_model_name)
+# Initialize the primary model based on provider
+if is_anthropic:
+    primary_llm_model = AnthropicModel(primary_llm_model_name, api_key=api_key)
+else:
+    # OpenAI model initialization without extra parameters
+    primary_llm_model = OpenAIModel(primary_llm_model_name)
 
 router_agent = Agent(  
     primary_llm_model,
@@ -62,6 +71,11 @@ router_agent = Agent(
 end_conversation_agent = Agent(  
     primary_llm_model,
     system_prompt='Your job is to end a conversation for creating an AI agent by giving instructions for how to execute the agent and they saying a nice goodbye to the user.',  
+)
+
+mcp_detector_agent = Agent(
+    primary_llm_model,
+    system_prompt='Your job is to analyze the user query and identify if they are requesting functionality that would benefit from MCP templates, specifically looking for API integrations and external services.'
 )
 
 # Initialize clients
@@ -79,6 +93,12 @@ class AgentState(TypedDict):
     refined_prompt: str
     refined_tools: str
     refined_agent: str
+    
+    # New fields for MCP template support
+    mcp_templates: Optional[List[Dict[str, Any]]]
+    selected_template: Optional[Dict[str, Any]]
+    merged_templates: Optional[Dict[str, Any]]
+    detected_mcp_services: Optional[Dict[str, List[str]]]
 
 # Scope Definition Node with Reasoner LLM
 async def define_scope_with_reasoner(state: AgentState):
@@ -105,22 +125,54 @@ async def define_scope_with_reasoner(state: AgentState):
 
     result = await reasoner.run(prompt)
     scope = result.data
-    
-    # Ensure workbench directory exists
-    workbench_dir = ensure_workbench_dir()
-    
-    # Create scope.md file path
-    scope_path = os.path.join(workbench_dir, "scope.md")
-    
-    try:
-        with open(scope_path, "w", encoding="utf-8") as f:
-            f.write(scope)
-        print(f"Successfully wrote scope document to: {scope_path}")
-    except Exception as e:
-        print(f"Error writing scope document: {e}")
-        # Don't fail, continue with the scope in memory
+
+    # Get the directory one level up from the current file
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    parent_dir = os.path.dirname(current_dir)
+    scope_path = os.path.join(parent_dir, "workbench", "scope.md")
+    os.makedirs(os.path.join(parent_dir, "workbench"), exist_ok=True)
+
+    with open(scope_path, "w", encoding="utf-8") as f:
+        f.write(scope)
     
     return {"scope": scope}
+
+# Detect MCP needs based on user request
+async def detect_mcp_template_needs(state: AgentState):
+    user_message = state['latest_user_message']
+    
+    # First, use keyword detection for common MCP services
+    detected_services = await detect_mcp_needs(embedding_client, user_message)
+    
+    # Next, have the LLM assess if this is a task that would benefit from MCP templates
+    prompt = f"""
+    Analyze the following user request and determine if it would benefit from MCP (Model Context Protocol) template integration.
+    MCP templates are useful when the agent needs:
+    1. External API integrations (like Spotify, GitHub, etc.)
+    2. Specific tools that interact with web services
+    3. Multiple service integrations in one agent
+    
+    User Request: {user_message}
+    
+    Return a valid JSON object with:
+    - "needs_mcp": true/false - whether the request would benefit from MCP templates
+    - "explanation": brief explanation of why MCP would/wouldn't be beneficial
+    - "suggested_services": list of services that would be helpful (empty list if none)
+    """
+    
+    result = await mcp_detector_agent.run(prompt)
+    mcp_analysis = result.data
+    
+    # Now search for relevant MCP templates if needed
+    mcp_templates = []
+    if detected_services or '"needs_mcp": true' in mcp_analysis.lower():
+        # Search for templates based on the user query
+        mcp_templates = await search_mcp_templates(supabase, embedding_client, user_message)
+    
+    return {
+        "detected_mcp_services": detected_services,
+        "mcp_templates": mcp_templates
+    }
 
 # Advisor agent - create a starting point based on examples and prebuilt tools/MCP servers
 async def advisor_with_examples(state: AgentState):
@@ -141,181 +193,25 @@ async def advisor_with_examples(state: AgentState):
             # Use the full path instead of relative path
             file_list.append(file_path)
     
-    # Analyze the user message to check if they need an agent with multiple MCP tools
-    user_message = state['latest_user_message'].lower()
-    multi_mcp_example_note = ""
+    # Enhance the advisor prompt with MCP template information if available
+    enhanced_prompt = state['latest_user_message']
+    if state.get('mcp_templates') and len(state.get('mcp_templates', [])) > 0:
+        template_info = "\n\nThe following MCP templates are available for this task:\n"
+        for i, template in enumerate(state['mcp_templates'][:5]):  # Show first 5 templates
+            template_info += f"{i+1}. {template.get('folder_name', 'Unknown')}: {template.get('purpose', 'No description')[:100]}...\n"
+        
+        enhanced_prompt += template_info
     
-    # Check if the request might involve multiple MCP tools or template merging
-    multi_mcp_keywords = [
-        "multiple", "combine", "both", "together", "and", 
-        "with", "plus", "as well as", "along with",
-        "multi-tool", "multi tool", "multiple tools",
-        "multiple api", "multiple apis", "two tools",
-        "several tools", "integrate", "integration"
-    ]
-    
-    # Important MCP service keywords to detect
-    mcp_services = {
-        "search": ["search", "web", "serper", "google", "brave", "find information"],
-        "spotify": ["spotify", "music", "song", "playlist", "track", "album", "artist"],
-        "github": ["github", "repository", "repo", "git", "pull request", "issue", "code"],
-        "gmail": ["gmail", "email", "message", "inbox", "send mail"],
-        "firecrawl": ["firecrawl", "crawl", "website", "scrape", "page content"],
-        "maps": ["maps", "location", "directions", "places", "navigate"]
-    }
-    
-    # Count how many different MCP services are mentioned
-    mentioned_services = []
-    for service, keywords in mcp_services.items():
-        if any(keyword in user_message for keyword in keywords):
-            mentioned_services.append(service)
-    
-    multi_tool_detected = False
-    
-    # Check if multiple services are mentioned
-    if len(mentioned_services) >= 2:
-        multi_tool_detected = True
-        print(f"[INFO] Multiple MCP services detected: {', '.join(mentioned_services)}")
+    if state.get('detected_mcp_services') and len(state.get('detected_mcp_services', {})) > 0:
+        service_info = "\n\nThe following MCP services might be useful:\n"
+        for service, keywords in state['detected_mcp_services'].items():
+            service_info += f"- {service.title()} (matched keywords: {', '.join(keywords)})\n"
         
-        # Add information about the detected services to the state
-        multiple_services_info = {
-            "detected": True,
-            "services": mentioned_services,
-            "force_template_merge": True
-        }
-        
-        # Store directly in the state dictionary
-        state["multiple_services"] = multiple_services_info
-        print(f"[INFO] Added multi-service information to state: {mentioned_services}")
-    
-    # Also check for multi-tool keywords
-    if any(keyword in user_message for keyword in multi_mcp_keywords):
-        print(f"[INFO] Multi-tool keywords detected in message: {user_message}")
-        multi_tool_detected = True
-        
-        # If we haven't already added the multi-service info
-        if "multiple_services" not in state or len(mentioned_services) < 2:
-            state["multiple_services"] = {
-                "detected": True,
-                "services": ["general_multi_service"],
-                "force_template_merge": True
-            }
-            print(f"[INFO] Added general multi-service information to state")
-    
-    print(f"[INFO] Multi-tool detected: {multi_tool_detected}")
-    
-    # If multiple tools are needed, explain the merging approach
-    if multi_tool_detected:
-        multi_mcp_example_note = """
-        Note: The user is requesting an agent that combines multiple capabilities.
-        This requires combining multiple templates or using a multi-MCP example.
-        
-        A thorough implementation MUST address these critical integration points:
-        
-        1. Configuration Integration:
-           - Ensure Config class includes ALL required API keys for each service
-           - Validate ALL required environment variables
-           - Update .env.example with ALL needed variables
-        
-        2. Agent Structure:
-           - Initialize ALL MCP servers properly
-           - Create a combined system prompt covering ALL capabilities
-           - Ensure proper dependency classes and imports
-        
-        3. Tool Integration:
-           - Implement functions for ALL services
-           - Maintain clear naming conventions to avoid conflicts
-           - Properly handle authentication for each service
-        
-        4. Main Application Flow:
-           - Create a unified interface for ALL capabilities
-           - Add clear command handling between services
-           - Implement proper error handling for each service
-        
-        5. DETAILED TEMPLATE MERGING INSTRUCTIONS:
-           - File-by-file Integration:
-             • agents.py: Combine ALL imports, dependency classes, tools from both templates
-             • models.py: Merge ALL Config class fields and model classes
-             • tools.py: Include ALL utility functions from both templates
-             • main.py: Initialize ALL MCP servers and create a unified interface
-             • mcp.json: Include ALL server configurations
-           
-           - System Prompt Integration:
-             • Explicitly describe capabilities from ALL services
-             • Provide guidance on when to use each service
-             • Include examples for ALL capabilities
-        """
-        
-        # Add service-specific implementation suggestions
-        if "search" in mentioned_services and "spotify" in mentioned_services:
-            multi_mcp_example_note += """
-           - For Search + Spotify: Use the serper_spotify_agent example which shows how to combine 
-             web search and music control in a single agent. This template has been specifically 
-             created to demonstrate multi-MCP integration.
-        """
-        
-        if "github" in mentioned_services:
-            multi_mcp_example_note += """
-           - For GitHub integration: Use the github_agent template as a base and ensure proper
-             GitHub authentication and repository management functions
-        """
-        
-        if "gmail" in mentioned_services:
-            multi_mcp_example_note += """
-           - For Gmail integration: Use the gmail_agent template and ensure proper
-             email handling capabilities
-        """
-        
-        # Add general implementation approach
-        multi_mcp_example_note += """
-        
-        IMPROVED TEMPLATE MERGING WORKFLOW:
-        
-        1. Search for relevant templates:
-           - Use search_agent_templates to find templates for each required capability
-           - Look for templates that specifically match your requirements
-        
-        2. View BOTH templates BEFORE merging:
-           - Use display_template_files to examine EACH template individually
-           - Pay special attention to:
-             * Config class fields needed for authentication
-             * Dependency class fields required by each service  
-             * MCP server initialization code
-             * Tool functions for each capability
-        
-        3. Merging approach:
-           a. DO NOT just take code from one template and ignore the other
-           b. PROPERLY COMBINE code from BOTH templates:
-              - Keep ALL imports from BOTH templates (remove duplicates)
-              - Merge dependency classes with ALL fields from BOTH templates
-              - Include ALL tool functions from BOTH templates
-              - Create a system prompt that covers ALL capabilities
-              - Initialize ALL MCP servers in main.py
-              - Include ALL Config fields in models.py
-           c. After merging, carefully review the combined code
-        
-        4. Post-merge validation:
-           - Verify ALL imports are included (no undefined references)
-           - Check that ALL fields are in the Config class
-           - Confirm ALL MCP servers are properly initialized
-           - Ensure the system prompt covers ALL capabilities
-           - Test that ALL tools/functions work correctly
-        """
+        enhanced_prompt += service_info
     
     # Then, prompt the advisor with the list of files it can use for examples and tools
-    deps = AdvisorDeps(
-        file_list=file_list,
-        supabase=supabase,
-        embedding_client=embedding_client
-    )
-    
-    # Add the multi-MCP note to the user message if applicable
-    if multi_mcp_example_note:
-        modified_message = f"{state['latest_user_message']}\n\n{multi_mcp_example_note}"
-        result = await advisor_agent.run(modified_message, deps=deps)
-    else:
-        result = await advisor_agent.run(state['latest_user_message'], deps=deps)
-        
+    deps = AdvisorDeps(file_list=file_list)
+    result = await advisor_agent.run(enhanced_prompt, deps=deps)
     advisor_output = result.data
     
     return {"file_list": file_list, "advisor_output": advisor_output}
@@ -326,35 +222,12 @@ async def coder_agent(state: AgentState, writer):
     deps = PydanticAIDeps(
         supabase=supabase,
         embedding_client=embedding_client,
-        reasoner_output=state.get('scope', ''),
-        advisor_output=state.get('advisor_output', '')
+        reasoner_output=state['scope'],
+        advisor_output=state['advisor_output'],
+        mcp_templates=state.get('mcp_templates'),
+        selected_template=state.get('selected_template'),
+        merged_templates=state.get('merged_templates')
     )
-    
-    print(f"\n[DEEP LOG] Initialized PydanticAIDeps with supabase client: {supabase is not None}")
-    print(f"\n[DEEP LOG] Initialized PydanticAIDeps with embedding client: {embedding_client is not None}")
-
-    # Check if multiple services were detected and force template merging
-    if 'multiple_services' in state and state['multiple_services'].get('detected', False):
-        print(f"\n[DEEP LOG] Multiple services detected: {state['multiple_services']['services']}")
-        print(f"\n[DEEP LOG] FORCING TEMPLATE MERGING instead of using pre-built templates")
-        
-        # Add explicit instruction to the prompt to merge templates
-        services_str = ", ".join(state['multiple_services']['services'])
-        merging_instruction = f"""
-        IMPORTANT INSTRUCTION: This is a multi-service request combining {services_str}.
-        
-        DO NOT use a pre-built combined template (like SpotifyGitHubAgent - ID 5).
-        
-        INSTEAD, YOU MUST:
-        1. Find separate templates for each service (e.g., spotify_agent - ID 4, github_agent - ID 2)
-        2. Use the merge_agent_templates function to combine them
-        3. Ensure ALL functionality from BOTH templates is included
-        
-        This is CRITICAL to ensure proper integration of all services.
-        """
-        
-        if 'latest_user_message' in state:
-            state['latest_user_message'] = state['latest_user_message'] + "\n\n" + merging_instruction
 
     # Get the message history into the format for Pydantic AI
     message_history: list[ModelMessage] = []
@@ -379,7 +252,52 @@ async def coder_agent(state: AgentState, writer):
         Output any changes necessary to the agent code based on these refinements.
         """
     else:
-        prompt = state['latest_user_message']
+        # Check if we should focus on MCP templates
+        if state.get('mcp_templates') and len(state.get('mcp_templates', [])) > 0:
+            # Determine if we have multiple templates that should be merged
+            has_multiple_templates = len(state.get('mcp_templates', [])) > 1
+            
+            template_ids = [template.get('id') for template in state.get('mcp_templates', []) if template.get('id')]
+            template_names = [template.get('folder_name', f"ID: {template.get('id')}") for template in state.get('mcp_templates', [])]
+            
+            # Enhanced prompt to emphasize merging when multiple templates are detected
+            if has_multiple_templates:
+                prompt = f"""
+                {state['latest_user_message']}
+                
+                I've found multiple MCP templates that might be helpful for creating this agent. 
+                
+                IMPORTANT: When multiple templates are needed, you MUST merge them into a single unified agent.
+                Do NOT create separate agent files for each template. Create exactly ONE agent.py, ONE models.py, ONE tools.py, etc.
+                
+                Found templates: {", ".join(template_names)}
+                
+                Follow these exact steps:
+                1. First use `merge_multiple_templates` with template_ids={template_ids} to merge these templates
+                2. Then use `generate_files_from_merged_templates` to create ONE set of unified agent files
+                3. Make sure all merged files are properly written to the workbench directory
+                
+                The merged agent should seamlessly combine all functionality from the different templates.
+                """
+            else:
+                prompt = f"""
+                {state['latest_user_message']}
+                
+                I've found some MCP templates that might be helpful for creating this agent. Please use the following tools to explore and utilize these templates:
+                
+                1. search_mcp_templates_for_query - to find more specific templates
+                2. get_mcp_template_details - to get details about a specific template
+                3. get_template_file_content - to see the contents of a specific file in the template
+                4. detect_mcp_services - to identify which services might be needed
+                5. merge_multiple_templates - to combine templates if needed
+                6. generate_files_from_template - to create files from a template
+                
+                Start by analyzing the templates that have been found and determine if they're suitable for this request.
+                
+                If you find multiple suitable templates, you MUST merge them using the merge_multiple_templates tool rather than creating separate agents.
+                """
+        else:
+            prompt = state['latest_user_message']
 
     # Run the agent in a stream
     if not is_openai:
@@ -388,7 +306,7 @@ async def coder_agent(state: AgentState, writer):
         writer(result.data)
     else:
         async with pydantic_ai_coder.run_stream(
-            state['latest_user_message'],
+            prompt,  # Changed from state['latest_user_message'] to use our constructed prompt
             deps=deps,
             message_history=message_history
         ) as result:
@@ -396,16 +314,27 @@ async def coder_agent(state: AgentState, writer):
             async for chunk in result.stream_text(delta=True):
                 writer(chunk)
 
-    # print(ModelMessagesTypeAdapter.validate_json(result.new_messages_json()))
+    # Save any updates to templates from tool calls
+    updated_state = {}
+    if hasattr(deps, 'selected_template') and deps.selected_template is not None:
+        updated_state["selected_template"] = deps.selected_template
+    
+    if hasattr(deps, 'merged_templates') and deps.merged_templates is not None:
+        updated_state["merged_templates"] = deps.merged_templates
+    
+    if hasattr(deps, 'mcp_templates') and deps.mcp_templates is not None:
+        updated_state["mcp_templates"] = deps.mcp_templates
 
     # Add the new conversation history (including tool calls)
     # Reset the refined properties in case they were just used to refine the agent
-    return {
+    updated_state.update({
         "messages": [result.new_messages_json()],
         "refined_prompt": "",
         "refined_tools": "",
         "refined_agent": ""
-    }
+    })
+    
+    return updated_state
 
 # Interrupt the graph to get the user's next message
 def get_next_user_message(state: AgentState):
@@ -517,6 +446,7 @@ builder = StateGraph(AgentState)
 
 # Add nodes
 builder.add_node("define_scope_with_reasoner", define_scope_with_reasoner)
+builder.add_node("detect_mcp_template_needs", detect_mcp_template_needs)
 builder.add_node("advisor_with_examples", advisor_with_examples)
 builder.add_node("coder_agent", coder_agent)
 builder.add_node("get_next_user_message", get_next_user_message)
@@ -527,8 +457,9 @@ builder.add_node("finish_conversation", finish_conversation)
 
 # Set edges
 builder.add_edge(START, "define_scope_with_reasoner")
-builder.add_edge(START, "advisor_with_examples")
-builder.add_edge("define_scope_with_reasoner", "coder_agent")
+builder.add_edge(START, "detect_mcp_template_needs")
+builder.add_edge("define_scope_with_reasoner", "advisor_with_examples")
+builder.add_edge("detect_mcp_template_needs", "advisor_with_examples")
 builder.add_edge("advisor_with_examples", "coder_agent")
 builder.add_edge("coder_agent", "get_next_user_message")
 builder.add_conditional_edges(

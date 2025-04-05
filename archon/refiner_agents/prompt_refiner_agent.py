@@ -21,11 +21,17 @@ llm = get_env_var('PRIMARY_MODEL') or 'gpt-4o-mini'
 base_url = get_env_var('BASE_URL') or 'https://api.openai.com/v1'
 api_key = get_env_var('LLM_API_KEY') or 'no-llm-api-key-provided'
 
-model = OpenAIModel(llm)
+# Initialize the model based on provider
+if provider == "Anthropic":
+    model = AnthropicModel(llm, api_key=api_key)
+else:
+    # OpenAI model initialization without extra parameters
+    model = OpenAIModel(llm)
 
 logfire.configure(send_to_logfire='if-token-present')
 
 prompt_refiner_agent = Agent(
     model,
-    system_prompt=prompt_refiner_prompt
+    system_prompt=prompt_refiner_prompt,
+    retries=2
 )
