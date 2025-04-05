@@ -1,0 +1,505 @@
+2025-04-04 15:21:14,786 [INFO] [main.py:99] Starting GitHub MCP Agent
+2025-04-04 15:21:14,789 [ERROR] [models.py:26] Missing required environment variables:
+2025-04-04 15:21:14,789 [ERROR] [models.py:28]   - GITHUB_PERSONAL_ACCESS_TOKEN
+2025-04-04 15:21:14,789 [ERROR] [models.py:29] 
+Please create a .env file with the following content:
+2025-04-04 15:21:14,789 [ERROR] [models.py:30] 
+LLM_API_KEY=your_openai_api_key
+GITHUB_PERSONAL_ACCESS_TOKEN=your_github_personal_access_token
+MODEL_CHOICE=gpt-4o-mini  # optional
+BASE_URL=https://api.openai.com/v1  # optional
+            
+2025-04-04 15:21:14,789 [ERROR] [models.py:36] 
+To create a GitHub Personal Access Token, visit: https://github.com/settings/tokens
+2025-04-04 15:21:14,789 [ERROR] [models.py:37] Make sure to grant the token appropriate permissions (repo, user, etc.)
+2025-04-04 15:21:43,441 [INFO] [main.py:99] Starting GitHub MCP Agent
+2025-04-04 15:21:43,454 [INFO] [tools.py:9] 
+==================================================
+2025-04-04 15:21:43,455 [INFO] [tools.py:10] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-04 15:21:43,455 [INFO] [tools.py:11] ==================================================
+2025-04-04 15:21:43,455 [WARNING] [tools.py:121] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-04 15:21:43,455 [WARNING] [tools.py:122] 1. The GitHub MCP server doesn't expose any tools
+2025-04-04 15:21:43,455 [WARNING] [tools.py:123] 2. The tools discovery mechanism is not supported
+2025-04-04 15:21:43,455 [WARNING] [tools.py:124] 3. The server connection is not properly initialized
+2025-04-04 15:21:45,718 [INFO] [main.py:105] GitHub MCP Server started successfully
+2025-04-04 15:21:51,423 [INFO] [main.py:123] Processing query: 'create repo name sdsds'
+2025-04-04 15:21:51,426 [INFO] [agent.py:51] Executing query: 'create repo name sdsds'
+2025-04-04 15:21:53,472 [ERROR] [agent.py:85] Error processing query: fetch is not defined
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/github_agent/agent.py", line 52, in process_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 372, in run
+    async with self.stream(ctx):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 386, in stream
+    async for _event in stream:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 423, in _run_stream
+    async for event in self._events_iterator:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 413, in _run_stream
+    async for event in self._handle_tool_calls(ctx, tool_calls):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 452, in _handle_tool_calls
+    async for event in process_function_tools(
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 657, in process_function_tools
+    result = task.result()
+             ^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 318, in run
+    return await self._run(message, run_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 335, in _run
+    response_content = await function(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 689, in run_tool
+    result = await server.call_tool(tool_name, args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 81, in call_tool
+    return await self._client.call_tool(tool_name, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 256, in call_tool
+    return await self.send_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 266, in send_request
+    raise McpError(response_or_error.error)
+mcp.shared.exceptions.McpError: fetch is not defined
+2025-04-04 15:21:53,479 [ERROR] [main.py:148] Error processing query: fetch is not defined
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/github_agent/main.py", line 128, in main
+    result, elapsed_time, tool_usage = await process_query(agent, user_query)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/github_agent/agent.py", line 52, in process_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 372, in run
+    async with self.stream(ctx):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 386, in stream
+    async for _event in stream:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 423, in _run_stream
+    async for event in self._events_iterator:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 413, in _run_stream
+    async for event in self._handle_tool_calls(ctx, tool_calls):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 452, in _handle_tool_calls
+    async for event in process_function_tools(
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 657, in process_function_tools
+    result = task.result()
+             ^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 318, in run
+    return await self._run(message, run_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 335, in _run
+    response_content = await function(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 689, in run_tool
+    result = await server.call_tool(tool_name, args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 81, in call_tool
+    return await self._client.call_tool(tool_name, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 256, in call_tool
+    return await self.send_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 266, in send_request
+    raise McpError(response_or_error.error)
+mcp.shared.exceptions.McpError: fetch is not defined
+2025-04-04 15:23:04,386 [INFO] [main.py:144] User interrupted the process
+2025-04-04 15:23:04,389 [INFO] [main.py:156] GitHub agent shutting down
+2025-04-04 15:23:04,391 [INFO] [main.py:163] Exiting gracefully...
+2025-04-04 15:23:18,397 [INFO] [main.py:99] Starting GitHub MCP Agent
+2025-04-04 15:23:18,411 [INFO] [tools.py:9] 
+==================================================
+2025-04-04 15:23:18,411 [INFO] [tools.py:10] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-04 15:23:18,411 [INFO] [tools.py:11] ==================================================
+2025-04-04 15:23:18,412 [WARNING] [tools.py:121] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-04 15:23:18,412 [WARNING] [tools.py:122] 1. The GitHub MCP server doesn't expose any tools
+2025-04-04 15:23:18,412 [WARNING] [tools.py:123] 2. The tools discovery mechanism is not supported
+2025-04-04 15:23:18,412 [WARNING] [tools.py:124] 3. The server connection is not properly initialized
+2025-04-04 15:27:55,101 [INFO] [main.py:156] GitHub agent shutting down
+2025-04-04 15:27:55,105 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object MCPServerStdio.client_streams at 0x10950b740>
+asyncgen: <async_generator object MCPServerStdio.client_streams at 0x10950b740>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    process.terminate()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    self._process.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    self._transport.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    self._check_proc()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    raise ProcessLookupError()
+ProcessLookupError
+
+During handling of the above exception, another exception occurred:
+
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 767, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 173, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 161, in client_streams
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    |     process.terminate()
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    |     self._process.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    |     self._transport.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    |     self._check_proc()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    |     raise ProcessLookupError()
+    | ProcessLookupError
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+    async with (
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 773, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 456, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-04-04 15:27:55,115 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x1094d20c0>
+asyncgen: <async_generator object stdio_client at 0x1094d20c0>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 111, in receive
+    return self.receive_nowait()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 106, in receive_nowait
+    raise WouldBlock
+anyio.WouldBlock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/github_agent/main.py", line 104, in main
+    print("="*50)
+        ^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1299, in run_mcp_servers
+    await exit_stack.enter_async_context(mcp_server)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 90, in __aenter__
+    await self._client.initialize()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 122, in initialize
+    result = await self.send_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 252, in send_request
+    response_or_error = await response_stream_reader.receive()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 119, in receive
+    await receive_event.wait()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/locks.py", line 213, in wait
+    await fut
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError: aclose(): asynchronous generator is already running
+2025-04-04 15:27:55,122 [INFO] [main.py:163] Exiting gracefully...
+2025-04-04 15:51:10,458 [INFO] [main.py:113] Starting GitHub MCP Agent
+2025-04-04 15:51:10,477 [INFO] [main.py:119] Node.js version: v16.20.2
+2025-04-04 15:51:10,477 [INFO] [main.py:124] Loading configuration...
+2025-04-04 15:51:10,481 [INFO] [main.py:128] Setting up agent...
+2025-04-04 15:51:10,507 [INFO] [tools.py:129] 
+==================================================
+2025-04-04 15:51:10,507 [INFO] [tools.py:130] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-04 15:51:10,508 [INFO] [tools.py:131] ==================================================
+2025-04-04 15:51:10,508 [WARNING] [tools.py:238] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-04 15:51:10,508 [WARNING] [tools.py:239] 1. The GitHub MCP server doesn't expose any tools
+2025-04-04 15:51:10,508 [WARNING] [tools.py:240] 2. The tools discovery mechanism is not supported
+2025-04-04 15:51:10,508 [WARNING] [tools.py:241] 3. The server connection is not properly initialized
+2025-04-04 15:51:11,338 [INFO] [main.py:133] GitHub MCP Server started successfully
+2025-04-04 15:51:20,703 [INFO] [main.py:148] Processing query: 'seach repo of react'
+2025-04-04 15:51:20,705 [INFO] [tools.py:253] Processing query: 'seach repo of react'
+2025-04-04 15:51:22,875 [ERROR] [tools.py:287] Error processing query: fetch is not defined
+2025-04-04 15:51:22,881 [ERROR] [tools.py:288] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/github_agent/tools.py", line 254, in process_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 372, in run
+    async with self.stream(ctx):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 386, in stream
+    async for _event in stream:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 423, in _run_stream
+    async for event in self._events_iterator:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 413, in _run_stream
+    async for event in self._handle_tool_calls(ctx, tool_calls):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 452, in _handle_tool_calls
+    async for event in process_function_tools(
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 657, in process_function_tools
+    result = task.result()
+             ^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 318, in run
+    return await self._run(message, run_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 335, in _run
+    response_content = await function(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 689, in run_tool
+    result = await server.call_tool(tool_name, args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 81, in call_tool
+    return await self._client.call_tool(tool_name, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 256, in call_tool
+    return await self.send_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 266, in send_request
+    raise McpError(response_or_error.error)
+mcp.shared.exceptions.McpError: fetch is not defined
+
+2025-04-04 15:51:22,882 [ERROR] [main.py:169] Error processing query: fetch is not defined
+2025-04-04 15:51:52,282 [INFO] [main.py:178] User interrupted the process
+2025-04-04 15:51:52,287 [INFO] [main.py:204] GitHub agent shutting down
+2025-04-04 15:51:52,289 [INFO] [main.py:211] Exiting gracefully...
+2025-04-04 15:52:01,754 [INFO] [main.py:113] Starting GitHub MCP Agent
+2025-04-04 15:52:01,780 [INFO] [main.py:119] Node.js version: v20.18.3
+2025-04-04 15:52:01,780 [INFO] [main.py:124] Loading configuration...
+2025-04-04 15:52:01,784 [INFO] [main.py:128] Setting up agent...
+2025-04-04 15:52:01,801 [INFO] [tools.py:129] 
+==================================================
+2025-04-04 15:52:01,801 [INFO] [tools.py:130] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-04 15:52:01,801 [INFO] [tools.py:131] ==================================================
+2025-04-04 15:52:01,801 [WARNING] [tools.py:238] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-04 15:52:01,801 [WARNING] [tools.py:239] 1. The GitHub MCP server doesn't expose any tools
+2025-04-04 15:52:01,801 [WARNING] [tools.py:240] 2. The tools discovery mechanism is not supported
+2025-04-04 15:52:01,801 [WARNING] [tools.py:241] 3. The server connection is not properly initialized
+2025-04-04 15:52:02,777 [INFO] [main.py:133] GitHub MCP Server started successfully
+2025-04-04 15:52:08,190 [INFO] [main.py:113] Starting GitHub MCP Agent
+2025-04-04 15:52:08,283 [INFO] [main.py:119] Node.js version: v16.20.2
+2025-04-04 15:52:08,283 [INFO] [main.py:124] Loading configuration...
+2025-04-04 15:52:08,287 [INFO] [main.py:128] Setting up agent...
+2025-04-04 15:52:08,302 [INFO] [tools.py:129] 
+==================================================
+2025-04-04 15:52:08,302 [INFO] [tools.py:130] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-04 15:52:08,302 [INFO] [tools.py:131] ==================================================
+2025-04-04 15:52:08,302 [WARNING] [tools.py:238] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-04 15:52:08,302 [WARNING] [tools.py:239] 1. The GitHub MCP server doesn't expose any tools
+2025-04-04 15:52:08,302 [WARNING] [tools.py:240] 2. The tools discovery mechanism is not supported
+2025-04-04 15:52:08,303 [WARNING] [tools.py:241] 3. The server connection is not properly initialized
+2025-04-04 15:52:09,529 [INFO] [main.py:148] Processing query: 'search repo react'
+2025-04-04 15:52:09,531 [INFO] [tools.py:253] Processing query: 'search repo react'
+2025-04-04 15:52:14,729 [INFO] [main.py:204] GitHub agent shutting down
+2025-04-04 15:52:14,732 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object MCPServerStdio.client_streams at 0x108aeef40>
+asyncgen: <async_generator object MCPServerStdio.client_streams at 0x108aeef40>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    process.terminate()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    self._process.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    self._transport.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    self._check_proc()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    raise ProcessLookupError()
+ProcessLookupError
+
+During handling of the above exception, another exception occurred:
+
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 767, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 173, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 161, in client_streams
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    |     process.terminate()
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    |     self._process.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    |     self._transport.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    |     self._check_proc()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    |     raise ProcessLookupError()
+    | ProcessLookupError
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+    async with (
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 773, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 456, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-04-04 15:52:14,750 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x108ac20c0>
+asyncgen: <async_generator object stdio_client at 0x108ac20c0>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 111, in receive
+    return self.receive_nowait()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 106, in receive_nowait
+    raise WouldBlock
+anyio.WouldBlock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/github_agent/main.py", line 132, in main
+    async with agent.run_mcp_servers():
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1299, in run_mcp_servers
+    await exit_stack.enter_async_context(mcp_server)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 90, in __aenter__
+    await self._client.initialize()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 122, in initialize
+    result = await self.send_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 252, in send_request
+    response_or_error = await response_stream_reader.receive()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 119, in receive
+    await receive_event.wait()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/locks.py", line 213, in wait
+    await fut
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError: aclose(): asynchronous generator is already running
+2025-04-04 15:52:14,758 [INFO] [main.py:211] Exiting gracefully...
+2025-04-04 15:52:26,652 [INFO] [tools.py:283] No specific tools were recorded for this query
+2025-04-04 15:52:26,652 [INFO] [main.py:157] Query completed in 17.12 seconds
+2025-04-04 15:58:58,799 [INFO] [main.py:178] User interrupted the process
+2025-04-04 15:58:58,832 [INFO] [main.py:204] GitHub agent shutting down
+2025-04-04 15:58:58,839 [INFO] [main.py:211] Exiting gracefully...
+2025-04-04 16:00:44,057 [INFO] [main.py:113] Starting GitHub MCP Agent
+2025-04-04 16:00:45,703 [INFO] [main.py:119] Node.js version: v20.18.3
+2025-04-04 16:00:45,705 [INFO] [main.py:124] Loading configuration...
+2025-04-04 16:00:45,711 [INFO] [main.py:128] Setting up agent...
+2025-04-04 16:00:45,723 [INFO] [tools.py:13] 
+==================================================
+2025-04-04 16:00:45,723 [INFO] [tools.py:14] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-04 16:00:45,723 [INFO] [tools.py:15] ==================================================
+2025-04-04 16:00:45,723 [WARNING] [tools.py:122] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-04 16:00:45,723 [WARNING] [tools.py:123] 1. The GitHub MCP server doesn't expose any tools
+2025-04-04 16:00:45,723 [WARNING] [tools.py:124] 2. The tools discovery mechanism is not supported
+2025-04-04 16:00:45,723 [WARNING] [tools.py:125] 3. The server connection is not properly initialized
+2025-04-04 16:00:45,724 [INFO] [agent.py:59] Found 0 MCP tools available for GitHub operations
+2025-04-04 16:00:46,340 [INFO] [main.py:133] GitHub MCP Server started successfully
+2025-04-04 16:00:54,418 [INFO] [main.py:148] Processing query: 'create a repo name ascsbshv'
+2025-04-04 16:00:54,419 [INFO] [tools.py:178] Processing query: 'create a repo name ascsbshv'
+2025-04-04 16:00:58,921 [INFO] [tools.py:208] No specific tools were recorded for this query
+2025-04-04 16:00:58,922 [INFO] [main.py:157] Query completed in 4.50 seconds
+2025-04-04 16:01:29,883 [INFO] [main.py:148] Processing query: 'search repo react'
+2025-04-04 16:01:29,887 [INFO] [tools.py:178] Processing query: 'search repo react'
+2025-04-04 16:01:47,120 [INFO] [tools.py:208] No specific tools were recorded for this query
+2025-04-04 16:01:47,121 [INFO] [main.py:157] Query completed in 17.23 seconds

@@ -1,0 +1,46 @@
+2025-04-04 15:28:04,731 [INFO] [pydantic_serper_agent.py:421] Starting Serper MCP Agent
+2025-04-04 15:28:06,426 [INFO] [pydantic_serper_agent.py:428] Node.js version: v20.18.3, npm version: 10.8.2
+2025-04-04 15:28:06,427 [INFO] [pydantic_serper_agent.py:433] Loading configuration...
+2025-04-04 15:28:06,430 [INFO] [pydantic_serper_agent.py:437] Setting up agent...
+2025-04-04 15:28:06,430 [INFO] [pydantic_serper_agent.py:325] Creating Serper MCP Server...
+2025-04-04 15:28:06,430 [INFO] [pydantic_serper_agent.py:329] Initializing agent with Serper MCP Server...
+2025-04-04 15:28:06,442 [INFO] [pydantic_serper_agent.py:186] 
+==================================================
+2025-04-04 15:28:06,442 [INFO] [pydantic_serper_agent.py:187] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-04 15:28:06,442 [INFO] [pydantic_serper_agent.py:188] ==================================================
+2025-04-04 15:28:06,442 [WARNING] [pydantic_serper_agent.py:295] 
+No Serper MCP tools were discovered. This could mean either:
+2025-04-04 15:28:06,442 [WARNING] [pydantic_serper_agent.py:296] 1. The Serper MCP server doesn't expose any tools
+2025-04-04 15:28:06,442 [WARNING] [pydantic_serper_agent.py:297] 2. The tools discovery mechanism is not supported
+2025-04-04 15:28:06,442 [WARNING] [pydantic_serper_agent.py:298] 3. The server connection is not properly initialized
+2025-04-04 15:28:10,516 [INFO] [pydantic_serper_agent.py:442] Serper MCP Server started successfully
+2025-04-04 15:28:18,804 [INFO] [pydantic_serper_agent.py:460] Processing query: 'search for elon usl'
+2025-04-04 15:28:18,806 [INFO] [pydantic_serper_agent.py:354] Executing query: 'search for elon usl'
+2025-04-04 15:28:29,432 [INFO] [pydantic_serper_agent.py:384] No specific tools were recorded for this query
+2025-04-04 15:28:29,433 [INFO] [pydantic_serper_agent.py:469] Search completed in 10.62 seconds
+2025-04-04 15:34:03,448 [INFO] [pydantic_serper_agent.py:486] User interrupted the process
+2025-04-04 15:34:03,459 [INFO] [pydantic_serper_agent.py:498] Serper agent shutting down
+2025-04-04 15:34:03,461 [INFO] [pydantic_serper_agent.py:505] Exiting gracefully...
+2025-04-04 15:34:29,314 [INFO] [main.py:100] Starting Serper MCP Agent
+2025-04-04 15:34:29,738 [INFO] [main.py:107] Node.js version: v20.18.3, npm version: 10.8.2
+2025-04-04 15:34:29,738 [INFO] [main.py:112] Loading configuration...
+2025-04-04 15:34:29,743 [INFO] [main.py:116] Setting up agent...
+2025-04-04 15:34:29,743 [INFO] [agent.py:31] Creating Serper MCP Server...
+2025-04-04 15:34:29,743 [INFO] [agent.py:35] Initializing agent with Serper MCP Server...
+2025-04-04 15:34:29,753 [INFO] [tools.py:9] 
+==================================================
+2025-04-04 15:34:29,753 [INFO] [tools.py:10] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-04 15:34:29,753 [INFO] [tools.py:11] ==================================================
+2025-04-04 15:34:29,754 [WARNING] [tools.py:118] 
+No Serper MCP tools were discovered. This could mean either:
+2025-04-04 15:34:29,754 [WARNING] [tools.py:119] 1. The Serper MCP server doesn't expose any tools
+2025-04-04 15:34:29,754 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-04 15:34:29,754 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-04 15:34:33,361 [INFO] [main.py:121] Serper MCP Server started successfully
+2025-04-04 15:34:38,799 [INFO] [main.py:139] Processing query: 'search elon musk'
+2025-04-04 15:34:38,799 [INFO] [agent.py:59] Executing query: 'search elon musk'
+2025-04-04 15:34:51,162 [INFO] [agent.py:89] No specific tools were recorded for this query
+2025-04-04 15:34:51,164 [INFO] [main.py:148] Search completed in 12.36 seconds
+2025-04-04 15:37:24,491 [INFO] [main.py:165] User interrupted the process
+2025-04-04 15:37:24,495 [INFO] [main.py:177] Serper agent shutting down
+2025-04-04 15:37:24,496 [INFO] [main.py:184] Exiting gracefully...

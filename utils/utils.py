@@ -21,15 +21,41 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 workbench_dir = os.path.join(parent_dir, "workbench")
 
+def ensure_workbench_dir():
+    """Ensure the workbench directory exists.
+    
+    This function checks if the workbench directory exists and creates it if it doesn't.
+    Returns the path to the workbench directory.
+    """
+    global workbench_dir
+    try:
+        os.makedirs(workbench_dir, exist_ok=True)
+        print(f"Ensured workbench directory exists at: {workbench_dir}")
+        return workbench_dir
+    except Exception as e:
+        print(f"Error creating workbench directory: {e}")
+        # Fallback to a temporary directory if we can't create the workbench dir
+        import tempfile
+        temp_dir = os.path.join(tempfile.gettempdir(), "archon_workbench")
+        os.makedirs(temp_dir, exist_ok=True)
+        print(f"Using temporary workbench directory at: {temp_dir}")
+        workbench_dir = temp_dir
+        return temp_dir
+
+# Ensure workbench directory exists at import time
+ensure_workbench_dir()
+
 def write_to_log(message: str):
     """Write a message to the logs.txt file in the workbench directory.
     
     Args:
         message: The message to log
     """
-    # Get the directory one level up from the current file
+    # Ensure workbench directory exists
+    ensure_workbench_dir()
+    
+    # Get the log path
     log_path = os.path.join(workbench_dir, "logs.txt")
-    os.makedirs(workbench_dir, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     log_entry = f"[{timestamp}] {message}\n"
@@ -47,6 +73,9 @@ def get_env_var(var_name: str, profile: Optional[str] = None) -> Optional[str]:
     Returns:
         The value of the environment variable or None if not found
     """
+    # Ensure workbench directory exists
+    ensure_workbench_dir()
+    
     # Path to the JSON file storing environment variables
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
     
@@ -85,9 +114,11 @@ def save_env_var(var_name: str, value: str, profile: Optional[str] = None) -> bo
     Returns:
         True if successful, False otherwise
     """
+    # Ensure workbench directory exists
+    ensure_workbench_dir()
+    
     # Path to the JSON file storing environment variables
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
-    os.makedirs(workbench_dir, exist_ok=True)
     
     # Load existing env vars or create empty dict
     env_vars = {}
@@ -132,6 +163,9 @@ def get_current_profile() -> str:
     Returns:
         The name of the current profile, defaults to "default" if not set
     """
+    # Ensure workbench directory exists
+    ensure_workbench_dir()
+    
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
     
     if os.path.exists(env_file_path):
@@ -153,8 +187,10 @@ def set_current_profile(profile_name: str) -> bool:
     Returns:
         True if successful, False otherwise
     """
+    # Ensure workbench directory exists
+    ensure_workbench_dir()
+    
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
-    os.makedirs(workbench_dir, exist_ok=True)
     
     # Load existing env vars or create empty dict
     env_vars = {}
@@ -192,6 +228,9 @@ def get_all_profiles() -> list:
     Returns:
         List of profile names
     """
+    # Ensure workbench directory exists
+    ensure_workbench_dir()
+    
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
     
     if os.path.exists(env_file_path):
@@ -215,8 +254,10 @@ def create_profile(profile_name: str) -> bool:
     Returns:
         True if successful, False otherwise
     """
+    # Ensure workbench directory exists
+    ensure_workbench_dir()
+    
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
-    os.makedirs(workbench_dir, exist_ok=True)
     
     # Load existing env vars or create empty dict
     env_vars = {}
@@ -260,6 +301,9 @@ def delete_profile(profile_name: str) -> bool:
     # Don't allow deleting the default profile
     if profile_name == "default":
         return False
+    
+    # Ensure workbench directory exists
+    ensure_workbench_dir()
         
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
     
@@ -294,6 +338,9 @@ def get_profile_env_vars(profile_name: Optional[str] = None) -> dict:
     Returns:
         Dictionary of environment variables for the profile
     """
+    # Ensure workbench directory exists
+    ensure_workbench_dir()
+    
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
     
     if os.path.exists(env_file_path):
@@ -384,8 +431,25 @@ def get_clients():
     # LLM client setup
     embedding_client = None
     base_url = get_env_var('EMBEDDING_BASE_URL') or 'https://api.openai.com/v1'
-    api_key = get_env_var('EMBEDDING_API_KEY') or 'no-api-key-provided'
+    api_key = get_env_var('EMBEDDING_API_KEY')
+    
+    # If EMBEDDING_API_KEY is not set, fall back to OPENAI_API_KEY
+    if not api_key:
+        api_key = get_env_var('OPENAI_API_KEY')
+    
+    # If still no key, fall back to LLM_API_KEY
+    if not api_key:
+        api_key = get_env_var('LLM_API_KEY')
+        
+    # If still no key, use default
+    if not api_key:
+        api_key = 'no-api-key-provided'
+        
     provider = get_env_var('EMBEDDING_PROVIDER') or 'OpenAI'
+    
+    # Log connection attempt
+    write_to_log(f"Initializing embedding client with provider: {provider}, base_url: {base_url}")
+    write_to_log(f"API key status: {'Valid' if api_key and api_key != 'no-api-key-provided' else 'Missing or Invalid'}")
     
     # Setup OpenAI client for LLM
     if provider == "Ollama":
@@ -402,6 +466,7 @@ def get_clients():
     if supabase_url and supabase_key:
         try:
             supabase: Client = Client(supabase_url, supabase_key)
+            write_to_log("Supabase client initialized successfully")
         except Exception as e:
             print(f"Failed to initialize Supabase: {e}")
             write_to_log(f"Failed to initialize Supabase: {e}")

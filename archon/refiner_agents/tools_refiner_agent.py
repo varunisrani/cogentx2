@@ -8,7 +8,7 @@ import httpx
 import os
 import sys
 import json
-from typing import List
+from typing import List, Dict, Any
 from pydantic import BaseModel
 from pydantic_ai import Agent, ModelRetry, RunContext
 from pydantic_ai.models.anthropic import AnthropicModel
@@ -24,7 +24,9 @@ from archon.agent_tools import (
     retrieve_relevant_documentation_tool,
     list_documentation_pages_tool,
     get_page_content_tool,
-    get_file_content_tool
+    get_file_content_tool,
+    search_agent_templates_tool,
+    fetch_template_by_id_tool
 )
 
 load_dotenv()
@@ -34,7 +36,7 @@ llm = get_env_var('PRIMARY_MODEL') or 'gpt-4o-mini'
 base_url = get_env_var('BASE_URL') or 'https://api.openai.com/v1'
 api_key = get_env_var('LLM_API_KEY') or 'no-llm-api-key-provided'
 
-model = AnthropicModel(llm, api_key=api_key) if provider == "Anthropic" else OpenAIModel(llm, base_url=base_url, api_key=api_key)
+model = OpenAIModel(llm)
 embedding_model = get_env_var('EMBEDDING_MODEL') or 'text-embedding-3-small'
 
 logfire.configure(send_to_logfire='if-token-present')
@@ -47,7 +49,36 @@ class ToolsRefinerDeps:
 
 tools_refiner_agent = Agent(
     model,
-    system_prompt=tools_refiner_prompt,
+    system_prompt=tools_refiner_prompt + """
+
+ENHANCED GUIDANCE FOR MULTI-SERVICE INTEGRATION:
+
+When working with tools for multi-service agents (e.g., combined Spotify and GitHub functionality):
+
+1. DO NOT DISCARD tool functions from either service
+   - Ensure BOTH services' tool functions are properly included
+   - Check for name collisions and resolve them with clear naming
+   - Validate that ALL tool functions have correct dependencies
+
+2. VERIFY proper server initialization
+   - Confirm that EACH service has its server initialization function
+   - Check that ALL required environment variables are properly accessed
+   - Ensure ALL servers are properly created in the main file
+
+3. COMPARE the tool implementations against BOTH templates
+   - Verify that no functionality is lost from either template
+   - Ensure authentication is properly handled for ALL services
+   - Check for consistent error handling across ALL tools
+
+4. MERGING CHECKLIST - Verify the merged code includes:
+   ✓ ALL tool functions from BOTH templates
+   ✓ ALL MCP server initializations from BOTH templates
+   ✓ Proper authentication for ALL services
+   ✓ Clear error handling for ALL functions
+   ✓ No duplicate or conflicting function names
+
+The success of a multi-service agent depends on proper integration of tools from ALL templates!
+""",
     deps_type=ToolsRefinerDeps,
     retries=2
 )
@@ -56,10 +87,12 @@ tools_refiner_agent = Agent(
 @tools_refiner_agent.system_prompt  
 def add_file_list(ctx: RunContext[str]) -> str:
     return f"""
-    \nHere is the list of all the files that you can pull the contents of with the
-    'get_file_content' tool if the example/tool/MCP server is relevant to the
-    agent the user is trying to build:\n 
-    {"\n".join(ctx.deps.file_list)}
+    
+Here is the list of all the files that you can pull the contents of with the
+'get_file_content' tool if the example/tool/MCP server is relevant to the
+agent the user is trying to build:
+ 
+""" + "\n".join(ctx.deps.file_list) + """
     """
 
 @tools_refiner_agent.tool
@@ -115,3 +148,35 @@ def get_file_content(file_path: str) -> str:
         The raw contents of the file
     """
     return get_file_content_tool(file_path)    
+
+@tools_refiner_agent.tool
+async def search_agent_templates(ctx: RunContext[ToolsRefinerDeps], query: str, threshold: float = 0.4, limit: int = 3) -> Dict[str, Any]:
+    """
+    Search for agent templates using embedding similarity.
+    Use this to find existing agent templates similar to the tools needed for the agent.
+    
+    Args:
+        ctx: The context including the Supabase client and embedding client
+        query: The search query describing the tools needed
+        threshold: Similarity threshold (0.0 to 1.0)
+        limit: Maximum number of results to return
+        
+    Returns:
+        Dict containing similar agent templates with their code and metadata
+    """
+    return await search_agent_templates_tool(ctx.deps.supabase, ctx.deps.embedding_client, query, threshold, limit)
+
+@tools_refiner_agent.tool
+async def fetch_template_by_id(ctx: RunContext[ToolsRefinerDeps], template_id: int) -> Dict[str, Any]:
+    """
+    Fetch a specific agent template by ID.
+    Use this to get the full details of a template after finding it with search_agent_templates.
+    
+    Args:
+        ctx: The context including the Supabase client
+        template_id: The ID of the template to fetch
+        
+    Returns:
+        Dict containing the agent template with its code and metadata
+    """
+    return await fetch_template_by_id_tool(ctx.deps.supabase, template_id)    

@@ -1,0 +1,125 @@
+2025-04-04 12:55:27,521 - DEBUG - [__main__] - Logging configured successfully
+2025-04-04 12:55:27,522 - DEBUG - [asyncio] - Using selector: KqueueSelector
+2025-04-04 12:55:27,524 - INFO - [__main__] - Configuration loaded successfully
+2025-04-04 12:55:27,525 - DEBUG - [__main__] - Using model: gpt-4o-mini
+2025-04-04 12:55:27,525 - DEBUG - [src.agents] - Initializing Serper Agent...
+2025-04-04 12:55:27,871 - DEBUG - [src.agents] - Agent initialized with model: gpt-4o-mini
+2025-04-04 12:55:27,871 - INFO - [src.agents] - Setting up Serper MCP server...
+2025-04-04 12:55:27,871 - DEBUG - [src.tools] - Configuring Serper MCP server...
+2025-04-04 12:55:27,871 - DEBUG - [src.tools] - MCP Server Configuration: {
+  "serperApiKey": "ca8c2e57ab085aa6960a1c2048bb9e4a55255518"
+}
+2025-04-04 12:57:36,836 - DEBUG - [__main__] - Logging configured successfully
+2025-04-04 12:57:36,836 - DEBUG - [asyncio] - Using selector: KqueueSelector
+2025-04-04 12:57:36,839 - INFO - [__main__] - Configuration loaded successfully
+2025-04-04 12:57:36,839 - DEBUG - [__main__] - Using model: gpt-4o-mini
+2025-04-04 12:57:36,839 - INFO - [__main__] - Initializing Serper agent...
+2025-04-04 12:57:36,839 - DEBUG - [src.agents] - Initializing Serper Agent...
+2025-04-04 12:57:37,189 - DEBUG - [src.agents] - Agent initialized with model: gpt-4o-mini
+2025-04-04 12:57:37,189 - INFO - [src.agents] - Setting up Serper MCP server...
+2025-04-04 12:57:37,189 - DEBUG - [src.tools] - Configuring Serper MCP server...
+2025-04-04 12:57:37,189 - DEBUG - [src.tools] - MCP Server Configuration: {
+  "serperApiKey": "ca8c2e57ab085aa6960a1c2048bb9e4a55255518"
+}
+2025-04-04 12:57:37,189 - INFO - [src.tools] - Serper MCP server configured successfully
+2025-04-04 12:57:37,189 - INFO - [src.agents] - Serper agent initialized successfully
+2025-04-04 12:57:37,189 - INFO - [__main__] - Serper agent initialized successfully
+2025-04-04 12:57:45,429 - INFO - [__main__] - Starting search for query: elon musk
+2025-04-04 12:57:45,430 - INFO - [src.agents] - Executing search query: elon musk
+2025-04-04 12:57:45,430 - DEBUG - [src.agents] - Setting up MCP servers...
+2025-04-04 12:57:45,430 - DEBUG - [src.agents] - MCP servers configured for agent
+2025-04-04 12:57:45,430 - DEBUG - [src.agents] - Sending request to agent:
+Search for: elon musk
+Provide results in a structured format with title, snippet, and link for each result.
+Include a brief summary of the key findings.
+2025-04-04 12:57:45,430 - DEBUG - [src.agents] - Executing search through MCP server...
+2025-04-04 12:57:45,465 - DEBUG - [openai._base_client] - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a search assistant that provides accurate and relevant information from web searches. Summarize the results clearly and concisely.'}, {'role': 'user', 'content': 'Search for: elon musk\nProvide results in a structured format with title, snippet, and link for each result.\nInclude a brief summary of the key findings.'}], 'model': 'gpt-4o-mini', 'n': 1, 'stream': False, 'tool_choice': 'required', 'tools': [{'type': 'function', 'function': {'name': 'final_result', 'description': 'Model for the complete search response', 'parameters': {'$defs': {'SearchResult': {'description': 'Model for search results', 'properties': {'title': {'description': 'Title of the search result', 'type': 'string'}, 'snippet': {'description': 'Snippet/description of the search result', 'type': 'string'}, 'link': {'description': 'URL of the search result', 'type': 'string'}}, 'required': ['title', 'snippet', 'link'], 'title': 'SearchResult', 'type': 'object'}}, 'properties': {'query': {'description': 'Original search query', 'type': 'string'}, 'results': {'description': 'List of search results', 'items': {'$ref': '#/$defs/SearchResult'}, 'type': 'array'}, 'summary': {'description': 'AI-generated summary of results', 'type': 'string'}}, 'required': ['query', 'results', 'summary'], 'title': 'SearchResponse', 'type': 'object'}}}]}}
+2025-04-04 12:57:50,487 - INFO - [httpx] - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-04 12:57:50,489 - DEBUG - [openai._base_client] - HTTP Request: POST https://api.openai.com/v1/chat/completions "200 OK"
+2025-04-04 12:57:50,502 - DEBUG - [src.agents] - Raw search results: {
+  "query": "elon musk",
+  "results": [
+    {
+      "title": "Elon Musk - Wikipedia",
+      "snippet": "Elon Musk is a business magnate, industrial designer, and engineer. He is the founder, CEO, and chief engineer of SpaceX; early investor, CEO, and product architect of Tesla, Inc.; founder of The Boring Company; co-founder of Neuralink; and co-founder and initial co-chairman of OpenAI.",
+      "link": "https://en.wikipedia.org/wiki/Elon_Musk"
+    },
+    {
+      "title": "Elon Musk | Entrepreneur",
+      "snippet": "Explore Elon Musk's ventures and accomplishments from PayPal to SpaceX, Tesla, Neuralink, and beyond. Discover his influence on technology and transportation.",
+      "link": "https://www.entrepreneur.com/author/elon-musk"
+    },
+    {
+      "title": "Elon Musk: The Man Who Wants To Change The World",
+      "snippet": "Elon Musk is not just a billionaire; he\u2019s a visionary who believes in transforming the future through technology, with initiatives in space travel and sustainable energy.",
+      "link": "https://www.forbes.com/sites/forbeshumanresourcescouncil/2022/01/10/elon-musk-the-man-who-wants-to-change-the-world/"
+    }
+  ],
+  "summary": "Elon Musk is a prominent figure in technology and business, known for his roles as CEO of SpaceX and Tesla. He is a visionary focused on advancing technology for space travel and sustainable energy solutions."
+}
+2025-04-04 12:57:50,502 - INFO - [src.agents] - Search completed successfully
+2025-04-04 12:57:50,502 - DEBUG - [__main__] - Formatted results:
+
+==================================================
+SEARCH RESULTS
+==================================================
+
+Search Query: elon musk
+
+Summary:
+--------------------------------------------------
+Elon Musk is a prominent figure in technology and business, known for his roles as CEO of SpaceX and Tesla. He is a visionary focused on advancing technology for space travel and sustainable energy solutions.
+
+Detailed Results:
+--------------------------------------------------
+
+1. Elon Musk - Wikipedia
+   ----------------------------------------
+   Elon Musk is a business magnate, industrial designer, and engineer. He is the founder, CEO, and chief engineer of SpaceX; early investor, CEO, and product architect of Tesla, Inc.; founder of The Boring Company; co-founder of Neuralink; and co-founder and initial co-chairman of OpenAI.
+   URL: https://en.wikipedia.org/wiki/Elon_Musk
+
+
+2. Elon Musk | Entrepreneur
+   ----------------------------------------
+   Explore Elon Musk's ventures and accomplishments from PayPal to SpaceX, Tesla, Neuralink, and beyond. Discover his influence on technology and transportation.
+   URL: https://www.entrepreneur.com/author/elon-musk
+
+
+3. Elon Musk: The Man Who Wants To Change The World
+   ----------------------------------------
+   Elon Musk is not just a billionaire; he’s a visionary who believes in transforming the future through technology, with initiatives in space travel and sustainable energy.
+   URL: https://www.forbes.com/sites/forbeshumanresourcescouncil/2022/01/10/elon-musk-the-man-who-wants-to-change-the-world/
+
+2025-04-04 12:58:06,133 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:06,402 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:06,582 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:06,954 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:07,455 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:07,538 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:07,623 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:07,706 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:07,790 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:07,874 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:07,957 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:08,041 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:08,124 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:08,312 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:08,813 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:08,898 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:08,982 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:09,066 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:09,149 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:09,232 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:09,315 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:09,399 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:09,482 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:09,565 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:09,648 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:09,731 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:09,815 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:11,115 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:11,385 - INFO - [__main__] - Search interrupted by user
+2025-04-04 12:58:15,053 - WARNING - [__main__] - Empty query received
+2025-04-04 12:58:15,607 - WARNING - [__main__] - Empty query received
+2025-04-04 12:58:16,341 - WARNING - [__main__] - Empty query received
+2025-04-04 12:58:18,305 - INFO - [__main__] - User requested to quit

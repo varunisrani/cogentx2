@@ -1,0 +1,74 @@
+{
+  "folder_name": "firecrawl_agent",
+  "purpose": "The Firecrawl MCP Agent is a modular Python client designed for interacting with Firecrawl web crawling services via the Model-Control-Protocol (MCP) standard. Utilizing the Pydantic AI framework and OpenAI's models, it provides a command-line interface for executing web crawling tasks, managing configurations, and handling structured data effectively. The agent supports customizable settings through environment variables and offers extensive logging capabilities to facilitate troubleshooting and monitoring during execution.",
+  "metadata": {
+    "agent_type": "firecrawl",
+    "source": "agent_template",
+    "created_at": "2025-04-04T11:13:01.593044",
+    "agents": [],
+    "agent_descriptions": null,
+    "capabilities": [
+      "display_mcp_tools",
+      "execute_mcp_tool",
+      "run_firecrawl_query",
+      "create_mcp_server"
+    ],
+    "dependencies": [
+      "colorlog>=6.0.0",
+      "httpx>=0.24.0",
+      "amazon",
+      "pydantic>=2.0.0",
+      "asyncio",
+      "pydantic_ai",
+      "traceback",
+      "pydantic-ai>=0.1.0",
+      "logging",
+      "scientific",
+      "metadata",
+      "openai>=1.0.0",
+      "MCPServerStdio",
+      "python-dotenv>=1.0.0"
+    ],
+    "features": [
+      "web_crawling",
+      "async_capabilities"
+    ],
+    "has_agents": true,
+    "has_main": true,
+    "has_models": true,
+    "has_tools": true,
+    "has_mcp": false,
+    "has_readme": true,
+    "file_sizes": {
+      "agent.py": 2585,
+      "main.py": 6323,
+      "models.py": 3427,
+      "tools.py": 10448,
+      "mcp.json": 0,
+      "readme.md": 1910,
+      "requirements.txt": 100
+    }
+  },
+  "embedding_size": 1536,
+  "embedding_sample": [
+    -0.015561440959572792,
+    0.0147806191816926,
+    0.038711145520210266,
+    -0.029781188815832138,
+    -0.02773565612733364,
+    0.01887168362736702,
+    0.009925230406224728,
+    0.008836478926241398,
+    0.0014997819671407342,
+    0.032530561089515686,
+    "..."
+  ],
+  "timestamp": "2025-04-04T11:13:02.818270",
+  "file_sizes": {
+    "agent.py": 2585,
+    "main.py": 6323,
+    "models.py": 3427,
+    "tools.py": 10448,
+    "mcp.json": 0
+  }
+}

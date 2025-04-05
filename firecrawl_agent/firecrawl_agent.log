@@ -1,0 +1,19 @@
+2025-04-04 16:04:50,934 [INFO] [main.py:101] Starting Firecrawl MCP Agent
+2025-04-04 16:04:50,948 [INFO] [tools.py:10] 
+==================================================
+2025-04-04 16:04:50,948 [INFO] [tools.py:11] FIRECRAWL MCP TOOLS AND FUNCTIONS
+2025-04-04 16:04:50,948 [INFO] [tools.py:12] ==================================================
+2025-04-04 16:04:50,949 [WARNING] [tools.py:119] 
+No Firecrawl MCP tools were discovered. This could mean either:
+2025-04-04 16:04:50,949 [WARNING] [tools.py:120] 1. The Firecrawl MCP server doesn't expose any tools
+2025-04-04 16:04:50,949 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-04 16:04:50,949 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-04 16:04:50,949 [INFO] [agent.py:46] Found 0 MCP tools available for Firecrawl operations
+2025-04-04 16:04:55,277 [INFO] [main.py:107] Firecrawl MCP Server started successfully
+2025-04-04 16:05:00,452 [INFO] [main.py:125] Processing query: 'search elon musk'
+2025-04-04 16:05:00,453 [INFO] [tools.py:175] Processing query: 'search elon musk'
+2025-04-04 16:05:10,255 [INFO] [tools.py:205] No specific tools were recorded for this query
+2025-04-04 16:05:10,256 [INFO] [main.py:133] Query completed in 9.80 seconds
+2025-04-04 16:05:22,088 [INFO] [main.py:146] User interrupted the process
+2025-04-04 16:05:22,091 [INFO] [main.py:158] Firecrawl agent shutting down
+2025-04-04 16:05:22,092 [INFO] [main.py:165] Exiting gracefully...

@@ -13,13 +13,118 @@ async def get_embedding(text: str, embedding_client: AsyncOpenAI) -> List[float]
     """Get embedding vector from OpenAI."""
     try:
         response = await embedding_client.embeddings.create(
-            model=embedding_model,
-            input=text
+            model="text-embedding-3-small",
+            input=text,
+            dimensions=1536
         )
         return response.data[0].embedding
     except Exception as e:
         print(f"Error getting embedding: {e}")
         return [0] * 1536  # Return zero vector on error
+
+async def search_agent_templates_tool(supabase: Client, embedding_client: AsyncOpenAI, query: str, threshold: float = 0.4, limit: int = 3) -> Dict[str, Any]:
+    """
+    Search for agent templates using embedding similarity.
+    
+    Args:
+        supabase: Supabase client
+        embedding_client: OpenAI client for embeddings
+        query: The search query describing the agent to build
+        threshold: Similarity threshold (0.0 to 1.0)
+        limit: Maximum number of results to return
+        
+    Returns:
+        Dict containing similar agent templates with their code and metadata
+    """
+    try:
+        # Get embedding for the query
+        query_embedding = await get_embedding(query, embedding_client)
+        
+        # Search for similar templates using the search_agent_embeddings function
+        result = supabase.rpc(
+            'search_agent_embeddings',
+            {
+                'query_embedding': query_embedding,
+                'similarity_threshold': threshold,
+                'match_count': limit
+            }
+        ).execute()
+        
+        if not result.data:
+            return {"templates": [], "message": "No similar templates found."}
+        
+        # Get full details for each template
+        templates = []
+        for match in result.data:
+            template_id = match['id']
+            full_template = supabase.table('agent_embeddings') \
+                .select('*') \
+                .eq('id', template_id) \
+                .execute()
+                
+            if full_template.data:
+                template = full_template.data[0]
+                templates.append({
+                    "id": template['id'],
+                    "folder_name": template['folder_name'],
+                    "purpose": template['purpose'],
+                    "similarity": match['similarity'],
+                    "agents_code": template['agents_code'],
+                    "main_code": template['main_code'],
+                    "models_code": template['models_code'],
+                    "tools_code": template['tools_code'],
+                    "mcp_json": template['mcp_json'],
+                    "metadata": template['metadata']
+                })
+        
+        return {
+            "templates": templates,
+            "message": f"Found {len(templates)} similar templates."
+        }
+        
+    except Exception as e:
+        print(f"Error searching agent templates: {e}")
+        return {"templates": [], "message": f"Error searching agent templates: {str(e)}"}
+
+async def fetch_template_by_id_tool(supabase: Client, template_id: int) -> Dict[str, Any]:
+    """
+    Fetch a specific agent template by ID.
+    
+    Args:
+        supabase: Supabase client
+        template_id: The ID of the template to fetch
+        
+    Returns:
+        Dict containing the agent template with its code and metadata
+    """
+    try:
+        result = supabase.table('agent_embeddings') \
+            .select('*') \
+            .eq('id', template_id) \
+            .execute()
+            
+        if not result.data:
+            return {"found": False, "message": f"No template found with ID: {template_id}"}
+            
+        template = result.data[0]
+        return {
+            "found": True,
+            "template": {
+                "id": template['id'],
+                "folder_name": template['folder_name'],
+                "purpose": template['purpose'],
+                "agents_code": template['agents_code'],
+                "main_code": template['main_code'],
+                "models_code": template['models_code'],
+                "tools_code": template['tools_code'],
+                "mcp_json": template['mcp_json'],
+                "metadata": template['metadata']
+            }
+        }
+        
+    except Exception as e:
+        print(f"Error fetching template: {e}")
+        return {"found": False, "message": f"Error fetching template: {str(e)}"}
 
 async def retrieve_relevant_documentation_tool(supabase: Client, embedding_client: AsyncOpenAI, user_query: str) -> str:
     try:

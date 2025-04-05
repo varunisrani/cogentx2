@@ -1,0 +1,304 @@
+2025-04-04 16:13:57,082 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-04 16:13:57,633 [INFO] [main.py:119] uv version: uv 0.6.3 (a0b9f22a2 2025-02-24)
+2025-04-04 16:13:57,633 [INFO] [main.py:124] Loading configuration...
+2025-04-04 16:13:57,637 [INFO] [main.py:128] Setting up agent...
+2025-04-04 16:13:57,637 [INFO] [agent.py:46] Creating Spotify MCP Server...
+2025-04-04 16:13:57,638 [INFO] [agent.py:54] Initializing agent with Spotify MCP server...
+2025-04-04 16:13:57,648 [INFO] [tools.py:10] 
+==================================================
+2025-04-04 16:13:57,649 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-04 16:13:57,649 [INFO] [tools.py:12] ==================================================
+2025-04-04 16:13:57,649 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-04 16:13:57,649 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-04 16:13:57,649 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-04 16:13:57,649 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-04 16:13:57,649 [INFO] [agent.py:63] Found 0 MCP tools available for Spotify operations
+2025-04-04 16:20:54,387 [INFO] [main.py:205] Spotify agent shutting down
+2025-04-04 16:20:54,418 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object MCPServerStdio.client_streams at 0x110a07640>
+asyncgen: <async_generator object MCPServerStdio.client_streams at 0x110a07640>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    process.terminate()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    self._process.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    self._transport.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    self._check_proc()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    raise ProcessLookupError()
+ProcessLookupError
+
+During handling of the above exception, another exception occurred:
+
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 767, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 173, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 161, in client_streams
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    |     process.terminate()
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    |     self._process.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    |     self._transport.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    |     self._check_proc()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    |     raise ProcessLookupError()
+    | ProcessLookupError
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+    async with (
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 773, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 456, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-04-04 16:20:54,485 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x1109d60c0>
+asyncgen: <async_generator object stdio_client at 0x1109d60c0>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 111, in receive
+    return self.receive_nowait()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 106, in receive_nowait
+    raise WouldBlock
+anyio.WouldBlock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/spotify_agent/main.py", line 132, in main
+    try:
+        
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1299, in run_mcp_servers
+    await exit_stack.enter_async_context(mcp_server)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 90, in __aenter__
+    await self._client.initialize()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 122, in initialize
+    result = await self.send_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 252, in send_request
+    response_or_error = await response_stream_reader.receive()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 119, in receive
+    await receive_event.wait()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/locks.py", line 213, in wait
+    await fut
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError: aclose(): asynchronous generator is already running
+2025-04-04 16:20:54,504 [INFO] [main.py:212] Exiting gracefully...
+2025-04-04 16:20:56,879 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-04 16:20:57,820 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-04 16:20:57,821 [INFO] [main.py:125] Loading configuration...
+2025-04-04 16:20:57,825 [ERROR] [models.py:27] Missing required environment variables:
+2025-04-04 16:20:57,825 [ERROR] [models.py:29]   - SPOTIFY_API_KEY
+2025-04-04 16:20:57,825 [ERROR] [models.py:30] 
+Please create a .env file with the following content:
+2025-04-04 16:20:57,825 [ERROR] [models.py:31] 
+LLM_API_KEY=your_openai_api_key
+SPOTIFY_API_KEY=your_spotify_api_key
+MODEL_CHOICE=gpt-4o-mini  # optional
+BASE_URL=https://api.openai.com/v1  # optional
+            
+2025-04-04 16:20:57,825 [INFO] [main.py:205] Spotify agent shutting down
+2025-04-04 16:22:06,429 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-04 16:22:06,981 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-04 16:22:06,982 [INFO] [main.py:125] Loading configuration...
+2025-04-04 16:22:06,986 [INFO] [main.py:129] Setting up agent...
+2025-04-04 16:22:06,986 [INFO] [agent.py:46] Creating Spotify MCP Server...
+2025-04-04 16:22:06,986 [INFO] [agent.py:50] Initializing agent with Spotify MCP Server...
+2025-04-04 16:22:06,998 [INFO] [tools.py:10] 
+==================================================
+2025-04-04 16:22:06,998 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-04 16:22:06,998 [INFO] [tools.py:12] ==================================================
+2025-04-04 16:22:06,998 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-04 16:22:06,998 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-04 16:22:06,999 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-04 16:22:06,999 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-04 16:22:06,999 [INFO] [agent.py:59] Found 0 MCP tools available for Spotify operations
+2025-04-04 16:22:17,624 [INFO] [main.py:134] Spotify MCP Server started successfully
+2025-04-04 16:22:35,868 [INFO] [main.py:149] Processing query: 'show me best songs of yo yo honey sinh latest'
+2025-04-04 16:22:35,873 [INFO] [tools.py:175] Processing query: 'show me best songs of yo yo honey sinh latest'
+2025-04-04 16:22:44,705 [ERROR] [tools.py:209] Error processing query: MCP error -32602: market parameter is required for top tracks
+2025-04-04 16:22:44,718 [ERROR] [tools.py:210] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/spotify_agent/tools.py", line 176, in run_spotify_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 372, in run
+    async with self.stream(ctx):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 386, in stream
+    async for _event in stream:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 423, in _run_stream
+    async for event in self._events_iterator:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 413, in _run_stream
+    async for event in self._handle_tool_calls(ctx, tool_calls):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 452, in _handle_tool_calls
+    async for event in process_function_tools(
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 657, in process_function_tools
+    result = task.result()
+             ^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 318, in run
+    return await self._run(message, run_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 335, in _run
+    response_content = await function(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 689, in run_tool
+    result = await server.call_tool(tool_name, args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 81, in call_tool
+    return await self._client.call_tool(tool_name, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 256, in call_tool
+    return await self.send_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 266, in send_request
+    raise McpError(response_or_error.error)
+mcp.shared.exceptions.McpError: MCP error -32602: market parameter is required for top tracks
+
+2025-04-04 16:22:44,719 [ERROR] [main.py:170] Error processing query: MCP error -32602: market parameter is required for top tracks
+2025-04-04 16:24:21,881 [INFO] [main.py:179] User interrupted the process
+2025-04-04 16:24:21,889 [INFO] [main.py:205] Spotify agent shutting down
+2025-04-04 16:24:21,892 [INFO] [main.py:212] Exiting gracefully...
+2025-04-04 16:24:24,369 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-04 16:24:25,106 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-04 16:24:25,107 [INFO] [main.py:125] Loading configuration...
+2025-04-04 16:24:25,110 [INFO] [main.py:129] Setting up agent...
+2025-04-04 16:24:25,110 [INFO] [agent.py:51] Creating Spotify MCP Server...
+2025-04-04 16:24:25,111 [INFO] [agent.py:55] Initializing agent with Spotify MCP Server...
+2025-04-04 16:24:25,121 [INFO] [tools.py:10] 
+==================================================
+2025-04-04 16:24:25,122 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-04 16:24:25,122 [INFO] [tools.py:12] ==================================================
+2025-04-04 16:24:25,122 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-04 16:24:25,122 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-04 16:24:25,122 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-04 16:24:25,122 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-04 16:24:25,122 [INFO] [agent.py:64] Found 0 MCP tools available for Spotify operations
+2025-04-04 16:24:28,408 [INFO] [main.py:134] Spotify MCP Server started successfully
+2025-04-04 16:24:29,426 [INFO] [main.py:149] Processing query: ''show me best songs of yo yo honey sinh latest''
+2025-04-04 16:24:29,426 [INFO] [tools.py:175] Processing query: ''show me best songs of yo yo honey sinh latest''
+2025-04-04 16:24:36,927 [ERROR] [tools.py:280] Error processing query: MCP error -32602: market parameter is required for top tracks
+2025-04-04 16:24:36,936 [ERROR] [tools.py:281] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/spotify_agent/tools.py", line 246, in run_spotify_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 372, in run
+    async with self.stream(ctx):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 386, in stream
+    async for _event in stream:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 423, in _run_stream
+    async for event in self._events_iterator:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 413, in _run_stream
+    async for event in self._handle_tool_calls(ctx, tool_calls):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 452, in _handle_tool_calls
+    async for event in process_function_tools(
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 657, in process_function_tools
+    result = task.result()
+             ^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 318, in run
+    return await self._run(message, run_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 335, in _run
+    response_content = await function(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 689, in run_tool
+    result = await server.call_tool(tool_name, args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 81, in call_tool
+    return await self._client.call_tool(tool_name, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 256, in call_tool
+    return await self.send_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 266, in send_request
+    raise McpError(response_or_error.error)
+mcp.shared.exceptions.McpError: MCP error -32602: market parameter is required for top tracks
+
+2025-04-04 16:24:36,937 [ERROR] [main.py:170] Error processing query: MCP error -32602: market parameter is required for top tracks
+2025-04-04 16:24:50,154 [INFO] [main.py:149] Processing query: 'serach song for me'
+2025-04-04 16:24:50,157 [INFO] [tools.py:175] Processing query: 'serach song for me'
+2025-04-04 16:24:52,468 [INFO] [tools.py:276] No specific tools were recorded for this query
+2025-04-04 16:24:52,469 [INFO] [main.py:158] Query completed in 2.31 seconds
+2025-04-04 16:24:59,730 [INFO] [main.py:149] Processing query: '[A[D'
+2025-04-04 16:24:59,731 [INFO] [tools.py:175] Processing query: '[A[D'
+2025-04-04 16:25:01,379 [INFO] [tools.py:276] No specific tools were recorded for this query
+2025-04-04 16:25:01,380 [INFO] [main.py:158] Query completed in 1.65 seconds
+2025-04-04 16:25:18,599 [INFO] [main.py:149] Processing query: 'search best song for night chill mode lofi'
+2025-04-04 16:25:18,601 [INFO] [tools.py:175] Processing query: 'search best song for night chill mode lofi'
+2025-04-04 16:25:32,819 [INFO] [tools.py:276] No specific tools were recorded for this query
+2025-04-04 16:25:32,820 [INFO] [main.py:158] Query completed in 14.22 seconds

@@ -1,0 +1,73 @@
+{
+  "folder_name": "spotify_agent",
+  "purpose": "The Spotify MCP Agent is designed to facilitate user interactions with the Spotify API through various functionalities. It allows users to search for songs, albums, and artists; create and manage playlists; control playback; and access personalized recommendations. Utilizing the Model Context Protocol (MCP) and Pydantic AI, the agent integrates with OpenAI for enhanced conversational capabilities, providing a seamless experience for managing Spotify accounts and retrieving music-related information.",
+  "metadata": {
+    "agent_type": "spotify",
+    "source": "agent_template",
+    "created_at": "2025-04-04T11:13:08.874319",
+    "agents": [],
+    "agent_descriptions": null,
+    "capabilities": [
+      "display_mcp_tools",
+      "execute_mcp_tool",
+      "run_spotify_query",
+      "process_with_market_parameter",
+      "invoke_tool_with_market",
+      "invoke_tool_with_market",
+      "create_mcp_server"
+    ],
+    "dependencies": [
+      "httpx>=0.24.1",
+      "MCPServerStdio",
+      "asyncio",
+      "pydantic_ai",
+      "traceback",
+      "python-dotenv>=1.0.0",
+      "metadata",
+      "logging",
+      "pydantic-ai>=0.7.1",
+      "colorlog>=6.7.0"
+    ],
+    "features": [
+      "spotify_integration",
+      "async_capabilities"
+    ],
+    "has_agents": true,
+    "has_main": true,
+    "has_models": true,
+    "has_tools": true,
+    "has_mcp": false,
+    "has_readme": true,
+    "file_sizes": {
+      "agent.py": 2877,
+      "main.py": 9147,
+      "models.py": 2412,
+      "tools.py": 13615,
+      "mcp.json": 0,
+      "readme.md": 1842,
+      "requirements.txt": 70
+    }
+  },
+  "embedding_size": 1536,
+  "embedding_sample": [
+    -0.03133247420191765,
+    0.019367599859833717,
+    0.0056058443151414394,
+    -0.03062232956290245,
+    -0.0581028014421463,
+    0.007494185585528612,
+    0.013309845700860023,
+    0.0144181028008461,
+    0.007225191220641136,
+    0.016171947121620178,
+    "..."
+  ],
+  "timestamp": "2025-04-04T11:13:10.444356",
+  "file_sizes": {
+    "agent.py": 2877,
+    "main.py": 9147,
+    "models.py": 2412,
+    "tools.py": 13615,
+    "mcp.json": 0
+  }
+}

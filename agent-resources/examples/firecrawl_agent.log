@@ -1,0 +1,128 @@
+2025-04-04 14:51:23,937 [INFO] [pydantic_firecrawl_agent.py:326] Starting Firecrawl MCP Agent
+2025-04-04 14:51:25,785 [INFO] [pydantic_firecrawl_agent.py:332] Firecrawl MCP Server started successfully
+2025-04-04 14:51:40,223 [INFO] [pydantic_firecrawl_agent.py:350] Processing query: 'search ms dhoni'
+2025-04-04 14:51:47,519 [INFO] [pydantic_firecrawl_agent.py:360] Query completed in 7.29 seconds
+2025-04-04 14:54:41,135 [INFO] [pydantic_firecrawl_agent.py:370] User interrupted the process
+2025-04-04 14:54:41,140 [INFO] [pydantic_firecrawl_agent.py:382] Firecrawl agent shutting down
+2025-04-04 14:54:41,142 [INFO] [pydantic_firecrawl_agent.py:389] Exiting gracefully...
+2025-04-04 14:54:45,934 [INFO] [pydantic_firecrawl_agent.py:324] Starting Firecrawl MCP Agent
+2025-04-04 14:54:47,589 [INFO] [pydantic_firecrawl_agent.py:406] Firecrawl MCP Server started successfully
+2025-04-04 14:54:47,590 [WARNING] [pydantic_firecrawl_agent.py:423] Could not install tool tracking hooks: 'Agent' object has no attribute 'mcp_servers'
+2025-04-04 14:54:47,590 [INFO] [pydantic_firecrawl_agent.py:261] Firecrawl available tools:
+2025-04-04 14:54:47,590 [INFO] [pydantic_firecrawl_agent.py:269] Category: Web Search
+2025-04-04 14:54:47,591 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_search: Search and retrieve content from web pages with optional scraping
+2025-04-04 14:54:47,591 [INFO] [pydantic_firecrawl_agent.py:269] Category: Web Scraping
+2025-04-04 14:54:47,591 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_scrape: Scrape a single webpage with advanced options for content extraction
+2025-04-04 14:54:47,591 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_batch_scrape: Scrape multiple URLs in batch mode
+2025-04-04 14:54:47,591 [INFO] [pydantic_firecrawl_agent.py:269] Category: Web Crawling
+2025-04-04 14:54:47,591 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_map: Discover URLs from a starting point using sitemap.xml and HTML links
+2025-04-04 14:54:47,591 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_crawl: Start an asynchronous crawl of multiple pages from a starting URL
+2025-04-04 14:54:47,592 [INFO] [pydantic_firecrawl_agent.py:269] Category: Data Extraction
+2025-04-04 14:54:47,592 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_extract: Extract structured information from web pages using LLM
+2025-04-04 14:54:47,592 [INFO] [pydantic_firecrawl_agent.py:269] Category: Research
+2025-04-04 14:54:47,592 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_deep_research: Conduct deep research on a query using web crawling, search, and AI analysis
+2025-04-04 14:54:47,592 [INFO] [pydantic_firecrawl_agent.py:269] Category: Job Management
+2025-04-04 14:54:47,592 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_check_batch_status: Check the status of a batch scraping job
+2025-04-04 14:54:47,592 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_check_crawl_status: Check the status of a crawl job
+2025-04-04 14:54:47,592 [INFO] [pydantic_firecrawl_agent.py:269] Category: Utilities
+2025-04-04 14:54:47,592 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_generate_llmstxt: Generate standardized LLMs.txt file for a given URL
+2025-04-04 14:55:03,538 [INFO] [pydantic_firecrawl_agent.py:472] User interrupted the process
+2025-04-04 14:55:03,544 [INFO] [pydantic_firecrawl_agent.py:484] Firecrawl agent shutting down
+2025-04-04 14:55:03,545 [INFO] [pydantic_firecrawl_agent.py:582] Exiting gracefully...
+2025-04-04 14:55:08,643 [INFO] [pydantic_firecrawl_agent.py:324] Starting Firecrawl MCP Agent
+2025-04-04 14:55:10,211 [INFO] [pydantic_firecrawl_agent.py:406] Firecrawl MCP Server started successfully
+2025-04-04 14:55:10,211 [WARNING] [pydantic_firecrawl_agent.py:423] Could not install tool tracking hooks: 'Agent' object has no attribute 'mcp_servers'
+2025-04-04 14:55:10,212 [INFO] [pydantic_firecrawl_agent.py:261] Firecrawl available tools:
+2025-04-04 14:55:10,212 [INFO] [pydantic_firecrawl_agent.py:269] Category: Web Search
+2025-04-04 14:55:10,212 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_search: Search and retrieve content from web pages with optional scraping
+2025-04-04 14:55:10,212 [INFO] [pydantic_firecrawl_agent.py:269] Category: Web Scraping
+2025-04-04 14:55:10,212 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_scrape: Scrape a single webpage with advanced options for content extraction
+2025-04-04 14:55:10,213 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_batch_scrape: Scrape multiple URLs in batch mode
+2025-04-04 14:55:10,213 [INFO] [pydantic_firecrawl_agent.py:269] Category: Web Crawling
+2025-04-04 14:55:10,213 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_map: Discover URLs from a starting point using sitemap.xml and HTML links
+2025-04-04 14:55:10,213 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_crawl: Start an asynchronous crawl of multiple pages from a starting URL
+2025-04-04 14:55:10,213 [INFO] [pydantic_firecrawl_agent.py:269] Category: Data Extraction
+2025-04-04 14:55:10,213 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_extract: Extract structured information from web pages using LLM
+2025-04-04 14:55:10,213 [INFO] [pydantic_firecrawl_agent.py:269] Category: Research
+2025-04-04 14:55:10,213 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_deep_research: Conduct deep research on a query using web crawling, search, and AI analysis
+2025-04-04 14:55:10,213 [INFO] [pydantic_firecrawl_agent.py:269] Category: Job Management
+2025-04-04 14:55:10,213 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_check_batch_status: Check the status of a batch scraping job
+2025-04-04 14:55:10,213 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_check_crawl_status: Check the status of a crawl job
+2025-04-04 14:55:10,213 [INFO] [pydantic_firecrawl_agent.py:269] Category: Utilities
+2025-04-04 14:55:10,214 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_generate_llmstxt: Generate standardized LLMs.txt file for a given URL
+2025-04-04 14:55:21,311 [INFO] [pydantic_firecrawl_agent.py:452] Processing query: 'clearresearch the latest developments in quantum computing'
+2025-04-04 14:55:43,745 [INFO] [pydantic_firecrawl_agent.py:484] Firecrawl agent shutting down
+2025-04-04 14:55:43,747 [INFO] [pydantic_firecrawl_agent.py:582] Exiting gracefully...
+2025-04-04 14:55:43,747 [ERROR] [base_events.py:1785] Task exception was never retrieved
+future: <Task finished name='firecrawl_deep_research' coro=<Tool.run() done, defined at /Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py:290> exception=EndOfStream()>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 111, in receive
+    return self.receive_nowait()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 106, in receive_nowait
+    raise WouldBlock
+anyio.WouldBlock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 124, in receive
+    return receiver.item
+           ^^^^^^^^^^^^^
+AttributeError: 'MemoryObjectItemReceiver' object has no attribute 'item'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 318, in run
+    return await self._run(message, run_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 335, in _run
+    response_content = await function(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 689, in run_tool
+    result = await server.call_tool(tool_name, args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 81, in call_tool
+    return await self._client.call_tool(tool_name, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 256, in call_tool
+    return await self.send_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 252, in send_request
+    response_or_error = await response_stream_reader.receive()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream
+anyio.EndOfStream
+2025-04-04 14:55:51,073 [INFO] [pydantic_firecrawl_agent.py:324] Starting Firecrawl MCP Agent
+2025-04-04 14:55:52,707 [INFO] [pydantic_firecrawl_agent.py:406] Firecrawl MCP Server started successfully
+2025-04-04 14:55:52,708 [WARNING] [pydantic_firecrawl_agent.py:423] Could not install tool tracking hooks: 'Agent' object has no attribute 'mcp_servers'
+2025-04-04 14:55:52,708 [INFO] [pydantic_firecrawl_agent.py:261] Firecrawl available tools:
+2025-04-04 14:55:52,708 [INFO] [pydantic_firecrawl_agent.py:269] Category: Web Search
+2025-04-04 14:55:52,708 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_search: Search and retrieve content from web pages with optional scraping
+2025-04-04 14:55:52,708 [INFO] [pydantic_firecrawl_agent.py:269] Category: Web Scraping
+2025-04-04 14:55:52,708 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_scrape: Scrape a single webpage with advanced options for content extraction
+2025-04-04 14:55:52,708 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_batch_scrape: Scrape multiple URLs in batch mode
+2025-04-04 14:55:52,709 [INFO] [pydantic_firecrawl_agent.py:269] Category: Web Crawling
+2025-04-04 14:55:52,709 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_map: Discover URLs from a starting point using sitemap.xml and HTML links
+2025-04-04 14:55:52,709 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_crawl: Start an asynchronous crawl of multiple pages from a starting URL
+2025-04-04 14:55:52,709 [INFO] [pydantic_firecrawl_agent.py:269] Category: Data Extraction
+2025-04-04 14:55:52,709 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_extract: Extract structured information from web pages using LLM
+2025-04-04 14:55:52,709 [INFO] [pydantic_firecrawl_agent.py:269] Category: Research
+2025-04-04 14:55:52,709 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_deep_research: Conduct deep research on a query using web crawling, search, and AI analysis
+2025-04-04 14:55:52,709 [INFO] [pydantic_firecrawl_agent.py:269] Category: Job Management
+2025-04-04 14:55:52,709 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_check_batch_status: Check the status of a batch scraping job
+2025-04-04 14:55:52,709 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_check_crawl_status: Check the status of a crawl job
+2025-04-04 14:55:52,709 [INFO] [pydantic_firecrawl_agent.py:269] Category: Utilities
+2025-04-04 14:55:52,709 [INFO] [pydantic_firecrawl_agent.py:279]   - firecrawl_generate_llmstxt: Generate standardized LLMs.txt file for a given URL
+2025-04-04 14:55:58,799 [INFO] [pydantic_firecrawl_agent.py:452] Processing query: 'search forelon musk'
+2025-04-04 14:56:07,509 [INFO] [pydantic_firecrawl_agent.py:462] Query completed in 8.71 seconds
+2025-04-04 14:56:33,564 [INFO] [pydantic_firecrawl_agent.py:472] User interrupted the process
+2025-04-04 14:56:33,570 [INFO] [pydantic_firecrawl_agent.py:484] Firecrawl agent shutting down
+2025-04-04 14:56:33,573 [INFO] [pydantic_firecrawl_agent.py:582] Exiting gracefully...
+2025-04-04 14:56:37,448 [INFO] [pydantic_firecrawl_agent.py:326] Starting Firecrawl MCP Agent
+2025-04-04 14:56:39,057 [INFO] [pydantic_firecrawl_agent.py:332] Firecrawl MCP Server started successfully
+2025-04-04 15:05:46,108 [INFO] [pydantic_firecrawl_agent.py:370] User interrupted the process
+2025-04-04 15:05:46,115 [INFO] [pydantic_firecrawl_agent.py:382] Firecrawl agent shutting down
+2025-04-04 15:05:46,116 [INFO] [pydantic_firecrawl_agent.py:389] Exiting gracefully...

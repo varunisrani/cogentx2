@@ -1,0 +1,11 @@
+2025-04-04 15:06:03,082 [INFO] [main.py:75] Starting Firecrawl MCP Agent
+2025-04-04 15:06:06,512 [INFO] [main.py:81] Firecrawl MCP Server started successfully
+2025-04-04 15:06:38,374 [INFO] [main.py:99] Processing query: 'crawl this https://en.wikipedia.org/wiki/SD_card'
+2025-04-04 15:06:42,912 [INFO] [main.py:107] Query completed in 4.44 seconds
+2025-04-04 15:06:58,098 [INFO] [main.py:99] Processing query: 'scrape the https://en.wikipedia.org/wiki/SD_card'
+2025-04-04 15:07:04,984 [INFO] [main.py:107] Query completed in 6.88 seconds
+2025-04-04 15:07:18,660 [INFO] [main.py:99] Processing query: 'scrape the https://ai.pydantic.dev/'
+2025-04-04 15:07:50,981 [INFO] [main.py:107] Query completed in 32.32 seconds
+2025-04-04 15:09:07,845 [INFO] [main.py:117] User interrupted the process
+2025-04-04 15:09:07,853 [INFO] [main.py:129] Firecrawl agent shutting down
+2025-04-04 15:09:07,858 [INFO] [main.py:136] Exiting gracefully...

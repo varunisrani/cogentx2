@@ -1,0 +1,455 @@
+2025-04-04 18:53:45,403 [INFO] [main.py:128] Starting Serper-Spotify Combined Agent
+2025-04-04 18:53:46,192 [INFO] [main.py:135] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-04 18:53:46,192 [INFO] [main.py:140] Loading configuration...
+2025-04-04 18:53:46,197 [INFO] [main.py:144] Setting up combined agent...
+2025-04-04 18:53:46,197 [INFO] [agent.py:59] Creating Serper MCP Server...
+2025-04-04 18:53:46,197 [INFO] [agent.py:62] Creating Spotify MCP Server...
+2025-04-04 18:53:46,198 [INFO] [agent.py:66] Initializing agent with both Serper and Spotify MCP Servers...
+2025-04-04 18:53:46,213 [INFO] [tools.py:18] 
+==================================================
+2025-04-04 18:53:46,213 [INFO] [tools.py:19] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-04 18:53:46,213 [INFO] [tools.py:20] ==================================================
+2025-04-04 18:53:46,213 [WARNING] [tools.py:162] 
+No SERPER MCP tools were discovered. This could mean either:
+2025-04-04 18:53:46,213 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-04 18:53:46,214 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-04 18:53:46,214 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-04 18:53:46,214 [INFO] [agent.py:75] Found 0 MCP tools available for Serper operations
+2025-04-04 18:53:46,214 [INFO] [tools.py:18] 
+==================================================
+2025-04-04 18:53:46,214 [INFO] [tools.py:19] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-04 18:53:46,214 [INFO] [tools.py:20] ==================================================
+2025-04-04 18:53:46,214 [WARNING] [tools.py:162] 
+No SPOTIFY MCP tools were discovered. This could mean either:
+2025-04-04 18:53:46,215 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-04 18:53:46,215 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-04 18:53:46,215 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-04 18:53:46,215 [INFO] [agent.py:78] Found 0 MCP tools available for Spotify operations
+2025-04-04 18:53:50,550 [INFO] [main.py:218] Agent shutting down
+2025-04-04 18:53:50,553 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object MCPServerStdio.client_streams at 0x108107a40>
+asyncgen: <async_generator object MCPServerStdio.client_streams at 0x108107a40>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    process.terminate()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    self._process.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    self._transport.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    self._check_proc()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    raise ProcessLookupError()
+ProcessLookupError
+
+During handling of the above exception, another exception occurred:
+
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 767, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 173, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 161, in client_streams
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    |     process.terminate()
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    |     self._process.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    |     self._transport.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    |     self._check_proc()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    |     raise ProcessLookupError()
+    | ProcessLookupError
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+    async with (
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 773, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 456, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-04-04 18:53:50,562 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x1080da0c0>
+asyncgen: <async_generator object stdio_client at 0x1080da0c0>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 111, in receive
+    return self.receive_nowait()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 106, in receive_nowait
+    raise WouldBlock
+anyio.WouldBlock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/serper_spotify_agent/main.py", line 148, in main
+    async with agent.run_mcp_servers():
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1299, in run_mcp_servers
+    await exit_stack.enter_async_context(mcp_server)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 90, in __aenter__
+    await self._client.initialize()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 122, in initialize
+    result = await self.send_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 252, in send_request
+    response_or_error = await response_stream_reader.receive()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 119, in receive
+    await receive_event.wait()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/locks.py", line 213, in wait
+    await fut
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError: aclose(): asynchronous generator is already running
+2025-04-04 18:53:50,570 [INFO] [main.py:225] Exiting gracefully...
+2025-04-04 18:54:01,779 [INFO] [main.py:128] Starting Serper-Spotify Combined Agent
+2025-04-04 18:54:01,948 [INFO] [main.py:135] Node.js version: v20.18.3, npm version: 10.8.2
+2025-04-04 18:54:01,948 [INFO] [main.py:140] Loading configuration...
+2025-04-04 18:54:01,952 [INFO] [main.py:144] Setting up combined agent...
+2025-04-04 18:54:01,952 [INFO] [agent.py:59] Creating Serper MCP Server...
+2025-04-04 18:54:01,952 [INFO] [agent.py:62] Creating Spotify MCP Server...
+2025-04-04 18:54:01,953 [INFO] [agent.py:66] Initializing agent with both Serper and Spotify MCP Servers...
+2025-04-04 18:54:01,964 [INFO] [tools.py:18] 
+==================================================
+2025-04-04 18:54:01,964 [INFO] [tools.py:19] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-04 18:54:01,964 [INFO] [tools.py:20] ==================================================
+2025-04-04 18:54:01,964 [WARNING] [tools.py:162] 
+No SERPER MCP tools were discovered. This could mean either:
+2025-04-04 18:54:01,964 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-04 18:54:01,965 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-04 18:54:01,965 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-04 18:54:01,965 [INFO] [agent.py:75] Found 0 MCP tools available for Serper operations
+2025-04-04 18:54:01,965 [INFO] [tools.py:18] 
+==================================================
+2025-04-04 18:54:01,965 [INFO] [tools.py:19] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-04 18:54:01,965 [INFO] [tools.py:20] ==================================================
+2025-04-04 18:54:01,965 [WARNING] [tools.py:162] 
+No SPOTIFY MCP tools were discovered. This could mean either:
+2025-04-04 18:54:01,965 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-04 18:54:01,965 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-04 18:54:01,965 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-04 18:54:01,965 [INFO] [agent.py:78] Found 0 MCP tools available for Spotify operations
+2025-04-04 18:58:18,991 [INFO] [main.py:218] Agent shutting down
+2025-04-04 18:58:19,024 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object MCPServerStdio.client_streams at 0x104eaba40>
+asyncgen: <async_generator object MCPServerStdio.client_streams at 0x104eaba40>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    process.terminate()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    self._process.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    self._transport.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    self._check_proc()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    raise ProcessLookupError()
+ProcessLookupError
+
+During handling of the above exception, another exception occurred:
+
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 767, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 173, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 161, in client_streams
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    |     process.terminate()
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    |     self._process.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    |     self._transport.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    |     self._check_proc()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    |     raise ProcessLookupError()
+    | ProcessLookupError
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+    async with (
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 773, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 456, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-04-04 18:58:19,458 [INFO] [main.py:225] Exiting gracefully...
+2025-04-04 18:58:24,088 [INFO] [main.py:128] Starting Serper-Spotify Combined Agent
+2025-04-04 18:58:24,462 [INFO] [main.py:135] Node.js version: v20.18.3, npm version: 10.8.2
+2025-04-04 18:58:24,462 [INFO] [main.py:140] Loading configuration...
+2025-04-04 18:58:24,468 [INFO] [main.py:144] Setting up combined agent...
+2025-04-04 18:58:24,468 [INFO] [agent.py:59] Creating Serper MCP Server...
+2025-04-04 18:58:24,469 [INFO] [agent.py:62] Creating Spotify MCP Server...
+2025-04-04 18:58:24,469 [INFO] [agent.py:66] Initializing agent with both Serper and Spotify MCP Servers...
+2025-04-04 18:58:24,482 [INFO] [tools.py:18] 
+==================================================
+2025-04-04 18:58:24,482 [INFO] [tools.py:19] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-04 18:58:24,482 [INFO] [tools.py:20] ==================================================
+2025-04-04 18:58:24,483 [WARNING] [tools.py:162] 
+No SERPER MCP tools were discovered. This could mean either:
+2025-04-04 18:58:24,483 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-04 18:58:24,483 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-04 18:58:24,483 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-04 18:58:24,483 [INFO] [agent.py:75] Found 0 MCP tools available for Serper operations
+2025-04-04 18:58:24,483 [INFO] [tools.py:18] 
+==================================================
+2025-04-04 18:58:24,483 [INFO] [tools.py:19] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-04 18:58:24,483 [INFO] [tools.py:20] ==================================================
+2025-04-04 18:58:24,483 [WARNING] [tools.py:162] 
+No SPOTIFY MCP tools were discovered. This could mean either:
+2025-04-04 18:58:24,484 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-04 18:58:24,484 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-04 18:58:24,484 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-04 18:58:24,484 [INFO] [agent.py:78] Found 0 MCP tools available for Spotify operations
+2025-04-04 18:59:15,004 [ERROR] [main.py:204] Error running MCP servers: Attempted to exit a cancel scope that isn't the current tasks's current cancel scope
+2025-04-04 18:59:15,019 [ERROR] [main.py:205] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 771, in __aexit__
+    raise exc_val
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+    async with (
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/abc/_resources.py", line 29, in __aexit__
+    await self.aclose()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1066, in aclose
+    await self.wait()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1074, in wait
+    return await self._process.wait()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 137, in wait
+    return await self._transport._wait()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 230, in _wait
+    return await waiter
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError: Cancelled by cancel scope 107c056d0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/serper_spotify_agent/main.py", line 148, in main
+    async with agent.run_mcp_servers():
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1302, in run_mcp_servers
+    await exit_stack.aclose()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+    await self.__aexit__(None, None, None)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+    raise exc_details[1]
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 97, in __aexit__
+    await self._exit_stack.aclose()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+    await self.__aexit__(None, None, None)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+    raise exc_details[1]
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+    async with (
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 773, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 464, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit a cancel scope that isn't the current tasks's current cancel scope
+
+2025-04-04 18:59:15,020 [INFO] [main.py:218] Agent shutting down
+2025-04-04 18:59:15,022 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object MCPServerStdio.client_streams at 0x10818cc40>
+asyncgen: <async_generator object MCPServerStdio.client_streams at 0x10818cc40>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    process.terminate()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    self._process.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    self._transport.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    self._check_proc()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    raise ProcessLookupError()
+ProcessLookupError
+
+During handling of the above exception, another exception occurred:
+
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 767, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 173, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 161, in client_streams
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    |     process.terminate()
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    |     self._process.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    |     self._transport.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    |     self._check_proc()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    |     raise ProcessLookupError()
+    | ProcessLookupError
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+    async with (
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 773, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 456, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-04-04 18:59:15,029 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x107edad40>
+asyncgen: <async_generator object stdio_client at 0x107edad40>
+RuntimeError: aclose(): asynchronous generator is already running
+2025-04-04 18:59:18,421 [INFO] [main.py:128] Starting Serper-Spotify Combined Agent
+2025-04-04 18:59:18,609 [INFO] [main.py:135] Node.js version: v20.18.3, npm version: 10.8.2
+2025-04-04 18:59:18,609 [INFO] [main.py:140] Loading configuration...
+2025-04-04 18:59:18,613 [INFO] [main.py:144] Setting up combined agent...
+2025-04-04 18:59:18,613 [INFO] [agent.py:59] Creating Serper MCP Server...
+2025-04-04 18:59:18,613 [INFO] [agent.py:62] Creating Spotify MCP Server...
+2025-04-04 18:59:18,613 [INFO] [agent.py:66] Initializing agent with both Serper and Spotify MCP Servers...
+2025-04-04 18:59:18,624 [INFO] [tools.py:18] 
+==================================================
+2025-04-04 18:59:18,624 [INFO] [tools.py:19] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-04 18:59:18,624 [INFO] [tools.py:20] ==================================================
+2025-04-04 18:59:18,625 [WARNING] [tools.py:162] 
+No SERPER MCP tools were discovered. This could mean either:
+2025-04-04 18:59:18,625 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-04 18:59:18,625 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-04 18:59:18,625 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-04 18:59:18,625 [INFO] [agent.py:75] Found 0 MCP tools available for Serper operations
+2025-04-04 18:59:18,625 [INFO] [tools.py:18] 
+==================================================
+2025-04-04 18:59:18,625 [INFO] [tools.py:19] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-04 18:59:18,625 [INFO] [tools.py:20] ==================================================
+2025-04-04 18:59:18,625 [WARNING] [tools.py:162] 
+No SPOTIFY MCP tools were discovered. This could mean either:
+2025-04-04 18:59:18,625 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-04 18:59:18,626 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-04 18:59:18,626 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-04 18:59:18,626 [INFO] [agent.py:78] Found 0 MCP tools available for Spotify operations
+2025-04-04 18:59:31,754 [INFO] [main.py:149] Both MCP Servers started successfully
+2025-04-04 18:59:43,793 [INFO] [main.py:164] Processing query: 'serach music of yo yo honey singh'
+2025-04-04 18:59:43,795 [INFO] [tools.py:218] Processing query: 'serach music of yo yo honey singh'
+2025-04-04 19:02:08,840 [INFO] [main.py:225] Exiting gracefully...
+2025-04-04 19:02:18,802 [INFO] [main.py:128] Starting Serper-Spotify Combined Agent
+2025-04-04 19:02:19,125 [INFO] [main.py:135] Node.js version: v20.18.3, npm version: 10.8.2
+2025-04-04 19:02:19,126 [INFO] [main.py:140] Loading configuration...
+2025-04-04 19:02:19,130 [INFO] [main.py:144] Setting up combined agent...
+2025-04-04 19:02:19,130 [INFO] [agent.py:59] Creating Serper MCP Server...
+2025-04-04 19:02:19,130 [INFO] [agent.py:62] Creating Spotify MCP Server...
+2025-04-04 19:02:19,130 [INFO] [agent.py:66] Initializing agent with both Serper and Spotify MCP Servers...
+2025-04-04 19:02:19,143 [INFO] [tools.py:18] 
+==================================================
+2025-04-04 19:02:19,144 [INFO] [tools.py:19] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-04 19:02:19,144 [INFO] [tools.py:20] ==================================================
+2025-04-04 19:02:19,144 [WARNING] [tools.py:162] 
+No SERPER MCP tools were discovered. This could mean either:
+2025-04-04 19:02:19,144 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-04 19:02:19,144 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-04 19:02:19,144 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-04 19:02:19,144 [INFO] [agent.py:75] Found 0 MCP tools available for Serper operations
+2025-04-04 19:02:19,144 [INFO] [tools.py:18] 
+==================================================
+2025-04-04 19:02:19,144 [INFO] [tools.py:19] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-04 19:02:19,144 [INFO] [tools.py:20] ==================================================
+2025-04-04 19:02:19,144 [WARNING] [tools.py:162] 
+No SPOTIFY MCP tools were discovered. This could mean either:
+2025-04-04 19:02:19,145 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-04 19:02:19,145 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-04 19:02:19,145 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-04 19:02:19,145 [INFO] [agent.py:78] Found 0 MCP tools available for Spotify operations
+2025-04-04 19:02:25,222 [INFO] [main.py:149] Both MCP Servers started successfully
+2025-04-04 19:02:41,806 [INFO] [main.py:164] Processing query: 'search elon musk'
+2025-04-04 19:02:41,809 [INFO] [tools.py:218] Processing query: 'search elon musk'
+2025-04-04 19:02:58,838 [INFO] [main.py:173] Query completed in 17.03 seconds
+2025-04-04 19:03:11,861 [INFO] [main.py:164] Processing query: 'search me song of yo yo honey singh'
+2025-04-04 19:03:11,862 [INFO] [tools.py:218] Processing query: 'search me song of yo yo honey singh'
+2025-04-04 19:03:31,048 [INFO] [main.py:173] Query completed in 19.19 seconds
+2025-04-04 19:03:42,002 [INFO] [main.py:164] Processing query: 'search elon musk use serper'
+2025-04-04 19:03:42,005 [INFO] [tools.py:218] Processing query: 'search elon musk use serper'
+2025-04-04 19:04:09,329 [INFO] [main.py:173] Query completed in 27.32 seconds

@@ -16,14 +16,14 @@ from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai import Agent, ModelRetry, RunContext
 
 load_dotenv()
-llm = os.getenv('LLM_MODEL', 'gpt-4o')
+llm = os.getenv('LLM_MODEL', 'gpt-4')
 
+# Initialize OpenAI client with API key
 client = AsyncOpenAI(
-    base_url = 'http://localhost:11434/v1',
-    api_key='ollama'
+    api_key=os.getenv('OPENAI_API_KEY')  # Make sure to set OPENAI_API_KEY in your .env file
 )
 
-model = OpenAIModel(llm) if llm.lower().startswith("gpt") else OpenAIModel(llm, openai_client=client)
+model = OpenAIModel(llm, openai_client=client)
 
 # 'if-token-present' means nothing will be sent (and the example will work) if you don't have logfire configured
 logfire.configure(send_to_logfire='if-token-present')
@@ -99,7 +99,7 @@ async def main():
         deps = Deps(client=client, brave_api_key=brave_api_key)
 
         result = await web_search_agent.run(
-            'Give me some articles talking about the new release of React 19.', deps=deps
+            'tmrw', deps=deps
         )
         
         debug(result)

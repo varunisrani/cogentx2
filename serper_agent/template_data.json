@@ -1,0 +1,73 @@
+{
+  "folder_name": "serper_agent",
+  "purpose": "The Serper MCP Agent is a modular Python client designed for interacting with the Serper search API using the Pydantic AI framework. It provides a command-line interface that leverages OpenAI's models for natural language processing to perform search queries and retrieve relevant tools and information. The agent supports configuration through environment variables and enables users to easily manage and log their interactions with the Serper API. Its primary functionality includes executing search queries and displaying available tools, facilitating efficient data retrieval.",
+  "metadata": {
+    "agent_type": "serper",
+    "source": "agent_template",
+    "created_at": "2025-04-04T11:12:53.052987",
+    "agents": [],
+    "agent_descriptions": null,
+    "capabilities": [
+      "display_mcp_tools",
+      "execute_mcp_tool",
+      "run_serper_query",
+      "create_mcp_server"
+    ],
+    "dependencies": [
+      "colorlog>=6.0.0",
+      "httpx>=0.24.0",
+      "pydantic>=2.0.0",
+      "asyncio",
+      "pydantic_ai",
+      "traceback",
+      "pydantic-ai>=0.1.0",
+      "logging",
+      "scientific",
+      "metadata",
+      "openai>=1.0.0",
+      "MCPServerStdio",
+      "python-dotenv>=1.0.0"
+    ],
+    "features": [
+      "uses_serper",
+      "async_capabilities"
+    ],
+    "has_agents": true,
+    "has_main": true,
+    "has_models": true,
+    "has_tools": true,
+    "has_mcp": false,
+    "has_readme": true,
+    "file_sizes": {
+      "agent.py": 1890,
+      "main.py": 7266,
+      "models.py": 2297,
+      "tools.py": 9728,
+      "mcp.json": 0,
+      "readme.md": 1935,
+      "requirements.txt": 100
+    }
+  },
+  "embedding_size": 1536,
+  "embedding_sample": [
+    -0.007250277791172266,
+    0.016108226031064987,
+    0.015950610861182213,
+    -0.02738293446600437,
+    -0.04144216701388359,
+    0.026899581775069237,
+    -0.0031076371669769287,
+    0.0214040819555521,
+    -0.005269586108624935,
+    0.026437245309352875,
+    "..."
+  ],
+  "timestamp": "2025-04-04T11:12:54.544927",
+  "file_sizes": {
+    "agent.py": 1890,
+    "main.py": 7266,
+    "models.py": 2297,
+    "tools.py": 9728,
+    "mcp.json": 0
+  }
+}

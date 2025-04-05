@@ -1,0 +1,14 @@
+{
+  "name": "serper-spotify-agent",
+  "version": "1.0.0",
+  "description": "Combined agent for Serper search and Spotify music control",
+  "main": "main.py",
+  "dependencies": {
+    "@smithery/cli": "latest"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "author": "Archon",
+  "license": "MIT"
+} 

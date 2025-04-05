@@ -1,0 +1,9 @@
+{
+  "name": "github-mcp-server-temp",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@modelcontextprotocol/server-github": "latest",
+    "node-fetch": "^2.6.7"
+  }
+}

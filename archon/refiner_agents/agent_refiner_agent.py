@@ -8,7 +8,7 @@ import httpx
 import os
 import sys
 import json
-from typing import List
+from typing import List, Dict, Any
 from pydantic import BaseModel
 from pydantic_ai import Agent, ModelRetry, RunContext
 from pydantic_ai.models.anthropic import AnthropicModel
@@ -23,7 +23,9 @@ from archon.agent_prompts import agent_refiner_prompt
 from archon.agent_tools import (
     retrieve_relevant_documentation_tool,
     list_documentation_pages_tool,
-    get_page_content_tool
+    get_page_content_tool,
+    search_agent_templates_tool,
+    fetch_template_by_id_tool
 )
 
 load_dotenv()
@@ -33,7 +35,7 @@ llm = get_env_var('PRIMARY_MODEL') or 'gpt-4o-mini'
 base_url = get_env_var('BASE_URL') or 'https://api.openai.com/v1'
 api_key = get_env_var('LLM_API_KEY') or 'no-llm-api-key-provided'
 
-model = AnthropicModel(llm, api_key=api_key) if provider == "Anthropic" else OpenAIModel(llm, base_url=base_url, api_key=api_key)
+model = OpenAIModel(llm)
 embedding_model = get_env_var('EMBEDDING_MODEL') or 'text-embedding-3-small'
 
 logfire.configure(send_to_logfire='if-token-present')
@@ -90,3 +92,35 @@ async def get_page_content(ctx: RunContext[AgentRefinerDeps], url: str) -> str:
         str: The complete page content with all chunks combined in order
     """
     return await get_page_content_tool(ctx.deps.supabase, url)
+
+@agent_refiner_agent.tool
+async def search_agent_templates(ctx: RunContext[AgentRefinerDeps], query: str, threshold: float = 0.4, limit: int = 3) -> Dict[str, Any]:
+    """
+    Search for agent templates using embedding similarity.
+    Use this to find existing agent templates with agent configuration similar to what's needed.
+    
+    Args:
+        ctx: The context including the Supabase client and embedding client
+        query: The search query describing the agent configuration needed
+        threshold: Similarity threshold (0.0 to 1.0)
+        limit: Maximum number of results to return
+        
+    Returns:
+        Dict containing similar agent templates with their code and metadata
+    """
+    return await search_agent_templates_tool(ctx.deps.supabase, ctx.deps.embedding_client, query, threshold, limit)
+
+@agent_refiner_agent.tool
+async def fetch_template_by_id(ctx: RunContext[AgentRefinerDeps], template_id: int) -> Dict[str, Any]:
+    """
+    Fetch a specific agent template by ID.
+    Use this to get the full details of a template after finding it with search_agent_templates.
+    
+    Args:
+        ctx: The context including the Supabase client
+        template_id: The ID of the template to fetch
+        
+    Returns:
+        Dict containing the agent template with its code and metadata
+    """
+    return await fetch_template_by_id_tool(ctx.deps.supabase, template_id)

@@ -323,3 +323,111 @@ For version-specific details:
 - [V4 Documentation](iterations/v4-streamlit-ui-overhaul/README.md)
 - [V5 Documentation](iterations/v5-parallel-specialized-agents/README.md)
 - [V6 Documentation](iterations/v6-tool-library-integration/README.md)
+
+# Agent Embeddings System
+
+This system processes agent templates, creates embeddings, and stores them in a Supabase database for semantic search.
+
+## Features
+
+- Processes agent template files (agent.py, main.py, models.py, tools.py) and extracts metadata
+- Uses GPT to analyze and determine the purpose of each agent template
+- Creates embeddings using OpenAI's text-embedding-3-small model
+- Stores all data in a Supabase database for easy retrieval
+- Provides semantic search functionality to find similar agent templates
+
+## Files
+
+- `embeddings_processor.py` - Main processor for creating embeddings for agent templates
+- `batch_processor.py` - Script to process multiple agent folders at once
+- `search_templates.py` - Utility for searching similar templates
+- `create_table.sql` - SQL queries to create the database tables and search functions
+
+## Setup
+
+1. **Create a .env file with your API keys:**
+
+```
+# OpenAI API Key
+OPENAI_API_KEY=sk-your-openai-api-key
+
+# Supabase Credentials
+SUPABASE_URL=https://your-project-id.supabase.co
+SUPABASE_SERVICE_KEY=your-supabase-service-key
+
+# Optional: Path to agent folders
+AGENT_BASE_PATH=/path/to/your/agent/folders
+```
+
+2. **Install the required packages:**
+
+```
+pip install openai supabase python-dotenv
+```
+
+3. **Set up the Supabase database:**
+
+- Go to your Supabase dashboard
+- Navigate to the SQL Editor
+- Enable the pgvector extension:
+  ```sql
+  CREATE EXTENSION IF NOT EXISTS vector;
+  ```
+- Execute the SQL queries in `create_table.sql`
+
+## Usage
+
+### Process a single agent folder
+
+```
+python embeddings_processor.py /path/to/agent/folder
+```
+
+### Process multiple agent folders
+
+```
+python batch_processor.py --base-path /path/to/your/agents
+```
+
+### Search for similar agent templates
+
+```
+python search_templates.py "search query" --threshold 0.5 --limit 5
+```
+
+### Fetch a specific template by ID
+
+```
+python search_templates.py --fetch 1 --output template_data.json
+```
+
+## Agent Folders Structure
+
+Each agent folder should contain the following files:
+- `agent.py` - Contains agent class definitions
+- `main.py` - Main application logic
+- `models.py` - Data models
+- `tools.py` - Tool implementations
+- `README.md` (optional) - Documentation
+- `requirements.txt` (optional) - Dependencies
+
+## Metadata Extraction
+
+The system extracts the following metadata from agent folders:
+- Agent names and descriptions
+- Capabilities (functions in tools.py)
+- Dependencies (from requirements.txt)
+- Features (e.g., OpenAI usage, API integrations)
+- File sizes and existence
+
+## Embedding Generation
+
+Embeddings are generated from:
+- Agent purpose
+- Code from agent.py, main.py, models.py, and tools.py
+- README content
+- Capabilities list
+
+## Contributing
+
+Feel free to enhance this system with additional features and improvements!

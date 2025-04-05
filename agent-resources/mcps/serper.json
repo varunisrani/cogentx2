@@ -1,0 +1,15 @@
+{
+    "mcpServers": {
+      "mcp-server-serper": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@smithery/cli@latest",
+          "run",
+          "@marcopesani/mcp-server-serper",
+          "--config",
+          "{\"serperApiKey\":\"ss8\"}"
+        ]
+      }
+    }
+  }

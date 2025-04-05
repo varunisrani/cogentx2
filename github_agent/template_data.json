@@ -1,0 +1,75 @@
+{
+  "folder_name": "github_agent",
+  "purpose": "This agent template is designed as a modular Python client for interacting with GitHub's API through a natural language interface. Leveraging the Pydantic AI framework and OpenAI's models, it enables users to manage their GitHub repositories efficiently. The agent automates operations and provides detailed logging and a command-line interface, ensuring a structured and user-friendly experience for performing GitHub-related tasks without manual intervention.",
+  "metadata": {
+    "agent_type": "github",
+    "source": "agent_template",
+    "created_at": "2025-04-04T11:12:57.426838",
+    "agents": [],
+    "agent_descriptions": null,
+    "capabilities": [
+      "display_mcp_tools",
+      "execute_mcp_tool",
+      "run_github_query",
+      "create_mcp_server"
+    ],
+    "dependencies": [
+      "colorlog>=6.0.0",
+      "httpx>=0.24.0",
+      "models",
+      "pydantic>=2.0.0",
+      "RunContext",
+      "pydantic_ai",
+      "asyncio",
+      "traceback",
+      "pydantic-ai>=0.1.0",
+      "logging",
+      "metadata",
+      "openai>=1.0.0",
+      "MCPServerStdio",
+      "GitHubDeps",
+      "python-dotenv>=1.0.0"
+    ],
+    "features": [
+      "github_integration",
+      "async_capabilities"
+    ],
+    "has_agents": true,
+    "has_main": true,
+    "has_models": true,
+    "has_tools": true,
+    "has_mcp": false,
+    "has_readme": true,
+    "file_sizes": {
+      "agent.py": 3378,
+      "main.py": 9023,
+      "models.py": 2557,
+      "tools.py": 9949,
+      "mcp.json": 0,
+      "readme.md": 2576,
+      "requirements.txt": 100
+    }
+  },
+  "embedding_size": 1536,
+  "embedding_sample": [
+    -0.02087026834487915,
+    0.03464647755026817,
+    0.009039206430315971,
+    0.0008831819286569953,
+    -0.04109978303313255,
+    0.01629345491528511,
+    -0.004902911372482777,
+    0.015469629317522049,
+    0.0035012620501220226,
+    0.025744574144482613,
+    "..."
+  ],
+  "timestamp": "2025-04-04T11:12:58.848468",
+  "file_sizes": {
+    "agent.py": 3378,
+    "main.py": 9023,
+    "models.py": 2557,
+    "tools.py": 9949,
+    "mcp.json": 0
+  }
+}
