@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "mcp-spotify": {
+        "command": "npx",
+        "args": [
+            "-y",
+            "@smithery/cli@latest",
+            "run",
+            "@superseoworld/mcp-spotify",
+            "--key",
+            "040afa77-557a-4a7b-9169-3f1f2b9d685f"
+        ]
+    },
+    "github": {
+        "command": "npx",
+        "args": [
+            "-y",
+            "@modelcontextprotocol/server-github"
+        ],
+        "env": {
+            "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>"
+        }
+    }
+  }
+}

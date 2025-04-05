@@ -1,0 +1,1 @@
+import re; f=open("archon/pydantic_ai_coder.py","r"); c=f.read(); f.close(); c=c.replace("async def run_query(agent, user_query: str) -> tuple:", "async def run_query(agent, user_query: str) -> tuple:\n    # Process query"); f=open("archon/pydantic_ai_coder.py","w"); f.write(c); f.close(); print("Fixed.")

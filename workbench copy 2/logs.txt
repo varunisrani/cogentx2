@@ -1,0 +1,15 @@
+[2025-04-05 11:59:29] Initializing embedding client with provider: OpenAI, base_url: https://api.openai.com/v1
+[2025-04-05 11:59:29] API key status: Valid
+[2025-04-05 11:59:29] Supabase client initialized successfully
+[2025-04-05 11:59:30] Initializing embedding client with provider: OpenAI, base_url: https://api.openai.com/v1
+[2025-04-05 11:59:30] API key status: Valid
+[2025-04-05 11:59:30] Supabase client initialized successfully
+[2025-04-05 11:59:30] Initializing embedding client with provider: OpenAI, base_url: https://api.openai.com/v1
+[2025-04-05 11:59:30] API key status: Valid
+[2025-04-05 11:59:30] Supabase client initialized successfully
+[2025-04-05 11:59:43] Initializing embedding client with provider: OpenAI, base_url: https://api.openai.com/v1
+[2025-04-05 11:59:43] API key status: Valid
+[2025-04-05 11:59:43] Supabase client initialized successfully
+[2025-04-05 11:59:45] Initializing embedding client with provider: OpenAI, base_url: https://api.openai.com/v1
+[2025-04-05 11:59:45] API key status: Valid
+[2025-04-05 11:59:45] Supabase client initialized successfully
