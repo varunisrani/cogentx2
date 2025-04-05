@@ -280,23 +280,334 @@ async def detect_mcp_needs(embedding_client: AsyncOpenAI, user_query: str) -> Di
     
     return matched_services
 
-async def merge_mcp_templates(templates: List[Dict[str, Any]], user_query: str) -> Dict[str, Any]:
+async def extract_template_summary(template: Dict[str, Any]) -> Dict[str, Any]:
+    """Extract a summary of a template for AI analysis."""
+    folder_name = template.get("folder_name", "unknown")
+    service_name = folder_name.replace("_agent", "").replace("-", "_").upper()
+    
+    # Extract basic information about the template
+    summary = {
+        "name": folder_name,
+        "service": service_name,
+        "has_files": {}
+    }
+    
+    # Check for the presence of different code files
+    for file_type in ["agents_code", "models_code", "main_code", "tools_code"]:
+        summary["has_files"][file_type.replace("_code", "")] = bool(template.get(file_type))
+    
+    # Check if there's a system prompt
+    if template.get("agents_code"):
+        code = template.get("agents_code")
+        for prompt_pattern in [
+            r'system_prompt\s*=\s*[\'"](.+?)[\'"]', 
+            r'system_prompt\s*=\s*"""(.+?)"""',
+            r'SYSTEM_PROMPT\s*=\s*[\'"](.+?)[\'"]',
+            r'SYSTEM_PROMPT\s*=\s*"""(.+?)"""'
+        ]:
+            import re
+            matches = re.search(prompt_pattern, code, re.DOTALL)
+            if matches:
+                # Just indicate that a system prompt was found
+                summary["has_system_prompt"] = True
+                break
+    
+    # Extract MCP server information if available
+    if template.get("mcp_json"):
+        try:
+            mcp_data = json.loads(template.get("mcp_json", "{}"))
+            if isinstance(mcp_data, dict) and "mcpServers" in mcp_data:
+                summary["mcp_servers"] = list(mcp_data["mcpServers"].keys())
+        except json.JSONDecodeError:
+            pass
+    
+    return summary
+
+async def extract_system_prompt(code: str) -> Optional[str]:
+    """Extract system prompt from agents code."""
+    if not code:
+        return None
+    
+    for prompt_pattern in [
+        r'system_prompt\s*=\s*[\'"](.+?)[\'"]', 
+        r'system_prompt\s*=\s*"""(.+?)"""',
+        r'SYSTEM_PROMPT\s*=\s*[\'"](.+?)[\'"]',
+        r'SYSTEM_PROMPT\s*=\s*"""(.+?)"""'
+    ]:
+        import re
+        matches = re.search(prompt_pattern, code, re.DOTALL)
+        if matches:
+            return matches.group(1).strip()
+    
+    return None
+
+async def create_unified_prompt_with_ai(system_prompts: List[Optional[str]], llm_client: AsyncOpenAI) -> str:
+    """Use AI to create a unified system prompt from multiple templates."""
+    # Filter out None values
+    valid_prompts = [p for p in system_prompts if p]
+    
+    if not valid_prompts:
+        return """You are a powerful multi-service assistant that combines multiple capabilities.
+Please help the user with their requests using the appropriate tools and services."""
+    
+    prompt = """Create a unified system prompt for an AI assistant that combines multiple service capabilities.
+Extract the core capabilities from each prompt and create a well-structured, non-repetitive system prompt.
+The prompt should clearly explain all available capabilities while maintaining a consistent tone and style.
+
+Here are the individual service prompts to merge:
+
+"""
+    
+    for i, p in enumerate(valid_prompts, 1):
+        prompt += f"\nPROMPT {i}:\n```\n{p}\n```\n"
+    
+    try:
+        response = await llm_client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": "You are an expert at creating clear, concise system prompts for AI assistants."},
+                {"role": "user", "content": prompt}
+            ]
+        )
+        
+        # Extract the content from the response
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        logger.error(f"Error creating unified prompt with AI: {e}")
+        
+        # Fallback: create a simple combined prompt
+        combined = """You are a powerful multi-service assistant that combines the following capabilities:
+
+"""
+        for i, p in enumerate(valid_prompts, 1):
+            # Just take the first few lines of each prompt to avoid repetition
+            lines = p.split("\n")[:5]
+            combined += f"{i}. Service {i} Capabilities:\n" + "\n".join(lines) + "\n\n"
+            
+        combined += """
+IMPORTANT USAGE NOTES:
+- When responding to the user, use the most appropriate service for their request
+- If the user's request spans multiple services, use all relevant services in combination
+- Always be concise, helpful, and accurate in your responses
+"""
+        return combined
+
+async def merge_code_with_ai(file_type: str, code_blocks: List[str], llm_client: AsyncOpenAI) -> str:
+    """Use AI to merge code blocks intelligently."""
+    if not code_blocks:
+        return ""
+    
+    # If there's only one block, just return it
+    if len(code_blocks) == 1:
+        return code_blocks[0]
+    
+    # Special instructions for different file types
+    file_specific_instructions = {
+        "agents": """
+- Create a single unified setup_agent function that initializes all MCP servers
+- Maintain the system_prompt variable with the merged capabilities
+- Keep all service-specific functions, avoiding duplication
+- Ensure proper imports for all components
+- Make functions compatible across all services
+""",
+        "models": """
+- Create a single Config class with fields for all service API keys
+- Maintain all service-specific models
+- Ensure proper environment variable handling
+- Implement a robust load_from_env method
+""",
+        "tools": """
+- Implement a unified run_query function that routes queries to appropriate services
+- Maintain service-specific tool functions
+- Create helper functions for MCP server creation
+- Ensure proper error handling
+""",
+        "main": """
+- Create a clean main function that initializes the agent
+- Set up proper logging and argument parsing
+- Implement interactive query handling
+- Ensure proper setup for all services
+"""
+    }
+    
+    # Create a prompt with specific instructions for this file type
+    prompt = f"""Merge these Python code blocks for {file_type}.py into a single coherent file.
+Remove duplicated functions and imports while preserving unique functionality.
+Ensure all important service-specific code is included.
+
+{file_specific_instructions.get(file_type, "")}
+
+Here are the code blocks to merge:
+"""
+    
+    for i, block in enumerate(code_blocks, 1):
+        # Only include the first N characters if the block is too large
+        max_chars = 4000  # Approximate limit to avoid token issues
+        if len(block) > max_chars:
+            block_excerpt = block[:max_chars] + "\n\n... (truncated for brevity)"
+            prompt += f"\nBLOCK {i}:\n```python\n{block_excerpt}\n```\n"
+        else:
+            prompt += f"\nBLOCK {i}:\n```python\n{block}\n```\n"
+    
+    prompt += "\nReturn ONLY the merged code. Do not include any explanations or markdown formatting outside the code."
+    
+    try:
+        response = await llm_client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": "You are an expert Python developer specializing in code integration and merging."},
+                {"role": "user", "content": prompt}
+            ]
+        )
+        
+        merged_code = response.choices[0].message.content.strip()
+        
+        # Remove any markdown code block formatting if present
+        if merged_code.startswith("```python"):
+            merged_code = merged_code[10:]
+        if merged_code.startswith("```"):
+            merged_code = merged_code[3:]
+        if merged_code.endswith("```"):
+            merged_code = merged_code[:-3]
+            
+        return merged_code.strip()
+    except Exception as e:
+        logger.error(f"Error merging code with AI: {e}")
+        
+        # Fallback: simple concatenation with headers
+        merged = f"# Merged {file_type}.py - AI merging failed, using simple concatenation\n\n"
+        for i, block in enumerate(code_blocks, 1):
+            merged += f"# --- BLOCK {i} START ---\n{block}\n\n# --- BLOCK {i} END ---\n\n"
+        
+        return merged
+
+async def ai_merge_mcp_templates(templates: List[Dict[str, Any]], user_query: str, llm_client: AsyncOpenAI) -> Dict[str, Any]:
     """
-    Merge multiple MCP templates into a single coherent template.
-    This enhanced version combines templates more intelligently,
-    creating a proper multi-service agent like serper_spotify_agent.
+    Merge multiple MCP templates using AI for intelligent integration.
+    This approach uses LLMs to analyze and combine code instead of rule-based merging.
     
     Args:
         templates: List of template objects to merge
         user_query: Original user query to add context
+        llm_client: AsyncOpenAI client for LLM calls
         
     Returns:
-        Merged template with combined code for each file type
+        Merged template with AI-integrated code
     """
     if not templates or len(templates) == 0:
         return {}
     
-    logger.info(f"Merging {len(templates)} MCP templates")
+    logger.info(f"AI-merging {len(templates)} MCP templates")
+    
+    # Extract template names for better naming of the merged result
+    template_names = []
+    for template in templates:
+        name = template.get("folder_name", "").replace("_agent", "").replace("_", "-")
+        if name:
+            template_names.append(name)
+    
+    # Create composite folder name
+    folder_name = "_".join(template_names) + "_agent" if template_names else "combined_agent"
+    
+    try:
+        # 1. Analyze templates with AI
+        template_summaries = [await extract_template_summary(t) for t in templates]
+        analysis_prompt = f"Analyze these service templates and recommend integration strategy: {json.dumps(template_summaries, indent=2)}"
+        
+        analysis_response = await llm_client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": "You are a code integration expert."},
+                {"role": "user", "content": analysis_prompt}
+            ]
+        )
+        
+        analysis = analysis_response.choices[0].message.content
+        logger.info(f"AI template analysis complete: {analysis[:100]}...")
+        
+        # 2. Merge code files using AI
+        merged_files = {}
+        for file_type in ["agents", "models", "main", "tools"]:
+            code_blocks = [t.get(f"{file_type}_code", "") for t in templates if t.get(f"{file_type}_code")]
+            if code_blocks:
+                merged_files[f"{file_type}_code"] = await merge_code_with_ai(file_type, code_blocks, llm_client)
+                logger.info(f"AI-merged {file_type}.py complete: {len(merged_files[f'{file_type}_code'])} chars")
+        
+        # 3. Extract and merge system prompts
+        system_prompts = [await extract_system_prompt(t.get("agents_code", "")) for t in templates]
+        unified_prompt = await create_unified_prompt_with_ai(system_prompts, llm_client)
+        logger.info(f"Created unified system prompt: {len(unified_prompt)} chars")
+        
+        # 4. Merge MCP JSON files
+        mcp_data_list = []
+        for template in templates:
+            if template.get("mcp_json"):
+                try:
+                    mcp_data = json.loads(template.get("mcp_json", "{}"))
+                    if isinstance(mcp_data, dict):
+                        mcp_data_list.append(mcp_data)
+                except json.JSONDecodeError:
+                    logger.warning(f"Couldn't parse MCP JSON from template {template.get('folder_name', 'unknown')}")
+        
+        merged_mcp = {
+            "mcpServers": {},
+            "metadata": {
+                "generatedWith": "ai",
+                "mergeTimestamp": datetime.now().isoformat(),
+                "userQuery": user_query,
+                "sourceTemplates": [t.get("folder_name") for t in templates]
+            }
+        }
+        
+        # Combine all MCP servers from all templates
+        for mcp_data in mcp_data_list:
+            if "mcpServers" in mcp_data:
+                for server_name, server_data in mcp_data["mcpServers"].items():
+                    # Add server with enhanced retry settings
+                    merged_mcp["mcpServers"][server_name] = server_data
+                    # Ensure env section exists and add retry settings
+                    server_data["env"] = server_data.get("env", {})
+                    server_data["env"].update({
+                        "RETRY_MAX_ATTEMPTS": "5",
+                        "RETRY_INITIAL_DELAY": "2000",
+                        "RETRY_MAX_DELAY": "30000",
+                        "RETRY_BACKOFF_FACTOR": "3"
+                    })
+        
+        # Return the merged template
+        return {
+            **merged_files,
+            "mcp_json": json.dumps(merged_mcp, indent=2),
+            "folder_name": folder_name,
+            "purpose": f"AI-merged template for: {user_query}",
+            "metadata": {
+                "merge_method": "ai",
+                "created_at": datetime.now().isoformat(),
+                "original_query": user_query,
+                "source_templates": [t.get("folder_name") for t in templates],
+                "template_count": len(templates),
+                "ai_analysis": analysis
+            }
+        }
+    except Exception as e:
+        logger.error(f"AI-based merging failed: {str(e)}")
+        logger.error(f"Error details: {traceback.format_exc()}")
+        logger.warning("Falling back to rule-based merging")
+        
+        # Rename the existing function to use as fallback
+        return await rule_based_merge_mcp_templates(templates, user_query)
+
+# Rename the original function to use as a fallback
+async def rule_based_merge_mcp_templates(templates: List[Dict[str, Any]], user_query: str) -> Dict[str, Any]:
+    """
+    Original rule-based template merging function.
+    Used as a fallback when AI-based merging fails.
+    """
+    # This is the original merge_mcp_templates implementation
+    if not templates or len(templates) == 0:
+        return {}
+    
+    logger.info(f"Rule-based merging of {len(templates)} MCP templates")
     
     # Extract template names for better naming of the merged result
     template_names = []
@@ -924,6 +1235,41 @@ if __name__ == "__main__":
     
     logger.info(f"Successfully merged {len(templates)} templates into {folder_name}")
     return merged
+
+# Update the main merge_mcp_templates function to try AI-based merging first
+async def merge_mcp_templates(templates: List[Dict[str, Any]], user_query: str) -> Dict[str, Any]:
+    """
+    Merge multiple MCP templates into a single coherent template.
+    Attempts AI-based merging first, with fallback to rule-based approach.
+    
+    Args:
+        templates: List of template objects to merge
+        user_query: Original user query to add context
+        
+    Returns:
+        Merged template with combined code for each file type
+    """
+    if not templates or len(templates) == 0:
+        return {}
+    
+    # Check if we can use AI-based merging
+    try:
+        # Check if OPENAI_API_KEY is available
+        openai_key = os.getenv("OPENAI_API_KEY") or os.getenv("LLM_API_KEY")
+        if openai_key:
+            # Initialize OpenAI client
+            llm_client = AsyncOpenAI(api_key=openai_key)
+            
+            # Try AI-based merging
+            logger.info("Attempting AI-based template merging")
+            return await ai_merge_mcp_templates(templates, user_query, llm_client)
+        else:
+            logger.info("No OpenAI API key found, using rule-based merging")
+            return await rule_based_merge_mcp_templates(templates, user_query)
+    except Exception as e:
+        logger.error(f"Error initializing AI-based merging: {e}")
+        logger.info("Falling back to rule-based merging")
+        return await rule_based_merge_mcp_templates(templates, user_query)
 
 async def adapt_mcp_template(template: Dict[str, Any], user_query: str) -> Dict[str, Any]:
     """
