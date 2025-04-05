@@ -5,6 +5,8 @@ import sys
 import os
 import json
 import logging
+import traceback
+from datetime import datetime
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils.utils import get_env_var
@@ -306,7 +308,7 @@ async def merge_mcp_templates(templates: List[Dict[str, Any]], user_query: str) 
     # Create composite folder name
     folder_name = "_".join(template_names) + "_agent" if template_names else "combined_agent"
     
-    # Initialize merged template
+    # Initialize merged template with metadata
     merged = {
         "agents_code": "",
         "models_code": "",
@@ -314,15 +316,29 @@ async def merge_mcp_templates(templates: List[Dict[str, Any]], user_query: str) 
         "tools_code": "",
         "mcp_json": {},
         "purpose": f"Combined template for: {user_query}",
-        "folder_name": folder_name
+        "folder_name": folder_name,
+        "metadata": {
+            "created_at": datetime.now().isoformat(),
+            "original_query": user_query,
+            "source_templates": [t.get("folder_name") for t in templates],
+            "template_count": len(templates)
+        }
     }
     
-    # Track imports for deduplication and service providers
+    # Track imports, functions, and classes for deduplication
     all_imports = {
         "agents": set(),
         "models": set(),
         "main": set(),
         "tools": set()
+    }
+    
+    # Track functions and classes to avoid duplication
+    functions = {
+        "agents": {},
+        "models": {},
+        "main": {},
+        "tools": {}
     }
     
     # Keep track of detected service providers
@@ -385,6 +401,7 @@ async def merge_mcp_templates(templates: List[Dict[str, Any]], user_query: str) 
                 continue
                 
             code = template.get(file_type)
+            key_type = file_type.split("_")[0]
             
             # Extract imports
             import_lines = []
@@ -392,30 +409,72 @@ async def merge_mcp_templates(templates: List[Dict[str, Any]], user_query: str) 
             for line in code_lines:
                 line = line.strip()
                 if line.startswith("import ") or line.startswith("from "):
-                    # Get the module being imported
-                    key_type = file_type.split("_")[0]
                     if key_type in all_imports:
                         all_imports[key_type].add(line)
                         import_lines.append(line)
             
-            # Store the processed content for merging
-            if file_type == "agents_code":
-                merged["agents_code"] += f"\n\n# From {service_name} template: {folder_name}\n\n"
-                merged["agents_code"] += code
-            elif file_type == "models_code":
-                merged["models_code"] += f"\n\n# From {service_name} template: {folder_name}\n\n"
-                merged["models_code"] += code
-            elif file_type == "main_code":
-                merged["main_code"] += f"\n\n# From {service_name} template: {folder_name}\n\n"
-                merged["main_code"] += code
-            elif file_type == "tools_code":
-                merged["tools_code"] += f"\n\n# From {service_name} template: {folder_name}\n\n"
-                merged["tools_code"] += code
+            # Extract functions and classes
+            import re
+            
+            # Find all function definitions
+            function_pattern = r'(?:async\s+)?def\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\([^)]*\):\s*(?:(?:\'\'\'|\"\"\")[^\'\"]*(?:\'\'\'|\"\"\")\s*)?'
+            for match in re.finditer(function_pattern, code):
+                func_name = match.group(1)
+                func_start = match.start()
+                
+                # Find the end of the function
+                next_def = re.search(r'\ndef\s+', code[func_start + 1:])
+                next_class = re.search(r'\nclass\s+', code[func_start + 1:])
+                
+                if next_def and next_class:
+                    end_pos = func_start + 1 + min(next_def.start(), next_class.start())
+                elif next_def:
+                    end_pos = func_start + 1 + next_def.start()
+                elif next_class:
+                    end_pos = func_start + 1 + next_class.start()
+                else:
+                    end_pos = len(code)
+                
+                func_code = code[func_start:end_pos].strip()
+                
+                # Skip if it's a duplicate function, unless it's service-specific
+                if func_name not in functions[key_type] or any(s.lower() in func_name.lower() for s in service_providers):
+                    functions[key_type][func_name] = {
+                        "code": func_code,
+                        "service": service_name
+                    }
+            
+            # Find all class definitions
+            class_pattern = r'class\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*(?:\([^)]*\))?\s*:'
+            for match in re.finditer(class_pattern, code):
+                class_name = match.group(1)
+                class_start = match.start()
+                
+                # Find the end of the class
+                next_def = re.search(r'\ndef\s+', code[class_start + 1:])
+                next_class = re.search(r'\nclass\s+', code[class_start + 1:])
+                
+                if next_def and next_class:
+                    end_pos = class_start + 1 + min(next_def.start(), next_class.start())
+                elif next_def:
+                    end_pos = class_start + 1 + next_def.start()
+                elif next_class:
+                    end_pos = class_start + 1 + next_class.start()
+                else:
+                    end_pos = len(code)
+                
+                class_code = code[class_start:end_pos].strip()
+                
+                # Skip if it's a duplicate class
+                if class_name not in functions[key_type]:
+                    functions[key_type][class_name] = {
+                        "code": class_code,
+                        "service": service_name
+                    }
     
-    # Create combined system prompt from all extracted prompts
+    # Create combined system prompt
     if system_prompts:
-        combined_prompt = f"""
-You are a powerful assistant with multiple capabilities:
+        combined_prompt = f"""You are a powerful multi-service assistant that combines the following capabilities:
 
 """
         for i, prompt_data in enumerate(system_prompts, 1):
@@ -431,117 +490,179 @@ You are a powerful assistant with multiple capabilities:
         combined_prompt += """
 IMPORTANT USAGE NOTES:
 - When responding to the user, use the most appropriate service for their request
-- If the user's request spans multiple services, use all relevant services
+- If the user's request spans multiple services, use all relevant services in combination
 - Always be concise, helpful, and accurate in your responses
 - If you don't know how to do something with the available tools, explain what you can do instead
 """
-        
-        # Update the system prompt in agents_code
-        if merged["agents_code"]:
-            # Create pattern to replace existing system prompts
-            replace_pattern = r'(system_prompt|SYSTEM_PROMPT)\s*=\s*(\'\'\'|\"""|\"|\')'
-            replacement = f'system_prompt = """{combined_prompt}'
-            # Check if there's a pattern match
-            import re
-            if re.search(replace_pattern, merged["agents_code"]):
-                merged["agents_code"] = re.sub(replace_pattern + r'.*?(\'\'\'|\"""|\"|\')', 
-                                              replacement + '"""', 
-                                              merged["agents_code"], 
-                                              flags=re.DOTALL)
-            else:
-                # Add a new system prompt if one doesn't exist
-                merged["agents_code"] = merged["agents_code"].replace("class ", 
-                                                                     f"# Combined system prompt\nsystem_prompt = \"\"\"{combined_prompt}\"\"\"\n\nclass ", 
-                                                                     1)
     
-    # Merge MCP JSON files with enhanced server setup
-    if mcp_data_list:
-        merged_mcp = {
-            "mcpServers": {},
-            "metadata": {
-                "combinedServices": service_providers,
-                "originalQuery": user_query
-            }
-        }
+    # Generate merged code files
+    for file_type in ["agents", "models", "main", "tools"]:
+        # Start with imports
+        code = "\n".join(sorted(all_imports[file_type])) + "\n\n" if all_imports[file_type] else ""
         
-        # Create proper variables for API keys in the setup
-        added_env_vars = []
+        # Add file header
+        code += f"""# {folder_name} - {file_type}.py
+# Generated by merging templates: {", ".join(template_names)}
+# Based on request: {user_query}
+# Using services: {", ".join(service_providers)}
+
+"""
         
-        for server in mcp_servers:
-            server_name = server["name"]
-            server_data = server["data"]
-            service_name = server["service"]
+        # Special handling for agents.py - add system prompt first
+        if file_type == "agents" and system_prompts:
+            code += f'system_prompt = """{combined_prompt}"""\n\n'
             
-            # Create standardized API key parameter
-            api_key_var = f"{service_name}_API_KEY"
-            added_env_vars.append(api_key_var)
+            # Add standard imports that are always needed for agents.py
+            standard_imports = """import logging
+import traceback
+import sys
+from typing import List, Optional, Dict, Any
+from pydantic_ai import Agent, get_model
+from .models import Config
+from .tools import *  # Import all tool functions
+"""
+            code = standard_imports + "\n" + code
+        
+        # Add all non-duplicate functions and classes
+        for item_name, item_data in sorted(functions[file_type].items()):
+            item_code = item_data["code"]
+            service = item_data["service"]
             
-            # Add server with properly structured API key reference
-            merged_mcp["mcpServers"][server_name] = server_data
-        
-        merged["mcp_json"] = json.dumps(merged_mcp, indent=2)
-        
-        # Update models.py code to include all needed API keys
-        if merged["models_code"]:
-            # Find Config class definition
-            import re
-            config_class_match = re.search(r'class\s+Config\s*\([^)]*\):\s*[\'"]?[^\'"]?[\'"]?', merged["models_code"])
-            if config_class_match:
-                # Get class fields
-                class_body_start = config_class_match.end()
-                # Add missing API key fields
-                api_key_fields = "\n".join([f"    {key}: str" for key in added_env_vars if key not in merged["models_code"]])
-                if api_key_fields:
-                    # Insert new fields after existing fields
-                    config_class_end = merged["models_code"].find("@classmethod", class_body_start)
-                    if config_class_end > 0:
-                        merged["models_code"] = (merged["models_code"][:config_class_end] + 
-                                               "\n" + api_key_fields + "\n" + 
-                                               merged["models_code"][config_class_end:])
-                
-                # Update environment variable loading in Config.load_from_env
-                load_env_match = re.search(r'def\s+load_from_env\s*\(cls\)', merged["models_code"])
-                if load_env_match:
-                    load_env_start = load_env_match.end()
-                    missing_vars_check = "\n        ".join([f"if not os.getenv(\"{key}\"):\n            missing_vars.append(\"{key}\")" 
-                                         for key in added_env_vars if f"os.getenv(\"{key}\")" not in merged["models_code"]])
-                    
-                    # Find missing_vars declaration and add after it
-                    missing_vars_decl = re.search(r'missing_vars\s*=\s*\[\]', merged["models_code"][load_env_start:])
-                    if missing_vars_decl and missing_vars_check:
-                        insert_pos = load_env_start + missing_vars_decl.end()
-                        merged["models_code"] = (merged["models_code"][:insert_pos] + 
-                                               "\n        " + missing_vars_check + 
-                                               merged["models_code"][insert_pos:])
-                    
-                    # Update return statement to include all API keys
-                    return_match = re.search(r'return\s+cls\s*\(', merged["models_code"])
-                    if return_match:
-                        return_start = return_match.end()
-                        return_end = merged["models_code"].find(")", return_start)
-                        if return_end > 0:
-                            missing_returns = "\n            ".join([f"{key}=os.getenv(\"{key}\")" 
-                                             for key in added_env_vars if f"{key}=os.getenv" not in merged["models_code"]])
-                            if missing_returns:
-                                merged["models_code"] = (merged["models_code"][:return_end] + 
-                                                       ",\n            " + missing_returns + 
-                                                       merged["models_code"][return_end:])
-    
-    # Update tools.py to create all required MCP servers
-    if merged["tools_code"] and service_providers:
-        # Check if we need to add server creation functions
-        for service in service_providers:
-            create_func = f"create_{service.lower()}_mcp_server"
-            if create_func not in merged["tools_code"]:
-                server_code = f"""
-def {create_func}({service}_API_KEY):
-    \"\"\"Create an MCP server for {service}
+            # Special handling for setup_agent function
+            if item_name == "setup_agent" and file_type == "agents":
+                # Create a new unified setup_agent function
+                setup_code = """async def setup_agent(config: Config) -> Agent:
+    \"\"\"Set up the multi-service agent with all required MCP servers.
     
     Args:
-        {service}_API_KEY: The API key for {service}
+        config: Configuration object with API keys
         
     Returns:
-        MCPServerStdio: The MCP server instance
+        Agent: Configured agent instance with all MCP servers
+    \"\"\"
+    try:
+        servers = []
+        
+"""
+                # Add server creation for each service
+                for service in service_providers:
+                    setup_code += f"""        # Create {service} MCP server
+        logging.info("Creating {service} MCP Server...")
+        {service.lower()}_server = create_{service.lower()}_mcp_server(config.{service}_API_KEY)
+        servers.append({service.lower()}_server)
+        
+"""
+                
+                setup_code += """        # Create agent with all servers
+        agent = Agent(get_model(config), mcp_servers=servers)
+        
+        # Display and capture MCP tools for visibility
+        try:
+            for server in servers:
+                tools = await display_mcp_tools(server)
+                logging.info(f"Found {len(tools) if tools else 0} MCP tools available")
+        except Exception as tool_err:
+            logging.warning(f"Could not display MCP tools: {str(tool_err)}")
+            logging.debug("Tool display error details:", exc_info=True)
+        
+        return agent
+            
+    except Exception as e:
+        logging.error("Error setting up agent: %s", e)
+        logging.error("Error details: %s", traceback.format_exc())
+        sys.exit(1)
+"""
+                code += setup_code + "\n\n"
+                continue
+            
+            # Special handling for run_query function in tools.py
+            if file_type == "tools" and item_name.startswith("run_") and item_name.endswith("_query"):
+                continue  # Skip individual query functions, we'll add a combined one later
+            
+            # Add the item with a comment indicating its source
+            code += f"# From {service} template\n{item_code}\n\n"
+        
+        # Special handling for tools.py - add combined run_query function
+        if file_type == "tools":
+            # Add standard imports that are always needed for tools.py
+            standard_imports = """import logging
+import traceback
+from typing import List, Dict, Any, Optional
+from pydantic_ai import Agent, MCPServerStdio
+"""
+            code = standard_imports + "\n" + code
+
+            # Add service-specific keywords
+            keywords = """# Keywords for service detection"""
+            
+            for service in service_providers:
+                service_upper = service.upper()
+                if service_upper == "SERPER":
+                    keywords += f"\n{service_upper}_KEYWORDS = ['search', 'google', 'find', 'lookup', 'web search']"
+                elif service_upper == "FIRECRAWL":
+                    keywords += f"\n{service_upper}_KEYWORDS = ['crawl', 'spider', 'scrape', 'extract', 'website', 'webpage']"
+                elif service_upper == "SPOTIFY":
+                    keywords += f"\n{service_upper}_KEYWORDS = ['spotify', 'music', 'playlist', 'song', 'track', 'artist', 'album']"
+                elif service_upper == "GITHUB":
+                    keywords += f"\n{service_upper}_KEYWORDS = ['github', 'git', 'repository', 'repo', 'pull request', 'pr', 'commit', 'branch']"
+                else:
+                    keywords += f"\n{service_upper}_KEYWORDS = ['{service.lower()}']"
+            
+            code = keywords + "\n\n" + code
+
+            # Add standard tool functions
+            standard_tools = """async def display_mcp_tools(server: MCPServerStdio) -> List[Dict[str, Any]]:
+    \"\"\"Display available MCP tools from a server.
+    
+    Args:
+        server: The MCP server to get tools from
+        
+    Returns:
+        List of tool definitions
+    \"\"\"
+    try:
+        tools = await server.list_tools()
+        if tools:
+            logging.info("Available MCP tools:")
+            for tool in tools:
+                logging.info(f"- {tool.get('name')}: {tool.get('description')}")
+        return tools
+    except Exception as e:
+        logging.warning(f"Could not list MCP tools: {e}")
+        return []
+
+async def execute_mcp_tool(server: MCPServerStdio, tool_name: str, **kwargs) -> Any:
+    \"\"\"Execute an MCP tool with the given arguments.
+    
+    Args:
+        server: The MCP server to execute the tool on
+        tool_name: Name of the tool to execute
+        **kwargs: Tool arguments
+        
+    Returns:
+        Tool execution result
+    \"\"\"
+    try:
+        result = await server.execute_tool(tool_name, kwargs)
+        return result
+    except Exception as e:
+        logging.error(f"Error executing MCP tool {tool_name}: {e}")
+        raise
+"""
+            code += "\n" + standard_tools + "\n"
+
+            # Add server creation functions
+            for service in service_providers:
+                service_lower = service.lower()
+                server_code = f"""
+def create_{service_lower}_mcp_server({service.upper()}_API_KEY: str) -> MCPServerStdio:
+    \"\"\"Create an MCP server for {service}.
+    
+    Args:
+        {service.upper()}_API_KEY: API key for {service} service
+        
+    Returns:
+        MCPServerStdio: Configured MCP server
     \"\"\"
     try:
         # Set up arguments for the MCP server
@@ -549,9 +670,9 @@ def {create_func}({service}_API_KEY):
             "-y",
             "@smithery/cli@latest",
             "run",
-            "appropriate-mcp-server-for-{service.lower()}",
+            "mcp-server-{service_lower}",
             "--key",
-            {service}_API_KEY
+            {service.upper()}_API_KEY
         ]
         
         # Create and return the server
@@ -561,76 +682,245 @@ def {create_func}({service}_API_KEY):
         logging.error(f"Error details: {{traceback.format_exc()}}")
         raise
 """
-                merged["tools_code"] += "\n\n" + server_code
-    
-    # Update agent.py to set up all required MCP servers
-    if merged["agents_code"] and service_providers:
-        setup_func = "setup_agent"
-        if setup_func in merged["agents_code"]:
-            # Look for server creation pattern to add missing servers
+                code += server_code + "\n"
+
+            # Add service-specific query functions
             for service in service_providers:
-                create_server_pattern = f"create_{service.lower()}_mcp_server"
-                if create_server_pattern not in merged["agents_code"]:
-                    # Find the setup_agent function
-                    import re
-                    setup_match = re.search(r'async\s+def\s+setup_agent\s*\([^)]*\):', merged["agents_code"])
-                    if setup_match:
-                        setup_start = setup_match.end()
-                        # Find where to insert the new server
-                        agent_creation = merged["agents_code"].find("agent = Agent(", setup_start)
-                        if agent_creation > 0:
-                            # Find the line with server creation
-                            server_creation_line = merged["agents_code"][:agent_creation].rfind("\n") + 1
-                            # Insert new server creation
-                            server_code = f"""
-        logging.info("Creating {service} MCP Server...")
-        {service.lower()}_server = create_{service.lower()}_mcp_server(config.{service}_API_KEY)
-        """
-                            merged["agents_code"] = (merged["agents_code"][:server_creation_line] + 
-                                                   server_code + 
-                                                   merged["agents_code"][server_creation_line:])
-                            
-                            # Update agent creation to include new server
-                            agent_line_end = merged["agents_code"].find("\n", agent_creation)
-                            current_agent_line = merged["agents_code"][agent_creation:agent_line_end]
-                            if "mcp_servers=" in current_agent_line:
-                                # Add server to existing list
-                                if f"{service.lower()}_server" not in current_agent_line:
-                                    server_list_end = current_agent_line.find("]", current_agent_line.find("mcp_servers="))
-                                    if server_list_end > 0:
-                                        updated_line = (current_agent_line[:server_list_end] + 
-                                                      f", {service.lower()}_server" + 
-                                                      current_agent_line[server_list_end:])
-                                        merged["agents_code"] = (merged["agents_code"][:agent_creation] + 
-                                                               updated_line + 
-                                                               merged["agents_code"][agent_line_end:])
-                            else:
-                                # Add mcp_servers parameter
-                                new_line = current_agent_line.replace(")", f", mcp_servers=[{', '.join([f'{s.lower()}_server' for s in service_providers])}])")
-                                merged["agents_code"] = (merged["agents_code"][:agent_creation] + 
-                                                       new_line + 
-                                                       merged["agents_code"][agent_line_end:])
+                service_lower = service.lower()
+                query_code = f"""
+async def run_{service_lower}_query(query: str, agent: Agent) -> str:
+    \"\"\"Execute a query using the {service} service.
+    
+    Args:
+        query: The user's query
+        agent: The agent instance
         
-    # Add imports for all required packages
-    if merged["main_code"]:
-        main_imports = "\n".join(sorted(all_imports["main"]))
-        if main_imports:
-            merged["main_code"] = main_imports + "\n\n" + merged["main_code"].lstrip()
+    Returns:
+        str: Query result
+    \"\"\"
+    try:
+        # Find the {service} server
+        server = next((s for s in agent.mcp_servers if "mcp-server-{service_lower}" in str(s.args)), None)
+        if not server:
+            raise ValueError("No {service} server found")
+            
+        # Execute the appropriate tool based on the query
+        result = await execute_mcp_tool(server, "query", input=query)
+        return str(result)
+        
+    except Exception as e:
+        logging.error(f"Error running {service} query: {{e}}")
+        return f"Error: {{str(e)}}"
+"""
+                code += query_code + "\n"
+
+            # Add the combined run_query function
+            combined_query = """async def run_query(query: str, agent: Agent) -> str:
+    \"\"\"Execute a query using the most appropriate service based on the query content.
     
-    if merged["agents_code"]:
-        agent_imports = "\n".join(sorted(all_imports["agents"]))
-        if agent_imports:
-            merged["agents_code"] = agent_imports + "\n\n" + merged["agents_code"].lstrip()
+    Args:
+        query: The user's query
+        agent: The agent instance with MCP servers
+        
+    Returns:
+        str: The query result
+    \"\"\"
+    try:
+        # Analyze query to determine which service to use
+        query_lower = query.lower()
+        
+"""
+            # Add service-specific handling
+            for service in service_providers:
+                service_lower = service.lower()
+                combined_query += f"""        # Check if query is relevant for {service}
+        if any(keyword in query_lower for keyword in {service.upper()}_KEYWORDS):
+            logging.info("Using {service} for query")
+            return await run_{service_lower}_query(query, agent)
+            
+"""
+            
+            combined_query += """        # If no specific service matches, try the most appropriate one
+        logging.info("No specific service matched, using default")
+        try:
+            # Try each service in order until one succeeds
+"""
+            
+            for service in service_providers:
+                service_lower = service.lower()
+                combined_query += f"""            try:
+                return await run_{service_lower}_query(query, agent)
+            except Exception as e:
+                logging.debug(f"Failed to run query with {service}: {{e}}")
+                
+"""
+            
+            combined_query += """            # If all services fail, raise the last error
+            raise Exception("All services failed to process the query")
+            
+        except Exception as e:
+            logging.error(f"Error running query: {e}")
+            return f"Error: {str(e)}"
+            
+    except Exception as e:
+        logging.error(f"Error in run_query: {e}")
+        return f"Error: {str(e)}"
+"""
+            
+            code += combined_query + "\n"
+        
+        # Special handling for models.py
+        if file_type == "models":
+            # Add standard imports
+            standard_imports = """from pydantic import BaseModel
+import os
+from typing import List, Optional, Dict, Any
+"""
+            code = standard_imports + "\n" + code
+
+            # Add Config class if not present
+            if "class Config" not in code:
+                config_class = """class Config(BaseModel):
+    \"\"\"Configuration for the agent.\"\"\"
+"""
+                # Add API key fields for each service
+                for service in service_providers:
+                    config_class += f"    {service.upper()}_API_KEY: str\n"
+                
+                # Add LLM API key
+                config_class += """    LLM_API_KEY: str
+    MODEL_CHOICE: str = "gpt-4-turbo-preview"
     
-    if merged["models_code"]:
-        model_imports = "\n".join(sorted(all_imports["models"]))
-        if model_imports:
-            merged["models_code"] = model_imports + "\n\n" + merged["models_code"].lstrip()
+    @classmethod
+    def load_from_env(cls) -> "Config":
+        \"\"\"Load configuration from environment variables.\"\"\"
+        missing_vars = []
+"""
+                # Add environment variable checks
+                for service in service_providers:
+                    config_class += f"""        if not os.getenv("{service.upper()}_API_KEY"):
+            missing_vars.append("{service.upper()}_API_KEY")
+"""
+                
+                config_class += """        if not os.getenv("LLM_API_KEY"):
+            missing_vars.append("LLM_API_KEY")
+            
+        if missing_vars:
+            raise ValueError(f"Missing required environment variables: {', '.join(missing_vars)}")
+            
+        return cls(
+"""
+                # Add return parameters
+                for service in service_providers:
+                    config_class += f"            {service.upper()}_API_KEY=os.getenv('{service.upper()}_API_KEY'),\n"
+                
+                config_class += """            LLM_API_KEY=os.getenv("LLM_API_KEY"),
+            MODEL_CHOICE=os.getenv("MODEL_CHOICE", "gpt-4-turbo-preview")
+        )
+"""
+                code += config_class + "\n"
+        
+        # Special handling for main.py
+        if file_type == "main":
+            # Add standard imports
+            standard_imports = """import asyncio
+import logging
+import os
+from dotenv import load_dotenv
+from rich.logging import RichHandler
+from .agents import setup_agent
+from .models import Config
+from .tools import run_query
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(message)s",
+    handlers=[RichHandler(rich_tracebacks=True)]
+)
+"""
+            code = standard_imports + "\n" + code
+
+            # Add main function if not present
+            if "async def main" not in code:
+                main_function = """async def main():
+    \"\"\"Main entry point for the agent.\"\"\"
+    try:
+        # Load environment variables
+        load_dotenv()
+        
+        # Load configuration
+        config = Config.load_from_env()
+        
+        # Set up the agent
+        agent = await setup_agent(config)
+        logging.info("Agent setup complete")
+        
+        # Main interaction loop
+        while True:
+            try:
+                # Get user input
+                query = input("\\nEnter your query (or 'exit' to quit): ")
+                if query.lower() in ["exit", "quit"]:
+                    break
+                    
+                # Process the query
+                result = await run_query(query, agent)
+                print(f"\\nResult: {result}")
+                
+            except Exception as e:
+                logging.error(f"Error processing query: {e}")
+                logging.debug("Error details:", exc_info=True)
+        
+    except Exception as e:
+        logging.error(f"Error in main: {e}")
+        logging.error("Error details: %s", traceback.format_exc())
+        return 1
     
-    if merged["tools_code"]:
-        tool_imports = "\n".join(sorted(all_imports["tools"]))
-        if tool_imports:
-            merged["tools_code"] = tool_imports + "\n\n" + merged["tools_code"].lstrip()
+    return 0
+
+if __name__ == "__main__":
+    try:
+        exit_code = asyncio.run(main())
+        sys.exit(exit_code)
+    except KeyboardInterrupt:
+        logging.info("\\nShutting down...")
+        sys.exit(0)
+"""
+                code += main_function + "\n"
+        
+        # Store the merged code
+        merged[f"{file_type}_code"] = code
+    
+    # Merge MCP JSON files
+    if mcp_data_list:
+        merged_mcp = {
+            "mcpServers": {},
+            "metadata": {
+                "combinedServices": service_providers,
+                "originalQuery": user_query,
+                "generatedAt": datetime.now().isoformat(),
+                "projectName": folder_name
+            }
+        }
+        
+        # Merge all server configurations
+        for server in mcp_servers:
+            server_name = server["name"]
+            server_data = server["data"]
+            service_name = server["service"]
+            
+            # Add server with properly structured API key reference and higher retry values
+            server_data["env"] = server_data.get("env", {})
+            server_data["env"].update({
+                f"{service_name.upper()}_RETRY_MAX_ATTEMPTS": "5",
+                f"{service_name.upper()}_RETRY_INITIAL_DELAY": "2000",
+                f"{service_name.upper()}_RETRY_MAX_DELAY": "30000",
+                f"{service_name.upper()}_RETRY_BACKOFF_FACTOR": "3"
+            })
+            merged_mcp["mcpServers"][server_name] = server_data
+        
+        merged["mcp_json"] = json.dumps(merged_mcp, indent=2)
     
     logger.info(f"Successfully merged {len(templates)} templates into {folder_name}")
     return merged

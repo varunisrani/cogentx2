@@ -96,7 +96,7 @@ pydantic_ai_coder = Agent(
     model,
     system_prompt=primary_coder_prompt,
     deps_type=PydanticAIDeps,
-    retries=2
+    retries=5
 )
 
 @pydantic_ai_coder.system_prompt  
