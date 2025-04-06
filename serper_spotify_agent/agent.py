@@ -52,38 +52,112 @@ def get_model(config: Config) -> OpenAIModel:
         logging.error("Error initializing model: %s", e)
         sys.exit(1)
 
-async def setup_agent(config: Config) -> Agent:
-    """Set up and initialize the combined Serper-Spotify agent with both MCP servers."""
-    try:
-        # Create MCP server instances for both Serper and Spotify
-        logging.info("Creating Serper MCP Server...")
-        serper_server = create_serper_mcp_server(config.SERPER_API_KEY)
+async def setup_agent(
+    serper_api_key=None, 
+    spotify_api_key=None, 
+    agent_model=None, 
+    system_prompt=None
+):
+    """Set up an agent with Serper (Google Search) and Spotify tools.
+    
+    Args:
+        serper_api_key: API key for Serper
+        spotify_api_key: API key for Spotify
+        agent_model: The model to use for the agent
+        system_prompt: The system prompt to use for the agent
         
-        logging.info("Creating Spotify MCP Server...")
-        spotify_server = create_spotify_mcp_server(config.SPOTIFY_API_KEY)
-        
-        # Create agent with both servers
-        logging.info("Initializing agent with both Serper and Spotify MCP Servers...")
-        agent = Agent(get_model(config), mcp_servers=[serper_server, spotify_server])
-        
-        # Set system prompt
-        agent.system_prompt = system_prompt
-        
-        # Display and capture MCP tools for visibility from both servers
+    Returns:
+        Agent: The configured agent
+    """
+    # Set up logging
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger(__name__)
+    
+    # Initialize server variables to None
+    serper_server = None
+    spotify_server = None
+    
+    # Keep track of activated servers
+    activated_servers = []
+    
+    # Try to create the Serper MCP server
+    if serper_api_key:
         try:
-            serper_tools = await display_mcp_tools(serper_server, "SERPER")
-            logging.info(f"Found {len(serper_tools) if serper_tools else 0} MCP tools available for Serper operations")
+            logger.info("Creating Serper MCP server...")
+            serper_server = create_serper_mcp_server(serper_api_key)
             
-            spotify_tools = await display_mcp_tools(spotify_server, "SPOTIFY")
-            logging.info(f"Found {len(spotify_tools) if spotify_tools else 0} MCP tools available for Spotify operations")
-        except Exception as tool_err:
-            logging.warning(f"Could not display MCP tools: {str(tool_err)}")
-            logging.debug("Tool display error details:", exc_info=True)
+            if serper_server:
+                logger.info("Serper MCP server created successfully")
+                activated_servers.append("Serper")
+            else:
+                logger.warning("Failed to create Serper MCP server")
+        except Exception as e:
+            logger.error(f"Error creating Serper MCP server: {str(e)}")
+            logger.debug(f"Error details: {traceback.format_exc()}")
+    else:
+        logger.warning("No Serper API key provided - Serper search will not be available")
+    
+    # Try to create the Spotify MCP server
+    if spotify_api_key:
+        try:
+            logger.info("Creating Spotify MCP server...")
+            spotify_server = create_spotify_mcp_server(spotify_api_key)
+            
+            if spotify_server:
+                logger.info("Spotify MCP server created successfully")
+                activated_servers.append("Spotify")
+            else:
+                logger.warning("Failed to create Spotify MCP server")
+        except Exception as e:
+            logger.error(f"Error creating Spotify MCP server: {str(e)}")
+            logger.debug(f"Error details: {traceback.format_exc()}")
+    else:
+        logger.warning("No Spotify API key provided - Spotify features will not be available")
+    
+    # Log the number of active servers
+    logger.info(f"Active servers: {len(activated_servers)} ({', '.join(activated_servers) if activated_servers else 'None'})")
+    
+    # Check if at least one server is available
+    if not activated_servers:
+        logger.error("No MCP servers could be created. Please check your API keys and try again.")
+        logger.error("To diagnose issues, run the test_mcp_revised.py script.")
+        return None
+    
+    # Adjust the system prompt based on available servers
+    if system_prompt is None:
+        # Start with a base prompt
+        base_prompt = """You are a helpful assistant with access to information from"""
         
-        logging.debug("Agent setup complete with both Serper and Spotify MCP servers.")
-        return agent
+        if "Serper" in activated_servers and "Spotify" in activated_servers:
+            system_prompt = base_prompt + " Google Search and Spotify."
+        elif "Serper" in activated_servers:
+            system_prompt = base_prompt + " Google Search."
+        elif "Spotify" in activated_servers:
+            system_prompt = base_prompt + " Spotify."
+        else:
+            system_prompt = "You are a helpful assistant."
             
-    except Exception as e:
-        logging.error("Error setting up agent: %s", e)
-        logging.error("Error details: %s", traceback.format_exc())
-        sys.exit(1) 
+        system_prompt += """ Respond concisely unless the human requests detailed information. 
+        Always structure your answer to be as helpful and easy to understand as possible.
+        """
+    
+    # Configure the agent with the available servers
+    agent_config = {}
+    
+    # Add Serper server if available
+    if serper_server:
+        agent_config["serper"] = serper_server
+        
+    # Add Spotify server if available
+    if spotify_server:
+        agent_config["spotify"] = spotify_server
+    
+    # Create the agent
+    logger.info("Creating agent with available tools...")
+    agent = Agent(
+        mcp_servers=agent_config,
+        model=agent_model,
+        system_prompt=system_prompt
+    )
+    
+    return agent 
