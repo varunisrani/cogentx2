@@ -453,3 +453,208 @@ No SPOTIFY MCP tools were discovered. This could mean either:
 2025-04-04 19:03:42,002 [INFO] [main.py:164] Processing query: 'search elon musk use serper'
 2025-04-04 19:03:42,005 [INFO] [tools.py:218] Processing query: 'search elon musk use serper'
 2025-04-04 19:04:09,329 [INFO] [main.py:173] Query completed in 27.32 seconds
+2025-04-06 07:37:41,875 [INFO] [main.py:128] Starting Serper-Spotify Combined Agent
+2025-04-06 07:37:43,683 [INFO] [main.py:135] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-06 07:37:43,683 [INFO] [main.py:140] Loading configuration...
+2025-04-06 07:37:43,687 [INFO] [main.py:144] Setting up combined agent...
+2025-04-06 07:37:43,687 [INFO] [agent.py:59] Creating Serper MCP Server...
+2025-04-06 07:37:43,687 [INFO] [agent.py:62] Creating Spotify MCP Server...
+2025-04-06 07:37:43,687 [INFO] [agent.py:66] Initializing agent with both Serper and Spotify MCP Servers...
+2025-04-06 07:37:43,699 [INFO] [tools.py:18] 
+==================================================
+2025-04-06 07:37:43,699 [INFO] [tools.py:19] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-06 07:37:43,699 [INFO] [tools.py:20] ==================================================
+2025-04-06 07:37:43,699 [WARNING] [tools.py:162] 
+No SERPER MCP tools were discovered. This could mean either:
+2025-04-06 07:37:43,700 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-06 07:37:43,700 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-06 07:37:43,700 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-06 07:37:43,700 [INFO] [agent.py:75] Found 0 MCP tools available for Serper operations
+2025-04-06 07:37:43,700 [INFO] [tools.py:18] 
+==================================================
+2025-04-06 07:37:43,700 [INFO] [tools.py:19] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-06 07:37:43,700 [INFO] [tools.py:20] ==================================================
+2025-04-06 07:37:43,700 [WARNING] [tools.py:162] 
+No SPOTIFY MCP tools were discovered. This could mean either:
+2025-04-06 07:37:43,700 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-06 07:37:43,700 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-06 07:37:43,700 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-06 07:37:43,701 [INFO] [agent.py:78] Found 0 MCP tools available for Spotify operations
+2025-04-06 07:38:00,192 [INFO] [main.py:149] Both MCP Servers started successfully
+2025-04-06 07:38:07,403 [INFO] [main.py:164] Processing query: 'create repo called ssdnds'
+2025-04-06 07:38:07,405 [INFO] [tools.py:218] Processing query: 'create repo called ssdnds'
+2025-04-06 07:38:12,714 [INFO] [main.py:173] Query completed in 5.31 seconds
+2025-04-06 07:38:29,273 [INFO] [main.py:164] Processing query: 'create repo name sdsd'
+2025-04-06 07:38:29,274 [INFO] [tools.py:218] Processing query: 'create repo name sdsd'
+2025-04-06 07:38:34,084 [INFO] [main.py:173] Query completed in 4.81 seconds
+2025-04-06 07:38:37,801 [INFO] [main.py:164] Processing query: 'github'
+2025-04-06 07:38:37,802 [INFO] [tools.py:218] Processing query: 'github'
+2025-04-06 07:38:45,144 [INFO] [main.py:173] Query completed in 7.34 seconds
+2025-04-06 07:38:55,803 [INFO] [main.py:164] Processing query: 'create a repo on github name sndnjfs'
+2025-04-06 07:38:55,804 [INFO] [tools.py:218] Processing query: 'create a repo on github name sndnjfs'
+2025-04-06 07:39:00,179 [INFO] [main.py:173] Query completed in 4.37 seconds
+2025-04-06 07:39:20,310 [INFO] [main.py:164] Processing query: 'search song '
+2025-04-06 07:39:20,312 [INFO] [tools.py:218] Processing query: 'search song '
+2025-04-06 07:39:33,685 [INFO] [main.py:173] Query completed in 13.37 seconds
+2025-04-06 07:54:00,414 [INFO] [main.py:194] User interrupted the process
+2025-04-06 07:54:00,422 [ERROR] [main.py:204] Error running MCP servers: unhandled errors in a TaskGroup (1 sub-exception)
+2025-04-06 07:54:00,438 [ERROR] [main.py:205] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    process.terminate()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    self._process.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    self._transport.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    self._check_proc()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    raise ProcessLookupError()
+ProcessLookupError
+
+During handling of the above exception, another exception occurred:
+
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/serper_spotify_agent/main.py", line 148, in main
+  |     async with agent.run_mcp_servers():
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1302, in run_mcp_servers
+  |     await exit_stack.aclose()
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+  |     await self.__aexit__(None, None, None)
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+  |     raise exc_details[1]
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+  |     cb_suppress = await cb(*exc_details)
+  |                   ^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 97, in __aexit__
+  |     await self._exit_stack.aclose()
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+  |     await self.__aexit__(None, None, None)
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+  |     raise exc_details[1]
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+  |     cb_suppress = await cb(*exc_details)
+  |                   ^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+  |     async with stdio_client(server=server) as (read_stream, write_stream):
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+  |     async with (
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 767, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    |     process.terminate()
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    |     self._process.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    |     self._transport.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    |     self._check_proc()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    |     raise ProcessLookupError()
+    | ProcessLookupError
+    +------------------------------------
+
+2025-04-06 07:54:00,439 [INFO] [main.py:218] Agent shutting down
+2025-04-06 07:54:02,844 [INFO] [main.py:128] Starting Serper-Spotify Combined Agent
+2025-04-06 07:54:03,268 [INFO] [main.py:135] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-06 07:54:03,270 [INFO] [main.py:140] Loading configuration...
+2025-04-06 07:54:03,273 [INFO] [main.py:144] Setting up combined agent...
+2025-04-06 07:54:03,274 [INFO] [agent.py:59] Creating Serper MCP Server...
+2025-04-06 07:54:03,274 [INFO] [agent.py:62] Creating Spotify MCP Server...
+2025-04-06 07:54:03,274 [INFO] [agent.py:66] Initializing agent with both Serper and Spotify MCP Servers...
+2025-04-06 07:54:03,286 [INFO] [tools.py:18] 
+==================================================
+2025-04-06 07:54:03,286 [INFO] [tools.py:19] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-06 07:54:03,286 [INFO] [tools.py:20] ==================================================
+2025-04-06 07:54:03,286 [WARNING] [tools.py:162] 
+No SERPER MCP tools were discovered. This could mean either:
+2025-04-06 07:54:03,286 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-06 07:54:03,287 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-06 07:54:03,287 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-06 07:54:03,287 [INFO] [agent.py:75] Found 0 MCP tools available for Serper operations
+2025-04-06 07:54:03,287 [INFO] [tools.py:18] 
+==================================================
+2025-04-06 07:54:03,287 [INFO] [tools.py:19] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-06 07:54:03,287 [INFO] [tools.py:20] ==================================================
+2025-04-06 07:54:03,287 [WARNING] [tools.py:162] 
+No SPOTIFY MCP tools were discovered. This could mean either:
+2025-04-06 07:54:03,287 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-06 07:54:03,287 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-06 07:54:03,287 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-06 07:54:03,287 [INFO] [agent.py:78] Found 0 MCP tools available for Spotify operations
+2025-04-06 07:54:11,537 [INFO] [main.py:149] Both MCP Servers started successfully
+2025-04-06 08:05:05,048 [INFO] [main.py:194] User interrupted the process
+2025-04-06 08:05:05,057 [ERROR] [main.py:204] Error running MCP servers: unhandled errors in a TaskGroup (1 sub-exception)
+2025-04-06 08:05:05,063 [ERROR] [main.py:205] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    process.terminate()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    self._process.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    self._transport.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    self._check_proc()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    raise ProcessLookupError()
+ProcessLookupError
+
+During handling of the above exception, another exception occurred:
+
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/serper_spotify_agent/main.py", line 148, in main
+  |     async with agent.run_mcp_servers():
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1302, in run_mcp_servers
+  |     await exit_stack.aclose()
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+  |     await self.__aexit__(None, None, None)
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+  |     raise exc_details[1]
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+  |     cb_suppress = await cb(*exc_details)
+  |                   ^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 97, in __aexit__
+  |     await self._exit_stack.aclose()
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+  |     await self.__aexit__(None, None, None)
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+  |     raise exc_details[1]
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+  |     cb_suppress = await cb(*exc_details)
+  |                   ^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+  |     async with stdio_client(server=server) as (read_stream, write_stream):
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+  |     async with (
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 767, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    |     process.terminate()
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    |     self._process.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    |     self._transport.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    |     self._check_proc()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    |     raise ProcessLookupError()
+    | ProcessLookupError
+    +------------------------------------
+
+2025-04-06 08:05:05,064 [INFO] [main.py:218] Agent shutting down

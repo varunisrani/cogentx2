@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 import streamlit as st
 import logfire
 import asyncio
+from concurrent.futures import TimeoutError
+import time
 
 # Set page config - must be the first Streamlit command
 st.set_page_config(

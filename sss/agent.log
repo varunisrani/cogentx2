@@ -1,0 +1,211 @@
+2025-04-06 22:59:36,986 [INFO] [main.py:116] Initializing Spotify Agent
+2025-04-06 22:59:37,534 [INFO] [main.py:107] Node.js version: v23.7.0, npm version: 8.19.4
+2025-04-06 22:59:37,534 [INFO] [main.py:120] Loading configuration...
+2025-04-06 22:59:37,539 [INFO] [main.py:123] Setting up agent...
+2025-04-06 22:59:37,539 [INFO] [agent.py:64] Creating MCP Servers...
+2025-04-06 22:59:37,539 [INFO] [agent.py:72] Spotify MCP Server created
+2025-04-06 22:59:37,539 [INFO] [agent.py:78] GitHub MCP Server created
+2025-04-06 22:59:37,539 [INFO] [agent.py:84] Initializing agent with MCP Servers...
+2025-04-06 22:59:37,551 [INFO] [tools.py:46] 
+==================================================
+2025-04-06 22:59:37,551 [INFO] [tools.py:47] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-06 22:59:37,551 [INFO] [tools.py:48] ==================================================
+2025-04-06 22:59:37,551 [WARNING] [tools.py:157] 
+No SPOTIFY MCP tools were discovered.
+2025-04-06 22:59:37,551 [INFO] [agent.py:112] Found 0 MCP tools available for SPOTIFY operations
+2025-04-06 22:59:37,551 [INFO] [tools.py:46] 
+==================================================
+2025-04-06 22:59:37,551 [INFO] [tools.py:47] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-06 22:59:37,552 [INFO] [tools.py:48] ==================================================
+2025-04-06 22:59:37,552 [WARNING] [tools.py:157] 
+No SPOTIFY MCP tools were discovered.
+2025-04-06 22:59:37,552 [INFO] [agent.py:112] Found 0 MCP tools available for SPOTIFY operations
+2025-04-06 23:00:05,238 [ERROR] [main.py:181] Error starting agent server: Attempted to exit a cancel scope that isn't the current tasks's current cancel scope
+2025-04-06 23:00:05,246 [ERROR] [main.py:182] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 771, in __aexit__
+    raise exc_val
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+    async with (
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/abc/_resources.py", line 29, in __aexit__
+    await self.aclose()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1066, in aclose
+    await self.wait()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1074, in wait
+    return await self._process.wait()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 137, in wait
+    return await self._transport._wait()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 230, in _wait
+    return await waiter
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError: Cancelled by cancel scope 106c31050
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/sss/main.py", line 127, in agent_main
+    async with agent.run_mcp_servers():
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1302, in run_mcp_servers
+    await exit_stack.aclose()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+    await self.__aexit__(None, None, None)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+    raise exc_details[1]
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 97, in __aexit__
+    await self._exit_stack.aclose()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+    await self.__aexit__(None, None, None)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+    raise exc_details[1]
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+    cb_suppress = await cb(*exc_details)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+    async with (
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 773, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 464, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit a cancel scope that isn't the current tasks's current cancel scope
+
+2025-04-06 23:00:05,246 [INFO] [main.py:202] Spotify agent shutting down
+2025-04-06 23:00:05,247 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object MCPServerStdio.client_streams at 0x1067eda40>
+asyncgen: <async_generator object MCPServerStdio.client_streams at 0x1067eda40>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    process.terminate()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    self._process.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    self._transport.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    self._check_proc()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    raise ProcessLookupError()
+ProcessLookupError
+
+During handling of the above exception, another exception occurred:
+
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 767, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 173, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 161, in client_streams
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    |     process.terminate()
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    |     self._process.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    |     self._transport.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    |     self._check_proc()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    |     raise ProcessLookupError()
+    | ProcessLookupError
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+    async with (
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 773, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 456, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-04-06 23:00:05,248 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x10673f880>
+asyncgen: <async_generator object stdio_client at 0x10673f880>
+RuntimeError: aclose(): asynchronous generator is already running
+2025-04-06 23:00:38,058 [INFO] [main.py:116] Initializing Spotify Agent
+2025-04-06 23:00:38,579 [INFO] [main.py:107] Node.js version: v23.7.0, npm version: 8.19.4
+2025-04-06 23:00:38,579 [INFO] [main.py:120] Loading configuration...
+2025-04-06 23:00:38,583 [INFO] [main.py:123] Setting up agent...
+2025-04-06 23:00:38,583 [INFO] [agent.py:64] Creating MCP Servers...
+2025-04-06 23:00:38,583 [INFO] [agent.py:72] Spotify MCP Server created
+2025-04-06 23:00:38,583 [INFO] [agent.py:84] Initializing agent with MCP Servers...
+2025-04-06 23:00:38,596 [INFO] [tools.py:46] 
+==================================================
+2025-04-06 23:00:38,596 [INFO] [tools.py:47] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-06 23:00:38,596 [INFO] [tools.py:48] ==================================================
+2025-04-06 23:00:38,596 [WARNING] [tools.py:157] 
+No SPOTIFY MCP tools were discovered.
+2025-04-06 23:00:38,596 [INFO] [agent.py:112] Found 0 MCP tools available for SPOTIFY operations
+2025-04-06 23:00:41,012 [INFO] [main.py:128] Spotify Server started successfully
+2025-04-06 23:01:04,785 [INFO] [main.py:140] Processing task: 'search for the yoyohoney song'
+2025-04-06 23:01:04,786 [INFO] [tools.py:191] Processing query: 'search for the yoyohoney song'
+2025-04-06 23:01:29,311 [INFO] [tools.py:216] No specific tools were recorded for this query
+2025-04-06 23:01:29,313 [INFO] [main.py:147] Task completed in 24.52 seconds
+2025-04-06 23:01:55,526 [INFO] [main.py:171] User interrupted the process
+2025-04-06 23:01:55,549 [INFO] [main.py:202] Spotify agent shutting down
+2025-04-06 23:01:55,552 [INFO] [main.py:213] Exiting gracefully...
+2025-04-06 23:01:56,960 [INFO] [main.py:116] Initializing Github Agent
+2025-04-06 23:01:57,464 [INFO] [main.py:107] Node.js version: v23.7.0, npm version: 8.19.4
+2025-04-06 23:01:57,464 [INFO] [main.py:120] Loading configuration...
+2025-04-06 23:01:57,468 [INFO] [main.py:123] Setting up agent...
+2025-04-06 23:01:57,468 [INFO] [agent.py:64] Creating MCP Servers...
+2025-04-06 23:01:57,468 [INFO] [agent.py:72] Spotify MCP Server created
+2025-04-06 23:01:57,468 [INFO] [agent.py:84] Initializing agent with MCP Servers...
+2025-04-06 23:01:57,480 [INFO] [tools.py:46] 
+==================================================
+2025-04-06 23:01:57,480 [INFO] [tools.py:47] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-06 23:01:57,480 [INFO] [tools.py:48] ==================================================
+2025-04-06 23:01:57,481 [WARNING] [tools.py:157] 
+No SPOTIFY MCP tools were discovered.
+2025-04-06 23:01:57,481 [INFO] [agent.py:112] Found 0 MCP tools available for SPOTIFY operations
+2025-04-06 23:01:59,692 [INFO] [main.py:128] Github Server started successfully
+2025-04-06 23:02:14,454 [INFO] [main.py:140] Processing task: 'searcg repo for python'
+2025-04-06 23:02:14,456 [INFO] [tools.py:191] Processing query: 'searcg repo for python'
+2025-04-06 23:02:20,768 [INFO] [tools.py:216] No specific tools were recorded for this query
+2025-04-06 23:02:20,768 [INFO] [main.py:147] Task completed in 6.31 seconds
+2025-04-06 23:02:42,107 [INFO] [main.py:171] User interrupted the process
+2025-04-06 23:02:42,109 [INFO] [main.py:202] Github agent shutting down
+2025-04-06 23:02:42,110 [INFO] [main.py:213] Exiting gracefully...
+2025-04-06 23:05:36,511 [INFO] [main.py:116] Initializing Github Agent
+2025-04-06 23:05:36,954 [INFO] [main.py:107] Node.js version: v23.7.0, npm version: 8.19.4
+2025-04-06 23:05:36,954 [INFO] [main.py:120] Loading configuration...
+2025-04-06 23:05:36,958 [INFO] [main.py:123] Setting up github agent...
+2025-04-06 23:05:36,958 [INFO] [agent.py:61] Creating MCP Servers...
+2025-04-06 23:05:36,958 [INFO] [agent.py:73] GitHub MCP Server created
+2025-04-06 23:05:36,958 [INFO] [agent.py:89] Initializing agent with MCP Servers...
+2025-04-06 23:05:36,970 [INFO] [tools.py:46] 
+==================================================
+2025-04-06 23:05:36,970 [INFO] [tools.py:47] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-06 23:05:36,970 [INFO] [tools.py:48] ==================================================
+2025-04-06 23:05:36,970 [WARNING] [tools.py:157] 
+No SPOTIFY MCP tools were discovered.
+2025-04-06 23:05:36,971 [INFO] [agent.py:117] Found 0 MCP tools available for SPOTIFY operations
+2025-04-06 23:05:37,333 [INFO] [main.py:128] Github Server started successfully
+2025-04-06 23:05:53,106 [INFO] [main.py:140] Processing task: 'search song'
+2025-04-06 23:05:53,109 [INFO] [tools.py:191] Processing query: 'search song'
+2025-04-06 23:06:06,948 [INFO] [tools.py:216] No specific tools were recorded for this query
+2025-04-06 23:06:06,950 [INFO] [main.py:147] Task completed in 13.84 seconds

@@ -1,0 +1,272 @@
+2025-04-06 20:27:07,443 [INFO] 🔧 Loading environment variables...
+2025-04-06 20:28:01,444 [INFO] 🔧 Loading environment variables...
+2025-04-06 20:28:01,447 [INFO] 🚀 Starting initialize_clients at 20:28:01.446994
+2025-04-06 20:28:01,447 [INFO] 📊 Memory usage before initialize_clients: 153.53 MB
+2025-04-06 20:28:01,447 [INFO] 🔌 Initializing API clients...
+2025-04-06 20:28:01,467 [INFO] ✅ Successfully initialized API clients
+2025-04-06 20:28:01,467 [INFO] ✅ Completed initialize_clients in 0.02 seconds
+2025-04-06 20:28:01,467 [INFO] 📊 Memory usage after initialize_clients: 155.16 MB (Change: +1.62 MB)
+2025-04-06 20:28:01,467 [INFO] 🎨 Loading custom CSS styles...
+2025-04-06 20:28:01,468 [INFO] 📝 Configuring logfire...
+2025-04-06 20:28:01,496 [INFO] 🚀 Starting show_system_metrics at 20:28:01.496069
+2025-04-06 20:28:01,496 [INFO] 📊 Memory usage before show_system_metrics: 155.30 MB
+2025-04-06 20:28:01,497 [INFO] ✅ Completed show_system_metrics in 0.00 seconds
+2025-04-06 20:28:01,497 [INFO] 📊 Memory usage after show_system_metrics: 155.33 MB (Change: +0.03 MB)
+2025-04-06 20:28:01,498 [INFO] 🚀 Starting main at 20:28:01.498231
+2025-04-06 20:28:01,498 [INFO] 📊 Memory usage before main: 155.34 MB
+2025-04-06 20:28:01,498 [INFO] 📄 Page load #1
+2025-04-06 20:28:01,695 [INFO] 📌 Initialized selected tab to Intro
+2025-04-06 20:28:01,700 [INFO] ✅ Completed main in 0.20 seconds
+2025-04-06 20:28:01,700 [INFO] 📊 Memory usage after main: 167.98 MB (Change: +12.64 MB)
+2025-04-06 20:28:09,308 [INFO] 🔧 Loading environment variables...
+2025-04-06 20:28:09,320 [INFO] 🚀 Starting initialize_clients at 20:28:09.320211
+2025-04-06 20:28:09,320 [INFO] 📊 Memory usage before initialize_clients: 141.08 MB
+2025-04-06 20:28:09,320 [INFO] 🔌 Initializing API clients...
+2025-04-06 20:28:09,350 [INFO] ✅ Successfully initialized API clients
+2025-04-06 20:28:09,350 [INFO] ✅ Completed initialize_clients in 0.03 seconds
+2025-04-06 20:28:09,350 [INFO] 📊 Memory usage after initialize_clients: 141.33 MB (Change: +0.25 MB)
+2025-04-06 20:28:09,351 [INFO] 🎨 Loading custom CSS styles...
+2025-04-06 20:28:09,351 [INFO] 📝 Configuring logfire...
+2025-04-06 20:28:09,385 [INFO] 🚀 Starting show_system_metrics at 20:28:09.385501
+2025-04-06 20:28:09,385 [INFO] 📊 Memory usage before show_system_metrics: 146.00 MB
+2025-04-06 20:28:09,387 [INFO] ✅ Completed show_system_metrics in 0.00 seconds
+2025-04-06 20:28:09,387 [INFO] 📊 Memory usage after show_system_metrics: 146.12 MB (Change: +0.12 MB)
+2025-04-06 20:28:09,387 [INFO] 🚀 Starting main at 20:28:09.387956
+2025-04-06 20:28:09,388 [INFO] 📊 Memory usage before main: 146.28 MB
+2025-04-06 20:28:09,388 [INFO] 📄 Page load #2
+2025-04-06 20:28:09,604 [INFO] 📑 Tab switch #1: None -> Chat
+2025-04-06 20:28:09,605 [INFO] ✅ Completed main in 0.22 seconds
+2025-04-06 20:28:09,605 [INFO] 📊 Memory usage after main: 155.48 MB (Change: +9.20 MB)
+2025-04-06 20:28:16,454 [INFO] 🔧 Loading environment variables...
+2025-04-06 20:28:16,460 [INFO] 🚀 Starting initialize_clients at 20:28:16.460433
+2025-04-06 20:28:16,460 [INFO] 📊 Memory usage before initialize_clients: 156.23 MB
+2025-04-06 20:28:16,460 [INFO] 🔌 Initializing API clients...
+2025-04-06 20:28:16,492 [INFO] ✅ Successfully initialized API clients
+2025-04-06 20:28:16,492 [INFO] ✅ Completed initialize_clients in 0.03 seconds
+2025-04-06 20:28:16,492 [INFO] 📊 Memory usage after initialize_clients: 157.98 MB (Change: +1.75 MB)
+2025-04-06 20:28:16,493 [INFO] 🎨 Loading custom CSS styles...
+2025-04-06 20:28:16,493 [INFO] 📝 Configuring logfire...
+2025-04-06 20:28:16,544 [INFO] 🚀 Starting show_system_metrics at 20:28:16.544402
+2025-04-06 20:28:16,544 [INFO] 📊 Memory usage before show_system_metrics: 158.08 MB
+2025-04-06 20:28:16,547 [INFO] ✅ Completed show_system_metrics in 0.00 seconds
+2025-04-06 20:28:16,547 [INFO] 📊 Memory usage after show_system_metrics: 158.09 MB (Change: +0.02 MB)
+2025-04-06 20:28:16,548 [INFO] 🚀 Starting main at 20:28:16.547990
+2025-04-06 20:28:16,548 [INFO] 📊 Memory usage before main: 158.09 MB
+2025-04-06 20:28:16,548 [INFO] 📄 Page load #1
+2025-04-06 20:28:16,750 [INFO] 📌 Initialized selected tab to Intro
+2025-04-06 20:28:16,752 [INFO] 📑 Tab switch #1: None -> Chat
+2025-04-06 20:28:16,753 [INFO] ✅ Completed main in 0.21 seconds
+2025-04-06 20:28:16,753 [INFO] 📊 Memory usage after main: 166.88 MB (Change: +8.78 MB)
+2025-04-06 20:28:22,855 [INFO] 🔧 Loading environment variables...
+2025-04-06 20:28:22,861 [INFO] 🚀 Starting initialize_clients at 20:28:22.861617
+2025-04-06 20:28:22,861 [INFO] 📊 Memory usage before initialize_clients: 136.61 MB
+2025-04-06 20:28:22,861 [INFO] 🔌 Initializing API clients...
+2025-04-06 20:28:22,889 [INFO] ✅ Successfully initialized API clients
+2025-04-06 20:28:22,889 [INFO] ✅ Completed initialize_clients in 0.03 seconds
+2025-04-06 20:28:22,889 [INFO] 📊 Memory usage after initialize_clients: 139.75 MB (Change: +3.14 MB)
+2025-04-06 20:28:22,889 [INFO] 🎨 Loading custom CSS styles...
+2025-04-06 20:28:22,889 [INFO] 📝 Configuring logfire...
+2025-04-06 20:28:22,923 [INFO] 🚀 Starting show_system_metrics at 20:28:22.923435
+2025-04-06 20:28:22,923 [INFO] 📊 Memory usage before show_system_metrics: 142.17 MB
+2025-04-06 20:28:22,925 [INFO] ✅ Completed show_system_metrics in 0.00 seconds
+2025-04-06 20:28:22,925 [INFO] 📊 Memory usage after show_system_metrics: 142.20 MB (Change: +0.03 MB)
+2025-04-06 20:28:22,925 [INFO] 🚀 Starting main at 20:28:22.925588
+2025-04-06 20:28:22,925 [INFO] 📊 Memory usage before main: 142.22 MB
+2025-04-06 20:28:22,925 [INFO] 📄 Page load #3
+2025-04-06 20:28:23,778 [INFO] HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-06 20:28:26,640 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 20:28:26,657 [INFO] 🚀 Starting search_mcp_templates at 20:28:26.657549
+2025-04-06 20:28:26,658 [INFO] 📊 Memory usage before search_mcp_templates: 138.89 MB
+2025-04-06 20:28:26,658 [INFO] 🔍 Searching MCP templates for query: 'create agent that can use serper and firecrawl both'
+2025-04-06 20:28:26,658 [INFO] Parameters: threshold=0.65, count=5
+2025-04-06 20:28:26,658 [INFO] 📡 Getting embedding from OpenAI...
+2025-04-06 20:28:28,111 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-06 20:28:28,115 [INFO] ✨ Got embedding in 1.46 seconds
+2025-04-06 20:28:28,115 [INFO] 🔎 Searching templates in Supabase...
+2025-04-06 20:28:28,272 [INFO] HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-06 20:28:28,278 [INFO] 📊 Search completed in 0.16 seconds
+2025-04-06 20:28:28,278 [INFO] 📝 Found 0 matching templates
+2025-04-06 20:28:28,279 [INFO] ⚠️ No results, retrying with lower threshold: 0.45499999999999996
+2025-04-06 20:28:28,622 [INFO] HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-06 20:28:28,624 [INFO] 📊 Retry search completed in 0.35 seconds
+2025-04-06 20:28:28,625 [INFO] 📝 Found 2 templates with lower threshold
+2025-04-06 20:28:28,625 [INFO] 📌 Template: serper_agent
+2025-04-06 20:28:28,625 [INFO]    Similarity: 0.4899
+2025-04-06 20:28:28,625 [INFO] 📌 Template: firecrawl_agent
+2025-04-06 20:28:28,625 [INFO]    Similarity: 0.4793
+2025-04-06 20:28:28,625 [INFO] ✅ Completed search_mcp_templates in 1.97 seconds
+2025-04-06 20:28:28,625 [INFO] 📊 Memory usage after search_mcp_templates: 140.34 MB (Change: +1.45 MB)
+2025-04-06 20:28:38,658 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 20:28:46,236 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 20:28:51,458 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 20:28:51,984 [INFO] ✅ Completed main in 29.06 seconds
+2025-04-06 20:28:51,984 [INFO] 📊 Memory usage after main: 132.47 MB (Change: -9.75 MB)
+2025-04-06 20:30:31,923 [INFO] 🔧 Loading environment variables...
+2025-04-06 20:30:31,926 [INFO] 🚀 Starting initialize_clients at 20:30:31.926372
+2025-04-06 20:30:31,926 [INFO] 📊 Memory usage before initialize_clients: 156.62 MB
+2025-04-06 20:30:31,926 [INFO] 🔌 Initializing API clients...
+2025-04-06 20:30:31,946 [INFO] ✅ Successfully initialized API clients
+2025-04-06 20:30:31,946 [INFO] ✅ Completed initialize_clients in 0.02 seconds
+2025-04-06 20:30:31,946 [INFO] 📊 Memory usage after initialize_clients: 158.27 MB (Change: +1.64 MB)
+2025-04-06 20:30:31,946 [INFO] 🎨 Loading custom CSS styles...
+2025-04-06 20:30:31,946 [INFO] 📝 Configuring logfire...
+2025-04-06 20:30:31,974 [INFO] 🚀 Starting show_system_metrics at 20:30:31.973971
+2025-04-06 20:30:31,974 [INFO] 📊 Memory usage before show_system_metrics: 158.44 MB
+2025-04-06 20:30:31,975 [INFO] ✅ Completed show_system_metrics in 0.00 seconds
+2025-04-06 20:30:31,975 [INFO] 📊 Memory usage after show_system_metrics: 158.45 MB (Change: +0.02 MB)
+2025-04-06 20:30:31,976 [INFO] 🚀 Starting main at 20:30:31.976171
+2025-04-06 20:30:31,976 [INFO] 📊 Memory usage before main: 158.45 MB
+2025-04-06 20:30:31,976 [INFO] 📄 Page load #1
+2025-04-06 20:30:32,172 [INFO] 📌 Initialized selected tab to Intro
+2025-04-06 20:30:32,177 [INFO] ✅ Completed main in 0.20 seconds
+2025-04-06 20:30:32,177 [INFO] 📊 Memory usage after main: 171.47 MB (Change: +13.02 MB)
+2025-04-06 20:32:43,696 [INFO] 🔧 Loading environment variables...
+2025-04-06 20:32:43,700 [INFO] 🚀 Starting initialize_clients at 20:32:43.700004
+2025-04-06 20:32:43,700 [INFO] 📊 Memory usage before initialize_clients: 154.00 MB
+2025-04-06 20:32:43,700 [INFO] 🔌 Initializing API clients...
+2025-04-06 20:32:43,719 [INFO] ✅ Successfully initialized API clients
+2025-04-06 20:32:43,719 [INFO] ✅ Completed initialize_clients in 0.02 seconds
+2025-04-06 20:32:43,719 [INFO] 📊 Memory usage after initialize_clients: 155.61 MB (Change: +1.61 MB)
+2025-04-06 20:32:43,719 [INFO] 🎨 Loading custom CSS styles...
+2025-04-06 20:32:43,720 [INFO] 📝 Configuring logfire...
+2025-04-06 20:32:43,748 [INFO] 🚀 Starting show_system_metrics at 20:32:43.748376
+2025-04-06 20:32:43,748 [INFO] 📊 Memory usage before show_system_metrics: 155.75 MB
+2025-04-06 20:32:43,750 [INFO] ✅ Completed show_system_metrics in 0.00 seconds
+2025-04-06 20:32:43,750 [INFO] 📊 Memory usage after show_system_metrics: 155.75 MB (Change: +0.00 MB)
+2025-04-06 20:32:43,750 [INFO] 🚀 Starting main at 20:32:43.750800
+2025-04-06 20:32:43,750 [INFO] 📊 Memory usage before main: 155.77 MB
+2025-04-06 20:32:43,751 [INFO] 📄 Page load #1
+2025-04-06 20:32:43,966 [INFO] 📌 Initialized selected tab to Intro
+2025-04-06 20:32:43,973 [INFO] ✅ Completed main in 0.22 seconds
+2025-04-06 20:32:43,974 [INFO] 📊 Memory usage after main: 159.42 MB (Change: +3.66 MB)
+2025-04-06 20:33:20,103 [INFO] 🔧 Loading environment variables...
+2025-04-06 20:33:20,107 [INFO] 🚀 Starting initialize_clients at 20:33:20.107610
+2025-04-06 20:33:20,107 [INFO] 📊 Memory usage before initialize_clients: 155.05 MB
+2025-04-06 20:33:20,107 [INFO] 🔌 Initializing API clients...
+2025-04-06 20:33:20,127 [INFO] ✅ Successfully initialized API clients
+2025-04-06 20:33:20,127 [INFO] ✅ Completed initialize_clients in 0.02 seconds
+2025-04-06 20:33:20,127 [INFO] 📊 Memory usage after initialize_clients: 156.72 MB (Change: +1.67 MB)
+2025-04-06 20:33:20,127 [INFO] 🎨 Loading custom CSS styles...
+2025-04-06 20:33:20,128 [INFO] 📝 Configuring logfire...
+2025-04-06 20:33:20,163 [INFO] 🚀 Starting show_system_metrics at 20:33:20.163520
+2025-04-06 20:33:20,163 [INFO] 📊 Memory usage before show_system_metrics: 156.61 MB
+2025-04-06 20:33:20,165 [INFO] ✅ Completed show_system_metrics in 0.00 seconds
+2025-04-06 20:33:20,165 [INFO] 📊 Memory usage after show_system_metrics: 156.62 MB (Change: +0.02 MB)
+2025-04-06 20:33:20,166 [INFO] 🚀 Starting main at 20:33:20.165996
+2025-04-06 20:33:20,166 [INFO] 📊 Memory usage before main: 156.66 MB
+2025-04-06 20:33:20,166 [INFO] 📄 Page load #1
+2025-04-06 20:33:20,360 [INFO] 📌 Initialized selected tab to Intro
+2025-04-06 20:33:20,365 [INFO] ✅ Completed main in 0.20 seconds
+2025-04-06 20:33:20,365 [INFO] 📊 Memory usage after main: 169.44 MB (Change: +12.78 MB)
+2025-04-06 20:36:05,215 [INFO] 🔌 Initializing clients with timeout...
+2025-04-06 20:36:05,234 [ERROR] ❌ Failed to initialize clients: name 'get_clients' is not defined
+2025-04-06 20:36:05,235 [ERROR] Stack trace: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/archon/archon_graph.py", line 67, in initialize_clients_with_timeout
+    supabase = get_clients()[1]  # Get only Supabase client
+               ^^^^^^^^^^^
+NameError: name 'get_clients' is not defined
+
+2025-04-06 20:36:05,235 [ERROR] ❌ Failed to initialize clients: name 'get_clients' is not defined
+2025-04-06 20:36:05,237 [ERROR] Stack trace: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/archon/archon_graph.py", line 77, in <module>
+    embedding_client, supabase = asyncio.run(initialize_clients_with_timeout())
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/archon/archon_graph.py", line 67, in initialize_clients_with_timeout
+    supabase = get_clients()[1]  # Get only Supabase client
+               ^^^^^^^^^^^
+NameError: name 'get_clients' is not defined
+
+2025-04-06 20:36:57,236 [INFO] 🔌 Initializing clients with timeout...
+2025-04-06 20:36:57,270 [INFO] ✅ Clients initialized successfully
+2025-04-06 20:39:59,067 [INFO] 🔌 Initializing clients with timeout...
+2025-04-06 20:39:59,101 [INFO] ✅ Clients initialized successfully
+2025-04-06 20:41:05,189 [INFO] 🔌 Initializing clients with timeout...
+2025-04-06 20:41:05,223 [INFO] ✅ Clients initialized successfully
+2025-04-06 20:42:07,589 [INFO] 🔧 Loading environment variables...
+2025-04-06 20:42:07,592 [INFO] 🚀 Starting initialize_clients at 20:42:07.592097
+2025-04-06 20:42:07,592 [INFO] 📊 Memory usage before initialize_clients: 152.17 MB
+2025-04-06 20:42:07,592 [INFO] 🔌 Initializing API clients...
+2025-04-06 20:42:07,613 [INFO] ✅ Successfully initialized API clients
+2025-04-06 20:42:07,613 [INFO] ✅ Completed initialize_clients in 0.02 seconds
+2025-04-06 20:42:07,613 [INFO] 📊 Memory usage after initialize_clients: 153.78 MB (Change: +1.61 MB)
+2025-04-06 20:42:07,613 [INFO] 🎨 Loading custom CSS styles...
+2025-04-06 20:42:07,736 [INFO] 📝 Configuring logfire...
+2025-04-06 20:42:07,770 [INFO] 🚀 Starting show_system_metrics at 20:42:07.770581
+2025-04-06 20:42:07,770 [INFO] 📊 Memory usage before show_system_metrics: 154.80 MB
+2025-04-06 20:42:07,772 [INFO] ✅ Completed show_system_metrics in 0.00 seconds
+2025-04-06 20:42:07,772 [INFO] 📊 Memory usage after show_system_metrics: 154.83 MB (Change: +0.03 MB)
+2025-04-06 20:42:07,772 [INFO] 🚀 Starting main at 20:42:07.772946
+2025-04-06 20:42:07,773 [INFO] 📊 Memory usage before main: 154.84 MB
+2025-04-06 20:42:07,773 [INFO] 📄 Page load #1
+2025-04-06 20:42:07,978 [INFO] 📌 Initialized selected tab to Intro
+2025-04-06 20:42:07,982 [INFO] ✅ Completed main in 0.21 seconds
+2025-04-06 20:42:07,982 [INFO] 📊 Memory usage after main: 166.02 MB (Change: +11.17 MB)
+2025-04-06 20:42:11,106 [INFO] 🔧 Loading environment variables...
+2025-04-06 20:42:11,115 [INFO] 🚀 Starting initialize_clients at 20:42:11.115754
+2025-04-06 20:42:11,116 [INFO] 📊 Memory usage before initialize_clients: 100.50 MB
+2025-04-06 20:42:11,116 [INFO] 🔌 Initializing API clients...
+2025-04-06 20:42:11,149 [INFO] ✅ Successfully initialized API clients
+2025-04-06 20:42:11,150 [INFO] ✅ Completed initialize_clients in 0.04 seconds
+2025-04-06 20:42:11,150 [INFO] 📊 Memory usage after initialize_clients: 92.88 MB (Change: -7.62 MB)
+2025-04-06 20:42:11,150 [INFO] 🎨 Loading custom CSS styles...
+2025-04-06 20:42:11,151 [INFO] 📝 Configuring logfire...
+2025-04-06 20:42:11,224 [INFO] 🚀 Starting show_system_metrics at 20:42:11.224122
+2025-04-06 20:42:11,224 [INFO] 📊 Memory usage before show_system_metrics: 116.89 MB
+2025-04-06 20:42:11,225 [INFO] ✅ Completed show_system_metrics in 0.00 seconds
+2025-04-06 20:42:11,226 [INFO] 📊 Memory usage after show_system_metrics: 117.11 MB (Change: +0.22 MB)
+2025-04-06 20:42:11,226 [INFO] 🚀 Starting main at 20:42:11.226417
+2025-04-06 20:42:11,226 [INFO] 📊 Memory usage before main: 117.23 MB
+2025-04-06 20:42:11,226 [INFO] 📄 Page load #2
+2025-04-06 20:42:11,421 [INFO] 📑 Tab switch #1: None -> Chat
+2025-04-06 20:42:11,423 [INFO] Started new chat session with thread ID: 20250406-204211
+2025-04-06 20:42:11,424 [INFO] ✅ Completed main in 0.20 seconds
+2025-04-06 20:42:11,424 [INFO] 📊 Memory usage after main: 123.30 MB (Change: +6.06 MB)
+2025-04-06 20:42:20,264 [INFO] 🔧 Loading environment variables...
+2025-04-06 20:42:20,274 [INFO] 🚀 Starting initialize_clients at 20:42:20.274859
+2025-04-06 20:42:20,275 [INFO] 📊 Memory usage before initialize_clients: 54.30 MB
+2025-04-06 20:42:20,275 [INFO] 🔌 Initializing API clients...
+2025-04-06 20:42:20,309 [INFO] ✅ Successfully initialized API clients
+2025-04-06 20:42:20,309 [INFO] ✅ Completed initialize_clients in 0.04 seconds
+2025-04-06 20:42:20,309 [INFO] 📊 Memory usage after initialize_clients: 65.69 MB (Change: +11.39 MB)
+2025-04-06 20:42:20,309 [INFO] 🎨 Loading custom CSS styles...
+2025-04-06 20:42:20,310 [INFO] 📝 Configuring logfire...
+2025-04-06 20:42:20,353 [INFO] 🚀 Starting show_system_metrics at 20:42:20.353663
+2025-04-06 20:42:20,353 [INFO] 📊 Memory usage before show_system_metrics: 97.45 MB
+2025-04-06 20:42:20,355 [INFO] ✅ Completed show_system_metrics in 0.00 seconds
+2025-04-06 20:42:20,355 [INFO] 📊 Memory usage after show_system_metrics: 97.67 MB (Change: +0.22 MB)
+2025-04-06 20:42:20,355 [INFO] 🚀 Starting main at 20:42:20.355777
+2025-04-06 20:42:20,355 [INFO] 📊 Memory usage before main: 97.83 MB
+2025-04-06 20:42:20,355 [INFO] 📄 Page load #1
+2025-04-06 20:42:20,543 [INFO] 📌 Initialized selected tab to Intro
+2025-04-06 20:42:20,545 [INFO] 📑 Tab switch #1: None -> Chat
+2025-04-06 20:42:20,546 [INFO] Started new chat session with thread ID: 20250406-204211
+2025-04-06 20:42:20,547 [INFO] ✅ Completed main in 0.19 seconds
+2025-04-06 20:42:20,547 [INFO] 📊 Memory usage after main: 110.59 MB (Change: +12.77 MB)
+2025-04-06 20:42:29,208 [INFO] 🔧 Loading environment variables...
+2025-04-06 20:42:29,214 [INFO] 🚀 Starting initialize_clients at 20:42:29.214937
+2025-04-06 20:42:29,215 [INFO] 📊 Memory usage before initialize_clients: 144.62 MB
+2025-04-06 20:42:29,215 [INFO] 🔌 Initializing API clients...
+2025-04-06 20:42:29,248 [INFO] ✅ Successfully initialized API clients
+2025-04-06 20:42:29,249 [INFO] ✅ Completed initialize_clients in 0.03 seconds
+2025-04-06 20:42:29,249 [INFO] 📊 Memory usage after initialize_clients: 146.22 MB (Change: +1.59 MB)
+2025-04-06 20:42:29,249 [INFO] 🎨 Loading custom CSS styles...
+2025-04-06 20:42:29,249 [INFO] 📝 Configuring logfire...
+2025-04-06 20:42:29,313 [INFO] 🚀 Starting show_system_metrics at 20:42:29.313317
+2025-04-06 20:42:29,313 [INFO] 📊 Memory usage before show_system_metrics: 146.61 MB
+2025-04-06 20:42:29,316 [INFO] ✅ Completed show_system_metrics in 0.00 seconds
+2025-04-06 20:42:29,316 [INFO] 📊 Memory usage after show_system_metrics: 146.62 MB (Change: +0.02 MB)
+2025-04-06 20:42:29,319 [INFO] 🚀 Starting main at 20:42:29.319160
+2025-04-06 20:42:29,319 [INFO] 📊 Memory usage before main: 146.62 MB
+2025-04-06 20:42:29,319 [INFO] 📄 Page load #3
+2025-04-06 20:42:29,536 [ERROR] Error processing request: Checkpointer requires one or more of the following 'configurable' keys: ['thread_id', 'checkpoint_ns', 'checkpoint_id']
+2025-04-06 20:42:29,537 [INFO] ✅ Completed main in 0.22 seconds
+2025-04-06 20:42:29,537 [INFO] 📊 Memory usage after main: 159.55 MB (Change: +12.92 MB)

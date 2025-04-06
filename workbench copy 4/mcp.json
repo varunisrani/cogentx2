@@ -1,0 +1,50 @@
+{
+  "mcpServers": {
+    "mcp-server-serper": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@marcopesani/mcp-server-serper",
+        "--config",
+        "{\"serperApiKey\":\"ss8\"}"
+      ],
+      "env": {
+        "RETRY_MAX_ATTEMPTS": "5",
+        "RETRY_INITIAL_DELAY": "2000",
+        "RETRY_MAX_DELAY": "30000",
+        "RETRY_BACKOFF_FACTOR": "3"
+      }
+    },
+    "mcp-spotify": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@superseoworld/mcp-spotify",
+        "--key",
+        "040afa77-557a-4a7b-9169-3f1f2b9d685f"
+      ],
+      "env": {
+        "RETRY_MAX_ATTEMPTS": "5",
+        "RETRY_INITIAL_DELAY": "2000",
+        "RETRY_MAX_DELAY": "30000",
+        "RETRY_BACKOFF_FACTOR": "3"
+      }
+    }
+  },
+  "metadata": {
+    "generatedWith": "ai-enhanced",
+    "mergeTimestamp": "2025-04-06T06:21:12.889554",
+    "userQuery": "Create an agent that integrates both Serper and Spotify APIs.",
+    "sourceTemplates": [
+      "serper_agent",
+      "spotify_agent"
+    ],
+    "adaptedWith": "ai",
+    "adaptTimestamp": "2025-04-06T06:21:54.472437",
+    "originalTemplate": "serper_spotify_agent"
+  }
+}

@@ -1,0 +1,319 @@
+2025-04-06 07:47:29,594 [INFO] [main.py:109] Starting Both Integrated Agent
+2025-04-06 07:47:30,270 [INFO] [main.py:114] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-06 07:47:30,271 [INFO] [main.py:118] Loading configuration...
+2025-04-06 07:47:30,271 [INFO] [models.py:79] Loading agent configuration...
+2025-04-06 07:47:30,275 [INFO] [models.py:81] Configuration loaded successfully
+2025-04-06 07:47:30,275 [INFO] [main.py:121] Setting up agent...
+2025-04-06 07:47:30,275 [INFO] [agent.py:84] Created integrated agent instance
+2025-04-06 07:47:30,275 [INFO] [tools.py:295] Created Serper MCP server with WebSocket support
+2025-04-06 07:47:30,275 [INFO] [agent.py:92] Added Serper server to agent
+2025-04-06 07:47:30,275 [INFO] [tools.py:324] Created Spotify MCP server with WebSocket support
+2025-04-06 07:47:30,276 [INFO] [agent.py:97] Added Spotify server to agent
+2025-04-06 07:47:30,276 [INFO] [main.py:126] Both MCP Server started successfully
+2025-04-06 07:47:50,915 [INFO] [main.py:138] Processing query: 'serach music of yoyo honey singh'
+2025-04-06 07:47:50,917 [INFO] [tools.py:378] Processing Serper query: 'serach music of yoyo honey singh'
+2025-04-06 07:47:50,918 [INFO] [tools.py:219] Processing query: 'serach music of yoyo honey singh'
+2025-04-06 07:47:50,918 [ERROR] [agent.py:70] Error running query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:47:50,918 [ERROR] [tools.py:266] Error processing query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:47:50,922 [ERROR] [tools.py:267] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 239, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 66, in run
+    result = await server.execute_tool('query', {'text': query})
+                   ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPServerStdio' object has no attribute 'execute_tool'
+
+2025-04-06 07:47:50,923 [ERROR] [tools.py:391] Error processing Serper query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:47:50,923 [ERROR] [tools.py:392] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 385, in run_serper_query
+    result = await process_user_query(agent, user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 239, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 66, in run
+    result = await server.execute_tool('query', {'text': query})
+                   ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPServerStdio' object has no attribute 'execute_tool'
+
+2025-04-06 07:47:50,924 [ERROR] [main.py:156] Error processing both query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:32,346 [INFO] [main.py:169] User interrupted the process
+2025-04-06 07:49:32,348 [INFO] [main.py:186] Both agent shutting down
+2025-04-06 07:49:32,350 [INFO] [main.py:193] Exiting gracefully...
+2025-04-06 07:49:34,418 [INFO] [main.py:109] Starting Both Integrated Agent
+2025-04-06 07:49:35,036 [INFO] [main.py:114] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-06 07:49:35,036 [INFO] [main.py:118] Loading configuration...
+2025-04-06 07:49:35,037 [INFO] [models.py:79] Loading agent configuration...
+2025-04-06 07:49:35,040 [INFO] [models.py:81] Configuration loaded successfully
+2025-04-06 07:49:35,040 [INFO] [main.py:121] Setting up agent...
+2025-04-06 07:49:35,040 [INFO] [agent.py:84] Created integrated agent instance
+2025-04-06 07:49:35,041 [INFO] [tools.py:278] Created Serper MCP server with WebSocket support
+2025-04-06 07:49:35,041 [INFO] [agent.py:92] Added Serper server to agent
+2025-04-06 07:49:35,041 [INFO] [tools.py:307] Created Spotify MCP server with WebSocket support
+2025-04-06 07:49:35,041 [INFO] [agent.py:97] Added Spotify server to agent
+2025-04-06 07:49:35,041 [INFO] [main.py:126] Both MCP Server started successfully
+2025-04-06 07:49:39,677 [INFO] [main.py:138] Processing query: 's'
+2025-04-06 07:49:39,677 [INFO] [tools.py:361] Processing Serper query: 's'
+2025-04-06 07:49:39,678 [INFO] [tools.py:219] Processing query: 's'
+2025-04-06 07:49:39,678 [ERROR] [agent.py:70] Error running query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:39,678 [ERROR] [tools.py:249] Error processing query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:39,680 [ERROR] [tools.py:250] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 222, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 66, in run
+    result = await server.execute_tool('query', {'text': query})
+                   ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPServerStdio' object has no attribute 'execute_tool'
+
+2025-04-06 07:49:39,680 [ERROR] [tools.py:373] Error processing Serper query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:39,681 [ERROR] [tools.py:374] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 367, in run_serper_query
+    result = await process_user_query(agent, user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 222, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 66, in run
+    result = await server.execute_tool('query', {'text': query})
+                   ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPServerStdio' object has no attribute 'execute_tool'
+
+2025-04-06 07:49:39,681 [ERROR] [main.py:156] Error processing both query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:40,578 [INFO] [main.py:138] Processing query: 's'
+2025-04-06 07:49:40,579 [INFO] [tools.py:361] Processing Serper query: 's'
+2025-04-06 07:49:40,579 [INFO] [tools.py:219] Processing query: 's'
+2025-04-06 07:49:40,579 [ERROR] [agent.py:70] Error running query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:40,579 [ERROR] [tools.py:249] Error processing query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:40,580 [ERROR] [tools.py:250] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 222, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 66, in run
+    result = await server.execute_tool('query', {'text': query})
+                   ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPServerStdio' object has no attribute 'execute_tool'
+
+2025-04-06 07:49:40,580 [ERROR] [tools.py:373] Error processing Serper query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:40,580 [ERROR] [tools.py:374] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 367, in run_serper_query
+    result = await process_user_query(agent, user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 222, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 66, in run
+    result = await server.execute_tool('query', {'text': query})
+                   ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPServerStdio' object has no attribute 'execute_tool'
+
+2025-04-06 07:49:40,581 [ERROR] [main.py:156] Error processing both query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:41,092 [INFO] [main.py:138] Processing query: 's'
+2025-04-06 07:49:41,094 [INFO] [tools.py:361] Processing Serper query: 's'
+2025-04-06 07:49:41,094 [INFO] [tools.py:219] Processing query: 's'
+2025-04-06 07:49:41,094 [ERROR] [agent.py:70] Error running query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:41,094 [ERROR] [tools.py:249] Error processing query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:41,095 [ERROR] [tools.py:250] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 222, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 66, in run
+    result = await server.execute_tool('query', {'text': query})
+                   ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPServerStdio' object has no attribute 'execute_tool'
+
+2025-04-06 07:49:41,095 [ERROR] [tools.py:373] Error processing Serper query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:41,095 [ERROR] [tools.py:374] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 367, in run_serper_query
+    result = await process_user_query(agent, user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 222, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 66, in run
+    result = await server.execute_tool('query', {'text': query})
+                   ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPServerStdio' object has no attribute 'execute_tool'
+
+2025-04-06 07:49:41,096 [ERROR] [main.py:156] Error processing both query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:41,496 [INFO] [main.py:138] Processing query: 's'
+2025-04-06 07:49:41,497 [INFO] [tools.py:361] Processing Serper query: 's'
+2025-04-06 07:49:41,497 [INFO] [tools.py:219] Processing query: 's'
+2025-04-06 07:49:41,498 [ERROR] [agent.py:70] Error running query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:41,498 [ERROR] [tools.py:249] Error processing query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:41,499 [ERROR] [tools.py:250] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 222, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 66, in run
+    result = await server.execute_tool('query', {'text': query})
+                   ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPServerStdio' object has no attribute 'execute_tool'
+
+2025-04-06 07:49:41,499 [ERROR] [tools.py:373] Error processing Serper query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:49:41,499 [ERROR] [tools.py:374] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 367, in run_serper_query
+    result = await process_user_query(agent, user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 222, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 66, in run
+    result = await server.execute_tool('query', {'text': query})
+                   ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPServerStdio' object has no attribute 'execute_tool'
+
+2025-04-06 07:49:41,499 [ERROR] [main.py:156] Error processing both query: 'MCPServerStdio' object has no attribute 'execute_tool'
+2025-04-06 07:52:06,361 [INFO] [main.py:169] User interrupted the process
+2025-04-06 07:52:06,363 [INFO] [main.py:186] Both agent shutting down
+2025-04-06 07:52:06,365 [INFO] [main.py:193] Exiting gracefully...
+2025-04-06 07:52:09,925 [INFO] [main.py:109] Starting Both Integrated Agent
+2025-04-06 07:52:10,362 [INFO] [main.py:114] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-06 07:52:10,362 [INFO] [main.py:118] Loading configuration...
+2025-04-06 07:52:10,362 [INFO] [models.py:79] Loading agent configuration...
+2025-04-06 07:52:10,366 [INFO] [models.py:81] Configuration loaded successfully
+2025-04-06 07:52:10,366 [INFO] [main.py:121] Setting up agent...
+2025-04-06 07:52:10,366 [INFO] [agent.py:118] Created integrated agent instance
+2025-04-06 07:52:10,366 [INFO] [tools.py:282] Created Serper MCP server with WebSocket support
+2025-04-06 07:52:10,366 [INFO] [agent.py:126] Added Serper server to agent
+2025-04-06 07:52:10,366 [INFO] [tools.py:311] Created Spotify MCP server with WebSocket support
+2025-04-06 07:52:10,366 [INFO] [agent.py:131] Added Spotify server to agent
+2025-04-06 07:52:10,366 [INFO] [main.py:126] Both MCP Server started successfully
+2025-04-06 07:52:11,219 [INFO] [main.py:186] Both agent shutting down
+2025-04-06 07:52:25,341 [INFO] [main.py:109] Starting Both Integrated Agent
+2025-04-06 07:52:25,777 [INFO] [main.py:114] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-06 07:52:25,777 [INFO] [main.py:118] Loading configuration...
+2025-04-06 07:52:25,778 [INFO] [models.py:79] Loading agent configuration...
+2025-04-06 07:52:25,782 [INFO] [models.py:81] Configuration loaded successfully
+2025-04-06 07:52:25,782 [INFO] [main.py:121] Setting up agent...
+2025-04-06 07:52:25,782 [INFO] [agent.py:118] Created integrated agent instance
+2025-04-06 07:52:25,782 [INFO] [tools.py:282] Created Serper MCP server with WebSocket support
+2025-04-06 07:52:25,782 [INFO] [agent.py:126] Added Serper server to agent
+2025-04-06 07:52:25,782 [INFO] [tools.py:311] Created Spotify MCP server with WebSocket support
+2025-04-06 07:52:25,782 [INFO] [agent.py:131] Added Spotify server to agent
+2025-04-06 07:52:25,782 [INFO] [main.py:126] Both MCP Server started successfully
+2025-04-06 07:52:26,891 [INFO] [main.py:138] Processing query: 'h'
+2025-04-06 07:52:26,892 [INFO] [tools.py:365] Processing Serper query: 'h'
+2025-04-06 07:52:26,892 [INFO] [tools.py:227] Processing query: 'h'
+2025-04-06 07:52:26,893 [ERROR] [agent.py:70] Error executing tool 'search': Server does not support tool execution
+2025-04-06 07:52:26,893 [ERROR] [agent.py:103] Error running query: Server does not support tool execution
+2025-04-06 07:52:26,894 [ERROR] [agent.py:104] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 99, in run
+    result = await self.execute_server_tool(server, tool_name, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 67, in execute_server_tool
+    raise Exception(f"Server does not support tool execution")
+Exception: Server does not support tool execution
+
+2025-04-06 07:52:26,895 [ERROR] [tools.py:253] Error processing query: Server does not support tool execution
+2025-04-06 07:52:26,896 [ERROR] [tools.py:254] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 230, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 99, in run
+    result = await self.execute_server_tool(server, tool_name, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 67, in execute_server_tool
+    raise Exception(f"Server does not support tool execution")
+Exception: Server does not support tool execution
+
+2025-04-06 07:52:26,896 [ERROR] [tools.py:375] Error processing Serper query: Server does not support tool execution
+2025-04-06 07:52:26,897 [ERROR] [tools.py:376] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 371, in run_serper_query
+    result = await process_user_query(agent, user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 230, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 99, in run
+    result = await self.execute_server_tool(server, tool_name, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 67, in execute_server_tool
+    raise Exception(f"Server does not support tool execution")
+Exception: Server does not support tool execution
+
+2025-04-06 07:52:26,897 [ERROR] [main.py:156] Error processing both query: Server does not support tool execution
+2025-04-06 07:52:28,034 [INFO] [main.py:138] Processing query: 'hj'
+2025-04-06 07:52:28,035 [INFO] [tools.py:365] Processing Serper query: 'hj'
+2025-04-06 07:52:28,035 [INFO] [tools.py:227] Processing query: 'hj'
+2025-04-06 07:52:28,035 [ERROR] [agent.py:70] Error executing tool 'search': Server does not support tool execution
+2025-04-06 07:52:28,035 [ERROR] [agent.py:103] Error running query: Server does not support tool execution
+2025-04-06 07:52:28,036 [ERROR] [agent.py:104] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 99, in run
+    result = await self.execute_server_tool(server, tool_name, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 67, in execute_server_tool
+    raise Exception(f"Server does not support tool execution")
+Exception: Server does not support tool execution
+
+2025-04-06 07:52:28,036 [ERROR] [tools.py:253] Error processing query: Server does not support tool execution
+2025-04-06 07:52:28,037 [ERROR] [tools.py:254] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 230, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 99, in run
+    result = await self.execute_server_tool(server, tool_name, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 67, in execute_server_tool
+    raise Exception(f"Server does not support tool execution")
+Exception: Server does not support tool execution
+
+2025-04-06 07:52:28,037 [ERROR] [tools.py:375] Error processing Serper query: Server does not support tool execution
+2025-04-06 07:52:28,037 [ERROR] [tools.py:376] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 371, in run_serper_query
+    result = await process_user_query(agent, user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 230, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 99, in run
+    result = await self.execute_server_tool(server, tool_name, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 67, in execute_server_tool
+    raise Exception(f"Server does not support tool execution")
+Exception: Server does not support tool execution
+
+2025-04-06 07:52:28,037 [ERROR] [main.py:156] Error processing both query: Server does not support tool execution
+2025-04-06 07:52:28,706 [INFO] [main.py:138] Processing query: 'h'
+2025-04-06 07:52:28,706 [INFO] [tools.py:365] Processing Serper query: 'h'
+2025-04-06 07:52:28,707 [INFO] [tools.py:227] Processing query: 'h'
+2025-04-06 07:52:28,707 [ERROR] [agent.py:70] Error executing tool 'search': Server does not support tool execution
+2025-04-06 07:52:28,707 [ERROR] [agent.py:103] Error running query: Server does not support tool execution
+2025-04-06 07:52:28,708 [ERROR] [agent.py:104] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 99, in run
+    result = await self.execute_server_tool(server, tool_name, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 67, in execute_server_tool
+    raise Exception(f"Server does not support tool execution")
+Exception: Server does not support tool execution
+
+2025-04-06 07:52:28,709 [ERROR] [tools.py:253] Error processing query: Server does not support tool execution
+2025-04-06 07:52:28,709 [ERROR] [tools.py:254] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 230, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 99, in run
+    result = await self.execute_server_tool(server, tool_name, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 67, in execute_server_tool
+    raise Exception(f"Server does not support tool execution")
+Exception: Server does not support tool execution
+
+2025-04-06 07:52:28,709 [ERROR] [tools.py:375] Error processing Serper query: Server does not support tool execution
+2025-04-06 07:52:28,710 [ERROR] [tools.py:376] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 371, in run_serper_query
+    result = await process_user_query(agent, user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/tools.py", line 230, in process_user_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 99, in run
+    result = await self.execute_server_tool(server, tool_name, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 67, in execute_server_tool
+    raise Exception(f"Server does not support tool execution")
+Exception: Server does not support tool execution
+
+2025-04-06 07:52:28,710 [ERROR] [main.py:156] Error processing both query: Server does not support tool execution
+2025-04-06 07:52:28,854 [INFO] [main.py:186] Both agent shutting down

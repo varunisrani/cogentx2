@@ -1,0 +1,9 @@
+{
+  "name": "spotify github",
+  "version": "1.0.0",
+  "description": "Multi-service agent created with Archon",
+  "dependencies": {
+    "@modelcontextprotocol/server-github": "^2025.3.28",
+    "@smithery/cli": "latest"
+  }
+}
