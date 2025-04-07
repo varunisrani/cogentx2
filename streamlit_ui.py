@@ -15,6 +15,7 @@ import queue
 import sys
 from datetime import datetime
 import re
+from code_editor import code_editor
 
 # Import the streamlit_terminal package
 try:
@@ -47,6 +48,8 @@ from streamlit_pages.agent_service import agent_service_tab
 from streamlit_pages.mcp import mcp_tab
 from streamlit_pages.future_enhancements import future_enhancements_tab
 from streamlit_pages.logs import logs_tab, capture_terminal_output
+# Code editor section
+from streamlit_pages.nocode_editor import nocode_editor_tab
 
 # Load environment variables from .env file
 load_dotenv()
@@ -672,7 +675,7 @@ async def main():
     query_params = st.query_params
     if "tab" in query_params:
         tab_name = query_params["tab"]
-        if tab_name in ["Intro", "Chat", "Environment", "Database", "Documentation", "Agent Service", "MCP", "Future Enhancements", "Generated Code"]:
+        if tab_name in ["Intro", "Chat", "Environment", "Database", "Documentation", "Agent Service", "MCP", "Future Enhancements", "Generated Code", "Code Editor"]:
             st.session_state.selected_tab = tab_name
 
     # Add sidebar navigation
@@ -699,6 +702,7 @@ async def main():
         service_button = st.button("Agent Service", use_container_width=True, key="service_button")
         mcp_button = st.button("MCP", use_container_width=True, key="mcp_button")
         generated_code_button = st.button("Generated Code", use_container_width=True, key="generated_code_button")
+        nocode_editor_button = st.button("Code Editor", use_container_width=True, key="nocode_editor_button")
         logs_button = st.button("Logs", use_container_width=True, key="logs_button")
         future_enhancements_button = st.button("Future Enhancements", use_container_width=True, key="future_enhancements_button")
 
@@ -719,6 +723,8 @@ async def main():
             st.session_state.selected_tab = "Documentation"
         elif generated_code_button:
             st.session_state.selected_tab = "Generated Code"
+        elif nocode_editor_button:
+            st.session_state.selected_tab = "Code Editor"
         elif logs_button:
             st.session_state.selected_tab = "Logs"
         elif future_enhancements_button:
@@ -749,6 +755,9 @@ async def main():
     elif st.session_state.selected_tab == "Generated Code":
         st.title("Archon - Generated Code")
         display_workbench_code()
+    elif st.session_state.selected_tab == "Code Editor":
+        st.title("Archon - Code Editor")
+        nocode_editor_tab()
     elif st.session_state.selected_tab == "Logs":
         st.title("Archon - System Logs")
         logs_tab()
