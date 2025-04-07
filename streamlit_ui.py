@@ -16,6 +16,9 @@ import sys
 from datetime import datetime
 import re
 from code_editor import code_editor
+from PIL import Image
+import logging
+import traceback
 
 # Import the streamlit_terminal package
 try:
@@ -27,12 +30,94 @@ except Exception:
 # Import our custom terminal implementation as a fallback
 from custom_terminal import st_custom_terminal
 
+# Import page modules
+try:
+    from streamlit_pages.home import home_tab
+except ImportError:
+    logger.error("Failed to import home_tab")
+    def home_tab():
+        st.error("Home tab module not found")
+
+try:
+    from streamlit_pages.agent_runner import agent_runner_tab
+except ImportError:
+    logger.error("Failed to import agent_runner_tab")
+    def agent_runner_tab():
+        st.error("Agent Runner tab module not found")
+
+try:
+    from streamlit_pages.template_browser import template_browser_tab
+except ImportError:
+    logger.error("Failed to import template_browser_tab")
+    def template_browser_tab():
+        st.error("Template Browser tab module not found")
+
+try:
+    from streamlit_pages.workbench import workbench_tab
+except ImportError:
+    logger.error("Failed to import workbench_tab")
+    def workbench_tab():
+        st.error("Workbench tab module not found")
+
+try:
+    from streamlit_pages.nocode_editor import nocode_editor_tab
+except ImportError:
+    logger.error("Failed to import nocode_editor_tab")
+    def nocode_editor_tab():
+        st.error("Code Editor tab module not found")
+
+try:
+    from streamlit_pages.nocode_builder import nocode_builder_tab
+except ImportError:
+    logger.error("Failed to import nocode_builder_tab")
+    def nocode_builder_tab():
+        st.error("No-Code Builder tab module not found")
+
+try:
+    from streamlit_pages.chat import chat_tab
+except ImportError:
+    logger.error("Failed to import chat_tab")
+    def chat_tab():
+        st.error("Chat tab module not found")
+
+try:
+    from streamlit_pages.terminal import terminal_tab
+except ImportError:
+    logger.error("Failed to import terminal_tab")
+    def terminal_tab():
+        st.error("Terminal tab module not found")
+
+# Log setup
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("streamlit_ui.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
 # Set page config - must be the first Streamlit command
 st.set_page_config(
-    page_title="Archon - Agent Builder",
-    page_icon="🤖",
+    page_title="Archon",
+    page_icon="🧙‍♂️",
     layout="wide",
+    initial_sidebar_state="expanded",
 )
+
+# Display icon and title in the sidebar
+try:
+    logo_path = 'assets/archon-logo.png'
+    if os.path.exists(logo_path):
+        image = Image.open(logo_path)
+        st.sidebar.image(image, width=250)
+    else:
+        # Use emoji as fallback
+        st.sidebar.title("🧙‍♂️ Archon")
+except Exception as e:
+    st.sidebar.title("🧙‍♂️ Archon")
+    logger.error(f"Could not load logo: {e}")
 
 # Utilities and styles
 from utils.utils import get_clients
@@ -40,7 +125,6 @@ from streamlit_pages.styles import load_css
 
 # Streamlit pages
 from streamlit_pages.intro import intro_tab
-from streamlit_pages.chat import chat_tab
 from streamlit_pages.environment import environment_tab
 from streamlit_pages.database import database_tab
 from streamlit_pages.documentation import documentation_tab
@@ -48,8 +132,6 @@ from streamlit_pages.agent_service import agent_service_tab
 from streamlit_pages.mcp import mcp_tab
 from streamlit_pages.future_enhancements import future_enhancements_tab
 from streamlit_pages.logs import logs_tab, capture_terminal_output
-# Code editor section
-from streamlit_pages.nocode_editor import nocode_editor_tab
 
 # Load environment variables from .env file
 load_dotenv()
@@ -675,7 +757,7 @@ async def main():
     query_params = st.query_params
     if "tab" in query_params:
         tab_name = query_params["tab"]
-        if tab_name in ["Intro", "Chat", "Environment", "Database", "Documentation", "Agent Service", "MCP", "Future Enhancements", "Generated Code", "Code Editor"]:
+        if tab_name in ["Home", "Chat", "Agent Runner", "Template Browser", "Workbench", "Code Editor", "No-Code Builder", "Terminal", "Generated Code", "Environment", "Database", "Documentation", "Agent Service", "MCP", "Logs", "Future Enhancements"]:
             st.session_state.selected_tab = tab_name
 
     # Add sidebar navigation
@@ -687,56 +769,92 @@ async def main():
 
         # Initialize session state for selected tab if not present
         if "selected_tab" not in st.session_state:
-            st.session_state.selected_tab = "Intro"
+            st.session_state.selected_tab = "Home"
 
         # Initialize system logs if not present
         if "system_logs" not in st.session_state:
             st.session_state.system_logs = []
 
         # Vertical navigation buttons
-        intro_button = st.button("Intro", use_container_width=True, key="intro_button")
+        intro_button = st.button("Home", use_container_width=True, key="home_button")
         chat_button = st.button("Chat", use_container_width=True, key="chat_button")
+        agent_runner_button = st.button("Agent Runner", use_container_width=True, key="agent_runner_button")
+        template_browser_button = st.button("Template Browser", use_container_width=True, key="template_browser_button")
+        workbench_button = st.button("Workbench", use_container_width=True, key="workbench_button")
+        code_editor_button = st.button("Code Editor", use_container_width=True, key="code_editor_button")
+        nocode_builder_button = st.button("No-Code Builder", use_container_width=True, key="nocode_builder_button")
+        generated_code_button = st.button("Generated Code", use_container_width=True, key="generated_code_button")
         env_button = st.button("Environment", use_container_width=True, key="env_button")
         db_button = st.button("Database", use_container_width=True, key="db_button")
         docs_button = st.button("Documentation", use_container_width=True, key="docs_button")
         service_button = st.button("Agent Service", use_container_width=True, key="service_button")
         mcp_button = st.button("MCP", use_container_width=True, key="mcp_button")
-        generated_code_button = st.button("Generated Code", use_container_width=True, key="generated_code_button")
-        nocode_editor_button = st.button("Code Editor", use_container_width=True, key="nocode_editor_button")
         logs_button = st.button("Logs", use_container_width=True, key="logs_button")
+        terminal_button = st.button("Terminal", use_container_width=True, key="terminal_button")
         future_enhancements_button = st.button("Future Enhancements", use_container_width=True, key="future_enhancements_button")
 
         # Update selected tab based on button clicks
         if intro_button:
-            st.session_state.selected_tab = "Intro"
+            st.session_state.selected_tab = "Home"
         elif chat_button:
             st.session_state.selected_tab = "Chat"
-        elif mcp_button:
-            st.session_state.selected_tab = "MCP"
+        elif agent_runner_button:
+            st.session_state.selected_tab = "Agent Runner"
+        elif template_browser_button:
+            st.session_state.selected_tab = "Template Browser"
+        elif workbench_button:
+            st.session_state.selected_tab = "Workbench"
+        elif code_editor_button:
+            st.session_state.selected_tab = "Code Editor"
+        elif nocode_builder_button:
+            st.session_state.selected_tab = "No-Code Builder"
+        elif generated_code_button:
+            st.session_state.selected_tab = "Generated Code"
         elif env_button:
             st.session_state.selected_tab = "Environment"
-        elif service_button:
-            st.session_state.selected_tab = "Agent Service"
         elif db_button:
             st.session_state.selected_tab = "Database"
         elif docs_button:
             st.session_state.selected_tab = "Documentation"
-        elif generated_code_button:
-            st.session_state.selected_tab = "Generated Code"
-        elif nocode_editor_button:
-            st.session_state.selected_tab = "Code Editor"
+        elif service_button:
+            st.session_state.selected_tab = "Agent Service"
+        elif mcp_button:
+            st.session_state.selected_tab = "MCP"
         elif logs_button:
             st.session_state.selected_tab = "Logs"
+        elif terminal_button:
+            st.session_state.selected_tab = "Terminal"
         elif future_enhancements_button:
             st.session_state.selected_tab = "Future Enhancements"
 
     # Display the selected tab
-    if st.session_state.selected_tab == "Intro":
-        st.title("Archon - Introduction")
-        intro_tab()
+    if st.session_state.selected_tab == "Home":
+        st.title("Archon - Home")
+        home_tab()
+    elif st.session_state.selected_tab == "Agent Runner":
+        st.title("Archon - Agent Runner")
+        agent_runner_tab()
+    elif st.session_state.selected_tab == "Template Browser":
+        st.title("Archon - Template Browser")
+        template_browser_tab()
+    elif st.session_state.selected_tab == "Workbench":
+        st.title("Archon - Workbench")
+        workbench_tab()
+    elif st.session_state.selected_tab == "Code Editor":
+        st.title("Archon - Code Editor")
+        nocode_editor_tab()
+    elif st.session_state.selected_tab == "No-Code Builder":
+        st.title("Archon - No-Code Builder")
+        nocode_builder_tab()
     elif st.session_state.selected_tab == "Chat":
         st.title("Archon - Agent Builder")
         await chat_tab()
+    elif st.session_state.selected_tab == "Terminal":
+        st.title("Archon - Terminal")
+        terminal_tab()
+    elif st.session_state.selected_tab == "Generated Code":
+        st.title("Archon - Generated Code")
+        display_workbench_code()
     elif st.session_state.selected_tab == "MCP":
         st.title("Archon - MCP Configuration")
         mcp_tab()
@@ -752,12 +870,6 @@ async def main():
     elif st.session_state.selected_tab == "Documentation":
         st.title("Archon - Documentation")
         documentation_tab(supabase)
-    elif st.session_state.selected_tab == "Generated Code":
-        st.title("Archon - Generated Code")
-        display_workbench_code()
-    elif st.session_state.selected_tab == "Code Editor":
-        st.title("Archon - Code Editor")
-        nocode_editor_tab()
     elif st.session_state.selected_tab == "Logs":
         st.title("Archon - System Logs")
         logs_tab()

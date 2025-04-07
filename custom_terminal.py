@@ -11,6 +11,7 @@ import os
 import logging
 from queue import Queue
 import time
+from typing import List, Callable, Any
 
 class CustomTerminal:
     """A custom terminal implementation for Streamlit"""

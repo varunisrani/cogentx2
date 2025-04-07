@@ -97,7 +97,7 @@ opentelemetry-semantic-conventions
 orjson
 packaging
 pandas
-pillow
+pillow>=10.0.0
 playwright
 pluggy
 postgrest
@@ -146,7 +146,7 @@ soupsieve
 sse-starlette
 starlette
 storage3
-streamlit
+streamlit>=1.28.0
 streamlit-ace
 StrEnum
 structlog
@@ -179,8 +179,10 @@ pydantic
 pydantic-ai
 python-dotenv
 logfire
-httpx
+httpx>=0.25.0
 nest-asyncio
 streamlit-terminal
 psutil
 sounddevice
+streamlit-elements>=0.1.0
+streamlit-code-editor>=0.1.10
