@@ -1,0 +1,667 @@
+2025-04-07 01:27:38,416 [INFO] [main.py:113] Starting YouTube Transcript MCP Agent
+2025-04-07 01:27:40,587 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 01:27:40,588 [INFO] [main.py:125] Loading configuration...
+2025-04-07 01:27:40,592 [ERROR] [models.py:27] Missing required environment variables:
+2025-04-07 01:27:40,592 [ERROR] [models.py:29]   - YOUTUBE_API_KEY
+2025-04-07 01:27:40,592 [ERROR] [models.py:30] 
+Please create a .env file with the following content:
+2025-04-07 01:27:40,592 [ERROR] [models.py:31] 
+LLM_API_KEY=your_openai_api_key
+YOUTUBE_API_KEY=your_youtube_api_key
+MODEL_CHOICE=gpt-4o-mini  # optional
+BASE_URL=https://api.openai.com/v1  # optional
+            
+2025-04-07 01:27:40,592 [INFO] [main.py:205] YouTube transcript agent shutting down
+2025-04-07 01:28:28,800 [INFO] [main.py:113] Starting YouTube Transcript MCP Agent
+2025-04-07 01:28:29,468 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 01:28:29,469 [INFO] [main.py:125] Loading configuration...
+2025-04-07 01:28:29,470 [ERROR] [models.py:27] Missing required environment variables:
+2025-04-07 01:28:29,470 [ERROR] [models.py:29]   - YOUTUBE_API_KEY
+2025-04-07 01:28:29,470 [ERROR] [models.py:30] 
+Please create a .env file with the following content:
+2025-04-07 01:28:29,470 [ERROR] [models.py:31] 
+LLM_API_KEY=your_openai_api_key
+YOUTUBE_API_KEY=your_youtube_api_key
+MODEL_CHOICE=gpt-4o-mini  # optional
+BASE_URL=https://api.openai.com/v1  # optional
+            
+2025-04-07 01:28:29,470 [INFO] [main.py:205] YouTube transcript agent shutting down
+2025-04-07 01:30:56,872 [INFO] [main.py:113] Starting YouTube Transcript MCP Agent
+2025-04-07 01:30:57,463 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 01:30:57,464 [INFO] [main.py:125] Loading configuration...
+2025-04-07 01:30:57,464 [ERROR] [models.py:27] Missing required environment variables:
+2025-04-07 01:30:57,464 [ERROR] [models.py:29]   - YOUTUBE_API_KEY
+2025-04-07 01:30:57,464 [ERROR] [models.py:30] 
+Please create a .env file with the following content:
+2025-04-07 01:30:57,464 [ERROR] [models.py:31] 
+LLM_API_KEY=your_openai_api_key
+YOUTUBE_API_KEY=your_youtube_api_key
+MODEL_CHOICE=gpt-4o-mini  # optional
+BASE_URL=https://api.openai.com/v1  # optional
+            
+2025-04-07 01:30:57,464 [INFO] [main.py:205] YouTube transcript agent shutting down
+2025-04-07 01:31:12,974 [INFO] [main.py:113] Starting YouTube Transcript MCP Agent
+2025-04-07 01:31:13,550 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 01:31:13,550 [INFO] [main.py:125] Loading configuration...
+2025-04-07 01:31:13,552 [INFO] [main.py:129] Setting up agent...
+2025-04-07 01:31:13,552 [INFO] [agent.py:48] Creating YouTube Transcript MCP Server...
+2025-04-07 01:31:13,552 [INFO] [agent.py:52] Initializing agent with YouTube Transcript MCP Server...
+2025-04-07 01:31:13,563 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 01:31:13,563 [INFO] [tools.py:11] YOUTUBE TRANSCRIPT MCP TOOLS AND FUNCTIONS
+2025-04-07 01:31:13,564 [INFO] [tools.py:12] ==================================================
+2025-04-07 01:31:13,564 [WARNING] [tools.py:118] 
+No YouTube Transcript MCP tools were discovered. This could mean either:
+2025-04-07 01:31:13,564 [WARNING] [tools.py:119] 1. The YouTube Transcript MCP server doesn't expose any tools
+2025-04-07 01:31:13,564 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-07 01:31:13,564 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-07 01:31:13,564 [INFO] [agent.py:61] Found 0 MCP tools available for YouTube transcript operations
+2025-04-07 01:31:20,938 [INFO] [main.py:134] YouTube Transcript MCP Server started successfully
+2025-04-07 01:31:34,753 [INFO] [main.py:205] YouTube transcript agent shutting down
+2025-04-07 01:31:50,349 [INFO] [main.py:113] Starting YouTube Transcript MCP Agent
+2025-04-07 01:31:50,934 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 01:31:50,934 [INFO] [main.py:125] Loading configuration...
+2025-04-07 01:31:50,936 [INFO] [main.py:129] Setting up agent...
+2025-04-07 01:31:50,936 [INFO] [agent.py:48] Creating YouTube Transcript MCP Server...
+2025-04-07 01:31:50,936 [INFO] [agent.py:52] Initializing agent with YouTube Transcript MCP Server...
+2025-04-07 01:31:50,946 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 01:31:50,947 [INFO] [tools.py:11] YOUTUBE TRANSCRIPT MCP TOOLS AND FUNCTIONS
+2025-04-07 01:31:50,947 [INFO] [tools.py:12] ==================================================
+2025-04-07 01:31:50,947 [WARNING] [tools.py:118] 
+No YouTube Transcript MCP tools were discovered. This could mean either:
+2025-04-07 01:31:50,947 [WARNING] [tools.py:119] 1. The YouTube Transcript MCP server doesn't expose any tools
+2025-04-07 01:31:50,947 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-07 01:31:50,947 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-07 01:31:50,947 [INFO] [agent.py:61] Found 0 MCP tools available for YouTube transcript operations
+2025-04-07 01:31:55,669 [INFO] [main.py:134] YouTube Transcript MCP Server started successfully
+2025-04-07 01:32:03,293 [INFO] [main.py:149] Processing query: ''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''
+2025-04-07 01:32:03,296 [INFO] [tools.py:174] Processing query: ''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''
+2025-04-07 01:32:03,297 [INFO] [tools.py:184] Extracted YouTube URL: https://www.youtube.com/watch?v=ludek5R81YU
+2025-04-07 01:32:04,397 [ERROR] [tools.py:218] Error processing query: status_code: 401, model_name: o3-mini, body: {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}
+2025-04-07 01:32:04,406 [ERROR] [tools.py:219] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 262, in _completions_create
+    return await self.client.chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 2000, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1767, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1461, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1562, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/youtube_transcript_agent/tools.py", line 187, in run_youtube_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 262, in run
+    return await self._make_request(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 314, in _make_request
+    model_response, request_usage = await ctx.deps.model.request(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 192, in request
+    response = await self._completions_create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 284, in _completions_create
+    raise ModelHTTPError(status_code=status_code, model_name=self.model_name, body=e.body) from e
+pydantic_ai.exceptions.ModelHTTPError: status_code: 401, model_name: o3-mini, body: {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}
+
+2025-04-07 01:32:04,406 [ERROR] [main.py:170] Error processing query: status_code: 401, model_name: o3-mini, body: {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}
+2025-04-07 01:32:48,592 [INFO] [main.py:179] User interrupted the process
+2025-04-07 01:32:49,482 [INFO] [main.py:212] Exiting gracefully...
+2025-04-07 01:32:51,722 [INFO] [main.py:113] Starting YouTube Transcript MCP Agent
+2025-04-07 01:32:52,105 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 01:32:52,106 [INFO] [main.py:125] Loading configuration...
+2025-04-07 01:32:52,107 [INFO] [main.py:129] Setting up agent...
+2025-04-07 01:32:52,107 [INFO] [agent.py:48] Creating YouTube Transcript MCP Server...
+2025-04-07 01:32:52,107 [INFO] [agent.py:52] Initializing agent with YouTube Transcript MCP Server...
+2025-04-07 01:32:52,118 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 01:32:52,118 [INFO] [tools.py:11] YOUTUBE TRANSCRIPT MCP TOOLS AND FUNCTIONS
+2025-04-07 01:32:52,118 [INFO] [tools.py:12] ==================================================
+2025-04-07 01:32:52,118 [WARNING] [tools.py:118] 
+No YouTube Transcript MCP tools were discovered. This could mean either:
+2025-04-07 01:32:52,119 [WARNING] [tools.py:119] 1. The YouTube Transcript MCP server doesn't expose any tools
+2025-04-07 01:32:52,119 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-07 01:32:52,119 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-07 01:32:52,119 [INFO] [agent.py:61] Found 0 MCP tools available for YouTube transcript operations
+2025-04-07 01:32:57,385 [INFO] [main.py:134] YouTube Transcript MCP Server started successfully
+2025-04-07 01:32:58,507 [INFO] [main.py:149] Processing query: 'create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k'
+2025-04-07 01:32:58,508 [INFO] [tools.py:174] Processing query: 'create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k'
+2025-04-07 01:32:58,509 [INFO] [tools.py:184] Extracted YouTube URL: https://www.youtube.com/watch?v=ludek5R81YU
+2025-04-07 01:32:58,966 [ERROR] [tools.py:218] Error processing query: status_code: 401, model_name: o3-mini, body: {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}
+2025-04-07 01:32:58,975 [ERROR] [tools.py:219] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 262, in _completions_create
+    return await self.client.chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 2000, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1767, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1461, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1562, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/youtube_transcript_agent/tools.py", line 187, in run_youtube_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 262, in run
+    return await self._make_request(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 314, in _make_request
+    model_response, request_usage = await ctx.deps.model.request(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 192, in request
+    response = await self._completions_create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 284, in _completions_create
+    raise ModelHTTPError(status_code=status_code, model_name=self.model_name, body=e.body) from e
+pydantic_ai.exceptions.ModelHTTPError: status_code: 401, model_name: o3-mini, body: {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}
+
+2025-04-07 01:32:58,975 [ERROR] [main.py:170] Error processing query: status_code: 401, model_name: o3-mini, body: {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}
+2025-04-07 01:33:19,260 [INFO] [main.py:179] User interrupted the process
+2025-04-07 01:33:19,752 [INFO] [main.py:212] Exiting gracefully...
+2025-04-07 01:33:21,978 [INFO] [main.py:113] Starting YouTube Transcript MCP Agent
+2025-04-07 01:33:22,342 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 01:33:22,343 [INFO] [main.py:125] Loading configuration...
+2025-04-07 01:33:22,344 [INFO] [main.py:129] Setting up agent...
+2025-04-07 01:33:22,344 [INFO] [agent.py:48] Creating YouTube Transcript MCP Server...
+2025-04-07 01:33:22,344 [INFO] [agent.py:52] Initializing agent with YouTube Transcript MCP Server...
+2025-04-07 01:33:22,354 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 01:33:22,354 [INFO] [tools.py:11] YOUTUBE TRANSCRIPT MCP TOOLS AND FUNCTIONS
+2025-04-07 01:33:22,354 [INFO] [tools.py:12] ==================================================
+2025-04-07 01:33:22,355 [WARNING] [tools.py:118] 
+No YouTube Transcript MCP tools were discovered. This could mean either:
+2025-04-07 01:33:22,355 [WARNING] [tools.py:119] 1. The YouTube Transcript MCP server doesn't expose any tools
+2025-04-07 01:33:22,355 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-07 01:33:22,355 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-07 01:33:22,355 [INFO] [agent.py:61] Found 0 MCP tools available for YouTube transcript operations
+2025-04-07 01:33:26,921 [INFO] [main.py:134] YouTube Transcript MCP Server started successfully
+2025-04-07 01:33:27,850 [INFO] [main.py:149] Processing query: 'create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k'
+2025-04-07 01:33:27,851 [INFO] [tools.py:174] Processing query: 'create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k'
+2025-04-07 01:33:27,852 [INFO] [tools.py:184] Extracted YouTube URL: https://www.youtube.com/watch?v=ludek5R81YU
+2025-04-07 01:33:28,287 [ERROR] [tools.py:218] Error processing query: status_code: 401, model_name: o3-mini, body: {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}
+2025-04-07 01:33:28,297 [ERROR] [tools.py:219] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 262, in _completions_create
+    return await self.client.chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 2000, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1767, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1461, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1562, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/youtube_transcript_agent/tools.py", line 187, in run_youtube_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 262, in run
+    return await self._make_request(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 314, in _make_request
+    model_response, request_usage = await ctx.deps.model.request(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 192, in request
+    response = await self._completions_create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 284, in _completions_create
+    raise ModelHTTPError(status_code=status_code, model_name=self.model_name, body=e.body) from e
+pydantic_ai.exceptions.ModelHTTPError: status_code: 401, model_name: o3-mini, body: {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}
+
+2025-04-07 01:33:28,298 [ERROR] [main.py:170] Error processing query: status_code: 401, model_name: o3-mini, body: {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}
+2025-04-07 01:36:38,159 [INFO] [main.py:113] Starting YouTube Transcript MCP Agent
+2025-04-07 01:36:38,628 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 01:36:38,628 [INFO] [main.py:125] Loading configuration...
+2025-04-07 01:36:38,630 [INFO] [main.py:129] Setting up agent...
+2025-04-07 01:36:38,630 [INFO] [agent.py:48] Creating YouTube Transcript MCP Server...
+2025-04-07 01:36:38,630 [INFO] [agent.py:52] Initializing agent with YouTube Transcript MCP Server...
+2025-04-07 01:36:38,642 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 01:36:38,642 [INFO] [tools.py:11] YOUTUBE TRANSCRIPT MCP TOOLS AND FUNCTIONS
+2025-04-07 01:36:38,642 [INFO] [tools.py:12] ==================================================
+2025-04-07 01:36:38,642 [WARNING] [tools.py:118] 
+No YouTube Transcript MCP tools were discovered. This could mean either:
+2025-04-07 01:36:38,642 [WARNING] [tools.py:119] 1. The YouTube Transcript MCP server doesn't expose any tools
+2025-04-07 01:36:38,643 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-07 01:36:38,643 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-07 01:36:38,643 [INFO] [agent.py:61] Found 0 MCP tools available for YouTube transcript operations
+2025-04-07 01:36:42,261 [INFO] [main.py:134] YouTube Transcript MCP Server started successfully
+2025-04-07 01:36:46,748 [INFO] [main.py:149] Processing query: ''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''
+2025-04-07 01:36:46,750 [INFO] [tools.py:174] Processing query: ''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''
+2025-04-07 01:36:46,751 [INFO] [tools.py:184] Extracted YouTube URL: https://www.youtube.com/watch?v=ludek5R81YU
+2025-04-07 01:36:54,743 [ERROR] [tools.py:218] Error processing query: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...1}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+2025-04-07 01:36:54,753 [ERROR] [tools.py:219] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/youtube_transcript_agent/tools.py", line 187, in run_youtube_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 372, in run
+    async with self.stream(ctx):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 386, in stream
+    async for _event in stream:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 423, in _run_stream
+    async for event in self._events_iterator:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 413, in _run_stream
+    async for event in self._handle_tool_calls(ctx, tool_calls):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 452, in _handle_tool_calls
+    async for event in process_function_tools(
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 657, in process_function_tools
+    result = task.result()
+             ^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 318, in run
+    return await self._run(message, run_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 335, in _run
+    response_content = await function(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 689, in run_tool
+    result = await server.call_tool(tool_name, args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 81, in call_tool
+    return await self._client.call_tool(tool_name, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 256, in call_tool
+    return await self.send_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 268, in send_request
+    return result_type.model_validate(response_or_error.result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic/main.py", line 627, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...1}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+
+2025-04-07 01:36:54,753 [ERROR] [main.py:170] Error processing query: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...1}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+2025-04-07 01:37:01,867 [INFO] [main.py:179] User interrupted the process
+2025-04-07 01:37:01,872 [INFO] [main.py:205] YouTube transcript agent shutting down
+2025-04-07 01:37:04,890 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x106d02c00>
+asyncgen: <async_generator object stdio_client at 0x106d02c00>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 173, in stdio_client
+    yield read_stream, write_stream
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 767, in __aexit__
+  |     raise BaseExceptionGroup(
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 173, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+    async with (
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 773, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 456, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-04-07 01:37:04,893 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object MCPServerStdio.client_streams at 0x106daa040>
+asyncgen: <async_generator object MCPServerStdio.client_streams at 0x106daa040>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 161, in client_streams
+    yield read_stream, write_stream
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+RuntimeError: athrow(): asynchronous generator is already running
+2025-04-07 01:37:04,894 [INFO] [main.py:212] Exiting gracefully...
+2025-04-07 01:37:35,524 [INFO] [main.py:179] User interrupted the process
+2025-04-07 01:37:36,007 [INFO] [main.py:212] Exiting gracefully...
+2025-04-07 01:37:38,255 [INFO] [main.py:113] Starting YouTube Transcript MCP Agent
+2025-04-07 01:37:38,644 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 01:37:38,644 [INFO] [main.py:125] Loading configuration...
+2025-04-07 01:37:38,646 [INFO] [main.py:129] Setting up agent...
+2025-04-07 01:37:38,646 [INFO] [agent.py:48] Creating YouTube Transcript MCP Server...
+2025-04-07 01:37:38,646 [INFO] [agent.py:52] Initializing agent with YouTube Transcript MCP Server...
+2025-04-07 01:37:38,657 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 01:37:38,657 [INFO] [tools.py:11] YOUTUBE TRANSCRIPT MCP TOOLS AND FUNCTIONS
+2025-04-07 01:37:38,657 [INFO] [tools.py:12] ==================================================
+2025-04-07 01:37:38,657 [WARNING] [tools.py:118] 
+No YouTube Transcript MCP tools were discovered. This could mean either:
+2025-04-07 01:37:38,657 [WARNING] [tools.py:119] 1. The YouTube Transcript MCP server doesn't expose any tools
+2025-04-07 01:37:38,658 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-07 01:37:38,658 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-07 01:37:38,658 [INFO] [agent.py:61] Found 0 MCP tools available for YouTube transcript operations
+2025-04-07 01:37:40,820 [INFO] [main.py:134] YouTube Transcript MCP Server started successfully
+2025-04-07 01:37:41,796 [INFO] [main.py:149] Processing query: ''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''
+2025-04-07 01:37:41,796 [INFO] [tools.py:174] Processing query: ''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''
+2025-04-07 01:37:41,797 [INFO] [tools.py:184] Extracted YouTube URL: https://www.youtube.com/watch?v=ludek5R81YU
+2025-04-07 01:37:42,760 [ERROR] [tools.py:218] Error processing query: status_code: 401, model_name: o3-mini, body: {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}
+2025-04-07 01:37:42,770 [ERROR] [tools.py:219] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 262, in _completions_create
+    return await self.client.chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 2000, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1767, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1461, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1562, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/youtube_transcript_agent/tools.py", line 187, in run_youtube_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 262, in run
+    return await self._make_request(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 314, in _make_request
+    model_response, request_usage = await ctx.deps.model.request(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 192, in request
+    response = await self._completions_create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 284, in _completions_create
+    raise ModelHTTPError(status_code=status_code, model_name=self.model_name, body=e.body) from e
+pydantic_ai.exceptions.ModelHTTPError: status_code: 401, model_name: o3-mini, body: {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}
+
+2025-04-07 01:37:42,771 [ERROR] [main.py:170] Error processing query: status_code: 401, model_name: o3-mini, body: {'message': 'Incorrect API key provided: your_ope*******_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}
+2025-04-07 01:37:48,327 [INFO] [main.py:179] User interrupted the process
+2025-04-07 01:37:49,284 [INFO] [main.py:212] Exiting gracefully...
+2025-04-07 01:37:58,924 [INFO] [main.py:113] Starting YouTube Transcript MCP Agent
+2025-04-07 01:37:59,280 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 01:37:59,281 [INFO] [main.py:125] Loading configuration...
+2025-04-07 01:37:59,282 [INFO] [main.py:129] Setting up agent...
+2025-04-07 01:37:59,282 [INFO] [agent.py:48] Creating YouTube Transcript MCP Server...
+2025-04-07 01:37:59,282 [INFO] [agent.py:52] Initializing agent with YouTube Transcript MCP Server...
+2025-04-07 01:37:59,293 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 01:37:59,293 [INFO] [tools.py:11] YOUTUBE TRANSCRIPT MCP TOOLS AND FUNCTIONS
+2025-04-07 01:37:59,293 [INFO] [tools.py:12] ==================================================
+2025-04-07 01:37:59,293 [WARNING] [tools.py:118] 
+No YouTube Transcript MCP tools were discovered. This could mean either:
+2025-04-07 01:37:59,293 [WARNING] [tools.py:119] 1. The YouTube Transcript MCP server doesn't expose any tools
+2025-04-07 01:37:59,293 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-07 01:37:59,294 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-07 01:37:59,294 [INFO] [agent.py:61] Found 0 MCP tools available for YouTube transcript operations
+2025-04-07 01:38:01,953 [INFO] [main.py:134] YouTube Transcript MCP Server started successfully
+2025-04-07 01:38:03,366 [INFO] [main.py:149] Processing query: ''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''
+2025-04-07 01:38:03,368 [INFO] [tools.py:174] Processing query: ''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''
+2025-04-07 01:38:03,369 [INFO] [tools.py:184] Extracted YouTube URL: https://www.youtube.com/watch?v=ludek5R81YU
+2025-04-07 01:38:06,906 [ERROR] [tools.py:218] Error processing query: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...1}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+2025-04-07 01:38:06,914 [ERROR] [tools.py:219] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/youtube_transcript_agent/tools.py", line 187, in run_youtube_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 372, in run
+    async with self.stream(ctx):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 386, in stream
+    async for _event in stream:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 423, in _run_stream
+    async for event in self._events_iterator:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 413, in _run_stream
+    async for event in self._handle_tool_calls(ctx, tool_calls):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 452, in _handle_tool_calls
+    async for event in process_function_tools(
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 657, in process_function_tools
+    result = task.result()
+             ^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 318, in run
+    return await self._run(message, run_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 335, in _run
+    response_content = await function(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 689, in run_tool
+    result = await server.call_tool(tool_name, args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 81, in call_tool
+    return await self._client.call_tool(tool_name, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 256, in call_tool
+    return await self.send_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 268, in send_request
+    return result_type.model_validate(response_or_error.result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic/main.py", line 627, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...1}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+
+2025-04-07 01:38:06,914 [ERROR] [main.py:170] Error processing query: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...1}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+2025-04-07 01:39:18,869 [INFO] [main.py:179] User interrupted the process
+2025-04-07 01:39:21,553 [INFO] [main.py:212] Exiting gracefully...
+2025-04-07 01:39:24,170 [INFO] [main.py:113] Starting YouTube Transcript MCP Agent
+2025-04-07 01:39:24,547 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 01:39:24,547 [INFO] [main.py:125] Loading configuration...
+2025-04-07 01:39:24,548 [INFO] [main.py:129] Setting up agent...
+2025-04-07 01:39:24,548 [INFO] [agent.py:48] Creating YouTube Transcript MCP Server...
+2025-04-07 01:39:24,548 [INFO] [agent.py:52] Initializing agent with YouTube Transcript MCP Server...
+2025-04-07 01:39:24,559 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 01:39:24,559 [INFO] [tools.py:11] YOUTUBE TRANSCRIPT MCP TOOLS AND FUNCTIONS
+2025-04-07 01:39:24,559 [INFO] [tools.py:12] ==================================================
+2025-04-07 01:39:24,559 [WARNING] [tools.py:118] 
+No YouTube Transcript MCP tools were discovered. This could mean either:
+2025-04-07 01:39:24,559 [WARNING] [tools.py:119] 1. The YouTube Transcript MCP server doesn't expose any tools
+2025-04-07 01:39:24,559 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-07 01:39:24,559 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-07 01:39:24,560 [INFO] [agent.py:61] Found 0 MCP tools available for YouTube transcript operations
+2025-04-07 01:39:27,666 [INFO] [main.py:134] YouTube Transcript MCP Server started successfully
+2025-04-07 01:39:37,238 [INFO] [main.py:205] YouTube transcript agent shutting down
+2025-04-07 01:40:33,454 [INFO] [main.py:113] Starting YouTube Transcript MCP Agent
+2025-04-07 01:40:34,738 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 01:40:34,739 [INFO] [main.py:125] Loading configuration...
+2025-04-07 01:40:34,742 [INFO] [main.py:129] Setting up agent...
+2025-04-07 01:40:34,742 [INFO] [agent.py:48] Creating YouTube Transcript MCP Server...
+2025-04-07 01:40:34,743 [INFO] [agent.py:52] Initializing agent with YouTube Transcript MCP Server...
+2025-04-07 01:40:34,754 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 01:40:34,754 [INFO] [tools.py:11] YOUTUBE TRANSCRIPT MCP TOOLS AND FUNCTIONS
+2025-04-07 01:40:34,754 [INFO] [tools.py:12] ==================================================
+2025-04-07 01:40:34,755 [WARNING] [tools.py:118] 
+No YouTube Transcript MCP tools were discovered. This could mean either:
+2025-04-07 01:40:34,755 [WARNING] [tools.py:119] 1. The YouTube Transcript MCP server doesn't expose any tools
+2025-04-07 01:40:34,755 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-07 01:40:34,755 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-07 01:40:34,755 [INFO] [agent.py:61] Found 0 MCP tools available for YouTube transcript operations
+2025-04-07 01:40:40,007 [INFO] [main.py:134] YouTube Transcript MCP Server started successfully
+2025-04-07 01:40:47,074 [INFO] [main.py:149] Processing query: 'create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k'
+2025-04-07 01:40:47,076 [INFO] [tools.py:180] Processing query: 'create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k''create transcript of this https://youtu.be/ludek5R81YU?si=2AkeTRK0IeNmDp_k'
+2025-04-07 01:40:47,077 [INFO] [tools.py:190] Extracted YouTube URL: https://www.youtube.com/watch?v=ludek5R81YU
+2025-04-07 01:40:51,842 [ERROR] [tools.py:252] Error processing query: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...1}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+2025-04-07 01:40:51,850 [ERROR] [tools.py:253] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/youtube_transcript_agent/tools.py", line 215, in run_youtube_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 372, in run
+    async with self.stream(ctx):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 386, in stream
+    async for _event in stream:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 423, in _run_stream
+    async for event in self._events_iterator:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 413, in _run_stream
+    async for event in self._handle_tool_calls(ctx, tool_calls):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 452, in _handle_tool_calls
+    async for event in process_function_tools(
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 657, in process_function_tools
+    result = task.result()
+             ^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 318, in run
+    return await self._run(message, run_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 335, in _run
+    response_content = await function(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 689, in run_tool
+    result = await server.call_tool(tool_name, args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 81, in call_tool
+    return await self._client.call_tool(tool_name, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 256, in call_tool
+    return await self.send_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 268, in send_request
+    return result_type.model_validate(response_or_error.result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic/main.py", line 627, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...1}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+
+2025-04-07 01:40:51,851 [ERROR] [main.py:170] Error processing query: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...1}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+2025-04-07 01:41:04,800 [INFO] [main.py:149] Processing query: 'ludek5R81YU?si=2AkeTRK0IeNmDp_k''
+2025-04-07 01:41:04,800 [INFO] [tools.py:180] Processing query: 'ludek5R81YU?si=2AkeTRK0IeNmDp_k''

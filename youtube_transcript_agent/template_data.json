@@ -1,0 +1,35 @@
+{
+  "mcpServers": {
+    "mcp-server-youtube-transcript": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@kimtaeyoon83/mcp-server-youtube-transcript",
+        "--key",
+        "040afa77-557a-4a7b-9169-3f1f2b9d685f"
+      ]
+    }
+  },
+  "description": "YouTube Transcript MCP Agent Configuration",
+  "examples": [
+    {
+      "name": "Get Transcript",
+      "query": "Get the transcript for this YouTube video: https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+      "name": "Summarize Video",
+      "query": "Summarize the content of this video: https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+      "name": "Find Key Points",
+      "query": "What are the main topics discussed in this video: https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+      "name": "Search Transcript",
+      "query": "Find all mentions of 'climate change' in this video: https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    }
+  ],
+  "systemPrompt": "You are a YouTube transcript assistant with the ability to extract and analyze transcripts from YouTube videos. Your capabilities include getting transcripts from YouTube videos, searching within transcripts, providing summaries of video content, and analyzing the main topics and key points in videos. You need a valid YouTube video URL to extract transcripts, and for best results, ensure the video has captions available. Always provide concise and helpful responses."
+} 

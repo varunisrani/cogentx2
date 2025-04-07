@@ -1,0 +1,15 @@
+{
+  "name": "youtube-transcript-agent",
+  "version": "0.1.0",
+  "description": "YouTube transcript agent using MCP",
+  "main": "index.js",
+  "scripts": {
+    "start": "python main.py"
+  },
+  "dependencies": {
+    "@smithery/cli": "latest",
+    "@kimtaeyoon83/mcp-server-youtube-transcript": "latest"
+  },
+  "author": "",
+  "license": "MIT"
+} 
