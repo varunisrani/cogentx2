@@ -1,0 +1,139 @@
+/* Spotify-inspired color scheme */
+:root {
+    --spotify-green: #1DB954;
+    --spotify-black: #191414;
+    --spotify-white: #FFFFFF;
+    --spotify-gray: #B3B3B3;
+    --spotify-light-black: #282828;
+}
+
+/* Main container styling */
+.main .block-container {
+    padding-top: 2rem;
+}
+
+/* Sidebar styling */
+.sidebar .sidebar-content {
+    background-color: var(--spotify-black);
+    color: var(--spotify-white);
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: var(--spotify-green);
+    font-weight: 700;
+}
+
+/* Buttons */
+.stButton > button {
+    background-color: var(--spotify-green);
+    color: var(--spotify-white);
+    border: none;
+    border-radius: 30px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+}
+
+.stButton > button:hover {
+    background-color: #1ed760;
+    color: var(--spotify-white);
+}
+
+/* Text areas and inputs */
+.stTextArea > div > div > textarea {
+    border-radius: 8px;
+    border: 1px solid var(--spotify-gray);
+}
+
+/* Success messages */
+.element-container .stAlert.success {
+    background-color: var(--spotify-green);
+    color: var(--spotify-white);
+    border: none;
+}
+
+/* Info messages */
+.element-container .stAlert.info {
+    background-color: var(--spotify-light-black);
+    color: var(--spotify-white);
+    border: none;
+}
+
+/* Warning messages */
+.element-container .stAlert.warning {
+    background-color: #E7A917;
+    color: var(--spotify-black);
+    border: none;
+}
+
+/* Error messages */
+.element-container .stAlert.error {
+    background-color: #E61E32;
+    color: var(--spotify-white);
+    border: none;
+}
+
+/* Code blocks */
+.stCodeBlock {
+    background-color: var(--spotify-light-black);
+    color: var(--spotify-white);
+    border-radius: 8px;
+}
+
+/* Expanders */
+.streamlit-expanderHeader {
+    font-weight: 600;
+    color: var(--spotify-green);
+}
+
+/* Radio buttons */
+.stRadio > div {
+    background-color: var(--spotify-light-black);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.stRadio label {
+    color: var(--spotify-white);
+}
+
+/* Footer */
+footer {
+    visibility: hidden;
+}
+
+/* Custom footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--spotify-black);
+    color: var(--spotify-white);
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* Query result container */
+.query-result {
+    background-color: var(--spotify-light-black);
+    color: var(--spotify-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+/* Tool usage container */
+.tool-usage {
+    background-color: var(--spotify-light-black);
+    color: var(--spotify-white);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
+
+/* Spinner */
+.stSpinner > div > div {
+    border-top-color: var(--spotify-green) !important;
+}

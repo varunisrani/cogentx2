@@ -7,6 +7,7 @@ from logging.handlers import RotatingFileHandler
 import os
 import json
 import traceback
+import streamlit as st
 
 from models import load_config
 from agent import setup_agent
@@ -73,143 +74,129 @@ def setup_logging(args):
 # Function to display tool usage in a user-friendly way
 def display_tool_usage(tool_usage):
     if not tool_usage:
-        print("\n📋 No specific tools were recorded for this query")
+        st.info("📋 No specific tools were recorded for this query")
         return
     
-    print("\n🎵 SPOTIFY TOOLS USED:")
-    print("-"*50)
+    st.subheader("🎵 SPOTIFY TOOLS USED:")
     
     for i, tool in enumerate(tool_usage, 1):
         tool_name = tool.get('name', 'Unknown Tool')
         tool_params = tool.get('parameters', {})
         
-        print(f"{i}. Tool: {tool_name}")
-        if tool_params:
-            print("   Parameters:")
-            for param, value in tool_params.items():
-                # Truncate long values
-                if isinstance(value, str) and len(value) > 100:
-                    value = value[:97] + "..."
-                print(f"   - {param}: {value}")
-        print()
+        with st.expander(f"Tool {i}: {tool_name}"):
+            if tool_params:
+                st.write("Parameters:")
+                for param, value in tool_params.items():
+                    # Truncate long values
+                    if isinstance(value, str) and len(value) > 100:
+                        value = value[:97] + "..."
+                    st.text(f"- {param}: {value}")
 
-def display_startup_message():
-    print("\n" + "="*50)
-    print("🎵 SPOTIFY MCP AGENT 🎵")
-    print("="*50)
-    print("Type 'exit', 'quit', or press Ctrl+C to exit.")
-    print("\nTroubleshooting tips if issues occur:")
-    print("1. Make sure your Spotify API key has the necessary permissions")
-    print("2. Run 'npm install' to make sure all dependencies are installed")
-    print("3. Check the log file for detailed error messages")
-    print("="*50)
+def init_streamlit():
+    st.set_page_config(
+        page_title="Spotify MCP Agent",
+        page_icon="🎵",
+        layout="wide"
+    )
+    st.title("🎵 Spotify MCP Agent")
+    
+    if "agent" not in st.session_state:
+        st.session_state.agent = None
+    if "logger" not in st.session_state:
+        args = parse_args()
+        st.session_state.logger = setup_logging(args)
+
+async def initialize_agent():
+    if st.session_state.agent is None:
+        try:
+            # Check for Node.js
+            try:
+                import subprocess
+                node_version = subprocess.check_output(['node', '--version']).decode().strip()
+                npm_version = subprocess.check_output(['npm', '--version']).decode().strip()
+                st.session_state.logger.info(f"Node.js version: {node_version}, npm version: {npm_version}")
+            except Exception as e:
+                st.session_state.logger.warning(f"Could not detect Node.js/npm: {str(e)}. Make sure these are installed.")
+                st.warning("⚠️ Could not detect Node.js/npm. Please make sure they are installed.")
+
+            # Load configuration
+            config = load_config()
+            
+            # Setup agent
+            st.session_state.agent = await setup_agent(config)
+            return True
+        except Exception as e:
+            st.error(f"Error initializing agent: {str(e)}")
+            st.error("Please check the logs for more details.")
+            return False
+    return True
 
 async def main():
-    # Parse command line arguments and set up logging
-    args = parse_args()
-    logger = setup_logging(args)
+    init_streamlit()
     
-    try:
-        logger.info("Starting Spotify MCP Agent")
-        
-        # Check for Node.js
-        try:
-            import subprocess
-            node_version = subprocess.check_output(['node', '--version']).decode().strip()
-            npm_version = subprocess.check_output(['npm', '--version']).decode().strip()
-            logger.info(f"Node.js version: {node_version}, npm version: {npm_version}")
-        except Exception as e:
-            logger.warning(f"Could not detect Node.js/npm: {str(e)}. Make sure these are installed.")
-        
-        # Load configuration
-        logger.info("Loading configuration...")
-        config = load_config()
-        
-        # Setup agent
-        logger.info("Setting up agent...")
-        agent = await setup_agent(config)
-        
-        try:
-            async with agent.run_mcp_servers():
-                logger.info("Spotify MCP Server started successfully")
-                
-                display_startup_message()
-                
-                while True:
-                    try:
-                        # Get query from user
-                        user_query = input("\n🎵 Enter your Spotify query: ")
-                        
-                        # Check if user wants to exit
-                        if user_query.lower() in ['exit', 'quit', '']:
-                            print("Exiting Spotify agent...")
-                            break
-                        
-                        # Log the query
-                        logger.info(f"Processing query: '{user_query}'")
-                        print(f"\nProcessing Spotify query: '{user_query}'")
-                        print("This may take a moment...\n")
-                        
-                        # Run the query through the agent
-                        try:
-                            result, elapsed_time, tool_usage = await run_spotify_query(agent, user_query)
-                            
-                            # Log and display the result
-                            logger.info(f"Query completed in {elapsed_time:.2f} seconds")
-                            
-                            # Display the tools that were used
-                            display_tool_usage(tool_usage)
-                            
-                            print("\n" + "="*50)
-                            print("RESULTS:")
-                            print("="*50)
-                            print(result.data)
-                            print("="*50)
-                            print(f"Query completed in {elapsed_time:.2f} seconds")
-                        except Exception as query_error:
-                            logger.error(f"Error processing query: {str(query_error)}")
-                            print(f"\n❌ Error: {str(query_error)}")
-                            print("Please try a different query or check the logs for details.")
-                            print("\nSuggestions:")
-                            print("1. Make sure your Spotify API key has the necessary permissions")
-                            print("2. Try a different query format")
-                            print("3. Check that you have an active Spotify account")
-                        
-                    except KeyboardInterrupt:
-                        logger.info("User interrupted the process")
-                        print("\nExiting due to keyboard interrupt...")
-                        break
-                    except Exception as e:
-                        logger.error(f"Error in main loop: {str(e)}")
-                        logger.error(f"Error details: {traceback.format_exc()}")
-                        print(f"\n❌ Error in main loop: {str(e)}")
-                        print("Please try again or check the logs for details.")
-                
-        except Exception as server_error:
-            logger.error(f"Error running MCP server: {str(server_error)}")
-            logger.error(f"Error details: {traceback.format_exc()}")
-            print(f"\n❌ Error running Spotify MCP server: {str(server_error)}")
-            print("\nTroubleshooting steps:")
-            print("1. Make sure you have Node.js installed (version 16+)")
-            print("2. Run 'npm install' to install dependencies")
-            print("3. Check that your Spotify API key is valid and has proper permissions")
-            print("4. Check the log file for more detailed error information")
+    # Initialize agent if not already done
+    if not await initialize_agent():
+        return
+    
+    # Sidebar with information
+    with st.sidebar:
+        st.header("ℹ️ Information")
+        st.markdown("""
+        ### Troubleshooting tips:
+        1. Make sure your Spotify API key has the necessary permissions
+        2. Run 'npm install' to install dependencies
+        3. Check the log file for detailed error messages
+        4. Make sure you have an active Spotify account
+        """)
+    
+    # Main query input
+    user_query = st.text_area("🎵 Enter your Spotify query:", height=100)
+    
+    if st.button("Run Query", type="primary"):
+        if not user_query:
+            st.warning("Please enter a query first!")
+            return
             
-    except Exception as e:
-        logger.error(f"Error during execution: {str(e)}")
-        logger.error(f"Error details: {traceback.format_exc()}")
-        print(f"\n❌ Fatal error: {str(e)}")
-        print("Please check the logs for more details.")
-        sys.exit(1)
-    finally:
-        logger.info("Spotify agent shutting down")
-        print("\nThank you for using the Spotify agent!")
+        try:
+            with st.spinner("Processing your query..."):
+                # Log the query
+                st.session_state.logger.info(f"Processing query: '{user_query}'")
+                
+                # Run the query through the agent
+                async with st.session_state.agent.run_mcp_servers():
+                    result, elapsed_time, tool_usage = await run_spotify_query(st.session_state.agent, user_query)
+                    
+                    # Log completion
+                    st.session_state.logger.info(f"Query completed in {elapsed_time:.2f} seconds")
+                    
+                    # Display results
+                    st.success(f"Query completed in {elapsed_time:.2f} seconds")
+                    
+                    # Display tool usage
+                    display_tool_usage(tool_usage)
+                    
+                    # Display results
+                    st.header("Results")
+                    st.markdown("---")
+                    st.write(result.data)
+                    
+        except Exception as e:
+            st.session_state.logger.error(f"Error processing query: {str(e)}")
+            st.session_state.logger.error(f"Error details: {traceback.format_exc()}")
+            st.error(f"Error: {str(e)}")
+            st.error("Please try a different query or check the logs for details.")
+            
+            st.markdown("""
+            ### Suggestions:
+            1. Make sure your Spotify API key has the necessary permissions
+            2. Try a different query format
+            3. Check that you have an active Spotify account
+            4. Run 'npm install' to ensure all dependencies are installed
+            """)
 
 if __name__ == '__main__':
     try:
         asyncio.run(main())
-    except KeyboardInterrupt:
-        logging.info("Exiting gracefully...")
     except Exception as e:
         logging.error(f"Unexpected error: {str(e)}")
         logging.error(f"Error details: {traceback.format_exc()}")

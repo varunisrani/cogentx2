@@ -1,0 +1,152 @@
+2025-04-07 21:35:03,703 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-07 21:35:04,945 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 21:35:04,947 [INFO] [main.py:125] Loading configuration...
+2025-04-07 21:35:04,954 [INFO] [main.py:129] Setting up agent...
+2025-04-07 21:35:04,954 [INFO] [agent.py:51] Creating Spotify MCP Server...
+2025-04-07 21:35:04,954 [INFO] [agent.py:55] Initializing agent with Spotify MCP Server...
+2025-04-07 21:35:04,973 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 21:35:04,973 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-07 21:35:04,973 [INFO] [tools.py:12] ==================================================
+2025-04-07 21:35:04,974 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-07 21:35:04,974 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-07 21:35:04,974 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-07 21:35:04,974 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-07 21:35:04,974 [INFO] [agent.py:64] Found 0 MCP tools available for Spotify operations
+2025-04-07 21:35:16,825 [INFO] [main.py:134] Spotify MCP Server started successfully
+2025-04-07 21:35:39,604 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-07 21:35:39,983 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 21:35:39,983 [INFO] [main.py:125] Loading configuration...
+2025-04-07 21:35:39,987 [INFO] [main.py:129] Setting up agent...
+2025-04-07 21:35:39,987 [INFO] [agent.py:51] Creating Spotify MCP Server...
+2025-04-07 21:35:39,987 [INFO] [agent.py:55] Initializing agent with Spotify MCP Server...
+2025-04-07 21:35:39,998 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 21:35:39,998 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-07 21:35:39,998 [INFO] [tools.py:12] ==================================================
+2025-04-07 21:35:39,998 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-07 21:35:39,999 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-07 21:35:39,999 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-07 21:35:39,999 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-07 21:35:39,999 [INFO] [agent.py:64] Found 0 MCP tools available for Spotify operations
+2025-04-07 21:35:46,196 [INFO] [main.py:134] Spotify MCP Server started successfully
+2025-04-07 21:36:27,545 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-07 21:36:27,940 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 21:36:27,941 [INFO] [main.py:125] Loading configuration...
+2025-04-07 21:36:27,945 [INFO] [main.py:129] Setting up agent...
+2025-04-07 21:36:27,945 [INFO] [agent.py:51] Creating Spotify MCP Server...
+2025-04-07 21:36:27,945 [INFO] [agent.py:55] Initializing agent with Spotify MCP Server...
+2025-04-07 21:36:27,956 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 21:36:27,957 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-07 21:36:27,957 [INFO] [tools.py:12] ==================================================
+2025-04-07 21:36:27,957 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-07 21:36:27,957 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-07 21:36:27,957 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-07 21:36:27,957 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-07 21:36:27,957 [INFO] [agent.py:64] Found 0 MCP tools available for Spotify operations
+2025-04-07 21:36:32,766 [INFO] [main.py:134] Spotify MCP Server started successfully
+2025-04-07 21:44:52,988 [INFO] [main.py:179] User interrupted the process
+2025-04-07 21:44:52,996 [INFO] [main.py:205] Spotify agent shutting down
+2025-04-07 21:44:52,997 [INFO] [main.py:212] Exiting gracefully...
+2025-04-07 21:44:56,362 [INFO] [main.py:179] User interrupted the process
+2025-04-07 21:44:56,362 [INFO] [main.py:179] User interrupted the process
+2025-04-07 21:44:56,365 [INFO] [main.py:205] Spotify agent shutting down
+2025-04-07 21:44:56,366 [INFO] [main.py:205] Spotify agent shutting down
+2025-04-07 21:44:56,366 [INFO] [main.py:212] Exiting gracefully...
+2025-04-07 21:44:56,366 [INFO] [main.py:212] Exiting gracefully...
+2025-04-07 21:45:13,646 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-07 21:45:14,387 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 21:45:14,387 [INFO] [main.py:125] Loading configuration...
+2025-04-07 21:45:14,391 [INFO] [main.py:129] Setting up agent...
+2025-04-07 21:45:14,391 [INFO] [agent.py:51] Creating Spotify MCP Server...
+2025-04-07 21:45:14,392 [INFO] [agent.py:55] Initializing agent with Spotify MCP Server...
+2025-04-07 21:45:14,402 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 21:45:14,402 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-07 21:45:14,403 [INFO] [tools.py:12] ==================================================
+2025-04-07 21:45:14,403 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-07 21:45:14,403 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-07 21:45:14,403 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-07 21:45:14,403 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-07 21:45:14,403 [INFO] [agent.py:64] Found 0 MCP tools available for Spotify operations
+2025-04-07 21:45:20,681 [INFO] [main.py:134] Spotify MCP Server started successfully
+2025-04-07 21:50:19,821 [INFO] [main.py:179] User interrupted the process
+2025-04-07 21:50:21,037 [INFO] [main.py:205] Spotify agent shutting down
+2025-04-07 21:50:21,038 [INFO] [main.py:212] Exiting gracefully...
+2025-04-07 21:50:42,093 [INFO] [streamlit_main.py:152] Starting Spotify MCP Agent
+2025-04-07 21:50:42,868 [INFO] [streamlit_main.py:159] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-07 21:50:42,869 [INFO] [streamlit_main.py:164] Loading configuration...
+2025-04-07 21:50:42,873 [INFO] [streamlit_main.py:168] Setting up agent...
+2025-04-07 21:50:42,874 [INFO] [agent.py:51] Creating Spotify MCP Server...
+2025-04-07 21:50:42,874 [INFO] [agent.py:55] Initializing agent with Spotify MCP Server...
+2025-04-07 21:50:42,885 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 21:50:42,885 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-07 21:50:42,885 [INFO] [tools.py:12] ==================================================
+2025-04-07 21:50:42,885 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-07 21:50:42,885 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-07 21:50:42,885 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-07 21:50:42,886 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-07 21:50:42,886 [INFO] [agent.py:64] Found 0 MCP tools available for Spotify operations
+2025-04-07 21:50:49,470 [INFO] [streamlit_main.py:173] Spotify MCP Server started successfully
+2025-04-07 22:16:03,091 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-07 22:16:03,809 [INFO] [main.py:120] Node.js version: v23.7.0, npm version: 8.19.4
+2025-04-07 22:16:03,810 [INFO] [main.py:125] Loading configuration...
+2025-04-07 22:16:03,814 [INFO] [main.py:129] Setting up agent...
+2025-04-07 22:16:03,814 [INFO] [agent.py:51] Creating Spotify MCP Server...
+2025-04-07 22:16:03,815 [INFO] [agent.py:55] Initializing agent with Spotify MCP Server...
+2025-04-07 22:16:03,830 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 22:16:03,831 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-07 22:16:03,832 [INFO] [tools.py:12] ==================================================
+2025-04-07 22:16:03,832 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-07 22:16:03,832 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-07 22:16:03,832 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-07 22:16:03,832 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-07 22:16:03,832 [INFO] [agent.py:64] Found 0 MCP tools available for Spotify operations
+2025-04-07 22:16:11,235 [INFO] [main.py:134] Spotify MCP Server started successfully
+2025-04-07 22:19:57,376 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-07 22:19:57,810 [INFO] [main.py:120] Node.js version: v23.7.0, npm version: 8.19.4
+2025-04-07 22:19:57,810 [INFO] [main.py:125] Loading configuration...
+2025-04-07 22:19:57,814 [INFO] [main.py:129] Setting up agent...
+2025-04-07 22:19:57,814 [INFO] [agent.py:51] Creating Spotify MCP Server...
+2025-04-07 22:19:57,814 [INFO] [agent.py:55] Initializing agent with Spotify MCP Server...
+2025-04-07 22:19:57,826 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 22:19:57,827 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-07 22:19:57,827 [INFO] [tools.py:12] ==================================================
+2025-04-07 22:19:57,827 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-07 22:19:57,827 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-07 22:19:57,827 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-07 22:19:57,827 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-07 22:19:57,827 [INFO] [agent.py:64] Found 0 MCP tools available for Spotify operations
+2025-04-07 22:25:45,687 [INFO] [main.py:117] Node.js version: v23.7.0, npm version: 8.19.4
+2025-04-07 22:25:45,692 [INFO] [agent.py:51] Creating Spotify MCP Server...
+2025-04-07 22:25:45,692 [INFO] [agent.py:55] Initializing agent with Spotify MCP Server...
+2025-04-07 22:25:45,707 [INFO] [tools.py:10] 
+==================================================
+2025-04-07 22:25:45,708 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-07 22:25:45,708 [INFO] [tools.py:12] ==================================================
+2025-04-07 22:25:45,708 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-07 22:25:45,708 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-07 22:25:45,708 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-07 22:25:45,708 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-07 22:25:45,708 [INFO] [agent.py:64] Found 0 MCP tools available for Spotify operations
+2025-04-07 22:25:54,264 [INFO] [main.py:163] Processing query: 'search song'
+2025-04-07 22:26:07,229 [INFO] [tools.py:175] Processing query: 'search song'
+2025-04-07 22:26:22,041 [INFO] [tools.py:276] No specific tools were recorded for this query
+2025-04-07 22:26:22,043 [INFO] [main.py:170] Query completed in 14.81 seconds
+2025-04-07 22:26:40,877 [INFO] [main.py:163] Processing query: 'search song yoyo honey singh'
+2025-04-07 22:26:44,623 [INFO] [tools.py:175] Processing query: 'search song yoyo honey singh'
+2025-04-07 22:26:45,108 [INFO] [_base_client.py:1590] Retrying request to /chat/completions in 0.389643 seconds
+2025-04-07 22:27:06,969 [INFO] [tools.py:276] No specific tools were recorded for this query
+2025-04-07 22:27:06,971 [INFO] [main.py:170] Query completed in 22.35 seconds

@@ -108,3 +108,207 @@ No GitHub MCP tools were discovered. This could mean either:
 2025-04-04 15:51:13,352 [INFO] [main.py:178] User interrupted the process
 2025-04-04 15:51:13,358 [INFO] [main.py:204] GitHub agent shutting down
 2025-04-04 15:51:13,360 [INFO] [main.py:211] Exiting gracefully...
+2025-04-07 21:25:04,210 [INFO] [main.py:113] Starting GitHub MCP Agent
+2025-04-07 21:25:04,598 [INFO] [main.py:119] Node.js version: v16.20.2
+2025-04-07 21:25:04,634 [INFO] [main.py:124] Loading configuration...
+2025-04-07 21:25:04,680 [INFO] [main.py:128] Setting up agent...
+2025-04-07 21:25:04,710 [INFO] [tools.py:13] 
+==================================================
+2025-04-07 21:25:04,710 [INFO] [tools.py:14] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-07 21:25:04,711 [INFO] [tools.py:15] ==================================================
+2025-04-07 21:25:04,711 [WARNING] [tools.py:122] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-07 21:25:04,711 [WARNING] [tools.py:123] 1. The GitHub MCP server doesn't expose any tools
+2025-04-07 21:25:04,711 [WARNING] [tools.py:124] 2. The tools discovery mechanism is not supported
+2025-04-07 21:25:04,711 [WARNING] [tools.py:125] 3. The server connection is not properly initialized
+2025-04-07 21:25:04,711 [INFO] [agent.py:59] Found 0 MCP tools available for GitHub operations
+2025-04-07 21:32:57,780 [INFO] [main.py:113] Starting GitHub MCP Agent
+2025-04-07 21:32:57,877 [INFO] [main.py:119] Node.js version: v16.20.2
+2025-04-07 21:32:57,877 [INFO] [main.py:124] Loading configuration...
+2025-04-07 21:32:57,882 [INFO] [main.py:128] Setting up agent...
+2025-04-07 21:32:57,897 [INFO] [tools.py:13] 
+==================================================
+2025-04-07 21:32:57,897 [INFO] [tools.py:14] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-07 21:32:57,897 [INFO] [tools.py:15] ==================================================
+2025-04-07 21:32:57,897 [WARNING] [tools.py:122] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-07 21:32:57,898 [WARNING] [tools.py:123] 1. The GitHub MCP server doesn't expose any tools
+2025-04-07 21:32:57,898 [WARNING] [tools.py:124] 2. The tools discovery mechanism is not supported
+2025-04-07 21:32:57,898 [WARNING] [tools.py:125] 3. The server connection is not properly initialized
+2025-04-07 21:32:57,898 [INFO] [agent.py:59] Found 0 MCP tools available for GitHub operations
+2025-04-07 21:33:14,698 [INFO] [main.py:113] Starting GitHub MCP Agent
+2025-04-07 21:33:14,775 [INFO] [main.py:119] Node.js version: v16.20.2
+2025-04-07 21:33:14,776 [INFO] [main.py:124] Loading configuration...
+2025-04-07 21:33:14,779 [INFO] [main.py:128] Setting up agent...
+2025-04-07 21:33:14,790 [INFO] [tools.py:13] 
+==================================================
+2025-04-07 21:33:14,790 [INFO] [tools.py:14] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-07 21:33:14,791 [INFO] [tools.py:15] ==================================================
+2025-04-07 21:33:14,791 [WARNING] [tools.py:122] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-07 21:33:14,791 [WARNING] [tools.py:123] 1. The GitHub MCP server doesn't expose any tools
+2025-04-07 21:33:14,791 [WARNING] [tools.py:124] 2. The tools discovery mechanism is not supported
+2025-04-07 21:33:14,791 [WARNING] [tools.py:125] 3. The server connection is not properly initialized
+2025-04-07 21:33:14,791 [INFO] [agent.py:59] Found 0 MCP tools available for GitHub operations
+2025-04-07 21:33:41,100 [INFO] [main.py:204] GitHub agent shutting down
+2025-04-07 21:33:41,102 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object MCPServerStdio.client_streams at 0x104bb5e40>
+asyncgen: <async_generator object MCPServerStdio.client_streams at 0x104bb5e40>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    process.terminate()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    self._process.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    self._transport.terminate()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    self._check_proc()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    raise ProcessLookupError()
+ProcessLookupError
+
+During handling of the above exception, another exception occurred:
+
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 767, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 173, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 161, in client_streams
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 179, in stdio_client
+    |     process.terminate()
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1077, in terminate
+    |     self._process.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 143, in terminate
+    |     self._transport.terminate()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 149, in terminate
+    |     self._check_proc()
+    |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 142, in _check_proc
+    |     raise ProcessLookupError()
+    | ProcessLookupError
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 166, in stdio_client
+    async with (
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 773, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 456, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-04-07 21:33:41,110 [ERROR] [base_events.py:1785] an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x1039034c0>
+asyncgen: <async_generator object stdio_client at 0x1039034c0>
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 111, in receive
+    return self.receive_nowait()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 106, in receive_nowait
+    raise WouldBlock
+anyio.WouldBlock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/github_agent/main.py", line 132, in main
+    async with agent.run_mcp_servers():
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1299, in run_mcp_servers
+    await exit_stack.enter_async_context(mcp_server)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 90, in __aenter__
+    await self._client.initialize()
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 122, in initialize
+    result = await self.send_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 252, in send_request
+    response_or_error = await response_stream_reader.receive()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 119, in receive
+    await receive_event.wait()
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/locks.py", line 213, in wait
+    await fut
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError: aclose(): asynchronous generator is already running
+2025-04-07 21:33:41,117 [INFO] [main.py:211] Exiting gracefully...
+2025-04-07 22:20:28,198 [INFO] [tools.py:178] Processing query: 'search songs'
+2025-04-07 22:20:28,201 [ERROR] [tools.py:212] Error processing query: MCP server is not running: MCPServerStdio(command='npx', args=['--yes', '--', 'node', '--experimental-fetch', '--no-warnings', 'node_modules/@modelcontextprotocol/server-github/dist/index.js'], env={'GITHUB_PERSONAL_ACCESS_TOKEN': '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', 'NODE_OPTIONS': '--no-deprecation'})
+2025-04-07 22:20:28,205 [ERROR] [tools.py:213] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/github_agent/tools.py", line 179, in run_github_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 262, in run
+    return await self._make_request(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 313, in _make_request
+    model_settings, model_request_parameters = await self._prepare_request(ctx)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 334, in _prepare_request
+    model_request_parameters = await _prepare_request_parameters(ctx)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 229, in _prepare_request_parameters
+    await asyncio.gather(
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 224, in add_mcp_server_tools
+    raise exceptions.UserError(f'MCP server is not running: {server}')
+pydantic_ai.exceptions.UserError: MCP server is not running: MCPServerStdio(command='npx', args=['--yes', '--', 'node', '--experimental-fetch', '--no-warnings', 'node_modules/@modelcontextprotocol/server-github/dist/index.js'], env={'GITHUB_PERSONAL_ACCESS_TOKEN': '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', 'NODE_OPTIONS': '--no-deprecation'})
+
+2025-04-07 22:23:38,350 [INFO] [tools.py:13] 
+==================================================
+2025-04-07 22:23:38,351 [INFO] [tools.py:14] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-07 22:23:38,351 [INFO] [tools.py:15] ==================================================
+2025-04-07 22:23:38,352 [WARNING] [tools.py:122] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-07 22:23:38,352 [WARNING] [tools.py:123] 1. The GitHub MCP server doesn't expose any tools
+2025-04-07 22:23:38,352 [WARNING] [tools.py:124] 2. The tools discovery mechanism is not supported
+2025-04-07 22:23:38,352 [WARNING] [tools.py:125] 3. The server connection is not properly initialized
+2025-04-07 22:23:38,352 [INFO] [agent.py:59] Found 0 MCP tools available for GitHub operations
+2025-04-07 22:23:48,926 [INFO] [main.py:151] Processing query: 'search song
+'

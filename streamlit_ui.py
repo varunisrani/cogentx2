@@ -16,6 +16,16 @@ import sys
 from datetime import datetime
 import re
 
+# Import the streamlit_terminal package
+try:
+    from streamlit_terminal import st_terminal
+    HAS_STREAMLIT_TERMINAL = True
+except Exception:
+    HAS_STREAMLIT_TERMINAL = False
+
+# Import our custom terminal implementation as a fallback
+from custom_terminal import st_custom_terminal
+
 # Set page config - must be the first Streamlit command
 st.set_page_config(
     page_title="Archon - Agent Builder",
@@ -130,6 +140,14 @@ def display_workbench_code():
     # Initialize tab selection state if not present
     if "code_tab" not in st.session_state:
         st.session_state.code_tab = "Files"
+
+    # Initialize terminal state if not present
+    if "terminal_initialized" not in st.session_state:
+        st.session_state.terminal_initialized = False
+
+    # Initialize run_command state if not present
+    if "run_command" not in st.session_state:
+        st.session_state.run_command = None
 
     # Add download button for the entire workbench folder
     col_stats, col_download, col_run = st.columns([2, 1, 1])
@@ -303,13 +321,16 @@ def display_workbench_code():
             except Exception as e:
                 st.error(f"Error running code: {str(e)}")
 
-    # Create tabs for Files and Logs
-    files_tab, logs_tab = st.tabs(["Files", "Logs"])
+    # Create tabs for Files, Logs, and Terminal
+    files_tab, logs_tab, terminal_tab = st.tabs(["Files", "Logs", "Terminal"])
 
     # Set the active tab based on session state
     if st.session_state.log_output and st.session_state.code_tab == "Logs":
         # Auto-select the Logs tab if there are logs and we were previously on the Logs tab
         st.session_state.code_tab = "Logs"
+    elif st.session_state.code_tab == "Terminal":
+        # Keep Terminal tab selected if it was previously selected
+        st.session_state.code_tab = "Terminal"
     else:
         # Otherwise default to Files tab
         st.session_state.code_tab = "Files"
@@ -478,6 +499,173 @@ def display_workbench_code():
             st.markdown("</div>", unsafe_allow_html=True)
         else:
             st.info("No logs available. Run the code to see execution logs here.")
+
+    # Terminal Tab Content
+    with terminal_tab:
+        if terminal_tab.checkbox("Select this tab", value=(st.session_state.code_tab == "Terminal"), key="select_terminal_tab"):
+            st.session_state.code_tab = "Terminal"
+
+        st.write("### Interactive Terminal")
+        st.write("Use this terminal to run commands, execute Python scripts, and interact with your code.")
+
+        # Add custom CSS for terminal styling
+        st.markdown("""
+        <style>
+        /* Terminal styling */
+        .terminal-container {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Make the terminal input field more prominent */
+        .terminal-container .stTextInput > div > div > input {
+            background-color: #2d2d2d;
+            color: #f0f0f0;
+            border: 1px solid #4CAF50;
+            border-radius: 4px;
+            font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+        }
+
+        /* Style the terminal output */
+        .terminal-container pre {
+            background-color: #2d2d2d;
+            color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+        # Create a container for the terminal with a nice height
+        with st.container():
+            st.markdown("<div class='terminal-container'>", unsafe_allow_html=True)
+
+            # Add a description and instructions
+            st.write("Type commands like `python main.py`, `ls`, or any other shell command.")
+
+            # Create the terminal
+            # If we have a command to run, pass it to the terminal
+            command = st.session_state.run_command if st.session_state.run_command else ""
+
+            # Clear the run_command after using it
+            if st.session_state.run_command:
+                # We'll clear it after the rerun
+                pass
+
+            # Create the terminal with the command
+            welcome_message = "Welcome to the Archon Terminal! You can run commands here to interact with your code."
+
+            # Use the appropriate terminal implementation
+            if HAS_STREAMLIT_TERMINAL:
+                try:
+                    _ = st_terminal(
+                        key="workbench_terminal",
+                        height=400,
+                        command=command,
+                        show_welcome_message=True,
+                        welcome_message=welcome_message
+                    )
+                except Exception as e:
+                    st.error(f"Error initializing terminal: {str(e)}")
+                    st.info("Falling back to custom terminal implementation...")
+                    _ = st_custom_terminal(
+                        key="workbench_terminal",
+                        command=command,
+                        height=400,
+                        show_welcome_message=True,
+                        welcome_message=welcome_message
+                    )
+            else:
+                # Use our custom terminal implementation
+                _ = st_custom_terminal(
+                    key="workbench_terminal",
+                    command=command,
+                    height=400,
+                    show_welcome_message=True,
+                    welcome_message=welcome_message
+                )
+
+            # Clear the run_command after the terminal is created
+            if st.session_state.run_command:
+                st.session_state.run_command = None
+
+            st.markdown("</div>", unsafe_allow_html=True)
+
+            # Add quick command buttons
+            st.write("### Quick Commands")
+            col1, col2, col3 = st.columns(3)
+
+            with col1:
+                if st.button("List Files", key="btn_ls"):
+                    # We can't directly run the command, but we can set a flag to run it
+                    st.session_state.run_command = "ls -la"
+                    st.rerun()
+
+            with col2:
+                if st.button("Check Python Version", key="btn_python_version"):
+                    st.session_state.run_command = "python --version"
+                    st.rerun()
+
+            with col3:
+                if st.button("Check Node Version", key="btn_node_version"):
+                    st.session_state.run_command = "node --version"
+                    st.rerun()
+
+            # Second row of buttons
+            col1, col2, col3 = st.columns(3)
+
+            with col1:
+                if st.button("List Python Packages", key="btn_pip_list"):
+                    st.session_state.run_command = "pip list"
+                    st.rerun()
+
+            with col2:
+                if st.button("Run Pydantic AI", key="btn_pydantic_ai"):
+                    st.session_state.run_command = "python -m pydantic_ai.cli run"
+                    st.rerun()
+
+            with col3:
+                if st.button("Check npm Version", key="btn_npm_version"):
+                    st.session_state.run_command = "npm --version"
+                    st.rerun()
+
+            # Third row of buttons - MCP Agents
+            st.write("### Run MCP Agents")
+            col1, col2, col3 = st.columns(3)
+
+            with col1:
+                if st.button("Run Spotify Agent (Terminal)", key="btn_spotify_agent"):
+                    st.session_state.run_command = "cd spotify_agent && python main.py"
+                    st.rerun()
+
+            with col2:
+                if st.button("Run GitHub Agent", key="btn_github_agent"):
+                    st.session_state.run_command = "cd github_agent && python main.py"
+                    st.rerun()
+
+            with col3:
+                if st.button("Run Spotify Streamlit App", key="btn_spotify_streamlit"):
+                    st.session_state.run_command = "streamlit run spotify_streamlit_app.py"
+                    st.rerun()
+
+            # Add some helpful examples
+            with st.expander("Example Commands"):
+                st.markdown("""
+                - `ls -la` - List all files in the current directory
+                - `python main.py` - Run the main.py script
+                - `python -m pydantic_ai.cli run` - Run the Pydantic AI CLI
+                - `npm --version` - Check npm version
+                - `node --version` - Check Node.js version
+                - `pip list` - List installed Python packages
+                - `cd spotify_agent && python main.py` - Run the Spotify agent
+                - `cd github_agent && python main.py` - Run the GitHub agent
+                """)
 
 async def main():
     # Check for tab query parameter
