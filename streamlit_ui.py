@@ -155,9 +155,35 @@ logfire.configure(send_to_logfire='never')
 
 def run_process_with_live_output(cmd: list, cwd: str) -> queue.Queue:
     """Run a process and return a queue with its output."""
-    # Use the capture_terminal_output function from logs.py to ensure logs are captured
-    # in the system logs as well as returned in the queue
-    return capture_terminal_output(cmd, cwd)
+    output_queue = queue.Queue()
+    
+    def reader_thread():
+        try:
+            process = subprocess.Popen(
+                cmd,
+                cwd=cwd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                bufsize=1,
+                universal_newlines=True
+            )
+            
+            # Store start time for this process
+            start_time = time.time()
+            
+            # Read output line by line
+            for line in iter(process.stdout.readline, ''):
+                output_queue.put(('output', line))
+                
+            # Process is done, get return code
+            return_code = process.wait()
+            output_queue.put(('return_code', return_code))
+            
+        except Exception as e:
+            output_queue.put(('error', str(e)))
+    
+    threading.Thread(target=reader_thread, daemon=True).start()
+    return output_queue
 
 def create_workbench_zip() -> tuple[bytes, str]:
     """Create a zip file of the workbench directory."""
@@ -233,7 +259,7 @@ def display_workbench_code():
     # Initialize tab selection state if not present
     if "code_tab" not in st.session_state:
         st.session_state.code_tab = "Files"
-
+        
     # Initialize terminal state if not present
     if "terminal_initialized" not in st.session_state:
         st.session_state.terminal_initialized = False
@@ -304,50 +330,6 @@ def display_workbench_code():
                     cwd=workbench_dir
                 )
 
-                # Also create an entry in terminal_processes for interactive use
-                if "terminal_processes" not in st.session_state:
-                    st.session_state.terminal_processes = {}
-
-                # Start the process for interactive terminal
-                try:
-                    process = subprocess.Popen(
-                        [python_exe, "main.py"],
-                        cwd=workbench_dir,
-                        stdin=subprocess.PIPE,
-                        stdout=subprocess.PIPE,
-                        stderr=subprocess.STDOUT,
-                        bufsize=1,
-                        universal_newlines=True
-                    )
-
-                    # Create a new entry in terminal_processes
-                    st.session_state.terminal_processes[terminal_id] = {
-                        "process": process,
-                        "command": f"{python_exe} main.py",
-                        "cwd": workbench_dir,
-                        "output": [f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Started code execution: {python_exe} main.py\n"],
-                        "start_time": time.time()
-                    }
-
-                    # Set as active terminal
-                    st.session_state.active_terminal = terminal_id
-
-                    # Start a thread to read output
-                    from streamlit_pages.logs import read_process_output
-                    threading.Thread(
-                        target=read_process_output,
-                        args=(process, terminal_id),
-                        daemon=True
-                    ).start()
-
-                    # Add a message and button to switch to the Logs tab for interactive terminal
-                    st.info("Process started in interactive terminal.")
-                    if st.button("Go to Interactive Terminal", key="goto_terminal_button"):
-                        st.session_state.selected_tab = "Logs"
-                        st.rerun()
-                except Exception as e:
-                    st.error(f"Error creating interactive terminal: {str(e)}")
-
                 # Process the output
                 return_code = None
                 while return_code is None:
@@ -358,9 +340,6 @@ def display_workbench_code():
                             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                             log_message = f"[{timestamp}] {msg.strip()}"
                             st.session_state.log_output.append(log_message)
-                            # Also add to system logs
-                            if "system_logs" in st.session_state:
-                                st.session_state.system_logs.append(log_message)
                             # Update the display
                             with log_container:
                                 st.code('\n'.join(st.session_state.log_output), language='bash')
@@ -375,9 +354,6 @@ def display_workbench_code():
                             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                             error_message = f"[{timestamp}] ❌ ERROR: {msg}"
                             st.session_state.log_output.append(error_message)
-                            # Also add to system logs
-                            if "system_logs" in st.session_state:
-                                st.session_state.system_logs.append(error_message)
                             with log_container:
                                 st.code('\n'.join(st.session_state.log_output), language='bash')
                             return_code = -1
@@ -395,25 +371,9 @@ def display_workbench_code():
                 if return_code == 0:
                     completion_message = f"[{timestamp}] ✅ Code execution completed successfully! Total time: {elapsed_str}"
                     st.session_state.log_output.append(completion_message)
-                    # Also add to system logs
-                    if "system_logs" in st.session_state:
-                        st.session_state.system_logs.append(completion_message)
                 else:
                     failure_message = f"[{timestamp}] ❌ Code execution failed with return code {return_code}. Total time: {elapsed_str}"
                     st.session_state.log_output.append(failure_message)
-                    # Store the error to solve it later if needed
-                    if "error_to_solve" not in st.session_state:
-                        st.session_state.error_to_solve = ""
-                    st.session_state.error_to_solve = "\n".join(st.session_state.log_output[-10:])  # Last 10 log lines
-                    
-                    # Add a button to switch to Error Solver
-                    if st.button("🔧 Solve Error", key="solve_error_button"):
-                        st.session_state.code_tab = "Error Solver"
-                        st.rerun()
-                        
-                    # Also add to system logs
-                    if "system_logs" in st.session_state:
-                        st.session_state.system_logs.append(failure_message)
 
                 with log_container:
                     st.code('\n'.join(st.session_state.log_output), language='bash')
@@ -424,8 +384,8 @@ def display_workbench_code():
             except Exception as e:
                 st.error(f"Error running code: {str(e)}")
 
-    # Create tabs for Files, Logs, Terminal, and Error Solver
-    files_tab, logs_tab, terminal_tab, error_solver_tab_ui = st.tabs(["Files", "Logs", "Terminal", "Error Solver"])
+    # Create tabs for Files, Logs, and Terminal
+    files_tab, logs_tab, terminal_tab = st.tabs(["Files", "Logs", "Terminal"])
 
     # Set the active tab based on session state
     if st.session_state.log_output and st.session_state.code_tab == "Logs":
@@ -434,9 +394,6 @@ def display_workbench_code():
     elif st.session_state.code_tab == "Terminal":
         # Keep Terminal tab selected if it was previously selected
         st.session_state.code_tab = "Terminal"
-    elif st.session_state.code_tab == "Error Solver":
-        # Keep Error Solver tab selected if it was previously selected
-        st.session_state.code_tab = "Error Solver"
     else:
         # Otherwise default to Files tab
         st.session_state.code_tab = "Files"
@@ -603,21 +560,7 @@ def display_workbench_code():
                     """, unsafe_allow_html=True)
 
             st.markdown("</div>", unsafe_allow_html=True)
-            
-            # If there are errors, add a button to switch to Error Solver
-            if any("ERROR" in log or "❌" in log for log in st.session_state.log_output):
-                if st.button("🔧 Solve Error", key="solve_error_from_logs", use_container_width=True):
-                    # Store the error log
-                    if "error_to_solve" not in st.session_state:
-                        st.session_state.error_to_solve = ""
-                    # Get the last 10 log lines or the ones with errors
-                    error_logs = [log for log in st.session_state.log_output if "ERROR" in log or "❌" in log]
-                    if not error_logs:
-                        error_logs = st.session_state.log_output[-10:]  # Last 10 log lines
-                    st.session_state.error_to_solve = "\n".join(error_logs)
-                    # Switch to Error Solver tab
-                    st.session_state.code_tab = "Error Solver"
-                    st.rerun()
+
         else:
             st.info("No logs available. Run the code to see execution logs here.")
 
@@ -756,25 +699,6 @@ def display_workbench_code():
                     st.session_state.run_command = "npm --version"
                     st.rerun()
 
-            # Third row of buttons - MCP Agents
-            st.write("### Run MCP Agents")
-            col1, col2, col3 = st.columns(3)
-
-            with col1:
-                if st.button("Run Spotify Agent (Terminal)", key="btn_spotify_agent"):
-                    st.session_state.run_command = "cd spotify_agent && python main.py"
-                    st.rerun()
-
-            with col2:
-                if st.button("Run GitHub Agent", key="btn_github_agent"):
-                    st.session_state.run_command = "cd github_agent && python main.py"
-                    st.rerun()
-
-            with col3:
-                if st.button("Run Spotify Streamlit App", key="btn_spotify_streamlit"):
-                    st.session_state.run_command = "streamlit run spotify_streamlit_app.py"
-                    st.rerun()
-
             # Add some helpful examples
             with st.expander("Example Commands"):
                 st.markdown("""
@@ -784,29 +708,14 @@ def display_workbench_code():
                 - `npm --version` - Check npm version
                 - `node --version` - Check Node.js version
                 - `pip list` - List installed Python packages
-                - `cd spotify_agent && python main.py` - Run the Spotify agent
-                - `cd github_agent && python main.py` - Run the GitHub agent
                 """)
-                
-    # Error Solver Tab Content
-    with error_solver_tab_ui:
-        if error_solver_tab_ui.checkbox("Select this tab", value=(st.session_state.code_tab == "Error Solver"), key="select_error_solver_tab"):
-            st.session_state.code_tab = "Error Solver"
-            
-        # Load the error from session state if available
-        if "error_to_solve" in st.session_state and st.session_state.error_to_solve:
-            if "error_message" not in st.session_state:
-                st.session_state.error_message = st.session_state.error_to_solve
-            
-        # Display the error solver module
-        error_solver_tab()
 
 async def main():
     # Check for tab query parameter
     query_params = st.query_params
     if "tab" in query_params:
         tab_name = query_params["tab"]
-        if tab_name in ["Home", "Chat", "Agent Runner", "Template Browser", "Workbench", "Code Editor", "No-Code Builder", "Terminal", "Generated Code", "Error Solver", "Environment", "Database", "Documentation", "Agent Service", "MCP", "Logs", "Future Enhancements"]:
+        if tab_name in ["Home", "Chat", "Template Browser", "Code Editor", "No-Code Builder", "Generated Code"]:
             st.session_state.selected_tab = tab_name
 
     # Add sidebar navigation
@@ -820,78 +729,35 @@ async def main():
         if "selected_tab" not in st.session_state:
             st.session_state.selected_tab = "Home"
 
-        # Initialize system logs if not present
-        if "system_logs" not in st.session_state:
-            st.session_state.system_logs = []
-
         # Vertical navigation buttons
         intro_button = st.button("Home", use_container_width=True, key="home_button")
         chat_button = st.button("Chat", use_container_width=True, key="chat_button")
-        agent_runner_button = st.button("Agent Runner", use_container_width=True, key="agent_runner_button")
         template_browser_button = st.button("Template Browser", use_container_width=True, key="template_browser_button")
-        workbench_button = st.button("Workbench", use_container_width=True, key="workbench_button")
         code_editor_button = st.button("Code Editor", use_container_width=True, key="code_editor_button")
         nocode_builder_button = st.button("No-Code Builder", use_container_width=True, key="nocode_builder_button")
         generated_code_button = st.button("Generated Code", use_container_width=True, key="generated_code_button")
-        error_solver_button = st.button("Error Solver", use_container_width=True, key="error_solver_button")
-        env_button = st.button("Environment", use_container_width=True, key="env_button")
-        db_button = st.button("Database", use_container_width=True, key="db_button")
-        docs_button = st.button("Documentation", use_container_width=True, key="docs_button")
-        service_button = st.button("Agent Service", use_container_width=True, key="service_button")
-        mcp_button = st.button("MCP", use_container_width=True, key="mcp_button")
-        logs_button = st.button("Logs", use_container_width=True, key="logs_button")
-        terminal_button = st.button("Terminal", use_container_width=True, key="terminal_button")
-        future_enhancements_button = st.button("Future Enhancements", use_container_width=True, key="future_enhancements_button")
 
         # Update selected tab based on button clicks
         if intro_button:
             st.session_state.selected_tab = "Home"
         elif chat_button:
             st.session_state.selected_tab = "Chat"
-        elif agent_runner_button:
-            st.session_state.selected_tab = "Agent Runner"
         elif template_browser_button:
             st.session_state.selected_tab = "Template Browser"
-        elif workbench_button:
-            st.session_state.selected_tab = "Workbench"
         elif code_editor_button:
             st.session_state.selected_tab = "Code Editor"
         elif nocode_builder_button:
             st.session_state.selected_tab = "No-Code Builder"
         elif generated_code_button:
             st.session_state.selected_tab = "Generated Code"
-        elif error_solver_button:
-            st.session_state.selected_tab = "Error Solver"
-        elif env_button:
-            st.session_state.selected_tab = "Environment"
-        elif db_button:
-            st.session_state.selected_tab = "Database"
-        elif docs_button:
-            st.session_state.selected_tab = "Documentation"
-        elif service_button:
-            st.session_state.selected_tab = "Agent Service"
-        elif mcp_button:
-            st.session_state.selected_tab = "MCP"
-        elif logs_button:
-            st.session_state.selected_tab = "Logs"
-        elif terminal_button:
-            st.session_state.selected_tab = "Terminal"
-        elif future_enhancements_button:
-            st.session_state.selected_tab = "Future Enhancements"
 
     # Display the selected tab
     if st.session_state.selected_tab == "Home":
         st.title("Archon - Home")
         home_tab()
-    elif st.session_state.selected_tab == "Agent Runner":
-        st.title("Archon - Agent Runner")
-        agent_runner_tab()
     elif st.session_state.selected_tab == "Template Browser":
         st.title("Archon - Template Browser")
         template_browser_tab()
-    elif st.session_state.selected_tab == "Workbench":
-        st.title("Archon - Workbench")
-        workbench_tab()
     elif st.session_state.selected_tab == "Code Editor":
         st.title("Archon - Code Editor")
         nocode_editor_tab()
@@ -905,36 +771,9 @@ async def main():
         except Exception as e:
             st.error(f"Error in chat tab: {str(e)}")
             logger.error(f"Chat tab error: {str(e)}")
-    elif st.session_state.selected_tab == "Terminal":
-        st.title("Archon - Terminal")
-        terminal_tab()
     elif st.session_state.selected_tab == "Generated Code":
         st.title("Archon - Generated Code")
         display_workbench_code()
-    elif st.session_state.selected_tab == "Error Solver":
-        st.title("Archon - Error Solver")
-        error_solver_tab()
-    elif st.session_state.selected_tab == "MCP":
-        st.title("Archon - MCP Configuration")
-        mcp_tab()
-    elif st.session_state.selected_tab == "Environment":
-        st.title("Archon - Environment Configuration")
-        environment_tab()
-    elif st.session_state.selected_tab == "Agent Service":
-        st.title("Archon - Agent Service")
-        agent_service_tab()
-    elif st.session_state.selected_tab == "Database":
-        st.title("Archon - Database Configuration")
-        database_tab(supabase)
-    elif st.session_state.selected_tab == "Documentation":
-        st.title("Archon - Documentation")
-        documentation_tab(supabase)
-    elif st.session_state.selected_tab == "Logs":
-        st.title("Archon - System Logs")
-        logs_tab()
-    elif st.session_state.selected_tab == "Future Enhancements":
-        st.title("Archon - Future Enhancements")
-        future_enhancements_tab()
 
 if __name__ == "__main__":
     asyncio.run(main())
