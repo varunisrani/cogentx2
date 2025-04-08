@@ -181,7 +181,6 @@ python-dotenv
 logfire
 httpx
 nest-asyncio
-streamlit-terminal
 psutil
 sounddevice
 streamlit-elements
