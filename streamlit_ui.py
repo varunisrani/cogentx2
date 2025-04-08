@@ -98,13 +98,7 @@ except ImportError:
     def terminal_tab():
         st.error("Terminal tab module not found")
 
-# Import our new error solver module
-try:
-    from streamlit_pages.error_solver import error_solver_tab
-except ImportError:
-    logger.error("Failed to import error_solver_tab")
-    def error_solver_tab():
-        st.error("Error Solver tab module not found")
+# Error solver module removed
 
 # Set page config - must be the first Streamlit command
 st.set_page_config(
@@ -156,7 +150,7 @@ logfire.configure(send_to_logfire='never')
 def run_process_with_live_output(cmd: list, cwd: str) -> queue.Queue:
     """Run a process and return a queue with its output."""
     output_queue = queue.Queue()
-    
+
     def reader_thread():
         try:
             process = subprocess.Popen(
@@ -167,21 +161,21 @@ def run_process_with_live_output(cmd: list, cwd: str) -> queue.Queue:
                 bufsize=1,
                 universal_newlines=True
             )
-            
+
             # Store start time for this process
             start_time = time.time()
-            
+
             # Read output line by line
             for line in iter(process.stdout.readline, ''):
                 output_queue.put(('output', line))
-                
+
             # Process is done, get return code
             return_code = process.wait()
             output_queue.put(('return_code', return_code))
-            
+
         except Exception as e:
             output_queue.put(('error', str(e)))
-    
+
     threading.Thread(target=reader_thread, daemon=True).start()
     return output_queue
 
@@ -259,7 +253,7 @@ def display_workbench_code():
     # Initialize tab selection state if not present
     if "code_tab" not in st.session_state:
         st.session_state.code_tab = "Files"
-        
+
     # Initialize terminal state if not present
     if "terminal_initialized" not in st.session_state:
         st.session_state.terminal_initialized = False

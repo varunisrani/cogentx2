@@ -10190,3 +10190,237 @@
 2025-04-08 06:05:31,068 - streamlit_pages.error_solver - INFO - Added key project file: ./app.py
 2025-04-08 06:05:39,808 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2025-04-08 06:05:39,841 - streamlit_pages.error_solver - INFO - Got AI analysis with 8 suggested fixes
+2025-04-08 16:25:37,689 - streamlit_pages.chat - INFO - Using thread ID: 20250408-162537-8395612b for conversation
+2025-04-08 16:25:39,064 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-08 16:25:39,084 - mcp_template_tools - INFO - Detected potential need for brave_search MCP via keywords: search, research
+2025-04-08 16:25:41,330 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:25:41,352 - mcp_template_tools - INFO - Searching for MCP templates with query: Create an agent that can use Serper agent to do research for me ...
+2025-04-08 16:25:42,248 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-08 16:25:42,758 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:25:42,765 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-08 16:25:42,765 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-08 16:25:43,168 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:25:43,169 - mcp_template_tools - INFO - Found 1 templates with lower threshold
+2025-04-08 16:25:56,385 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:26:00,064 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:26:16,668 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:26:17,676 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:26:17,710 - mcp_template_tools - INFO - Searching for MCP templates with query: Serper agent...
+2025-04-08 16:26:18,701 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-08 16:26:19,425 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:26:19,429 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-08 16:26:19,429 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-08 16:26:19,632 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:26:19,634 - mcp_template_tools - INFO - Found 1 templates with lower threshold
+2025-04-08 16:26:20,651 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:26:20,657 - mcp_template_tools - INFO - Fetching MCP template with ID: 1
+2025-04-08 16:26:20,973 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.1 "HTTP/2 200 OK"
+2025-04-08 16:26:20,980 - mcp_template_tools - INFO - Found template: serper_agent
+2025-04-08 16:26:23,201 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:26:23,216 - mcp_template_tools - INFO - Fetching MCP template with ID: 1
+2025-04-08 16:26:23,440 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.1 "HTTP/2 200 OK"
+2025-04-08 16:26:23,450 - mcp_template_tools - INFO - Found template: serper_agent
+2025-04-08 16:26:23,450 - mcp_template_tools - INFO - Fetching MCP template with ID: 1
+2025-04-08 16:26:23,927 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.1 "HTTP/2 200 OK"
+2025-04-08 16:26:23,930 - mcp_template_tools - INFO - Found template: serper_agent
+2025-04-08 16:26:23,930 - mcp_template_tools - INFO - Fetching MCP template with ID: 1
+2025-04-08 16:26:24,166 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.1 "HTTP/2 200 OK"
+2025-04-08 16:26:24,171 - mcp_template_tools - INFO - Found template: serper_agent
+2025-04-08 16:26:24,171 - mcp_template_tools - INFO - Fetching MCP template with ID: 1
+2025-04-08 16:26:24,317 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.1 "HTTP/2 200 OK"
+2025-04-08 16:26:24,320 - mcp_template_tools - INFO - Found template: serper_agent
+2025-04-08 16:26:25,255 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:26:35,668 - mcp_template_tools - INFO - Fetching MCP template with ID: 1
+2025-04-08 16:26:36,337 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.1 "HTTP/2 200 OK"
+2025-04-08 16:26:36,344 - mcp_template_tools - INFO - Found template: serper_agent
+2025-04-08 16:26:36,344 - mcp_template_tools - INFO - Adapting MCP template to user query: Create an agent that uses the Serper agent to perform research....
+2025-04-08 16:26:36,362 - mcp_template_tools - INFO - Using AI to adapt template
+2025-04-08 16:26:36,362 - mcp_template_tools - INFO - Adapting agents.py...
+2025-04-08 16:26:43,590 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:26:43,593 - mcp_template_tools - INFO - Successfully adapted agents.py
+2025-04-08 16:26:43,593 - mcp_template_tools - INFO - Adapting models.py...
+2025-04-08 16:26:48,987 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:26:49,155 - mcp_template_tools - INFO - Successfully adapted models.py
+2025-04-08 16:26:49,155 - mcp_template_tools - INFO - Adapting main.py...
+2025-04-08 16:27:03,974 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:27:03,980 - mcp_template_tools - INFO - Successfully adapted main.py
+2025-04-08 16:27:03,980 - mcp_template_tools - INFO - Adapting tools.py...
+2025-04-08 16:27:19,117 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:27:19,120 - mcp_template_tools - INFO - Successfully adapted tools.py
+2025-04-08 16:27:19,120 - mcp_template_tools - INFO - Adapting MCP JSON configuration...
+2025-04-08 16:27:19,121 - mcp_template_tools - INFO - Successfully adapted MCP JSON configuration
+2025-04-08 16:27:19,121 - mcp_template_tools - INFO - Performing final validation of adapted template...
+2025-04-08 16:27:19,121 - mcp_template_tools - WARNING - Found 8 issues in adapted template: ['Missing GitHubDeps class in models.py', 'Missing spotify_system_prompt in agents.py', 'Missing github_system_prompt in agents.py', 'Missing setup_spotify_agent function in agents.py', 'Missing setup_github_agent function in agents.py', 'Missing recommend_songs_from_spotify function in tools.py', 'Missing manage_github_repository function in tools.py', 'Missing create_mcp_server function in tools.py']
+2025-04-08 16:27:19,121 - mcp_template_tools - INFO - Fixing remaining issues...
+2025-04-08 16:27:22,602 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:27:22,605 - mcp_template_tools - INFO - Fixed 1 issues in models.py
+2025-04-08 16:27:33,473 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:27:33,476 - mcp_template_tools - INFO - Fixed 4 issues in agents.py
+2025-04-08 16:27:42,187 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:27:42,215 - mcp_template_tools - INFO - Fixed 3 issues in tools.py
+2025-04-08 16:27:42,215 - mcp_template_tools - INFO - Template validation and fixing complete
+2025-04-08 16:28:09,832 - streamlit_pages.chat - INFO - Using thread ID: 20250408-162537-8395612b for conversation
+2025-04-08 16:28:09,841 - openai._base_client - INFO - Retrying request to /chat/completions in 0.464149 seconds
+2025-04-08 16:28:11,150 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:28:12,578 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:28:25,492 - mcp_template_tools - INFO - Searching for MCP templates with query: research search...
+2025-04-08 16:28:25,496 - openai._base_client - INFO - Retrying request to /embeddings in 0.407114 seconds
+2025-04-08 16:28:26,868 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-08 16:28:27,529 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:28:27,537 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-08 16:28:27,538 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-08 16:28:27,729 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:28:27,730 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-08 16:39:11,259 - streamlit_pages.chat - INFO - Using thread ID: 20250408-163911-0fc1f65c for conversation
+2025-04-08 16:39:11,825 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-08 16:39:11,853 - mcp_template_tools - INFO - Detected potential need for brave_search MCP via keywords: search, research
+2025-04-08 16:39:14,398 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:39:14,414 - mcp_template_tools - INFO - Searching for MCP templates with query: Do one thing: Create an agent that can use Surfer Agent and do research for me (market research). Cr...
+2025-04-08 16:39:15,520 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-08 16:39:15,720 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:39:15,726 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-08 16:39:15,726 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-08 16:39:15,909 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:39:15,911 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-08 16:39:57,681 - streamlit_pages.chat - INFO - Using thread ID: 20250408-163957-bdffe680 for conversation
+2025-04-08 16:39:58,073 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-08 16:39:58,097 - mcp_template_tools - INFO - Detected potential need for brave_search MCP via keywords: search, research
+2025-04-08 16:40:00,071 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:40:00,096 - mcp_template_tools - INFO - Searching for MCP templates with query: create a agent that use serper_agent and do stock research for me...
+2025-04-08 16:40:02,941 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-08 16:40:03,154 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:40:03,161 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-08 16:40:03,161 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-08 16:40:03,329 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:40:03,331 - mcp_template_tools - INFO - Found 1 templates with lower threshold
+2025-04-08 16:40:14,815 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:40:23,432 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:40:43,032 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:40:44,098 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:40:44,259 - mcp_template_tools - INFO - Searching for MCP templates with query: serper_agent stock research...
+2025-04-08 16:40:44,828 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-08 16:40:45,230 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:40:45,235 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-08 16:40:45,236 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-08 16:40:45,449 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:40:45,452 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-08 16:40:46,568 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:40:46,616 - mcp_template_tools - INFO - Detected potential need for brave_search MCP via keywords: search, research
+2025-04-08 16:40:47,684 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:40:47,776 - mcp_template_tools - INFO - Searching for MCP templates with query: stock research...
+2025-04-08 16:40:48,610 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-08 16:40:48,773 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:40:48,778 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-08 16:40:48,778 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-08 16:40:48,931 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:40:48,932 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-08 16:40:49,849 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:40:49,901 - mcp_template_tools - INFO - Searching for MCP templates with query: serper...
+2025-04-08 16:40:51,681 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-08 16:40:51,871 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:40:51,872 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-08 16:40:51,873 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-08 16:40:52,190 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:40:52,191 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-08 16:40:53,112 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:40:59,742 - mcp_template_tools - INFO - Fetching MCP template with ID: 1
+2025-04-08 16:41:00,382 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.1 "HTTP/2 200 OK"
+2025-04-08 16:41:00,390 - mcp_template_tools - INFO - Found template: serper_agent
+2025-04-08 16:41:00,390 - mcp_template_tools - INFO - Adapting MCP template to user query: agent that uses serper_agent and does stock research....
+2025-04-08 16:41:00,406 - mcp_template_tools - INFO - Using AI to adapt template
+2025-04-08 16:41:00,406 - mcp_template_tools - INFO - Adapting agents.py...
+2025-04-08 16:41:06,120 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:41:06,122 - mcp_template_tools - INFO - Successfully adapted agents.py
+2025-04-08 16:41:06,122 - mcp_template_tools - INFO - Adapting models.py...
+2025-04-08 16:41:12,266 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:41:12,269 - mcp_template_tools - INFO - Successfully adapted models.py
+2025-04-08 16:41:12,269 - mcp_template_tools - INFO - Adapting main.py...
+2025-04-08 16:41:24,958 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:41:24,968 - mcp_template_tools - INFO - Successfully adapted main.py
+2025-04-08 16:41:24,968 - mcp_template_tools - INFO - Adapting tools.py...
+2025-04-08 16:41:40,734 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:41:40,792 - mcp_template_tools - INFO - Successfully adapted tools.py
+2025-04-08 16:41:40,792 - mcp_template_tools - INFO - Adapting MCP JSON configuration...
+2025-04-08 16:41:40,793 - mcp_template_tools - INFO - Successfully adapted MCP JSON configuration
+2025-04-08 16:41:40,793 - mcp_template_tools - INFO - Performing final validation of adapted template...
+2025-04-08 16:41:40,793 - mcp_template_tools - WARNING - Found 4 issues in adapted template: ['Missing dependencies class in models.py', 'Missing system_prompt in agents.py', 'Missing setup_agent function in agents.py', 'Missing create_mcp_server function in tools.py']
+2025-04-08 16:41:40,793 - mcp_template_tools - INFO - Fixing remaining issues...
+2025-04-08 16:41:44,618 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:41:44,619 - mcp_template_tools - INFO - Fixed 1 issues in models.py
+2025-04-08 16:41:49,273 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:41:49,277 - mcp_template_tools - INFO - Fixed 2 issues in agents.py
+2025-04-08 16:41:59,167 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:41:59,172 - mcp_template_tools - INFO - Fixed 1 issues in tools.py
+2025-04-08 16:41:59,173 - mcp_template_tools - INFO - Template validation and fixing complete
+2025-04-08 16:50:02,475 - streamlit_pages.chat - INFO - Using thread ID: 20250408-165002-0f3b58e8 for conversation
+2025-04-08 16:50:03,926 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-08 16:50:04,002 - mcp_template_tools - INFO - No keyword matches found, attempting semantic matching
+2025-04-08 16:50:06,437 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:50:06,447 - mcp_template_tools - INFO - Searching for MCP templates with query: create agent that can use serper_agent...
+2025-04-08 16:50:07,612 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-08 16:50:07,802 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:50:07,810 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-08 16:50:07,810 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-08 16:50:08,128 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:50:08,131 - mcp_template_tools - INFO - Found 1 templates with lower threshold
+2025-04-08 16:50:24,865 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:50:27,887 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:50:44,375 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:50:45,439 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:50:45,445 - mcp_template_tools - INFO - Searching for MCP templates with query: serper_agent...
+2025-04-08 16:50:46,220 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-08 16:50:46,464 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:50:46,468 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-08 16:50:46,468 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-08 16:50:46,638 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-08 16:50:46,639 - mcp_template_tools - INFO - Found 1 templates with lower threshold
+2025-04-08 16:50:48,774 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:50:49,100 - mcp_template_tools - INFO - Fetching MCP template with ID: 1
+2025-04-08 16:50:49,315 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.1 "HTTP/2 200 OK"
+2025-04-08 16:50:49,324 - mcp_template_tools - INFO - Found template: serper_agent
+2025-04-08 16:50:52,668 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:50:52,865 - mcp_template_tools - INFO - Fetching MCP template with ID: 1
+2025-04-08 16:50:53,078 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.1 "HTTP/2 200 OK"
+2025-04-08 16:50:53,085 - mcp_template_tools - INFO - Found template: serper_agent
+2025-04-08 16:50:53,085 - mcp_template_tools - INFO - Fetching MCP template with ID: 1
+2025-04-08 16:50:53,385 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.1 "HTTP/2 200 OK"
+2025-04-08 16:50:53,388 - mcp_template_tools - INFO - Found template: serper_agent
+2025-04-08 16:50:53,389 - mcp_template_tools - INFO - Fetching MCP template with ID: 1
+2025-04-08 16:50:53,603 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.1 "HTTP/2 200 OK"
+2025-04-08 16:50:53,606 - mcp_template_tools - INFO - Found template: serper_agent
+2025-04-08 16:50:53,606 - mcp_template_tools - INFO - Fetching MCP template with ID: 1
+2025-04-08 16:50:53,897 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.1 "HTTP/2 200 OK"
+2025-04-08 16:50:53,899 - mcp_template_tools - INFO - Found template: serper_agent
+2025-04-08 16:50:54,918 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:51:04,354 - mcp_template_tools - INFO - Fetching MCP template with ID: 1
+2025-04-08 16:51:04,855 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.1 "HTTP/2 200 OK"
+2025-04-08 16:51:04,861 - mcp_template_tools - INFO - Found template: serper_agent
+2025-04-08 16:51:04,861 - mcp_template_tools - INFO - Adapting MCP template to user query: Create an agent using serper_agent....
+2025-04-08 16:51:04,880 - mcp_template_tools - INFO - Using AI to adapt template
+2025-04-08 16:51:04,881 - mcp_template_tools - INFO - Adapting agents.py...
+2025-04-08 16:51:12,676 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:51:12,680 - mcp_template_tools - INFO - Successfully adapted agents.py
+2025-04-08 16:51:12,680 - mcp_template_tools - INFO - Adapting models.py...
+2025-04-08 16:51:20,848 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:51:20,851 - mcp_template_tools - INFO - Successfully adapted models.py
+2025-04-08 16:51:20,851 - mcp_template_tools - INFO - Adapting main.py...
+2025-04-08 16:51:39,067 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:51:39,070 - mcp_template_tools - INFO - Successfully adapted main.py
+2025-04-08 16:51:39,071 - mcp_template_tools - INFO - Adapting tools.py...
+2025-04-08 16:51:58,334 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:51:58,338 - mcp_template_tools - INFO - Successfully adapted tools.py
+2025-04-08 16:51:58,338 - mcp_template_tools - INFO - Adapting __init__.py...
+2025-04-08 16:52:02,128 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:52:02,131 - mcp_template_tools - INFO - Successfully adapted __init__.py
+2025-04-08 16:52:02,131 - mcp_template_tools - INFO - Adapting MCP JSON configuration...
+2025-04-08 16:52:02,131 - mcp_template_tools - INFO - Successfully adapted MCP JSON configuration
+2025-04-08 16:52:02,132 - mcp_template_tools - INFO - Performing final validation of adapted template...
+2025-04-08 16:52:02,133 - mcp_template_tools - WARNING - Found 4 issues in adapted template: ['Missing dependencies class in models.py', 'Missing system_prompt in agents.py', 'Missing setup_agent function in agents.py', 'Missing create_mcp_server function in tools.py']
+2025-04-08 16:52:02,133 - mcp_template_tools - INFO - Fixing remaining issues...
+2025-04-08 16:52:06,025 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:52:06,028 - mcp_template_tools - INFO - Fixed 1 issues in models.py
+2025-04-08 16:52:09,708 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:52:09,711 - mcp_template_tools - INFO - Fixed 2 issues in agents.py
+2025-04-08 16:52:16,637 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 16:52:16,748 - mcp_template_tools - INFO - Fixed 1 issues in tools.py
+2025-04-08 16:52:16,748 - mcp_template_tools - INFO - Template validation and fixing complete

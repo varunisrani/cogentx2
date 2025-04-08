@@ -6,6 +6,7 @@ import os
 import json
 import logging
 import traceback
+import re
 from datetime import datetime
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -160,6 +161,20 @@ def get_serper_spotify_example(file_type: str) -> str:
         String containing the example code
     """
     examples = {
+        "init": """
+# __init__.py for the agent package
+
+__version__ = "1.0.0"
+
+# Export main components for easier imports
+from .models import Config, load_config
+from .agents import setup_agent, system_prompt
+from .tools import create_mcp_server, execute_mcp_tool, display_mcp_tools
+
+# Package metadata
+__author__ = "Archon AI"
+__description__ = "MCP Agent for external service integration"
+""",
         "agent": """
 from pydantic_ai.providers.openai import OpenAIProvider
 from pydantic_ai.models.openai import OpenAIModel
@@ -377,22 +392,36 @@ async def display_mcp_tools(server: MCPServerStdio, server_name: str = "MCP"):
             # Group tools by category - define different categories based on server type
             categories = {}
 
-            if server_name == "SERPER":
-                categories = {
-                    'Search': [],
-                    'Web Search': [],
-                    'News Search': [],
-                    'Image Search': [],
-                    'Other': []
-                }
-            elif server_name == "SPOTIFY":
-                categories = {
-                    'Playback': [],
-                    'Search': [],
-                    'Playlists': [],
-                    'User': [],
-                    'Other': []
-                }
+            # Define categories based on server type
+            if server_name:
+                # Use dynamic categories based on server name
+                categories = {'All': []}
+
+                # Add common categories for different server types
+                if "SEARCH" in server_name or "SERPER" in server_name:
+                    categories = {
+                        'Search': [],
+                        'Web Search': [],
+                        'News Search': [],
+                        'Image Search': [],
+                        'Other': []
+                    }
+                elif "MUSIC" in server_name or "SPOTIFY" in server_name:
+                    categories = {
+                        'Playback': [],
+                        'Search': [],
+                        'Playlists': [],
+                        'User': [],
+                        'Other': []
+                    }
+                elif "GIT" in server_name or "GITHUB" in server_name:
+                    categories = {
+                        'Repository': [],
+                        'Issues': [],
+                        'Pull Requests': [],
+                        'Users': [],
+                        'Other': []
+                    }
             else:
                 categories = {'All': []}
 
@@ -794,7 +823,7 @@ async def detect_mcp_needs(embedding_client: Optional[AsyncOpenAI], user_query: 
             matched_general_terms = [term for term in general_api_terms if term in query_lower]
 
             if matched_general_terms:
-                # If we detect general API terms but no specific service,
+                # If we kdetect general API terms but no specific service,
                 # suggest the most common services as potential matches
                 matched_services["github"] = ["potential integration need"]
                 matched_services["spotify"] = ["potential integration need"]
@@ -818,7 +847,7 @@ async def extract_template_summary(template: Dict[str, Any]) -> Dict[str, Any]:
     }
 
     # Check for the presence of different code files
-    for file_type in ["agents_code", "models_code", "main_code", "tools_code"]:
+    for file_type in ["agents_code", "models_code", "main_code", "tools_code", "init_code"]:
         summary["has_files"][file_type.replace("_code", "")] = bool(template.get(file_type))
 
     # Extract MCP server information from tools code if available
@@ -831,13 +860,8 @@ async def extract_template_summary(template: Dict[str, Any]) -> Dict[str, Any]:
         if server_funcs:
             summary["mcp_details"]["server_creation_functions"] = server_funcs
 
-            # Specifically identify Serper and Spotify capabilities
-            has_serper = any(func == "serper" for func in server_funcs)
-            has_spotify = any(func == "spotify" for func in server_funcs)
-            if has_serper:
-                summary["has_serper"] = True
-            if has_spotify:
-                summary["has_spotify"] = True
+            # Identify all MCP server capabilities
+            summary["server_types"] = server_funcs
 
         # Look for npx commands
         npx_patterns = [
@@ -853,14 +877,11 @@ async def extract_template_summary(template: Dict[str, Any]) -> Dict[str, Any]:
                 npx_args = npx_matches.group(1) if len(npx_matches.groups()) > 0 else "Found but couldn't extract args"
                 summary["mcp_details"]["npx_args_sample"] = npx_args
 
-        # Look for specific MCP server packages
-        if "@marcopesani/mcp-server-serper" in code:
-            summary["has_serper"] = True
-            summary["mcp_details"]["has_serper_package"] = True
-
-        if "@superseoworld/mcp-spotify" in code:
-            summary["has_spotify"] = True
-            summary["mcp_details"]["has_spotify_package"] = True
+        # Look for MCP server packages
+        import re
+        mcp_packages = re.findall(r'@[\w-]+/mcp-[\w-]+', code)
+        if mcp_packages:
+            summary["mcp_details"]["mcp_packages"] = mcp_packages
 
     # Check if there's a system prompt
     if template.get("agents_code"):
@@ -878,12 +899,27 @@ async def extract_template_summary(template: Dict[str, Any]) -> Dict[str, Any]:
                 summary["has_system_prompt"] = True
                 prompt_content = matches.group(1).lower()
 
-                # Check if the prompt mentions specific capabilities
-                if any(word in prompt_content for word in ["serper", "web search", "google search", "internet search"]):
-                    summary["has_serper_in_prompt"] = True
+                # Extract capabilities mentioned in the prompt
+                capabilities = []
 
-                if any(word in prompt_content for word in ["spotify", "music", "playlist", "song", "artist", "album"]):
-                    summary["has_spotify_in_prompt"] = True
+                # Common capability keywords
+                capability_keywords = {
+                    "search": ["search", "web search", "google search", "internet search", "find information"],
+                    "music": ["music", "playlist", "song", "artist", "album", "track"],
+                    "repository": ["github", "git", "repository", "commit", "branch", "pull request"],
+                    "weather": ["weather", "forecast", "temperature", "climate"],
+                    "email": ["email", "mail", "inbox", "message"],
+                    "social": ["twitter", "tweet", "social media", "post"],
+                    "calendar": ["calendar", "schedule", "appointment", "event"],
+                    "document": ["document", "file", "spreadsheet", "presentation"]
+                }
+
+                for capability, keywords in capability_keywords.items():
+                    if any(word in prompt_content for word in keywords):
+                        capabilities.append(capability)
+
+                if capabilities:
+                    summary["capabilities_in_prompt"] = capabilities
 
                 break
 
@@ -908,15 +944,24 @@ async def extract_template_summary(template: Dict[str, Any]) -> Dict[str, Any]:
                             env_vars.append(env_name)
                         server_info["env_vars"] = env_vars
 
-                    # Check for Serper and Spotify in server names or arguments
+                    # Identify server type from name or arguments
                     args_str = str(server_data.get("args", []))
-                    if "serper" in server_name.lower() or "serper" in args_str.lower():
-                        summary["has_serper"] = True
-                        server_info["is_serper"] = True
+                    server_type = "unknown"
 
-                    if "spotify" in server_name.lower() or "spotify" in args_str.lower():
-                        summary["has_spotify"] = True
-                        server_info["is_spotify"] = True
+                    # Try to extract service type from server name or args
+                    for service_type in ["serper", "spotify", "github", "weather", "twitter", "slack", "gmail"]:
+                        if service_type in server_name.lower() or service_type in args_str.lower():
+                            server_type = service_type
+                            break
+
+                    server_info["service_type"] = server_type
+
+                    # Add to list of detected services
+                    if "detected_services" not in summary:
+                        summary["detected_services"] = []
+
+                    if server_type != "unknown" and server_type not in summary["detected_services"]:
+                        summary["detected_services"].append(server_type)
 
                     servers_info.append(server_info)
 
@@ -1074,9 +1119,9 @@ async def validate_template_for_common_issues(code_files: Dict[str, str]) -> Lis
         if "class AgentConfig" in models_code and "class Config" not in models_code:
             issues.append("Using AgentConfig class instead of Config in models.py")
 
-        # Check for GitHubDeps class
-        if "class GitHubDeps" not in models_code and "@dataclass\nclass GitHubDeps" not in models_code:
-            issues.append("Missing GitHubDeps class in models.py")
+        # Check for proper class structure
+        if not re.search(r'class\s+[A-Za-z]+Deps', models_code):
+            issues.append("Missing dependencies class in models.py")
 
         # Check for deprecated dict() method
         if ".dict(" in models_code:
@@ -1086,32 +1131,20 @@ async def validate_template_for_common_issues(code_files: Dict[str, str]) -> Lis
     if "agents_code" in code_files:
         agents_code = code_files["agents_code"]
 
-        # Check for system prompts
-        if "spotify_system_prompt" not in agents_code:
-            issues.append("Missing spotify_system_prompt in agents.py")
+        # Check for system prompt
+        if not re.search(r'(system_prompt|SYSTEM_PROMPT)\s*=', agents_code):
+            issues.append("Missing system_prompt in agents.py")
 
-        if "github_system_prompt" not in agents_code:
-            issues.append("Missing github_system_prompt in agents.py")
-
-        # Check for setup functions
-        if "async def setup_spotify_agent" not in agents_code:
-            issues.append("Missing setup_spotify_agent function in agents.py")
-
-        if "async def setup_github_agent" not in agents_code:
-            issues.append("Missing setup_github_agent function in agents.py")
+        # Check for setup function
+        if not re.search(r'(async\s+)?def\s+setup_agent', agents_code):
+            issues.append("Missing setup_agent function in agents.py")
 
     # Check tools.py for common issues
     if "tools_code" in code_files:
         tools_code = code_files["tools_code"]
 
-        # Check for required tool functions
-        if "async def recommend_songs_from_spotify" not in tools_code:
-            issues.append("Missing recommend_songs_from_spotify function in tools.py")
-
-        if "async def manage_github_repository" not in tools_code:
-            issues.append("Missing manage_github_repository function in tools.py")
-
-        if "def create_mcp_server" not in tools_code:
+        # Check for MCP server creation function
+        if not re.search(r'def\s+create_[a-z_]+_mcp_server', tools_code) and "def create_mcp_server" not in tools_code:
             issues.append("Missing create_mcp_server function in tools.py")
 
     # Check main.py for common issues
@@ -1520,7 +1553,7 @@ async def rule_based_merge_mcp_templates(templates: List[Dict[str, Any]], user_q
     }
 
     # Merge each file type
-    for file_type in ["agents_code", "models_code", "main_code", "tools_code", "requirements_code", "env_example_code", "readme_code", "package_json_code"]:
+    for file_type in ["agents_code", "models_code", "main_code", "tools_code", "init_code", "requirements_code", "env_example_code", "readme_code", "package_json_code"]:
         code_blocks = []
         for template in templates:
             if template.get(file_type):
@@ -1607,43 +1640,25 @@ async def merge_mcp_templates(templates: List[Dict[str, Any]], user_query: str) 
             # Try AI-based merging
             logger.info("Attempting AI-based template merging with examples")
 
-            # Check if templates involve Serper and/or Spotify
-            serper_template = None
-            spotify_template = None
-            other_templates = []
-
-            # Extract summaries to check for services
+            # Extract summaries for all templates
+            template_summaries = []
             for template in templates:
                 summary = await extract_template_summary(template)
-
-                if summary.get("has_serper"):
-                    if not serper_template:
-                        serper_template = template
-                    else:
-                        other_templates.append(template)
-                elif summary.get("has_spotify"):
-                    if not spotify_template:
-                        spotify_template = template
-                    else:
-                        other_templates.append(template)
-                else:
-                    other_templates.append(template)
+                template_summaries.append((template, summary))
 
             # Log what we found
-            logger.info(f"Found Serper template: {bool(serper_template)}")
-            logger.info(f"Found Spotify template: {bool(spotify_template)}")
-            logger.info(f"Other templates: {len(other_templates)}")
+            service_types = []
+            for _, summary in template_summaries:
+                if summary.get("service"):
+                    service_types.append(summary.get("service"))
 
-            # Use the Serper-Spotify example for the merging process
-            logger.info("Using the Serper-Spotify example as reference for merging")
+            if service_types:
+                logger.info(f"Found templates for services: {', '.join(service_types)}")
+            else:
+                logger.info(f"Found {len(templates)} templates with unspecified services")
 
-            # Prioritize templates based on services (for better merging)
-            prioritized_templates = []
-            if serper_template:
-                prioritized_templates.append(serper_template)
-            if spotify_template:
-                prioritized_templates.append(spotify_template)
-            prioritized_templates.extend(other_templates)
+            # No prioritization - use templates as provided
+            prioritized_templates = templates
 
             # Perform AI-based merging with the prioritized templates
             return await ai_merge_mcp_templates(prioritized_templates, user_query, llm_client)
@@ -1687,10 +1702,13 @@ async def adapt_mcp_template(template: Dict[str, Any], user_query: str) -> Dict[
     project_name = folder_name.replace("_agent", "").replace("_", " ").title()
 
     # Try to adapt each code file using AI if available
-    for file_type in ["agents_code", "models_code", "main_code", "tools_code"]:
+    for file_type in ["agents_code", "models_code", "main_code", "tools_code", "init_code"]:
         if template.get(file_type) and llm_client:
             code = template.get(file_type)
-            file_name = file_type.replace("_code", ".py")
+            if file_type == "init_code":
+                file_name = "__init__.py"
+            else:
+                file_name = file_type.replace("_code", ".py")
 
             try:
                 logger.info(f"Adapting {file_name}...")
@@ -1715,16 +1733,15 @@ IMPORTANT: Ensure your code avoids these common issues that cause runtime errors
 For models.py:
 - Always include a load_config function
 - Use Config class name (not AgentConfig)
-- Include GitHubDeps class if needed
 - Use model_dump() method instead of deprecated dict() method
 
 For agents.py:
-- Include spotify_system_prompt and github_system_prompt
-- Implement setup_spotify_agent and setup_github_agent functions
+- Include a proper system_prompt
+- Implement setup_agent function
 
 For tools.py:
-- Include recommend_songs_from_spotify and manage_github_repository functions
-- Add create_mcp_server function to handle both Spotify and GitHub servers
+- Include appropriate service-specific functions
+- Add appropriate create_*_mcp_server functions
 
 For main.py:
 - Use run_mcp_servers() method (not run_server())
