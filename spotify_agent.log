@@ -150,3 +150,89 @@ No Spotify MCP tools were discovered. This could mean either:
 2025-04-07 22:26:45,108 [INFO] [_base_client.py:1590] Retrying request to /chat/completions in 0.389643 seconds
 2025-04-07 22:27:06,969 [INFO] [tools.py:276] No specific tools were recorded for this query
 2025-04-07 22:27:06,971 [INFO] [main.py:170] Query completed in 22.35 seconds
+2025-04-08 03:17:57,901 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-08 03:17:59,152 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-08 03:17:59,177 [INFO] [main.py:125] Loading configuration...
+2025-04-08 03:17:59,210 [INFO] [main.py:129] Setting up agent...
+2025-04-08 03:17:59,210 [INFO] [agent.py:51] Creating Spotify MCP Server...
+2025-04-08 03:17:59,211 [INFO] [agent.py:55] Initializing agent with Spotify MCP Server...
+2025-04-08 03:17:59,291 [INFO] [tools.py:10] 
+==================================================
+2025-04-08 03:17:59,292 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-08 03:17:59,292 [INFO] [tools.py:12] ==================================================
+2025-04-08 03:17:59,292 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-08 03:17:59,292 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-08 03:17:59,293 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-08 03:17:59,293 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-08 03:17:59,294 [INFO] [agent.py:64] Found 0 MCP tools available for Spotify operations
+2025-04-08 03:18:15,218 [INFO] [main.py:134] Spotify MCP Server started successfully
+2025-04-08 03:21:05,745 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-08 03:21:06,731 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-08 03:21:06,732 [INFO] [main.py:125] Loading configuration...
+2025-04-08 03:21:06,737 [INFO] [main.py:129] Setting up agent...
+2025-04-08 03:21:06,737 [INFO] [agent.py:51] Creating Spotify MCP Server...
+2025-04-08 03:21:06,737 [INFO] [agent.py:55] Initializing agent with Spotify MCP Server...
+2025-04-08 03:21:06,749 [INFO] [tools.py:10] 
+==================================================
+2025-04-08 03:21:06,750 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-08 03:21:06,750 [INFO] [tools.py:12] ==================================================
+2025-04-08 03:21:06,750 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-08 03:21:06,750 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-08 03:21:06,750 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-08 03:21:06,750 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-08 03:21:06,750 [INFO] [agent.py:64] Found 0 MCP tools available for Spotify operations
+2025-04-08 03:21:12,560 [INFO] [main.py:134] Spotify MCP Server started successfully
+2025-04-08 03:22:07,168 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-08 03:22:08,030 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-08 03:22:08,031 [INFO] [main.py:125] Loading configuration...
+2025-04-08 03:22:08,034 [INFO] [main.py:129] Setting up agent...
+2025-04-08 03:22:08,034 [INFO] [agent.py:50] Creating Spotify MCP Server...
+2025-04-08 03:22:08,035 [ERROR] [agent.py:72] Error setting up agent: name 'create_mcp_server' is not defined
+2025-04-08 03:22:08,036 [ERROR] [agent.py:73] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 51, in setup_agent
+    server = create_mcp_server(config.SPOTIFY_API_KEY)
+             ^^^^^^^^^^^^^^^^^
+NameError: name 'create_mcp_server' is not defined
+
+2025-04-08 03:22:08,036 [INFO] [main.py:205] Spotify agent shutting down
+2025-04-08 03:41:37,511 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-08 03:41:38,474 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-08 03:41:38,475 [INFO] [main.py:125] Loading configuration...
+2025-04-08 03:41:38,480 [INFO] [main.py:129] Setting up agent...
+2025-04-08 03:41:38,480 [INFO] [agent.py:52] Creating Spotify MCP Server...
+2025-04-08 03:41:38,480 [ERROR] [agent.py:74] Error setting up agent: name 'create_mcp_server' is not defined
+2025-04-08 03:41:38,482 [ERROR] [agent.py:75] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 53, in setup_agent
+    server = create_mcp_server(config.SPOTIFY_API_KEY)  # TODO: Fix NameError: name 'create_mcp_server' is not defined
+             ^^^^^^^^^^^^^^^^^
+NameError: name 'create_mcp_server' is not defined
+
+2025-04-08 03:41:38,482 [INFO] [main.py:205] Spotify agent shutting down
+2025-04-08 03:44:08,760 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-08 03:44:09,626 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-08 03:44:09,626 [INFO] [main.py:125] Loading configuration...
+2025-04-08 03:44:09,631 [INFO] [main.py:129] Setting up agent...
+2025-04-08 03:44:09,631 [INFO] [agent.py:52] Creating Spotify MCP Server...
+2025-04-08 03:44:09,631 [ERROR] [agent.py:74] Error setting up agent: name 'create_mcp_server' is not defined
+2025-04-08 03:44:09,632 [ERROR] [agent.py:75] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 53, in setup_agent
+    server = create_mcp_server(config.SPOTIFY_API_KEY)  # TODO: Fix NameError: name 'create_mcp_server' is not defined  # TODO: Fix NameError: name 'create_mcp_server' is not defined
+             ^^^^^^^^^^^^^^^^^
+NameError: name 'create_mcp_server' is not defined
+
+2025-04-08 03:44:09,633 [INFO] [main.py:205] Spotify agent shutting down
+2025-04-08 03:54:55,006 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-08 03:54:55,661 [INFO] [main.py:120] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-08 03:54:55,662 [INFO] [main.py:125] Loading configuration...
+2025-04-08 03:54:55,666 [INFO] [main.py:129] Setting up agent...
+2025-04-08 03:54:55,666 [INFO] [agent.py:52] Creating Spotify MCP Server...
+2025-04-08 03:54:55,666 [ERROR] [agent.py:74] Error setting up agent: name 'create_mcp_server' is not defined
+2025-04-08 03:54:55,667 [ERROR] [agent.py:75] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/workbench/agent.py", line 53, in setup_agent
+    server = create_mcp_server(config.SPOTIFY_API_KEY)  # TODO: Fix NameError: name 'create_mcp_server' is not defined  # TODO: Fix NameError: name 'create_mcp_server' is not defined
+             ^^^^^^^^^^^^^^^^^
+NameError: name 'create_mcp_server' is not defined
+
+2025-04-08 03:54:55,667 [INFO] [main.py:205] Spotify agent shutting down

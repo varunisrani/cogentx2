@@ -54,8 +54,9 @@ def terminal_tab():
             # Use the streamlit_terminal component if available
             with terminal_placeholder.container():
                 st_terminal(
-                    command_callback=execute_command,
-                    initial_text="\n".join(st.session_state.terminal_history),
+                    key="terminal_component",
+                    height=400,
+                    show_welcome_message=True,
                     working_directory=st.session_state.working_directory
                 )
         else:

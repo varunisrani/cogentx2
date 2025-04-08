@@ -20,6 +20,17 @@ from PIL import Image
 import logging
 import traceback
 
+# Log setup
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("streamlit_ui.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
 # Import the streamlit_terminal package
 try:
     from streamlit_terminal import st_terminal
@@ -87,16 +98,13 @@ except ImportError:
     def terminal_tab():
         st.error("Terminal tab module not found")
 
-# Log setup
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("streamlit_ui.log"),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger(__name__)
+# Import our new error solver module
+try:
+    from streamlit_pages.error_solver import error_solver_tab
+except ImportError:
+    logger.error("Failed to import error_solver_tab")
+    def error_solver_tab():
+        st.error("Error Solver tab module not found")
 
 # Set page config - must be the first Streamlit command
 st.set_page_config(
@@ -393,6 +401,16 @@ def display_workbench_code():
                 else:
                     failure_message = f"[{timestamp}] ❌ Code execution failed with return code {return_code}. Total time: {elapsed_str}"
                     st.session_state.log_output.append(failure_message)
+                    # Store the error to solve it later if needed
+                    if "error_to_solve" not in st.session_state:
+                        st.session_state.error_to_solve = ""
+                    st.session_state.error_to_solve = "\n".join(st.session_state.log_output[-10:])  # Last 10 log lines
+                    
+                    # Add a button to switch to Error Solver
+                    if st.button("🔧 Solve Error", key="solve_error_button"):
+                        st.session_state.code_tab = "Error Solver"
+                        st.rerun()
+                        
                     # Also add to system logs
                     if "system_logs" in st.session_state:
                         st.session_state.system_logs.append(failure_message)
@@ -406,8 +424,8 @@ def display_workbench_code():
             except Exception as e:
                 st.error(f"Error running code: {str(e)}")
 
-    # Create tabs for Files, Logs, and Terminal
-    files_tab, logs_tab, terminal_tab = st.tabs(["Files", "Logs", "Terminal"])
+    # Create tabs for Files, Logs, Terminal, and Error Solver
+    files_tab, logs_tab, terminal_tab, error_solver_tab_ui = st.tabs(["Files", "Logs", "Terminal", "Error Solver"])
 
     # Set the active tab based on session state
     if st.session_state.log_output and st.session_state.code_tab == "Logs":
@@ -416,6 +434,9 @@ def display_workbench_code():
     elif st.session_state.code_tab == "Terminal":
         # Keep Terminal tab selected if it was previously selected
         st.session_state.code_tab = "Terminal"
+    elif st.session_state.code_tab == "Error Solver":
+        # Keep Error Solver tab selected if it was previously selected
+        st.session_state.code_tab = "Error Solver"
     else:
         # Otherwise default to Files tab
         st.session_state.code_tab = "Files"
@@ -582,6 +603,21 @@ def display_workbench_code():
                     """, unsafe_allow_html=True)
 
             st.markdown("</div>", unsafe_allow_html=True)
+            
+            # If there are errors, add a button to switch to Error Solver
+            if any("ERROR" in log or "❌" in log for log in st.session_state.log_output):
+                if st.button("🔧 Solve Error", key="solve_error_from_logs", use_container_width=True):
+                    # Store the error log
+                    if "error_to_solve" not in st.session_state:
+                        st.session_state.error_to_solve = ""
+                    # Get the last 10 log lines or the ones with errors
+                    error_logs = [log for log in st.session_state.log_output if "ERROR" in log or "❌" in log]
+                    if not error_logs:
+                        error_logs = st.session_state.log_output[-10:]  # Last 10 log lines
+                    st.session_state.error_to_solve = "\n".join(error_logs)
+                    # Switch to Error Solver tab
+                    st.session_state.code_tab = "Error Solver"
+                    st.rerun()
         else:
             st.info("No logs available. Run the code to see execution logs here.")
 
@@ -751,13 +787,26 @@ def display_workbench_code():
                 - `cd spotify_agent && python main.py` - Run the Spotify agent
                 - `cd github_agent && python main.py` - Run the GitHub agent
                 """)
+                
+    # Error Solver Tab Content
+    with error_solver_tab_ui:
+        if error_solver_tab_ui.checkbox("Select this tab", value=(st.session_state.code_tab == "Error Solver"), key="select_error_solver_tab"):
+            st.session_state.code_tab = "Error Solver"
+            
+        # Load the error from session state if available
+        if "error_to_solve" in st.session_state and st.session_state.error_to_solve:
+            if "error_message" not in st.session_state:
+                st.session_state.error_message = st.session_state.error_to_solve
+            
+        # Display the error solver module
+        error_solver_tab()
 
 async def main():
     # Check for tab query parameter
     query_params = st.query_params
     if "tab" in query_params:
         tab_name = query_params["tab"]
-        if tab_name in ["Home", "Chat", "Agent Runner", "Template Browser", "Workbench", "Code Editor", "No-Code Builder", "Terminal", "Generated Code", "Environment", "Database", "Documentation", "Agent Service", "MCP", "Logs", "Future Enhancements"]:
+        if tab_name in ["Home", "Chat", "Agent Runner", "Template Browser", "Workbench", "Code Editor", "No-Code Builder", "Terminal", "Generated Code", "Error Solver", "Environment", "Database", "Documentation", "Agent Service", "MCP", "Logs", "Future Enhancements"]:
             st.session_state.selected_tab = tab_name
 
     # Add sidebar navigation
@@ -784,6 +833,7 @@ async def main():
         code_editor_button = st.button("Code Editor", use_container_width=True, key="code_editor_button")
         nocode_builder_button = st.button("No-Code Builder", use_container_width=True, key="nocode_builder_button")
         generated_code_button = st.button("Generated Code", use_container_width=True, key="generated_code_button")
+        error_solver_button = st.button("Error Solver", use_container_width=True, key="error_solver_button")
         env_button = st.button("Environment", use_container_width=True, key="env_button")
         db_button = st.button("Database", use_container_width=True, key="db_button")
         docs_button = st.button("Documentation", use_container_width=True, key="docs_button")
@@ -810,6 +860,8 @@ async def main():
             st.session_state.selected_tab = "No-Code Builder"
         elif generated_code_button:
             st.session_state.selected_tab = "Generated Code"
+        elif error_solver_button:
+            st.session_state.selected_tab = "Error Solver"
         elif env_button:
             st.session_state.selected_tab = "Environment"
         elif db_button:
@@ -848,13 +900,20 @@ async def main():
         nocode_builder_tab()
     elif st.session_state.selected_tab == "Chat":
         st.title("Archon - Agent Builder")
-        await chat_tab()
+        try:
+            await chat_tab()
+        except Exception as e:
+            st.error(f"Error in chat tab: {str(e)}")
+            logger.error(f"Chat tab error: {str(e)}")
     elif st.session_state.selected_tab == "Terminal":
         st.title("Archon - Terminal")
         terminal_tab()
     elif st.session_state.selected_tab == "Generated Code":
         st.title("Archon - Generated Code")
         display_workbench_code()
+    elif st.session_state.selected_tab == "Error Solver":
+        st.title("Archon - Error Solver")
+        error_solver_tab()
     elif st.session_state.selected_tab == "MCP":
         st.title("Archon - MCP Configuration")
         mcp_tab()
