@@ -179,13 +179,13 @@ pydantic
 pydantic-ai
 python-dotenv
 logfire
-httpx>=0.25.0
+httpx
 nest-asyncio
 streamlit-terminal
 psutil
 sounddevice
-streamlit-elements>=0.1.0
-streamlit-code-editor>=0.1.10
+streamlit-elements
+streamlit-code-editor
 # Error solver dependencies
-anthropic>=0.7.0
-openai>=1.6.0
+anthropic
+openai
