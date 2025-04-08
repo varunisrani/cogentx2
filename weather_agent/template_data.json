@@ -1,0 +1,72 @@
+{
+  "folder_name": "weather_agent",
+  "purpose": "This agent template is designed to function as a weather assistant leveraging the OpenWeather API. Its primary purpose is to respond to user queries related to weather information and forecasts, providing accurate real-time data without engaging in unrelated topics. The agent automatically executes weather-related queries using the available tools and APIs, ensuring seamless interaction for users seeking weather insights. It includes configuration management, logging functionalities, and asynchronous operations for enhanced performance.",
+  "metadata": {
+    "agent_type": "weather",
+    "source": "agent_template",
+    "created_at": "2025-04-08T03:43:45.118147",
+    "agents": [],
+    "agent_descriptions": null,
+    "capabilities": [
+      "display_mcp_tools",
+      "execute_mcp_tool",
+      "run_weather_query",
+      "create_mcp_server"
+    ],
+    "dependencies": [
+      "httpx>=0.24.0",
+      "pydantic>=2.0.0",
+      "metadata",
+      "asyncio",
+      "streamlit>=1.30.0",
+      "logging",
+      "MCPServerStdio",
+      "python-dotenv>=1.0.0",
+      "pydantic_ai",
+      "pydantic-ai>=0.1.0",
+      "traceback",
+      "openai>=1.0.0",
+      "colorlog>=6.0.0"
+    ],
+    "features": [
+      "async_capabilities"
+    ],
+    "has_agents": true,
+    "has_main": true,
+    "has_models": true,
+    "has_tools": true,
+    "has_mcp": false,
+    "has_readme": false,
+    "file_sizes": {
+      "agent.py": 3485,
+      "main.py": 8819,
+      "models.py": 2846,
+      "tools.py": 9070,
+      "mcp.json": 0,
+      "readme.md": 0,
+      "requirements.txt": 118
+    }
+  },
+  "embedding_size": 1536,
+  "embedding_sample": [
+    -0.021253859624266624,
+    0.028827350586652756,
+    0.021530352532863617,
+    -0.013668347150087357,
+    -0.06842588633298874,
+    0.03224143385887146,
+    0.01051272638142109,
+    -0.02122981660068035,
+    0.026903923600912094,
+    0.04294048994779587,
+    "..."
+  ],
+  "timestamp": "2025-04-08T03:43:46.041250",
+  "file_sizes": {
+    "agent.py": 3485,
+    "main.py": 8819,
+    "models.py": 2846,
+    "tools.py": 9070,
+    "mcp.json": 0
+  }
+}

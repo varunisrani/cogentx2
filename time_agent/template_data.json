@@ -1,0 +1,72 @@
+{
+  "folder_name": "time_agent",
+  "purpose": "The Time agent template is designed to assist users with various time-related tasks, including obtaining the current time in different timezones, converting between timezones, calculating time differences, parsing natural language time expressions, and formatting dates and times in various styles. The agent is specialized in these operations and provides guidance solely on time-related queries, ensuring clarity and precision in its responses.",
+  "metadata": {
+    "agent_type": "time",
+    "source": "agent_template",
+    "created_at": "2025-04-08T03:43:38.320340",
+    "agents": [],
+    "agent_descriptions": null,
+    "capabilities": [
+      "display_mcp_tools",
+      "execute_mcp_tool",
+      "run_time_query",
+      "create_mcp_server"
+    ],
+    "dependencies": [
+      "httpx>=0.24.0",
+      "RunContext",
+      "pydantic>=2.0.0",
+      "asyncio",
+      "streamlit>=1.30.0",
+      "logging",
+      "MCPServerStdio",
+      "python-dotenv>=1.0.0",
+      "pydantic_ai",
+      "pydantic-ai>=0.1.0",
+      "traceback",
+      "openai>=1.0.0",
+      "colorlog>=6.0.0"
+    ],
+    "features": [
+      "async_capabilities"
+    ],
+    "has_agents": true,
+    "has_main": true,
+    "has_models": true,
+    "has_tools": true,
+    "has_mcp": false,
+    "has_readme": false,
+    "file_sizes": {
+      "agent.py": 1402,
+      "main.py": 11952,
+      "models.py": 1865,
+      "tools.py": 6662,
+      "mcp.json": 0,
+      "readme.md": 0,
+      "requirements.txt": 118
+    }
+  },
+  "embedding_size": 1536,
+  "embedding_sample": [
+    -0.03453253209590912,
+    0.036797359585762024,
+    0.03168323263525963,
+    -0.01899532787501812,
+    -0.04381101578474045,
+    0.026471693068742752,
+    0.00583558389917016,
+    0.017765501514077187,
+    0.022295156493782997,
+    0.023926805704832077,
+    "..."
+  ],
+  "timestamp": "2025-04-08T03:43:39.375343",
+  "file_sizes": {
+    "agent.py": 1402,
+    "main.py": 11952,
+    "models.py": 1865,
+    "tools.py": 6662,
+    "mcp.json": 0
+  }
+}

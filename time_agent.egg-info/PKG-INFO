@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: time_agent
+Version: 0.1.0
+License-File: LICENSE
+Requires-Dist: pydantic-ai
+Requires-Dist: pytz
+Requires-Dist: streamlit
+Requires-Dist: colorlog
+Requires-Dist: python-dotenv
+Dynamic: license-file
+Dynamic: requires-dist

@@ -1,0 +1,76 @@
+{
+  "folder_name": "file_agent",
+  "purpose": "This agent template is designed for managing filesystem operations using the MCP protocol. It assists users in executing tasks such as listing files and directories, creating, reading, writing, and deleting files, and searching file contents. The agent leverages asynchronous capabilities to efficiently interact with the filesystem and provides clear, accurate feedback about operations. With built-in logging and configuration management, it ensures robust functionality while helping users navigate and manipulate their file systems effectively.",
+  "metadata": {
+    "agent_type": "file",
+    "source": "agent_template",
+    "created_at": "2025-04-08T03:43:41.911215",
+    "agents": [],
+    "agent_descriptions": null,
+    "capabilities": [
+      "display_mcp_tools",
+      "execute_mcp_tool",
+      "run_file_query",
+      "create_mcp_server"
+    ],
+    "dependencies": [
+      "@modelcontextprotocol/server-filesystem",
+      "httpx>=0.24.0",
+      "RunContext",
+      "pydantic>=2.0.0",
+      "metadata",
+      "asyncio",
+      "streamlit>=1.30.0",
+      "logging",
+      "MCPServerStdio",
+      "python-dotenv>=1.0.0",
+      "models",
+      "pydantic-ai>=0.1.0",
+      "traceback",
+      "pydantic_ai",
+      "openai>=1.0.0",
+      "FileDeps",
+      "colorlog>=6.0.0"
+    ],
+    "features": [
+      "async_capabilities"
+    ],
+    "has_agents": true,
+    "has_main": true,
+    "has_models": true,
+    "has_tools": true,
+    "has_mcp": false,
+    "has_readme": false,
+    "file_sizes": {
+      "agent.py": 3585,
+      "main.py": 6926,
+      "models.py": 2447,
+      "tools.py": 9507,
+      "mcp.json": 0,
+      "readme.md": 0,
+      "requirements.txt": 158
+    }
+  },
+  "embedding_size": 1536,
+  "embedding_sample": [
+    -0.012836497277021408,
+    0.04433334618806839,
+    0.027137963101267815,
+    -0.01951291598379612,
+    -0.05225859209895134,
+    0.025937167927622795,
+    -0.0002562946465332061,
+    0.008807830512523651,
+    0.010416895151138306,
+    0.04402114078402519,
+    "..."
+  ],
+  "timestamp": "2025-04-08T03:43:42.860540",
+  "file_sizes": {
+    "agent.py": 3585,
+    "main.py": 6926,
+    "models.py": 2447,
+    "tools.py": 9507,
+    "mcp.json": 0
+  }
+}

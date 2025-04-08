@@ -1,0 +1,223 @@
+2025-04-08 07:54:57,271 [INFO] [main.py:188] Starting Time MCP Agent
+2025-04-08 07:54:57,274 [INFO] [main.py:192] Setting up agent...
+2025-04-08 07:54:57,285 [INFO] [tools.py:11] 
+==================================================
+2025-04-08 07:54:57,285 [INFO] [tools.py:12] TIME MCP TOOLS AND FUNCTIONS
+2025-04-08 07:54:57,285 [INFO] [tools.py:13] ==================================================
+2025-04-08 07:54:57,285 [WARNING] [tools.py:65] 
+No Time MCP tools were discovered. This could mean either:
+2025-04-08 07:54:57,285 [WARNING] [tools.py:66] 1. The Time MCP server doesn't expose any tools
+2025-04-08 07:54:57,285 [WARNING] [tools.py:67] 2. The tools discovery mechanism is not supported
+2025-04-08 07:54:57,285 [WARNING] [tools.py:68] 3. The server connection is not properly initialized
+2025-04-08 07:54:57,285 [INFO] [agent.py:55] Found 0 MCP tools available for Time operations
+2025-04-08 07:54:57,286 [INFO] [main.py:194] Time MCP Server started successfully
+2025-04-08 07:56:25,877 [INFO] [main.py:188] Starting Time MCP Agent
+2025-04-08 07:56:25,886 [INFO] [main.py:192] Setting up agent...
+2025-04-08 07:56:25,887 [INFO] [tools.py:11] 
+==================================================
+2025-04-08 07:56:25,888 [INFO] [tools.py:12] TIME MCP TOOLS AND FUNCTIONS
+2025-04-08 07:56:25,888 [INFO] [tools.py:13] ==================================================
+2025-04-08 07:56:25,888 [WARNING] [tools.py:65] 
+No Time MCP tools were discovered. This could mean either:
+2025-04-08 07:56:25,889 [WARNING] [tools.py:66] 1. The Time MCP server doesn't expose any tools
+2025-04-08 07:56:25,889 [WARNING] [tools.py:67] 2. The tools discovery mechanism is not supported
+2025-04-08 07:56:25,889 [WARNING] [tools.py:68] 3. The server connection is not properly initialized
+2025-04-08 07:56:25,889 [INFO] [agent.py:55] Found 0 MCP tools available for Time operations
+2025-04-08 07:56:25,889 [INFO] [main.py:194] Time MCP Server started successfully
+2025-04-08 07:57:18,021 [INFO] [main.py:214] Processing query: 'C'
+2025-04-08 07:57:18,931 [INFO] [tools.py:121] Processing query: 'C'
+2025-04-08 07:57:18,944 [ERROR] [tools.py:152] Error processing query: cannot schedule new futures after interpreter shutdown
+2025-04-08 07:57:18,953 [ERROR] [tools.py:153] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/time_agent/tools.py", line 122, in run_time_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 262, in run
+    return await self._make_request(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 314, in _make_request
+    model_response, request_usage = await ctx.deps.model.request(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 192, in request
+    response = await self._completions_create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 262, in _completions_create
+    return await self.client.chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 2000, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1767, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1461, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1481, in _request
+    self._platform = await asyncify(get_platform)()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_utils/_sync.py", line 84, in wrapper
+    return await to_thread(function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_utils/_sync.py", line 45, in to_thread
+    return await _asyncio_to_thread(func, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 830, in run_in_executor
+    executor.submit(func, *args), loop=self)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/concurrent/futures/thread.py", line 169, in submit
+    raise RuntimeError('cannot schedule new futures after '
+RuntimeError: cannot schedule new futures after interpreter shutdown
+
+2025-04-08 07:57:18,953 [ERROR] [main.py:108] Error processing query: cannot schedule new futures after interpreter shutdown
+2025-04-08 07:57:18,956 [ERROR] [main.py:238] Error: cannot schedule new futures after interpreter shutdown
+2025-04-08 07:57:30,120 [INFO] [main.py:214] Processing query: 'EEXIT'
+2025-04-08 07:57:36,261 [INFO] [main.py:188] Starting Time MCP Agent
+2025-04-08 07:57:36,261 [INFO] [main.py:188] Starting Time MCP Agent
+2025-04-08 07:57:36,261 [INFO] [main.py:188] Starting Time MCP Agent
+2025-04-08 07:57:36,261 [INFO] [main.py:188] Starting Time MCP Agent
+2025-04-08 07:57:36,264 [INFO] [main.py:192] Setting up agent...
+2025-04-08 07:57:36,264 [INFO] [main.py:192] Setting up agent...
+2025-04-08 07:57:36,267 [INFO] [main.py:192] Setting up agent...
+2025-04-08 07:57:36,267 [INFO] [main.py:192] Setting up agent...
+2025-04-08 07:57:36,278 [INFO] [tools.py:11] 
+==================================================
+2025-04-08 07:57:36,279 [INFO] [tools.py:11] 
+==================================================
+2025-04-08 07:57:36,278 [INFO] [tools.py:11] 
+==================================================
+2025-04-08 07:57:36,279 [INFO] [tools.py:12] TIME MCP TOOLS AND FUNCTIONS
+2025-04-08 07:57:36,279 [INFO] [tools.py:11] 
+==================================================
+2025-04-08 07:57:36,279 [INFO] [tools.py:12] TIME MCP TOOLS AND FUNCTIONS
+2025-04-08 07:57:36,279 [INFO] [tools.py:12] TIME MCP TOOLS AND FUNCTIONS
+2025-04-08 07:57:36,280 [INFO] [tools.py:13] ==================================================
+2025-04-08 07:57:36,279 [INFO] [tools.py:12] TIME MCP TOOLS AND FUNCTIONS
+2025-04-08 07:57:36,280 [INFO] [tools.py:13] ==================================================
+2025-04-08 07:57:36,280 [INFO] [tools.py:13] ==================================================
+2025-04-08 07:57:36,280 [INFO] [tools.py:13] ==================================================
+2025-04-08 07:57:36,280 [WARNING] [tools.py:65] 
+No Time MCP tools were discovered. This could mean either:
+2025-04-08 07:57:36,280 [WARNING] [tools.py:65] 
+No Time MCP tools were discovered. This could mean either:
+2025-04-08 07:57:36,280 [WARNING] [tools.py:65] 
+No Time MCP tools were discovered. This could mean either:
+2025-04-08 07:57:36,280 [WARNING] [tools.py:65] 
+No Time MCP tools were discovered. This could mean either:
+2025-04-08 07:57:36,280 [WARNING] [tools.py:66] 1. The Time MCP server doesn't expose any tools
+2025-04-08 07:57:36,280 [WARNING] [tools.py:66] 1. The Time MCP server doesn't expose any tools
+2025-04-08 07:57:36,281 [WARNING] [tools.py:66] 1. The Time MCP server doesn't expose any tools
+2025-04-08 07:57:36,281 [WARNING] [tools.py:66] 1. The Time MCP server doesn't expose any tools
+2025-04-08 07:57:36,281 [WARNING] [tools.py:67] 2. The tools discovery mechanism is not supported
+2025-04-08 07:57:36,281 [WARNING] [tools.py:67] 2. The tools discovery mechanism is not supported
+2025-04-08 07:57:36,281 [WARNING] [tools.py:67] 2. The tools discovery mechanism is not supported
+2025-04-08 07:57:36,281 [WARNING] [tools.py:68] 3. The server connection is not properly initialized
+2025-04-08 07:57:36,281 [WARNING] [tools.py:67] 2. The tools discovery mechanism is not supported
+2025-04-08 07:57:36,281 [WARNING] [tools.py:68] 3. The server connection is not properly initialized
+2025-04-08 07:57:36,281 [WARNING] [tools.py:68] 3. The server connection is not properly initialized
+2025-04-08 07:57:36,281 [WARNING] [tools.py:68] 3. The server connection is not properly initialized
+2025-04-08 07:57:36,281 [INFO] [agent.py:55] Found 0 MCP tools available for Time operations
+2025-04-08 07:57:36,281 [INFO] [agent.py:55] Found 0 MCP tools available for Time operations
+2025-04-08 07:57:36,281 [INFO] [agent.py:55] Found 0 MCP tools available for Time operations
+2025-04-08 07:57:36,281 [INFO] [agent.py:55] Found 0 MCP tools available for Time operations
+2025-04-08 07:57:36,282 [INFO] [main.py:194] Time MCP Server started successfully
+2025-04-08 07:57:36,282 [INFO] [main.py:194] Time MCP Server started successfully
+2025-04-08 07:57:36,282 [INFO] [main.py:194] Time MCP Server started successfully
+2025-04-08 07:57:36,282 [INFO] [main.py:194] Time MCP Server started successfully
+2025-04-08 07:57:46,108 [INFO] [main.py:214] Processing query: 'S'
+2025-04-08 07:57:46,108 [INFO] [main.py:214] Processing query: 'S'
+2025-04-08 07:57:46,909 [INFO] [tools.py:121] Processing query: 'S'
+2025-04-08 07:57:46,909 [INFO] [tools.py:121] Processing query: 'S'
+2025-04-08 07:57:51,664 [INFO] [tools.py:148] No specific tools were recorded for this query
+2025-04-08 07:57:51,664 [INFO] [tools.py:148] No specific tools were recorded for this query
+2025-04-08 07:57:51,665 [INFO] [main.py:220] Query completed in 4.75 seconds
+2025-04-08 07:57:51,665 [INFO] [main.py:220] Query completed in 4.75 seconds
+2025-04-08 07:57:56,674 [INFO] [main.py:214] Processing query: 'TIME IN INDIA'
+2025-04-08 07:57:56,674 [INFO] [main.py:214] Processing query: 'TIME IN INDIA'
+2025-04-08 07:57:57,470 [INFO] [tools.py:121] Processing query: 'TIME IN INDIA'
+2025-04-08 07:57:57,470 [INFO] [tools.py:121] Processing query: 'TIME IN INDIA'
+2025-04-08 07:58:02,841 [INFO] [tools.py:148] No specific tools were recorded for this query
+2025-04-08 07:58:02,841 [INFO] [tools.py:148] No specific tools were recorded for this query
+2025-04-08 07:58:02,842 [INFO] [main.py:220] Query completed in 5.37 seconds
+2025-04-08 07:58:02,842 [INFO] [main.py:220] Query completed in 5.37 seconds
+2025-04-08 07:58:22,283 [INFO] [main.py:251] Time agent shutting down
+2025-04-08 07:58:22,283 [INFO] [main.py:251] Time agent shutting down
+2025-04-08 07:58:22,289 [INFO] [main.py:252] Exiting gracefully...
+2025-04-08 07:58:22,289 [INFO] [main.py:252] Exiting gracefully...
+2025-04-08 07:58:24,187 [INFO] [main.py:251] Time agent shutting down
+2025-04-08 07:58:24,187 [INFO] [main.py:251] Time agent shutting down
+2025-04-08 07:58:24,187 [INFO] [main.py:252] Exiting gracefully...
+2025-04-08 07:58:24,187 [INFO] [main.py:252] Exiting gracefully...
+2025-04-08 07:58:41,650 [INFO] [main.py:188] Starting Time MCP Agent
+2025-04-08 07:58:41,654 [INFO] [main.py:192] Setting up agent...
+2025-04-08 07:58:41,663 [INFO] [tools.py:11] 
+==================================================
+2025-04-08 07:58:41,663 [INFO] [tools.py:12] TIME MCP TOOLS AND FUNCTIONS
+2025-04-08 07:58:41,663 [INFO] [tools.py:13] ==================================================
+2025-04-08 07:58:41,663 [WARNING] [tools.py:65] 
+No Time MCP tools were discovered. This could mean either:
+2025-04-08 07:58:41,663 [WARNING] [tools.py:66] 1. The Time MCP server doesn't expose any tools
+2025-04-08 07:58:41,663 [WARNING] [tools.py:67] 2. The tools discovery mechanism is not supported
+2025-04-08 07:58:41,664 [WARNING] [tools.py:68] 3. The server connection is not properly initialized
+2025-04-08 07:58:41,664 [INFO] [agent.py:55] Found 0 MCP tools available for Time operations
+2025-04-08 07:58:41,664 [INFO] [main.py:194] Time MCP Server started successfully
+2025-04-08 07:58:41,801 [INFO] [main.py:188] Starting Time MCP Agent
+2025-04-08 07:58:41,805 [INFO] [main.py:192] Setting up agent...
+2025-04-08 07:58:41,806 [INFO] [tools.py:11] 
+==================================================
+2025-04-08 07:58:41,806 [INFO] [tools.py:12] TIME MCP TOOLS AND FUNCTIONS
+2025-04-08 07:58:41,806 [INFO] [tools.py:13] ==================================================
+2025-04-08 07:58:41,806 [WARNING] [tools.py:65] 
+No Time MCP tools were discovered. This could mean either:
+2025-04-08 07:58:41,806 [WARNING] [tools.py:66] 1. The Time MCP server doesn't expose any tools
+2025-04-08 07:58:41,806 [WARNING] [tools.py:67] 2. The tools discovery mechanism is not supported
+2025-04-08 07:58:41,807 [WARNING] [tools.py:68] 3. The server connection is not properly initialized
+2025-04-08 07:58:41,807 [INFO] [agent.py:55] Found 0 MCP tools available for Time operations
+2025-04-08 07:58:41,807 [INFO] [main.py:194] Time MCP Server started successfully
+2025-04-08 07:59:35,097 [INFO] [main.py:251] Time agent shutting down
+2025-04-08 07:59:35,104 [INFO] [main.py:252] Exiting gracefully...
+2025-04-08 08:00:04,326 [INFO] [main.py:251] Time agent shutting down
+2025-04-08 08:00:04,330 [INFO] [main.py:252] Exiting gracefully...
+2025-04-08 08:01:01,515 [INFO] [main.py:195] Starting Time MCP Agent
+2025-04-08 08:01:01,519 [INFO] [main.py:199] Setting up agent...
+2025-04-08 08:01:01,530 [INFO] [tools.py:11] 
+==================================================
+2025-04-08 08:01:01,530 [INFO] [tools.py:12] TIME MCP TOOLS AND FUNCTIONS
+2025-04-08 08:01:01,530 [INFO] [tools.py:13] ==================================================
+2025-04-08 08:01:01,530 [WARNING] [tools.py:65] 
+No Time MCP tools were discovered. This could mean either:
+2025-04-08 08:01:01,530 [WARNING] [tools.py:66] 1. The Time MCP server doesn't expose any tools
+2025-04-08 08:01:01,530 [WARNING] [tools.py:67] 2. The tools discovery mechanism is not supported
+2025-04-08 08:01:01,530 [WARNING] [tools.py:68] 3. The server connection is not properly initialized
+2025-04-08 08:01:01,530 [INFO] [agent.py:55] Found 0 MCP tools available for Time operations
+2025-04-08 08:01:01,530 [INFO] [main.py:201] Time MCP Server started successfully
+2025-04-08 08:01:02,829 [INFO] [main.py:195] Starting Time MCP Agent
+2025-04-08 08:01:02,834 [INFO] [main.py:199] Setting up agent...
+2025-04-08 08:01:02,835 [INFO] [tools.py:11] 
+==================================================
+2025-04-08 08:01:02,835 [INFO] [tools.py:12] TIME MCP TOOLS AND FUNCTIONS
+2025-04-08 08:01:02,836 [INFO] [tools.py:13] ==================================================
+2025-04-08 08:01:02,836 [WARNING] [tools.py:65] 
+No Time MCP tools were discovered. This could mean either:
+2025-04-08 08:01:02,836 [WARNING] [tools.py:66] 1. The Time MCP server doesn't expose any tools
+2025-04-08 08:01:02,836 [WARNING] [tools.py:67] 2. The tools discovery mechanism is not supported
+2025-04-08 08:01:02,836 [WARNING] [tools.py:68] 3. The server connection is not properly initialized
+2025-04-08 08:01:02,836 [INFO] [agent.py:55] Found 0 MCP tools available for Time operations
+2025-04-08 08:01:02,836 [INFO] [main.py:201] Time MCP Server started successfully
+2025-04-08 08:02:12,675 [INFO] [main.py:258] Time agent shutting down
+2025-04-08 08:02:12,680 [INFO] [main.py:259] Exiting gracefully...
+2025-04-08 08:02:16,327 [INFO] [main.py:258] Time agent shutting down
+2025-04-08 08:02:16,330 [INFO] [main.py:259] Exiting gracefully...

@@ -1,0 +1,15 @@
+{
+  "name": "file_agent",
+  "version": "1.0.0",
+  "description": "A modular Python client for interacting with filesystem using the Pydantic AI framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/server-filesystem": "^2025.3.28"
+  }
+}

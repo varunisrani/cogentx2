@@ -1,0 +1,186 @@
+2025-04-08 08:57:30,973 [ERROR] [models.py:33] Missing required environment variables:
+2025-04-08 08:57:30,973 [ERROR] [models.py:35]   - BASE_PATH
+2025-04-08 08:57:30,973 [ERROR] [models.py:36] 
+Please create a .env file with the following content:
+2025-04-08 08:57:30,973 [ERROR] [models.py:37] 
+LLM_API_KEY=your_openai_api_key
+BASE_PATH=your_base_path  # Base directory for filesystem operations
+MODEL_CHOICE=gpt-4o-mini  # optional
+BASE_URL=https://api.openai.com/v1  # optional
+            
+2025-04-08 08:58:20,034 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:58:20,035 [INFO] [tools.py:13] FILESYSTEM MCP TOOLS AND FUNCTIONS
+2025-04-08 08:58:20,035 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:58:20,035 [WARNING] [tools.py:117] 
+No filesystem MCP tools were discovered. This could mean either:
+2025-04-08 08:58:20,035 [WARNING] [tools.py:118] 1. The filesystem MCP server doesn't expose any tools
+2025-04-08 08:58:20,035 [WARNING] [tools.py:119] 2. The tools discovery mechanism is not supported
+2025-04-08 08:58:20,036 [WARNING] [tools.py:120] 3. The server connection is not properly initialized
+2025-04-08 08:58:20,036 [INFO] [agent.py:71] Found 0 MCP tools available for filesystem operations
+2025-04-08 08:58:20,263 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:58:20,263 [INFO] [tools.py:13] FILESYSTEM MCP TOOLS AND FUNCTIONS
+2025-04-08 08:58:20,263 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:58:20,263 [WARNING] [tools.py:117] 
+No filesystem MCP tools were discovered. This could mean either:
+2025-04-08 08:58:20,263 [WARNING] [tools.py:118] 1. The filesystem MCP server doesn't expose any tools
+2025-04-08 08:58:20,264 [WARNING] [tools.py:119] 2. The tools discovery mechanism is not supported
+2025-04-08 08:58:20,264 [WARNING] [tools.py:120] 3. The server connection is not properly initialized
+2025-04-08 08:58:20,264 [INFO] [agent.py:71] Found 0 MCP tools available for filesystem operations
+2025-04-08 08:58:29,017 [INFO] [main.py:151] Processing query: 'serach me all files'
+2025-04-08 08:58:36,008 [INFO] [tools.py:173] Processing query: 'serach me all files'
+2025-04-08 08:59:05,486 [INFO] [_base_client.py:1590] Retrying request to /chat/completions in 0.443443 seconds
+2025-04-08 08:59:13,271 [INFO] [_base_client.py:1590] Retrying request to /chat/completions in 0.972160 seconds
+2025-04-08 08:59:21,425 [ERROR] [tools.py:207] Error processing query: status_code: 429, model_name: o3-mini, body: {'message': 'Request too large for o3-mini in organization org-wUOdTsVS6VLlZicezRUpMao8 on tokens per min (TPM): Limit 4000000, Requested 4146386. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}
+2025-04-08 08:59:21,437 [ERROR] [tools.py:208] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 262, in _completions_create
+    return await self.client.chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 2000, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1767, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1461, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1547, in _request
+    return await self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1594, in _retry_request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1547, in _request
+    return await self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1594, in _retry_request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1562, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - {'error': {'message': 'Request too large for o3-mini in organization org-wUOdTsVS6VLlZicezRUpMao8 on tokens per min (TPM): Limit 4000000, Requested 4146386. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/file_agent/tools.py", line 174, in run_file_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 262, in run
+    return await self._make_request(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 314, in _make_request
+    model_response, request_usage = await ctx.deps.model.request(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 192, in request
+    response = await self._completions_create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 284, in _completions_create
+    raise ModelHTTPError(status_code=status_code, model_name=self.model_name, body=e.body) from e
+pydantic_ai.exceptions.ModelHTTPError: status_code: 429, model_name: o3-mini, body: {'message': 'Request too large for o3-mini in organization org-wUOdTsVS6VLlZicezRUpMao8 on tokens per min (TPM): Limit 4000000, Requested 4146386. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}
+
+2025-04-08 08:59:21,476 [ERROR] [main.py:172] Error processing query: status_code: 429, model_name: o3-mini, body: {'message': 'Request too large for o3-mini in organization org-wUOdTsVS6VLlZicezRUpMao8 on tokens per min (TPM): Limit 4000000, Requested 4146386. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}
+2025-04-08 08:59:21,479 [ERROR] [main.py:173] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 262, in _completions_create
+    return await self.client.chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 2000, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1767, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1461, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1547, in _request
+    return await self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1594, in _retry_request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1547, in _request
+    return await self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1594, in _retry_request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1562, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - {'error': {'message': 'Request too large for o3-mini in organization org-wUOdTsVS6VLlZicezRUpMao8 on tokens per min (TPM): Limit 4000000, Requested 4146386. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/file_agent/main.py", line 155, in main
+    result, elapsed_time, tool_usage = await run_file_query(st.session_state.agent, user_query)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/file_agent/tools.py", line 174, in run_file_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 262, in run
+    return await self._make_request(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 314, in _make_request
+    model_response, request_usage = await ctx.deps.model.request(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 192, in request
+    response = await self._completions_create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/models/openai.py", line 284, in _completions_create
+    raise ModelHTTPError(status_code=status_code, model_name=self.model_name, body=e.body) from e
+pydantic_ai.exceptions.ModelHTTPError: status_code: 429, model_name: o3-mini, body: {'message': 'Request too large for o3-mini in organization org-wUOdTsVS6VLlZicezRUpMao8 on tokens per min (TPM): Limit 4000000, Requested 4146386. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}
+
+2025-04-08 09:00:00,419 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 09:00:00,419 [INFO] [tools.py:13] FILESYSTEM MCP TOOLS AND FUNCTIONS
+2025-04-08 09:00:00,419 [INFO] [tools.py:14] ==================================================
+2025-04-08 09:00:00,419 [WARNING] [tools.py:117] 
+No filesystem MCP tools were discovered. This could mean either:
+2025-04-08 09:00:00,419 [WARNING] [tools.py:118] 1. The filesystem MCP server doesn't expose any tools
+2025-04-08 09:00:00,419 [WARNING] [tools.py:119] 2. The tools discovery mechanism is not supported
+2025-04-08 09:00:00,420 [WARNING] [tools.py:120] 3. The server connection is not properly initialized
+2025-04-08 09:00:00,420 [INFO] [agent.py:71] Found 0 MCP tools available for filesystem operations
+2025-04-08 09:00:20,218 [INFO] [main.py:151] Processing query: 'search file name streamlit_ui.py'
+2025-04-08 09:00:22,599 [INFO] [tools.py:173] Processing query: 'search file name streamlit_ui.py'
+2025-04-08 09:00:28,397 [INFO] [tools.py:203] No specific tools were recorded for this query
+2025-04-08 09:00:28,398 [INFO] [main.py:158] Query completed in 5.80 seconds
+2025-04-08 09:00:49,239 [INFO] [main.py:151] Processing query: 'search file name Archon/streamlit_ui.py'
+2025-04-08 09:00:51,485 [INFO] [tools.py:173] Processing query: 'search file name Archon/streamlit_ui.py'
+2025-04-08 09:00:51,505 [INFO] [_base_client.py:1590] Retrying request to /chat/completions in 0.484460 seconds
+2025-04-08 09:01:03,852 [INFO] [tools.py:203] No specific tools were recorded for this query
+2025-04-08 09:01:03,853 [INFO] [main.py:158] Query completed in 12.37 seconds
+2025-04-08 09:01:26,485 [INFO] [main.py:151] Processing query: 'high size file names'
+2025-04-08 09:01:28,714 [INFO] [tools.py:173] Processing query: 'high size file names'
+2025-04-08 09:01:28,725 [INFO] [_base_client.py:1590] Retrying request to /chat/completions in 0.407766 seconds
+2025-04-08 09:01:38,884 [INFO] [tools.py:203] No specific tools were recorded for this query
+2025-04-08 09:01:38,885 [INFO] [main.py:158] Query completed in 10.17 seconds
+2025-04-08 09:02:03,952 [INFO] [main.py:151] Processing query: 'what is your base path'
+2025-04-08 09:02:06,323 [INFO] [tools.py:173] Processing query: 'what is your base path'
+2025-04-08 09:02:06,334 [INFO] [_base_client.py:1590] Retrying request to /chat/completions in 0.404822 seconds
+2025-04-08 09:02:12,063 [INFO] [tools.py:203] No specific tools were recorded for this query
+2025-04-08 09:02:12,064 [INFO] [main.py:158] Query completed in 5.74 seconds

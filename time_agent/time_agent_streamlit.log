@@ -1,0 +1,14 @@
+2025-04-08 08:06:03,154 [INFO] [tools.py:11] 
+==================================================
+2025-04-08 08:06:03,154 [INFO] [tools.py:12] TIME MCP TOOLS AND FUNCTIONS
+2025-04-08 08:06:03,155 [INFO] [tools.py:13] ==================================================
+2025-04-08 08:06:03,155 [WARNING] [tools.py:65] 
+No Time MCP tools were discovered. This could mean either:
+2025-04-08 08:06:03,155 [WARNING] [tools.py:66] 1. The Time MCP server doesn't expose any tools
+2025-04-08 08:06:03,156 [WARNING] [tools.py:67] 2. The tools discovery mechanism is not supported
+2025-04-08 08:06:03,156 [WARNING] [tools.py:68] 3. The server connection is not properly initialized
+2025-04-08 08:06:03,156 [INFO] [agent.py:55] Found 0 MCP tools available for Time operations
+2025-04-08 08:06:04,112 [INFO] [main.py:196] Processing query: 'new yourk time '
+2025-04-08 08:06:04,925 [INFO] [tools.py:121] Processing query: 'new yourk time '
+2025-04-08 08:06:11,781 [INFO] [tools.py:148] No specific tools were recorded for this query
+2025-04-08 08:06:11,788 [INFO] [main.py:211] Query completed in 6.86 seconds

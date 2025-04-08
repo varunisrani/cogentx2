@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "mcp-weather-server": "^1.0.0"
+  }
+}

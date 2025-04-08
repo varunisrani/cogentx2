@@ -1,0 +1,243 @@
+2025-04-08 08:18:53,473 [ERROR] [models.py:33] Missing required environment variables:
+2025-04-08 08:18:53,473 [ERROR] [models.py:35]   - OPENWEATHER_API_KEY
+2025-04-08 08:18:53,473 [ERROR] [models.py:36] 
+Please create a .env file with the following content:
+2025-04-08 08:18:53,473 [ERROR] [models.py:37] 
+LLM_API_KEY=your_openai_api_key
+OPENWEATHER_API_KEY=your_openweather_api_key
+MODEL_CHOICE=gpt-4o-mini  # optional
+BASE_URL=https://api.openai.com/v1  # optional
+            
+2025-04-08 08:18:53,473 [ERROR] [models.py:43] 
+To get an OpenWeather API key:
+2025-04-08 08:18:53,474 [ERROR] [models.py:44] 1. Go to https://home.openweathermap.org/users/sign_up
+2025-04-08 08:18:53,474 [ERROR] [models.py:45] 2. Sign up for a free account
+2025-04-08 08:18:53,474 [ERROR] [models.py:46] 3. Once registered, go to 'My API Keys'
+2025-04-08 08:18:53,474 [ERROR] [models.py:47] 4. Copy your API key and add it to the .env file
+2025-04-08 08:18:53,474 [INFO] [main.py:200] Weather agent shutting down
+2025-04-08 08:18:53,474 [ERROR] [main.py:207] Error during cleanup: no running event loop
+2025-04-08 08:18:53,474 [INFO] [main.py:208] Exiting gracefully...
+2025-04-08 08:20:57,128 [ERROR] [models.py:33] Missing required environment variables:
+2025-04-08 08:20:57,129 [ERROR] [models.py:35]   - OPENWEATHER_API_KEY
+2025-04-08 08:20:57,130 [ERROR] [models.py:36] 
+Please create a .env file with the following content:
+2025-04-08 08:20:57,131 [ERROR] [models.py:37] 
+LLM_API_KEY=your_openai_api_key
+OPENWEATHER_API_KEY=your_openweather_api_key
+MODEL_CHOICE=gpt-4o-mini  # optional
+BASE_URL=https://api.openai.com/v1  # optional
+            
+2025-04-08 08:20:57,131 [ERROR] [models.py:43] 
+To get an OpenWeather API key:
+2025-04-08 08:20:57,132 [ERROR] [models.py:44] 1. Go to https://home.openweathermap.org/users/sign_up
+2025-04-08 08:20:57,132 [ERROR] [models.py:45] 2. Sign up for a free account
+2025-04-08 08:20:57,133 [ERROR] [models.py:46] 3. Once registered, go to 'My API Keys'
+2025-04-08 08:20:57,133 [ERROR] [models.py:47] 4. Copy your API key and add it to the .env file
+2025-04-08 08:20:57,135 [INFO] [main.py:200] Weather agent shutting down
+2025-04-08 08:20:57,135 [ERROR] [main.py:207] Error during cleanup: no running event loop
+2025-04-08 08:20:57,136 [INFO] [main.py:208] Exiting gracefully...
+2025-04-08 08:20:57,232 [ERROR] [models.py:33] Missing required environment variables:
+2025-04-08 08:20:57,232 [ERROR] [models.py:35]   - OPENWEATHER_API_KEY
+2025-04-08 08:20:57,232 [ERROR] [models.py:36] 
+Please create a .env file with the following content:
+2025-04-08 08:20:57,232 [ERROR] [models.py:37] 
+LLM_API_KEY=your_openai_api_key
+OPENWEATHER_API_KEY=your_openweather_api_key
+MODEL_CHOICE=gpt-4o-mini  # optional
+BASE_URL=https://api.openai.com/v1  # optional
+            
+2025-04-08 08:20:57,232 [ERROR] [models.py:43] 
+To get an OpenWeather API key:
+2025-04-08 08:20:57,232 [ERROR] [models.py:44] 1. Go to https://home.openweathermap.org/users/sign_up
+2025-04-08 08:20:57,232 [ERROR] [models.py:45] 2. Sign up for a free account
+2025-04-08 08:20:57,232 [ERROR] [models.py:46] 3. Once registered, go to 'My API Keys'
+2025-04-08 08:20:57,233 [ERROR] [models.py:47] 4. Copy your API key and add it to the .env file
+2025-04-08 08:20:57,233 [INFO] [main.py:200] Weather agent shutting down
+2025-04-08 08:20:57,233 [ERROR] [main.py:207] Error during cleanup: no running event loop
+2025-04-08 08:20:57,233 [INFO] [main.py:208] Exiting gracefully...
+2025-04-08 08:21:11,014 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:21:11,014 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:21:11,014 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:21:11,014 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:21:11,014 [INFO] [tools.py:13] WEATHER MCP TOOLS AND FUNCTIONS
+2025-04-08 08:21:11,014 [INFO] [tools.py:13] WEATHER MCP TOOLS AND FUNCTIONS
+2025-04-08 08:21:11,015 [INFO] [tools.py:13] WEATHER MCP TOOLS AND FUNCTIONS
+2025-04-08 08:21:11,015 [INFO] [tools.py:13] WEATHER MCP TOOLS AND FUNCTIONS
+2025-04-08 08:21:11,015 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:21:11,016 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:21:11,015 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:21:11,016 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:21:11,016 [WARNING] [tools.py:118] 
+No Weather MCP tools were discovered. This could mean either:
+2025-04-08 08:21:11,016 [WARNING] [tools.py:118] 
+No Weather MCP tools were discovered. This could mean either:
+2025-04-08 08:21:11,016 [WARNING] [tools.py:118] 
+No Weather MCP tools were discovered. This could mean either:
+2025-04-08 08:21:11,017 [WARNING] [tools.py:119] 1. The Weather MCP server doesn't expose any tools
+2025-04-08 08:21:11,016 [WARNING] [tools.py:118] 
+No Weather MCP tools were discovered. This could mean either:
+2025-04-08 08:21:11,017 [WARNING] [tools.py:119] 1. The Weather MCP server doesn't expose any tools
+2025-04-08 08:21:11,017 [WARNING] [tools.py:119] 1. The Weather MCP server doesn't expose any tools
+2025-04-08 08:21:11,017 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-08 08:21:11,017 [WARNING] [tools.py:119] 1. The Weather MCP server doesn't expose any tools
+2025-04-08 08:21:11,017 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-08 08:21:11,017 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-08 08:21:11,017 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-08 08:21:11,017 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-08 08:21:11,017 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-08 08:21:11,018 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-08 08:21:11,018 [INFO] [agent.py:65] Found 0 MCP tools available for weather operations
+2025-04-08 08:21:11,018 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-08 08:21:11,018 [INFO] [agent.py:65] Found 0 MCP tools available for weather operations
+2025-04-08 08:21:11,018 [INFO] [agent.py:65] Found 0 MCP tools available for weather operations
+2025-04-08 08:21:11,020 [INFO] [main.py:200] Weather agent shutting down
+2025-04-08 08:21:11,018 [INFO] [agent.py:65] Found 0 MCP tools available for weather operations
+2025-04-08 08:21:11,020 [INFO] [main.py:200] Weather agent shutting down
+2025-04-08 08:21:11,022 [ERROR] [main.py:207] Error during cleanup: no running event loop
+2025-04-08 08:21:11,022 [ERROR] [main.py:207] Error during cleanup: no running event loop
+2025-04-08 08:21:11,022 [INFO] [main.py:200] Weather agent shutting down
+2025-04-08 08:21:11,022 [INFO] [main.py:200] Weather agent shutting down
+2025-04-08 08:21:11,022 [INFO] [main.py:208] Exiting gracefully...
+2025-04-08 08:21:11,022 [INFO] [main.py:208] Exiting gracefully...
+2025-04-08 08:21:11,022 [ERROR] [main.py:207] Error during cleanup: no running event loop
+2025-04-08 08:21:11,022 [ERROR] [main.py:207] Error during cleanup: no running event loop
+2025-04-08 08:21:11,023 [INFO] [main.py:208] Exiting gracefully...
+2025-04-08 08:21:11,023 [INFO] [main.py:208] Exiting gracefully...
+2025-04-08 08:21:11,144 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:21:11,144 [INFO] [tools.py:13] WEATHER MCP TOOLS AND FUNCTIONS
+2025-04-08 08:21:11,145 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:21:11,145 [WARNING] [tools.py:118] 
+No Weather MCP tools were discovered. This could mean either:
+2025-04-08 08:21:11,145 [WARNING] [tools.py:119] 1. The Weather MCP server doesn't expose any tools
+2025-04-08 08:21:11,145 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-08 08:21:11,145 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-08 08:21:11,145 [INFO] [agent.py:65] Found 0 MCP tools available for weather operations
+2025-04-08 08:21:11,146 [INFO] [main.py:200] Weather agent shutting down
+2025-04-08 08:21:11,146 [ERROR] [main.py:207] Error during cleanup: no running event loop
+2025-04-08 08:21:11,147 [INFO] [main.py:208] Exiting gracefully...
+2025-04-08 08:24:02,468 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:24:02,468 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:24:02,469 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:24:02,469 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:24:02,470 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:24:02,471 [INFO] [tools.py:13] WEATHER MCP TOOLS AND FUNCTIONS
+2025-04-08 08:24:02,470 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:24:02,471 [INFO] [tools.py:13] WEATHER MCP TOOLS AND FUNCTIONS
+2025-04-08 08:24:02,471 [INFO] [tools.py:13] WEATHER MCP TOOLS AND FUNCTIONS
+2025-04-08 08:24:02,472 [INFO] [tools.py:13] WEATHER MCP TOOLS AND FUNCTIONS
+2025-04-08 08:24:02,471 [INFO] [tools.py:13] WEATHER MCP TOOLS AND FUNCTIONS
+2025-04-08 08:24:02,472 [INFO] [tools.py:13] WEATHER MCP TOOLS AND FUNCTIONS
+2025-04-08 08:24:02,472 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:24:02,472 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:24:02,472 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:24:02,472 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:24:02,472 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:24:02,472 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:24:02,473 [WARNING] [tools.py:118] 
+No Weather MCP tools were discovered. This could mean either:
+2025-04-08 08:24:02,473 [WARNING] [tools.py:118] 
+No Weather MCP tools were discovered. This could mean either:
+2025-04-08 08:24:02,473 [WARNING] [tools.py:118] 
+No Weather MCP tools were discovered. This could mean either:
+2025-04-08 08:24:02,474 [WARNING] [tools.py:118] 
+No Weather MCP tools were discovered. This could mean either:
+2025-04-08 08:24:02,473 [WARNING] [tools.py:118] 
+No Weather MCP tools were discovered. This could mean either:
+2025-04-08 08:24:02,474 [WARNING] [tools.py:119] 1. The Weather MCP server doesn't expose any tools
+2025-04-08 08:24:02,474 [WARNING] [tools.py:118] 
+No Weather MCP tools were discovered. This could mean either:
+2025-04-08 08:24:02,475 [WARNING] [tools.py:119] 1. The Weather MCP server doesn't expose any tools
+2025-04-08 08:24:02,474 [WARNING] [tools.py:119] 1. The Weather MCP server doesn't expose any tools
+2025-04-08 08:24:02,475 [WARNING] [tools.py:119] 1. The Weather MCP server doesn't expose any tools
+2025-04-08 08:24:02,475 [WARNING] [tools.py:119] 1. The Weather MCP server doesn't expose any tools
+2025-04-08 08:24:02,476 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-08 08:24:02,476 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-08 08:24:02,475 [WARNING] [tools.py:119] 1. The Weather MCP server doesn't expose any tools
+2025-04-08 08:24:02,476 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-08 08:24:02,476 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-08 08:24:02,476 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-08 08:24:02,476 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-08 08:24:02,476 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-08 08:24:02,476 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-08 08:24:02,477 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-08 08:24:02,477 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-08 08:24:02,477 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-08 08:24:02,477 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-08 08:24:02,477 [INFO] [agent.py:65] Found 0 MCP tools available for weather operations
+2025-04-08 08:24:02,477 [INFO] [agent.py:65] Found 0 MCP tools available for weather operations
+2025-04-08 08:24:02,477 [INFO] [agent.py:65] Found 0 MCP tools available for weather operations
+2025-04-08 08:24:02,482 [INFO] [agent.py:65] Found 0 MCP tools available for weather operations
+2025-04-08 08:24:02,477 [INFO] [agent.py:65] Found 0 MCP tools available for weather operations
+2025-04-08 08:24:02,484 [INFO] [main.py:198] MCP servers closed successfully
+2025-04-08 08:24:02,486 [INFO] [main.py:198] MCP servers closed successfully
+2025-04-08 08:24:02,482 [INFO] [agent.py:65] Found 0 MCP tools available for weather operations
+2025-04-08 08:24:02,484 [INFO] [main.py:198] MCP servers closed successfully
+2025-04-08 08:24:02,488 [INFO] [main.py:198] MCP servers closed successfully
+2025-04-08 08:24:02,486 [INFO] [main.py:198] MCP servers closed successfully
+2025-04-08 08:24:02,488 [INFO] [main.py:198] MCP servers closed successfully
+2025-04-08 08:24:02,490 [INFO] [main.py:236] Weather agent shutting down
+2025-04-08 08:24:02,490 [INFO] [main.py:236] Weather agent shutting down
+2025-04-08 08:24:02,491 [INFO] [main.py:236] Weather agent shutting down
+2025-04-08 08:24:02,491 [INFO] [main.py:236] Weather agent shutting down
+2025-04-08 08:24:02,491 [INFO] [main.py:237] Exiting gracefully...
+2025-04-08 08:24:02,491 [INFO] [main.py:237] Exiting gracefully...
+2025-04-08 08:24:02,492 [INFO] [main.py:237] Exiting gracefully...
+2025-04-08 08:24:02,492 [INFO] [main.py:236] Weather agent shutting down
+2025-04-08 08:24:02,492 [INFO] [main.py:237] Exiting gracefully...
+2025-04-08 08:24:02,492 [INFO] [main.py:236] Weather agent shutting down
+2025-04-08 08:24:02,583 [INFO] [main.py:237] Exiting gracefully...
+2025-04-08 08:24:02,583 [INFO] [main.py:237] Exiting gracefully...
+2025-04-08 08:24:02,976 [INFO] [tools.py:12] 
+==================================================
+2025-04-08 08:24:02,977 [INFO] [tools.py:13] WEATHER MCP TOOLS AND FUNCTIONS
+2025-04-08 08:24:02,977 [INFO] [tools.py:14] ==================================================
+2025-04-08 08:24:02,977 [WARNING] [tools.py:118] 
+No Weather MCP tools were discovered. This could mean either:
+2025-04-08 08:24:02,977 [WARNING] [tools.py:119] 1. The Weather MCP server doesn't expose any tools
+2025-04-08 08:24:02,977 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-08 08:24:02,977 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-08 08:24:02,977 [INFO] [agent.py:65] Found 0 MCP tools available for weather operations
+2025-04-08 08:24:02,978 [INFO] [main.py:198] MCP servers closed successfully
+2025-04-08 08:24:02,979 [INFO] [main.py:236] Weather agent shutting down
+2025-04-08 08:24:02,979 [INFO] [main.py:237] Exiting gracefully...
+2025-04-08 08:24:16,088 [INFO] [main.py:198] MCP servers closed successfully
+2025-04-08 08:24:16,089 [INFO] [main.py:236] Weather agent shutting down
+2025-04-08 08:24:16,089 [INFO] [main.py:237] Exiting gracefully...
+2025-04-08 08:24:16,182 [INFO] [main.py:157] Processing query: 'what is weather in ahmedbad'
+2025-04-08 08:26:34,209 [INFO] [tools.py:11] 
+==================================================
+2025-04-08 08:26:34,211 [INFO] [tools.py:12] WEATHER MCP TOOLS AND FUNCTIONS
+2025-04-08 08:26:34,211 [INFO] [tools.py:13] ==================================================
+2025-04-08 08:26:34,211 [WARNING] [tools.py:117] 
+No Weather MCP tools were discovered. This could mean either:
+2025-04-08 08:26:34,211 [WARNING] [tools.py:118] 1. The Weather MCP server doesn't expose any tools
+2025-04-08 08:26:34,212 [WARNING] [tools.py:119] 2. The tools discovery mechanism is not supported
+2025-04-08 08:26:34,212 [WARNING] [tools.py:120] 3. The server connection is not properly initialized
+2025-04-08 08:26:34,212 [INFO] [agent.py:65] Found 0 MCP tools available for weather operations
+2025-04-08 08:26:34,213 [INFO] [main.py:198] MCP servers closed successfully
+2025-04-08 08:26:34,214 [INFO] [main.py:236] Weather agent shutting down
+2025-04-08 08:26:34,214 [INFO] [main.py:237] Exiting gracefully...
+2025-04-08 08:26:39,252 [INFO] [main.py:198] MCP servers closed successfully
+2025-04-08 08:26:39,253 [INFO] [main.py:236] Weather agent shutting down
+2025-04-08 08:26:39,253 [INFO] [main.py:237] Exiting gracefully...
+2025-04-08 08:26:39,349 [INFO] [main.py:157] Processing query: 'what is weather in ahmedbad'
+2025-04-08 08:26:40,997 [INFO] [tools.py:173] Processing query: 'what is weather in ahmedbad'
+2025-04-08 08:26:58,367 [INFO] [tools.py:204] No specific tools were recorded for this query
+2025-04-08 08:26:58,368 [INFO] [main.py:164] Query completed in 17.37 seconds
+2025-04-08 08:26:58,390 [INFO] [main.py:198] MCP servers closed successfully
+2025-04-08 08:26:58,391 [INFO] [main.py:236] Weather agent shutting down
+2025-04-08 08:26:58,391 [INFO] [main.py:237] Exiting gracefully...
+2025-04-08 08:31:13,399 [INFO] [main.py:198] MCP servers closed successfully
+2025-04-08 08:31:13,534 [INFO] [main.py:236] Weather agent shutting down
+2025-04-08 08:31:13,642 [INFO] [main.py:237] Exiting gracefully...

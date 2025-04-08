@@ -665,3 +665,269 @@ content
     For further information visit https://errors.pydantic.dev/2.10/v/missing
 2025-04-07 01:41:04,800 [INFO] [main.py:149] Processing query: 'ludek5R81YU?si=2AkeTRK0IeNmDp_k''
 2025-04-07 01:41:04,800 [INFO] [tools.py:180] Processing query: 'ludek5R81YU?si=2AkeTRK0IeNmDp_k''
+2025-04-08 08:33:20,952 [INFO] [main.py:116] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-08 08:33:20,954 [INFO] [agent.py:48] Creating YouTube Transcript MCP Server...
+2025-04-08 08:33:20,955 [INFO] [agent.py:52] Initializing agent with YouTube Transcript MCP Server...
+2025-04-08 08:33:20,966 [INFO] [tools.py:10] 
+==================================================
+2025-04-08 08:33:20,967 [INFO] [tools.py:11] YOUTUBE TRANSCRIPT MCP TOOLS AND FUNCTIONS
+2025-04-08 08:33:20,967 [INFO] [tools.py:12] ==================================================
+2025-04-08 08:33:20,967 [WARNING] [tools.py:118] 
+No YouTube Transcript MCP tools were discovered. This could mean either:
+2025-04-08 08:33:20,967 [WARNING] [tools.py:119] 1. The YouTube Transcript MCP server doesn't expose any tools
+2025-04-08 08:33:20,967 [WARNING] [tools.py:120] 2. The tools discovery mechanism is not supported
+2025-04-08 08:33:20,968 [WARNING] [tools.py:121] 3. The server connection is not properly initialized
+2025-04-08 08:33:20,968 [INFO] [agent.py:61] Found 0 MCP tools available for YouTube transcript operations
+2025-04-08 08:33:44,484 [INFO] [main.py:171] Processing query: 'Get transcript for https://youtu.be/2uRl5AFaaDY?si=6oGkKo2IIHQesGBX'
+2025-04-08 08:33:48,094 [INFO] [tools.py:180] Processing query: 'Get transcript for https://youtu.be/2uRl5AFaaDY?si=6oGkKo2IIHQesGBX'
+2025-04-08 08:33:48,095 [INFO] [tools.py:190] Extracted YouTube URL: https://www.youtube.com/watch?v=2uRl5AFaaDY
+2025-04-08 08:33:52,523 [ERROR] [tools.py:252] Error processing query: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...6}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+2025-04-08 08:33:52,532 [ERROR] [tools.py:253] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/youtube_transcript_agent/tools.py", line 215, in run_youtube_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 372, in run
+    async with self.stream(ctx):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 386, in stream
+    async for _event in stream:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 423, in _run_stream
+    async for event in self._events_iterator:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 413, in _run_stream
+    async for event in self._handle_tool_calls(ctx, tool_calls):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 452, in _handle_tool_calls
+    async for event in process_function_tools(
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 657, in process_function_tools
+    result = task.result()
+             ^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 318, in run
+    return await self._run(message, run_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 335, in _run
+    response_content = await function(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 689, in run_tool
+    result = await server.call_tool(tool_name, args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 81, in call_tool
+    return await self._client.call_tool(tool_name, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 256, in call_tool
+    return await self.send_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 268, in send_request
+    return result_type.model_validate(response_or_error.result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic/main.py", line 627, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...6}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+
+2025-04-08 08:33:55,549 [ERROR] [main.py:192] Error processing query: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...6}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+2025-04-08 08:33:55,551 [ERROR] [main.py:193] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/youtube_transcript_agent/main.py", line 175, in main
+    result, elapsed_time, tool_usage = await run_youtube_query(st.session_state.agent, user_query)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/youtube_transcript_agent/tools.py", line 215, in run_youtube_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 372, in run
+    async with self.stream(ctx):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 386, in stream
+    async for _event in stream:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 423, in _run_stream
+    async for event in self._events_iterator:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 413, in _run_stream
+    async for event in self._handle_tool_calls(ctx, tool_calls):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 452, in _handle_tool_calls
+    async for event in process_function_tools(
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 657, in process_function_tools
+    result = task.result()
+             ^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 318, in run
+    return await self._run(message, run_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 335, in _run
+    response_content = await function(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 689, in run_tool
+    result = await server.call_tool(tool_name, args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 81, in call_tool
+    return await self._client.call_tool(tool_name, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 256, in call_tool
+    return await self.send_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 268, in send_request
+    return result_type.model_validate(response_or_error.result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic/main.py", line 627, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...6}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+
+2025-04-08 08:39:44,556 [INFO] [main.py:171] Processing query: 'Get transcript for https://youtu.be/2uRl5AFaaDY?si=6oGkKo2IIHQesGBX'
+2025-04-08 08:39:49,048 [INFO] [tools.py:180] Processing query: 'Get transcript for https://youtu.be/2uRl5AFaaDY?si=6oGkKo2IIHQesGBX'
+2025-04-08 08:39:49,049 [INFO] [tools.py:190] Extracted YouTube URL: https://www.youtube.com/watch?v=2uRl5AFaaDY
+2025-04-08 08:39:49,060 [INFO] [_base_client.py:1590] Retrying request to /chat/completions in 0.384081 seconds
+2025-04-08 08:39:53,962 [ERROR] [tools.py:252] Error processing query: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...6}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+2025-04-08 08:39:53,965 [ERROR] [tools.py:253] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/youtube_transcript_agent/tools.py", line 215, in run_youtube_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 372, in run
+    async with self.stream(ctx):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 386, in stream
+    async for _event in stream:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 423, in _run_stream
+    async for event in self._events_iterator:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 413, in _run_stream
+    async for event in self._handle_tool_calls(ctx, tool_calls):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 452, in _handle_tool_calls
+    async for event in process_function_tools(
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 657, in process_function_tools
+    result = task.result()
+             ^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 318, in run
+    return await self._run(message, run_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 335, in _run
+    response_content = await function(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 689, in run_tool
+    result = await server.call_tool(tool_name, args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 81, in call_tool
+    return await self._client.call_tool(tool_name, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 256, in call_tool
+    return await self.send_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 268, in send_request
+    return result_type.model_validate(response_or_error.result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic/main.py", line 627, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...6}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+
+2025-04-08 08:39:56,992 [ERROR] [main.py:192] Error processing query: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...6}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+2025-04-08 08:39:56,994 [ERROR] [main.py:193] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/youtube_transcript_agent/main.py", line 175, in main
+    result, elapsed_time, tool_usage = await run_youtube_query(st.session_state.agent, user_query)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/youtube_transcript_agent/tools.py", line 215, in run_youtube_query
+    result = await agent.run(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 329, in run
+    async for _ in agent_run:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1414, in __anext__
+    next_node = await self._graph_run.__anext__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 782, in __anext__
+    return await self.next(self._next_node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_graph/graph.py", line 760, in next
+    self._next_node = await node.run(ctx)
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 372, in run
+    async with self.stream(ctx):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 386, in stream
+    async for _event in stream:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 423, in _run_stream
+    async for event in self._events_iterator:
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 413, in _run_stream
+    async for event in self._handle_tool_calls(ctx, tool_calls):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 452, in _handle_tool_calls
+    async for event in process_function_tools(
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 657, in process_function_tools
+    result = task.result()
+             ^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 318, in run
+    return await self._run(message, run_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/tools.py", line 335, in _run
+    response_content = await function(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/_agent_graph.py", line 689, in run_tool
+    result = await server.call_tool(tool_name, args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 81, in call_tool
+    return await self._client.call_tool(tool_name, arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/session.py", line 256, in call_tool
+    return await self.send_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/shared/session.py", line 268, in send_request
+    return result_type.model_validate(response_or_error.result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic/main.py", line 627, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for CallToolResult
+content
+  Field required [type=missing, input_value={'toolResult': {'content'...6}}], 'isError': False}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+
