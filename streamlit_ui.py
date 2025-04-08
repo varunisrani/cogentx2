@@ -88,8 +88,18 @@ try:
     from streamlit_pages.chat import chat_tab
 except ImportError:
     logger.error("Failed to import chat_tab")
-    def chat_tab():
-        st.error("Chat tab module not found")
+    async def chat_tab():
+        st.error("Chat tab module not found. Please check that the file 'streamlit_pages/chat.py' exists and is properly formatted.")
+        st.info("If you're seeing this message, there might be an issue with your installation. Try the following steps:")
+        st.markdown("""
+        1. Check that all files are present in the `streamlit_pages` directory
+        2. Ensure you have all required dependencies installed:
+           ```bash
+           pip install -r requirements.txt
+           ```
+        3. If the issue persists, try restarting the Streamlit server
+        """)
+        return None
 
 try:
     from streamlit_pages.terminal import terminal_tab
@@ -102,23 +112,33 @@ except ImportError:
 
 # Set page config - must be the first Streamlit command
 st.set_page_config(
-    page_title="Archon",
-    page_icon="🧙‍♂️",
+    page_title="Cogentx",
+    page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
 # Display icon and title in the sidebar
 try:
-    logo_path = 'assets/archon-logo.png'
-    if os.path.exists(logo_path):
-        image = Image.open(logo_path)
-        st.sidebar.image(image, width=250)
-    else:
+    logo_paths = [
+        'public/CogentxLightGrey.png',
+        'assets/cogentx-logo.png',
+        'public/Cogentx.png'
+    ]
+    
+    logo_loaded = False
+    for logo_path in logo_paths:
+        if os.path.exists(logo_path):
+            image = Image.open(logo_path)
+            st.sidebar.image(image, width=250)
+            logo_loaded = True
+            break
+            
+    if not logo_loaded:
         # Use emoji as fallback
-        st.sidebar.title("🧙‍♂️ Archon")
+        st.sidebar.title("⚡ Cogentx")
 except Exception as e:
-    st.sidebar.title("🧙‍♂️ Archon")
+    st.sidebar.title("⚡ Cogentx")
     logger.error(f"Could not load logo: {e}")
 
 # Utilities and styles
@@ -617,7 +637,7 @@ def display_workbench_code():
                 pass
 
             # Create the terminal with the command
-            welcome_message = "Welcome to the Archon Terminal! You can run commands here to interact with your code."
+            welcome_message = "Welcome to the Cogentx Terminal! You can run commands here to interact with your code."
 
             # Use the appropriate terminal implementation
             if HAS_STREAMLIT_TERMINAL:
@@ -714,7 +734,29 @@ async def main():
 
     # Add sidebar navigation
     with st.sidebar:
-        st.image("public/ArchonLightGrey.png", width=1000)
+        try:
+            # Try multiple logo paths
+            logo_paths = [
+                'public/CogentxLightGrey.png',
+                'assets/cogentx-logo.png',
+                'public/Cogentx.png'
+            ]
+            
+            logo_loaded = False
+            for logo_path in logo_paths:
+                if os.path.exists(logo_path):
+                    st.image(logo_path, width=1000)
+                    logo_loaded = True
+                    break
+                
+            if not logo_loaded:
+                # Fallback to text header if no logo found
+                st.title("⚡ Cogentx")
+                
+        except Exception as e:
+            # Fallback to text header on any error
+            st.title("⚡ Cogentx")
+            logger.debug(f"Logo loading error (using text fallback): {e}")
 
         # Navigation options with vertical buttons
         st.write("### Navigation")
@@ -747,26 +789,26 @@ async def main():
 
     # Display the selected tab
     if st.session_state.selected_tab == "Home":
-        st.title("Archon - Home")
+        st.title("Cogentx - Home")
         home_tab()
     elif st.session_state.selected_tab == "Template Browser":
-        st.title("Archon - Template Browser")
+        st.title("Cogentx - Template Browser")
         template_browser_tab()
     elif st.session_state.selected_tab == "Code Editor":
-        st.title("Archon - Code Editor")
+        st.title("Cogentx - Code Editor")
         nocode_editor_tab()
     elif st.session_state.selected_tab == "No-Code Builder":
-        st.title("Archon - No-Code Builder")
+        st.title("Cogentx - No-Code Builder")
         nocode_builder_tab()
     elif st.session_state.selected_tab == "Chat":
-        st.title("Archon - Agent Builder")
+        st.title("Cogentx - Agent Builder")
         try:
             await chat_tab()
         except Exception as e:
             st.error(f"Error in chat tab: {str(e)}")
             logger.error(f"Chat tab error: {str(e)}")
     elif st.session_state.selected_tab == "Generated Code":
-        st.title("Archon - Generated Code")
+        st.title("Cogentx - Generated Code")
         display_workbench_code()
 
 if __name__ == "__main__":

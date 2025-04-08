@@ -7,26 +7,26 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils.utils import create_new_tab_button
 
 def intro_tab():
-    """Display the introduction and setup guide for Archon"""    
+    """Display the introduction and setup guide for Cogentx"""    
     # Welcome message
     st.markdown("""
-    Archon is an AI meta-agent designed to autonomously build, refine, and optimize other AI agents.
+    Cogentx is an AI meta-agent designed to autonomously build, refine, and optimize other AI agents.
     
     It serves both as a practical tool for developers and as an educational framework demonstrating the evolution of agentic systems.
-    Archon is developed in iterations, starting with a simple Pydantic AI agent that can build other Pydantic AI agents,
+    Cogentx is developed in iterations, starting with a simple Pydantic AI agent that can build other Pydantic AI agents,
     all the way to a full agentic workflow using LangGraph that can build other AI agents with any framework.
     
-    Through its iterative development, Archon showcases the power of planning, feedback loops, and domain-specific knowledge in creating robust AI agents.
+    Through its iterative development, Cogentx showcases the power of planning, feedback loops, and domain-specific knowledge in creating robust AI agents.
     """)
     
     # Environment variables update notice
     st.warning("""
-    **🔄 IMPORTANT UPDATE (March 20th):** Archon now uses a multi-agent workflow with specialized refiner agents for autonomous prompt, tools, and agent definition improvements. The primary coding agent still creates the initial agent by itself, but then you can say 'refine' or something along those lines as a follow up prompt to kick off the specialized agents in parallel.
+    **🔄 IMPORTANT UPDATE (March 20th):** Cogentx now uses a multi-agent workflow with specialized refiner agents for autonomous prompt, tools, and agent definition improvements. The primary coding agent still creates the initial agent by itself, but then you can say 'refine' or something along those lines as a follow up prompt to kick off the specialized agents in parallel.
     """)
     
     # Setup guide with expandable sections
     st.markdown("## Setup Guide")
-    st.markdown("Follow these concise steps to get Archon up and running (IMPORTANT: come back here after each step):")
+    st.markdown("Follow these concise steps to get Cogentx up and running (IMPORTANT: come back here after each step):")
     
     # Step 1: Environment Configuration
     with st.expander("Step 1: Environment Configuration", expanded=True):
@@ -45,7 +45,7 @@ def intro_tab():
            - `PRIMARY_MODEL`: Main agent model (e.g., gpt-4o-mini)
            - `REASONER_MODEL`: Planning model (e.g., o3-mini)
         
-        These settings determine how Archon connects to external services and which models it uses.
+        These settings determine how Cogentx connects to external services and which models it uses.
         """)
         # Add a button to navigate to the Environment tab
         create_new_tab_button("Go to Environment Section (New Tab)", "Environment", key="goto_env", use_container_width=True)
@@ -55,7 +55,7 @@ def intro_tab():
         st.markdown("""
         ### Database Setup
         
-        Archon uses Supabase for vector storage and retrieval:
+        Cogentx uses Supabase for vector storage and retrieval:
         
         1. Go to the **Database** tab
         2. Select your embedding dimensions (1536 for OpenAI, 768 for nomic-embed-text)
@@ -109,23 +109,23 @@ def intro_tab():
         2. Select your IDE (Windsurf, Cursor, or Cline/Roo Code)
         3. Follow the instructions to configure your IDE
         
-        This enables you to use Archon directly from your AI-powered IDE.
+        This enables you to use Cogentx directly from your AI-powered IDE.
         """)
         # Add a button to navigate to the MCP tab
         create_new_tab_button("Go to MCP Section (New Tab)", "MCP", key="goto_mcp", use_container_width=True)
     
-    # Step 6: Using Archon
-    with st.expander("Step 6: Using Archon", expanded=False):
+    # Step 6: Using Cogentx
+    with st.expander("Step 6: Using Cogentx", expanded=False):
         st.markdown("""
-        ### Using Archon
+        ### Using Cogentx
         
         Once everything is set up:
         
         1. Go to the **Chat** tab
         2. Describe the agent you want to build
-        3. Archon will plan and generate the necessary code
+        3. Cogentx will plan and generate the necessary code
         
-        You can also use Archon directly from your AI IDE if you've configured MCP.
+        You can also use Cogentx directly from your AI IDE if you've configured MCP.
         """)
         # Add a button to navigate to the Chat tab
         create_new_tab_button("Go to Chat Section (New Tab)", "Chat", key="goto_chat", use_container_width=True)
@@ -134,7 +134,7 @@ def intro_tab():
     st.markdown("""
     ## Additional Resources
     
-    - [GitHub Repository](https://github.com/coleam00/archon)
-    - [Archon Community Forum](https://thinktank.ottomator.ai/c/archon/30)
-    - [GitHub Kanban Board](https://github.com/users/coleam00/projects/1)
+    - [GitHub Repository](https://github.com/sjuu/Cogentx)
+    - [Cogentx Community Forum](https://thinktank.ottomator.ai/c/cogentx/30)
+    - [GitHub Kanban Board](https://github.com/users/sjuu/projects/1)
     """)

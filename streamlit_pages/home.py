@@ -4,9 +4,9 @@ def home_tab():
     """Home tab content."""
     
     st.markdown("""
-    # Welcome to Archon
+    # Welcome to Cogentx
     
-    Archon is a platform for building, managing, and running multi-agent AI systems using the MCP (Multi-Agent Coordination Protocol) framework.
+    Cogentx is a powerful platform for building, managing, and running multi-agent AI systems using the MCP (Multi-Agent Coordination Protocol) framework.
     
     ## Features
     
@@ -25,7 +25,7 @@ def home_tab():
     
     ## Documentation
     
-    For more information about Archon and the MCP framework, check out the documentation at [github.com/sjuu/Archon](https://github.com/sjuu/Archon).
+    For more information about Cogentx and the MCP framework, check out the documentation at [github.com/sjuu/Cogentx](https://github.com/sjuu/Cogentx).
     """)
     
     # Display cards for each main feature
@@ -33,14 +33,14 @@ def home_tab():
     
     with col1:
         with st.container(border=True):
-            st.subheader("🚀 Agent Runner")
+            st.subheader("⚡ Agent Runner")
             st.write("Run and test MCP agents interactively.")
             if st.button("Go to Agent Runner", key="home_agent_runner_btn"):
                 st.session_state.selected_tab = "Agent Runner"
                 st.rerun()
         
         with st.container(border=True):
-            st.subheader("🧰 Workbench")
+            st.subheader("🔧 Workbench")
             st.write("Manage your agent projects and files.")
             if st.button("Go to Workbench", key="home_workbench_btn"):
                 st.session_state.selected_tab = "Workbench"
@@ -55,7 +55,7 @@ def home_tab():
                 st.rerun()
         
         with st.container(border=True):
-            st.subheader("🔧 Code Editor")
+            st.subheader("💻 Code Editor")
             st.write("Edit agent code with a full-featured code editor.")
             if st.button("Go to Code Editor", key="home_code_editor_btn"):
                 st.session_state.selected_tab = "Code Editor"

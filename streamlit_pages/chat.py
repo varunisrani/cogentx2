@@ -103,7 +103,7 @@ async def chat_tab():
             message_placeholder = st.empty()  # Placeholder for updating the message
             
             # Add a spinner while loading
-            with st.spinner("Archon is thinking..."):
+            with st.spinner("Cogentx is thinking..."):
                 try:
                     # Run the agent with streaming
                     async for chunk in run_agent_with_streaming(user_input):

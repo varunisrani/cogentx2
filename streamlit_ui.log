@@ -10424,3 +10424,22 @@
 2025-04-08 16:52:16,637 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2025-04-08 16:52:16,748 - mcp_template_tools - INFO - Fixed 1 issues in tools.py
 2025-04-08 16:52:16,748 - mcp_template_tools - INFO - Template validation and fixing complete
+2025-04-08 17:32:15,678 - __main__ - ERROR - Failed to import chat_tab
+2025-04-08 17:33:14,335 - __main__ - ERROR - Failed to import chat_tab
+2025-04-08 17:33:20,529 - __main__ - ERROR - Failed to import chat_tab
+2025-04-08 17:33:20,597 - __main__ - ERROR - Chat tab error: object NoneType can't be used in 'await' expression
+2025-04-08 17:33:22,257 - __main__ - ERROR - Failed to import chat_tab
+2025-04-08 17:33:23,193 - __main__ - ERROR - Failed to import chat_tab
+2025-04-08 17:33:25,426 - __main__ - ERROR - Failed to import chat_tab
+2025-04-08 17:33:33,439 - __main__ - ERROR - Failed to import chat_tab
+2025-04-08 17:33:34,539 - __main__ - ERROR - Failed to import chat_tab
+2025-04-08 17:33:37,942 - __main__ - ERROR - Failed to import chat_tab
+2025-04-08 17:33:38,011 - __main__ - ERROR - Chat tab error: object NoneType can't be used in 'await' expression
+2025-04-08 17:34:49,386 - streamlit_pages.chat - ERROR - Failed to import Cogentx modules: No module named 'cogentx'
+2025-04-08 17:36:28,552 - streamlit_pages.chat - INFO - Using thread ID: 20250408-173628-bcba974c for conversation
+2025-04-08 17:36:29,678 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-08 17:36:29,699 - mcp_template_tools - INFO - No keyword matches found, attempting semantic matching
+2025-04-08 17:36:31,817 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 17:36:51,265 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 17:36:53,909 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-08 17:36:55,803 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"

@@ -17,8 +17,8 @@ __all__ = [
     'setup_agent', 
     'get_model', 
     'create_weather_agent',
-    'display_mcp_tools', 
-    'run_weather_query', 
+    'display_mcp_tools',
+    'run_weather_query',
     'execute_mcp_tool',
     'create_mcp_server',
     'main'
