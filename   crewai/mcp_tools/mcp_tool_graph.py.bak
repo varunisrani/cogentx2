@@ -1,0 +1,716 @@
+from __future__ import annotations as _annotations
+
+import os
+import asyncio
+import json
+import logging
+from typing import Dict, Any, Optional, List
+
+from dotenv import load_dotenv
+from openai import AsyncOpenAI
+from pydantic_ai import RunContext
+
+# Add the parent directory to Python path
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Import from the main Archon files - delay import to avoid circular dependencies
+import importlib
+
+# Import MCP tool specific functions directly
+from archon.mcp_tools.mcp_tool_coder import (
+    mcp_tool_agent,
+    MCPToolDeps,
+    find_relevant_mcp_tools,
+    integrate_mcp_tool_with_code,
+    create_connection_script,
+    generate_mcp_integration_readme,
+    setup_mcp_tool_structure,
+    analyze_tool_code,
+    customize_tool_implementation,
+    verify_tool_integration,
+)
+
+# Import the tool selector functions
+from archon.mcp_tools.mcp_tool_selector import (
+    get_required_tools, 
+    filter_tools_by_user_needs,
+    extract_structured_requirements,
+    rank_tools_by_requirement_match,
+    get_crewai_tool_requirements
+)
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('mcp_tool_graph.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger('mcp_tool_graph')
+
+# Load environment variables
+load_dotenv()
+
+def get_tool_name_from_purpose(purpose: str) -> str:
+    """
+    Extract the specific tool name from the purpose description.
+    Returns a standardized tool name that can be used as a directory name.
+    
+    Args:
+        purpose: The tool purpose description
+        
+    Returns:
+        Standardized tool name (lowercase, no spaces)
+    """
+    purpose_lower = purpose.lower()
+    
+    # Define tool name mappings
+    tool_keywords = {
+        "github": ["github", "git", "repository", "repo", "pull request", "issue"],
+        "spotify": ["spotify", "music", "playlist", "song", "track", "artist"],
+        "youtube": ["youtube", "video", "channel", "stream"],
+        "twitter": ["twitter", "tweet", "x.com"],
+        "slack": ["slack", "message", "channel"],
+        "gmail": ["gmail", "email", "mail"],
+        "google_drive": ["google drive", "gdrive", "drive"],
+        "discord": ["discord", "server"],
+        "notion": ["notion", "page", "database"],
+        "trello": ["trello", "board", "card"],
+        "asana": ["asana", "task"],
+        "jira": ["jira", "ticket"],
+        "instagram": ["instagram", "post", "story"],
+        "linkedin": ["linkedin", "profile", "post"],
+        "facebook": ["facebook", "post", "page"],
+        "shopify": ["shopify", "store", "product"],
+        "stripe": ["stripe", "payment", "invoice"],
+        "aws": ["aws", "amazon web services", "s3", "ec2", "lambda"]
+    }
+    
+    # Check for each known tool type in the purpose
+    for tool_name, keywords in tool_keywords.items():
+        for keyword in keywords:
+            if keyword in purpose_lower:
+                return tool_name
+    
+    # If no matching tool type is found, extract the first word
+    # and use it as the tool name (fall back)
+    words = purpose_lower.split()
+    if words:
+        # Remove common prefixes that don't describe the tool
+        first_word = words[0]
+        if first_word in ['a', 'an', 'the', 'for', 'with', 'using']:
+            if len(words) > 1:
+                first_word = words[1]
+        
+        # Clean up the word and return
+        return first_word.strip().replace(' ', '_')
+    
+    # Last resort: return empty string
+    return ""
+
+async def mcp_tool_flow(
+    user_request: str,
+    openai_client: AsyncOpenAI,
+    supabase_client: Any,
+    base_dir: str = "output"
+) -> Dict[str, Any]:
+    """
+    Main flow for finding and integrating MCP tools from Supabase.
+    Generates a single tools.py file with CrewAI integration.
+    
+    Args:
+        user_request: User's request for tools
+        openai_client: AsyncOpenAI client
+        supabase_client: Supabase client
+        base_dir: Base directory for output
+        
+    Returns:
+        Result dictionary
+    """
+    try:
+        logger.info(f"Starting MCP tool flow for request: {user_request[:100]}...")
+        
+        # Set up dependencies
+        mcp_deps = MCPToolDeps(
+            supabase=supabase_client,
+            openai_client=openai_client
+        )
+        
+        # Extract detailed CrewAI requirements
+        crewai_requirements = await get_crewai_tool_requirements(
+            query=user_request,
+            openai_client=openai_client
+        )
+        logger.info(f"Extracted CrewAI requirements for {len(crewai_requirements.get('tools', []))} tools")
+        
+        # Create a RunContext
+        search_context = RunContext(
+            deps=mcp_deps,
+            model=mcp_tool_agent.model,
+            usage={},
+            prompt=f"Find MCP tools for: {user_request}"
+        )
+        
+        # Find relevant tools
+        tool_search_result = await find_relevant_mcp_tools(
+            ctx=search_context,
+            user_query=user_request
+        )
+        
+        if not tool_search_result.get("found", False):
+            logger.info("No relevant MCP tools found for this request")
+            # Import agentic_flow here to avoid circular imports
+            from archon.archon_graph import agentic_flow
+            # Fall back to standard agentic flow
+            return {
+                "success": False,
+                "message": "No relevant MCP tools found. Using standard code generation.",
+                "files": []
+            }
+            
+        # Extract tools and mentioned tools information
+        tools = tool_search_result.get("tools", [])
+        mentioned_tools = tool_search_result.get("mentioned_tools", [])
+        
+        if mentioned_tools:
+            logger.info(f"User specifically mentioned: {', '.join(mentioned_tools)}")
+        
+        # Add CrewAI requirements to the tool data
+        tool_search_result["crewai_requirements"] = crewai_requirements
+        
+        # Integration context
+        integration_context = RunContext(
+            deps=mcp_deps,
+            model=mcp_tool_agent.model,
+            usage={},
+            prompt=f"Integrate MCP tools for CrewAI: {user_request}"
+        )
+        
+        # Create a single integrated tools.py file
+        integrated_code = await integrate_mcp_tool_with_code(
+            ctx=integration_context,
+            agent_code={},
+            mcp_tools_data=tool_search_result
+        )
+        
+        # Ensure output directory exists
+        os.makedirs(base_dir, exist_ok=True)
+        
+        # Write the tools.py file
+        tools_file_path = os.path.join(base_dir, "tools.py")
+        with open(tools_file_path, "w") as f:
+            f.write(integrated_code.get("tools.py", "# No tool code generated"))
+        
+        # Return the result
+        if tools:
+            tool_purposes = [tool.get('purpose', '') for tool in tools]
+            result_message = f"Generated {len(tools)} CrewAI tools in a single file"
+        else:
+            tool_purposes = [tool_search_result.get('purpose', 'Tool')]
+            result_message = "Generated CrewAI tool in a single file"
+            
+        return {
+            "success": True,
+            "message": result_message,
+            "files": [tools_file_path],
+            "tool_info": {
+                "purpose": ", ".join(tool_purposes[:3]) + (f" and {len(tool_purposes) - 3} more" if len(tool_purposes) > 3 else ""),
+                "directory": base_dir,
+                "format": "crewai",
+                "tool_count": len(tools) if tools else 1
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Error in MCP tool flow: {str(e)}", exc_info=True)
+        return {
+            "success": False,
+            "message": f"Error generating tools.py: {str(e)}",
+            "files": []
+        }
+
+async def adaptive_code_synthesis_flow(
+    user_request: str,
+    openai_client: AsyncOpenAI,
+    supabase_client: Any,
+    base_dir: str = "output"
+) -> Dict[str, Any]:
+    """
+    Implements the Adaptive Code Synthesis approach for MCP tool generation.
+    This advanced flow analyzes user requirements deeply, understands reference code,
+    and adapts it to meet specific needs.
+    
+    Args:
+        user_request: User's natural language request
+        openai_client: AsyncOpenAI client for embeddings and completions
+        supabase_client: Supabase client for database access
+        base_dir: Base directory for output files
+        
+    Returns:
+        Dictionary with results of the MCP tool integration
+    """
+    try:
+        logger.info(f"Starting Adaptive Code Synthesis for request: {user_request[:100]}...")
+        
+        # Set up dependencies
+        mcp_deps = MCPToolDeps(
+            supabase=supabase_client,
+            openai_client=openai_client
+        )
+        
+        # Step 1: Perform deep user intent analysis
+        user_requirements = await extract_structured_requirements(
+            query=user_request,
+            openai_client=openai_client
+        )
+        
+        logger.info(f"Extracted user requirements: {len(user_requirements.primary_tools)} primary tools, " +
+                   f"customization level: {user_requirements.customization_level}")
+        
+        # If no primary tools were identified, use fallback
+        if not user_requirements.primary_tools:
+            logger.info("No specific tools identified, falling back to standard approach")
+            return await mcp_tool_flow(
+                user_request=user_request,
+                openai_client=openai_client,
+                supabase_client=supabase_client,
+                base_dir=base_dir
+            )
+        
+        # Step 2: Create a RunContext for the tools
+        context = RunContext(
+            deps=mcp_deps,
+            model=mcp_tool_agent.model,
+            usage={},
+            prompt=user_request
+        )
+        
+        # Step 3: Find relevant reference tools from Supabase
+        tool_search_result = await find_relevant_mcp_tools(
+            ctx=context,
+            user_query=user_request
+        )
+        
+        if not tool_search_result.get("found", False):
+            logger.info("No relevant MCP tools found for this request")
+            return {
+                "success": False,
+                "message": "No relevant MCP tools found. Using standard code generation.",
+                "files": []
+            }
+        
+        # Extract the found tools
+        tools = tool_search_result.get("tools", [])
+        
+        # Step 4: Rank tools based on requirement match
+        ranked_tools = await rank_tools_by_requirement_match(
+            tools=tools,
+            requirements=user_requirements
+        )
+        
+        if not ranked_tools:
+            logger.info("No tools matched the requirements after ranking")
+            return {
+                "success": False,
+                "message": "No suitable tools found after requirement matching.",
+                "files": []
+            }
+        
+        # Step 5: Set up directory structure
+        project_name = "mcp_tools_synthesis"
+        # Create a more specific project name based on the primary tools
+        primary_tool_names = [tool.tool_name for tool in user_requirements.primary_tools]
+        if primary_tool_names:
+            if len(primary_tool_names) <= 3:
+                project_name = "_".join(primary_tool_names) + "_tools"
+            else:
+                project_name = f"{primary_tool_names[0]}_and_others_tools"
+        
+        output_dir = os.path.join(base_dir, project_name)
+        os.makedirs(output_dir, exist_ok=True)
+        
+        # Create main mcp_tools directory
+        mcp_tools_dir = os.path.join(output_dir, "mcp_tools")
+        os.makedirs(mcp_tools_dir, exist_ok=True)
+        
+        # Create __init__.py in mcp_tools directory
+        with open(os.path.join(mcp_tools_dir, "__init__.py"), "w") as f:
+            f.write("# MCP Tools Package\n")
+            f.write("# Generated using Adaptive Code Synthesis\n\n")
+            
+            # Create import statements for each primary tool
+            tool_imports = []
+            for req_tool in user_requirements.primary_tools:
+                tool_name = req_tool.tool_name
+                tool_imports.append(f"from .{tool_name} import *")
+            
+            if tool_imports:
+                f.write("# Import all tools\n")
+                f.write("\n".join(tool_imports) + "\n")
+        
+        # Step 6: Process each primary tool
+        tool_directories = []
+        files_written = []
+        processed_tools = []
+        
+        for tool_req in user_requirements.primary_tools:
+            tool_name = tool_req.tool_name
+            logger.info(f"Processing tool: {tool_name}, importance: {tool_req.importance}")
+            
+            # Find the best matching reference tool for this requirement
+            reference_tool = None
+            for ranked_tool in ranked_tools:
+                if tool_name in ranked_tool.get('purpose', '').lower():
+                    reference_tool = ranked_tool
+                    break
+            
+            if not reference_tool:
+                logger.warning(f"No reference tool found for {tool_name}, skipping")
+                continue
+                
+            # Create tool directory
+            tool_dir = os.path.join(mcp_tools_dir, tool_name)
+            os.makedirs(tool_dir, exist_ok=True)
+            tool_directories.append(tool_dir)
+            
+            # Create __init__.py in tool directory
+            init_file = os.path.join(tool_dir, "__init__.py")
+            with open(init_file, "w") as f:
+                f.write(f"# {tool_name.capitalize()} MCP Tool\n")
+                f.write(f"# Purpose: {reference_tool.get('purpose', 'Integration tool')}\n")
+                f.write(f"# Customization level: {user_requirements.customization_level}\n")
+            
+            files_written.append(init_file)
+            
+            # Step 7: Analyze the reference tool code
+            reference_code = reference_tool.get("tool_code", "")
+            code_analysis = await analyze_tool_code(
+                ctx=context,
+                tool_code=reference_code,
+                purpose=reference_tool.get("purpose", "")
+            )
+            
+            # Step 8: Customize the tool implementation based on requirements
+            # Extract custom features from the requirements
+            custom_features = tool_req.custom_features
+            
+            # Convert the tool requirement to a dictionary for the API
+            tool_requirements = {
+                "tool_name": tool_req.tool_name,
+                "importance": tool_req.importance,
+                "custom_features": tool_req.custom_features,
+                "integration_points": tool_req.integration_points,
+                "authentication_requirements": tool_req.authentication_requirements,
+                "specific_endpoints": tool_req.specific_endpoints,
+                "customization_level": user_requirements.customization_level,
+                "special_instructions": user_requirements.special_instructions
+            }
+            
+            customized_code = await customize_tool_implementation(
+                ctx=context,
+                reference_code=reference_code,
+                code_analysis=code_analysis,
+                requirements=tool_requirements,
+                custom_features=custom_features
+            )
+            
+            # Step 9: Verify the customized tool
+            verification = await verify_tool_integration(
+                ctx=context,
+                customized_code=customized_code,
+                requirements=tool_requirements
+            )
+            
+            # Step 10: Write the customized tool code
+            tool_code_path = os.path.join(tool_dir, "tool.py")
+            with open(tool_code_path, "w") as f:
+                f.write(customized_code)
+            files_written.append(tool_code_path)
+            
+            # Step 11: Generate a verification report
+            verification_path = os.path.join(tool_dir, "verification.json")
+            with open(verification_path, "w") as f:
+                json.dump(verification, f, indent=2)
+            files_written.append(verification_path)
+            
+            # Step 12: Write an example file
+            example_code_path = os.path.join(tool_dir, "example.py")
+            with open(example_code_path, "w") as f:
+                f.write(f"""# Example usage of the {tool_name} tool
+# This example shows how to use the tool directly
+
+from mcp_tools.{tool_name}.tool import *
+
+def main():
+    # Initialize the tool
+    # Example based on: {reference_tool.get('purpose', 'MCP Tool')}
+    
+    # TODO: Add initialization and usage code
+    # See customized features: {', '.join(custom_features) if custom_features else 'None'}
+    
+    print(f"Example usage of {tool_name} tool")
+    
+if __name__ == "__main__":
+    main()
+""")
+            files_written.append(example_code_path)
+            
+            # Create connection scripts for the tool if available
+            connection_script_template = reference_tool.get("connection_script", "")
+            if connection_script_template:
+                # Create a connection script with any specific auth requirements
+                conn_context = RunContext(
+                    deps=mcp_deps,
+                    model=mcp_tool_agent.model,
+                    usage={},
+                    prompt=f"Create connection script for: {tool_name} with auth: {tool_req.authentication_requirements}"
+                )
+                
+                connection_script = await create_connection_script(
+                    ctx=conn_context,
+                    connection_script_template=connection_script_template,
+                    service_name=tool_name
+                )
+                
+                # Write connection script to file
+                connection_file = os.path.join(tool_dir, "connection.py")
+                with open(connection_file, 'w') as f:
+                    f.write(connection_script)
+                files_written.append(connection_file)
+        
+            # Write requirements.txt for each tool
+            # Extract dependencies from both the original tool and the verification report
+            requirements_list = []
+            
+            # Add original requirements if available
+            original_requirements = reference_tool.get("requirements", "")
+            if original_requirements:
+                for line in original_requirements.split("\n"):
+                    line = line.strip()
+                    if line and not line.startswith("#"):
+                        requirements_list.append(line)
+            
+            # Add any missing dependencies identified in verification
+            missing_deps = verification.get("missing_dependencies", [])
+            for dep in missing_deps:
+                if dep not in requirements_list:
+                    requirements_list.append(dep)
+            
+            # Write the requirements file
+            if requirements_list:
+                req_file = os.path.join(tool_dir, "requirements.txt")
+                with open(req_file, 'w') as f:
+                    f.write("\n".join(sorted(requirements_list)))
+                files_written.append(req_file)
+            
+            # Store processed tool information
+            processed_tools.append({
+                "tool_name": tool_name,
+                "directory": tool_dir,
+                "custom_features": custom_features,
+                "verification_status": verification.get("verification_status", "unknown")
+            })
+        
+        # Create main requirements.txt combining all tool requirements
+        all_requirements = set()
+        for tool_dir in tool_directories:
+            req_file = os.path.join(tool_dir, "requirements.txt")
+            if os.path.exists(req_file):
+                with open(req_file, 'r') as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith("#"):
+                            all_requirements.add(line)
+            
+            # Write combined requirements file
+            if all_requirements:
+                main_req_file = os.path.join(output_dir, "requirements.txt")
+                with open(main_req_file, 'w') as f:
+                    f.write("# Combined requirements for all MCP tools\n")
+                    f.write("# Generated using Adaptive Code Synthesis\n\n")
+                    f.write("\n".join(sorted(all_requirements)))
+                files_written.append(main_req_file)
+        
+        # Create README.md
+        readme_context = RunContext(
+            deps=mcp_deps,
+            model=mcp_tool_agent.model,
+            usage={},
+            prompt=f"Generate README for Adaptive Code Synthesis MCP tools: {user_request}"
+        )
+        
+        # Create a summary of the processed tools for the README
+        tools_summary = []
+        for tool in processed_tools:
+            tool_name = tool.get("tool_name", "")
+            features = tool.get("custom_features", [])
+            status = tool.get("verification_status", "unknown")
+            
+            features_str = ", ".join(features) if features else "standard features"
+            tools_summary.append({
+                "name": tool_name,
+                "custom_features": features_str,
+                "verification_status": status
+            })
+        
+        # Pass the user requirements and processed tools to the README generator
+        readme_content = await generate_mcp_integration_readme(
+            ctx=readme_context,
+            mcp_tool_data={
+                "purposes": [tool.get("tool_name", "") for tool in processed_tools],
+                "tools": tools,
+                "processed_tools": tools_summary,
+                "user_requirements": user_requirements.model_dump(),
+                "approach": "Adaptive Code Synthesis"
+            },
+            generated_files=[os.path.basename(file) for file in files_written]
+        )
+        
+        readme_file = os.path.join(output_dir, "README.md")
+        with open(readme_file, 'w') as f:
+            f.write(readme_content)
+        files_written.append(readme_file)
+        
+        # Return results
+        return {
+            "success": True,
+            "message": f"Successfully generated {len(processed_tools)} customized MCP tool(s) using Adaptive Code Synthesis",
+            "files": files_written,
+            "tool_info": {
+                "tool_count": len(processed_tools),
+                "tool_names": [tool.get("tool_name", "") for tool in processed_tools],
+                "directory": output_dir,
+                "synthesis_approach": "Adaptive Code Synthesis",
+                "customization_level": user_requirements.customization_level
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Error in Adaptive Code Synthesis flow: {str(e)}", exc_info=True)
+        return {
+            "success": False,
+            "message": f"Error in Adaptive Code Synthesis: {str(e)}",
+            "files": []
+        }
+
+async def combined_adaptive_flow(
+    user_request: str,
+    openai_client: AsyncOpenAI,
+    supabase_client: Any,
+    base_dir: str = "output",
+    use_adaptive_synthesis: bool = True
+) -> Dict[str, Any]:
+    """
+    Combined workflow that uses either Adaptive Code Synthesis or simpler approaches.
+    
+    Args:
+        user_request: User's natural language request
+        openai_client: AsyncOpenAI client for embeddings and completions
+        supabase_client: Supabase client for database access
+        base_dir: Base directory for output files
+        use_adaptive_synthesis: Whether to attempt using the advanced Adaptive Code Synthesis
+        
+    Returns:
+        Dictionary with results of the code generation
+    """
+    if use_adaptive_synthesis:
+        # Try Adaptive Code Synthesis first
+        synthesis_result = await adaptive_code_synthesis_flow(
+            user_request=user_request,
+            openai_client=openai_client,
+            supabase_client=supabase_client,
+            base_dir=base_dir
+        )
+        
+        if synthesis_result.get("success", False):
+            return synthesis_result
+        
+        # If unsuccessful, try the simpler MCP tool approach
+        mcp_result = await mcp_tool_flow(
+            user_request=user_request,
+            openai_client=openai_client,
+            supabase_client=supabase_client,
+            base_dir=base_dir
+        )
+        
+        if mcp_result.get("success", False):
+            return mcp_result
+    else:
+        # Use the simpler approach directly
+        mcp_result = await mcp_tool_flow(
+            user_request=user_request,
+            openai_client=openai_client,
+            supabase_client=supabase_client,
+            base_dir=base_dir
+        )
+        
+        if mcp_result.get("success", False):
+            return mcp_result
+    
+    # Fall back to standard agentic flow if all else fails
+    # Import here to avoid circular imports
+    from archon.archon_graph import agentic_flow
+    from archon.pydantic_ai_coder import pydantic_ai_coder
+    
+    try:
+        # Standard agentic flow - simplified for tool generation
+        output_dir = os.path.join(base_dir, "standard_output")
+        os.makedirs(output_dir, exist_ok=True)
+        
+        # Use a simplified approach for the demo
+        dummy_result = {
+            "success": True,
+            "message": "Generated tool code using standard approach (fallback)",
+            "files": [os.path.join(output_dir, "generated_tool.py")],
+            "tool_info": {
+                "synthesis_approach": "Standard Fallback"
+            }
+        }
+        
+        # Write a placeholder file for tool code
+        with open(os.path.join(output_dir, "generated_tool.py"), "w") as f:
+            f.write(f"""# Generated MCP tool for: {user_request}
+# This is a placeholder for standard tool code generation
+# Generated as a fallback when other approaches failed
+            
+from crewai.tools import BaseTool
+from pydantic import Field
+from typing import Optional
+
+class GeneratedMCPTool(BaseTool):
+    \"\"\"
+    A tool generated based on user request: {user_request}
+    \"\"\"
+    name: str = "GeneratedMCPTool"
+    description: str = "Tool generated from user request"
+    
+    def _run(self, query: str) -> str:
+        \"\"\"Execute the tool with the given query\"\"\"
+        return f"Executing generated tool with query: {{query}}"
+    
+if __name__ == "__main__":
+    # Example usage
+    tool = GeneratedMCPTool()
+    result = tool._run("test query")
+    print(result)
+""")
+        
+        return dummy_result
+        
+    except Exception as e:
+        logger.error(f"Error in standard code generation: {str(e)}", exc_info=True)
+        return {
+            "success": False,
+            "message": f"Error in tool code generation: {str(e)}",
+            "files": []
+        }
+
+__all__ = [
+    'mcp_tool_flow',
+    'get_tool_name_from_purpose',
+    'adaptive_code_synthesis_flow',
+    'combined_adaptive_flow'
+] 

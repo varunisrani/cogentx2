@@ -1,0 +1,15 @@
+{
+  "verification_status": "unknown",
+  "implemented_features": [],
+  "missing_features": [],
+  "potential_issues": [
+    "Failed to parse verification results"
+  ],
+  "error_handling_quality": "unknown",
+  "authentication_properly_implemented": false,
+  "framework_compatibility": "unknown",
+  "missing_dependencies": [],
+  "suggestions": [
+    "Manually verify the tool implementation"
+  ]
+}

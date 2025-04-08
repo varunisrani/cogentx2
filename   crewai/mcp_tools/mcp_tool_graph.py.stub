@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+import os
+import logging
+import json
+from typing import Dict, Any, List, Optional
+from openai import AsyncOpenAI
+from pydantic_ai import RunContext
+from dataclasses import dataclass
+
+# Setup logging
+logger = logging.getLogger("mcp_tools")
+
+# Minimal working stub functions to satisfy imports
+async def mcp_tool_flow(*args, **kwargs):
+    """Create a minimal flow for MCP tools."""
+    return {}
+
+def get_tool_name_from_purpose(purpose: str) -> str:
+    """Extract a tool name from its purpose."""
+    return ""
+
+async def adaptive_code_synthesis_flow(*args, **kwargs):
+    """Minimal implementation of the adaptive code synthesis flow."""
+    return {}
+
+async def combined_adaptive_flow(*args, **kwargs):
+    """Minimal implementation of the combined adaptive flow."""
+    return {}
+
+async def extract_structured_requirements(*args, **kwargs):
+    """Extract structured requirements from user query."""
+    return {}
