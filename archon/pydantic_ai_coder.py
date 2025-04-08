@@ -59,9 +59,6 @@ class PydanticAIDeps:
     merged_templates: Optional[Dict[str, Any]] = None
 
 # Helper function to safely write files to the workbench directory
-# Flag to track if we've already printed the workbench directory message
-_workbench_dir_ensured = False
-
 def write_to_workbench(filename: str, content: str) -> Tuple[bool, str]:
     """
     Safely write content to a file in the workbench directory.
@@ -73,17 +70,9 @@ def write_to_workbench(filename: str, content: str) -> Tuple[bool, str]:
     Returns:
         Tuple of (success: bool, message: str)
     """
-    global _workbench_dir_ensured
     try:
         # Determine the absolute path to the workbench directory
         workbench_dir = os.path.join(os.getcwd(), "workbench")
-
-        # Ensure workbench directory exists
-        os.makedirs(workbench_dir, exist_ok=True)
-        # Only print the message once
-        if not _workbench_dir_ensured:
-            print(f"Ensured workbench directory exists at: {workbench_dir}")
-            _workbench_dir_ensured = True
 
         # Create the full path to the file
         file_path = os.path.join(workbench_dir, filename)

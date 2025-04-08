@@ -20,38 +20,13 @@ load_dotenv()
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 workbench_dir = os.path.join(parent_dir, "workbench")
-# Flag to track if we've already printed the workbench directory message
-_workbench_dir_ensured = False
 
 def ensure_workbench_dir():
-    """Ensure the workbench directory exists.
+    """Return the path to the workbench directory.
 
-    This function checks if the workbench directory exists and creates it if it doesn't.
-    Returns the path to the workbench directory.
+    This function no longer creates the directory, it just returns the path.
     """
-    global workbench_dir, _workbench_dir_ensured
-    try:
-        os.makedirs(workbench_dir, exist_ok=True)
-        # Only print the message once
-        if not _workbench_dir_ensured:
-            print(f"Ensured workbench directory exists at: {workbench_dir}")
-            _workbench_dir_ensured = True
-        return workbench_dir
-    except Exception as e:
-        if not _workbench_dir_ensured:
-            print(f"Error creating workbench directory: {e}")
-            _workbench_dir_ensured = True
-        # Fallback to a temporary directory if we can't create the workbench dir
-        import tempfile
-        temp_dir = os.path.join(tempfile.gettempdir(), "archon_workbench")
-        os.makedirs(temp_dir, exist_ok=True)
-        if not _workbench_dir_ensured:
-            print(f"Using temporary workbench directory at: {temp_dir}")
-        workbench_dir = temp_dir
-        return temp_dir
-
-# Ensure workbench directory exists at import time
-ensure_workbench_dir()
+    return workbench_dir
 
 def write_to_log(message: str):
     """Write a message to the logs.txt file in the workbench directory.
@@ -59,17 +34,19 @@ def write_to_log(message: str):
     Args:
         message: The message to log
     """
-    # Ensure workbench directory exists
-    ensure_workbench_dir()
-
     # Get the log path
     log_path = os.path.join(workbench_dir, "logs.txt")
 
+    # Add timestamp to the message
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     log_entry = f"[{timestamp}] {message}\n"
 
-    with open(log_path, "a", encoding="utf-8") as f:
-        f.write(log_entry)
+    try:
+        with open(log_path, "a", encoding="utf-8") as f:
+            f.write(log_entry)
+    except Exception:
+        # Silently fail if we can't write to the log file
+        pass
 
 def get_env_var(var_name: str, profile: Optional[str] = None) -> Optional[str]:
     """Get an environment variable from the saved JSON file or from environment variables.
@@ -81,9 +58,6 @@ def get_env_var(var_name: str, profile: Optional[str] = None) -> Optional[str]:
     Returns:
         The value of the environment variable or None if not found
     """
-    # Ensure workbench directory exists
-    ensure_workbench_dir()
-
     # Path to the JSON file storing environment variables
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
 
@@ -122,9 +96,6 @@ def save_env_var(var_name: str, value: str, profile: Optional[str] = None) -> bo
     Returns:
         True if successful, False otherwise
     """
-    # Ensure workbench directory exists
-    ensure_workbench_dir()
-
     # Path to the JSON file storing environment variables
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
 
@@ -171,9 +142,6 @@ def get_current_profile() -> str:
     Returns:
         The name of the current profile, defaults to "default" if not set
     """
-    # Ensure workbench directory exists
-    ensure_workbench_dir()
-
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
 
     if os.path.exists(env_file_path):
@@ -195,9 +163,6 @@ def set_current_profile(profile_name: str) -> bool:
     Returns:
         True if successful, False otherwise
     """
-    # Ensure workbench directory exists
-    ensure_workbench_dir()
-
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
 
     # Load existing env vars or create empty dict
@@ -236,9 +201,6 @@ def get_all_profiles() -> list:
     Returns:
         List of profile names
     """
-    # Ensure workbench directory exists
-    ensure_workbench_dir()
-
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
 
     if os.path.exists(env_file_path):
@@ -262,9 +224,6 @@ def create_profile(profile_name: str) -> bool:
     Returns:
         True if successful, False otherwise
     """
-    # Ensure workbench directory exists
-    ensure_workbench_dir()
-
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
 
     # Load existing env vars or create empty dict
@@ -310,9 +269,6 @@ def delete_profile(profile_name: str) -> bool:
     if profile_name == "default":
         return False
 
-    # Ensure workbench directory exists
-    ensure_workbench_dir()
-
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
 
     if os.path.exists(env_file_path):
@@ -346,9 +302,6 @@ def get_profile_env_vars(profile_name: Optional[str] = None) -> dict:
     Returns:
         Dictionary of environment variables for the profile
     """
-    # Ensure workbench directory exists
-    ensure_workbench_dir()
-
     env_file_path = os.path.join(workbench_dir, "env_vars.json")
 
     if os.path.exists(env_file_path):
