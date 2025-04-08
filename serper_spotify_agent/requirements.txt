@@ -1,7 +1,0 @@
-pydantic-ai>=0.6.0
-python-dotenv>=1.0.0
-httpx>=0.24.0
-pydantic>=2.0.0
-logfire>=0.5.0
-colorlog>=6.7.0
-openai>=1.0.0 
