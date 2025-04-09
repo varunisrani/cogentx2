@@ -34,7 +34,7 @@ from pydantic_ai.messages import (
 
 # Add the parent directory to Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from archon.pydantic_ai_coder import (
+from .pydantic_ai_coder import (
     pydantic_ai_coder,
     PydanticAIDeps,
     list_documentation_pages_helper,
@@ -47,18 +47,18 @@ from archon.pydantic_ai_coder import (
 from utils.utils import get_env_var
 
 # Add import for MCP tools modules - ensure we import from all three components
-from archon.mcp_tools.mcp_tool_coder import (
+from .mcp_tools.mcp_tool_coder import (
     mcp_tool_agent, 
     MCPToolDeps,
     find_relevant_mcp_tools,
     integrate_mcp_tool_with_code,
     create_mcp_context
 )
-from archon.mcp_tools.mcp_tool_graph import (
+from .mcp_tools.mcp_tool_graph import (
     mcp_tool_flow,
     combined_adaptive_flow
 )
-from archon.mcp_tools.mcp_tool_selector import (
+from .mcp_tools.mcp_tool_selector import (
     get_required_tools,
     filter_tools_by_user_needs,
     extract_structured_requirements,
@@ -100,7 +100,7 @@ is_ollama = "localhost" in base_url.lower()
 is_anthropic = "anthropic" in base_url.lower()
 is_openai = "openai" in base_url.lower()
 
-reasoner_llm_model_name = get_env_var('REASONER_MODEL') or 'o3-mini'
+reasoner_llm_model_name = get_env_var('REASONER_MODEL') or 'gpt-4o-mini'
 # Fix model initialization
 if is_anthropic:
     reasoner_llm_model = AnthropicModel(reasoner_llm_model_name, api_key=api_key)
@@ -156,7 +156,7 @@ Your scope documents should enable implementation of effective multi-agent solut
 )
 
 # Add this line to define primary_llm_model before its usage
-primary_llm_model_name = get_env_var('PRIMARY_MODEL') or 'o3-mini'
+primary_llm_model_name = get_env_var('PRIMARY_MODEL') or 'gpt-4o-mini'
 # Fix model initialization
 if is_anthropic:
     primary_llm_model = AnthropicModel(primary_llm_model_name, api_key=api_key)
@@ -312,7 +312,7 @@ async def safe_run_model(deps, prompt: str) -> str:
     elif hasattr(deps, 'openai_client') and deps.openai_client is not None:
         logger.info("Using openai_client for model run")
         response = await deps.openai_client.chat.completions.create(
-            model=os.getenv('PRIMARY_MODEL', 'o3-mini'),
+            model=os.getenv('PRIMARY_MODEL', 'gpt-4o-mini'),
             messages=[{"role": "user", "content": prompt}],
             max_tokens=4000
         )
@@ -323,7 +323,7 @@ async def safe_run_model(deps, prompt: str) -> str:
         logger.info("Using model.client for chat completion")
         try:
             response = await deps.model.client.chat.completions.create(
-                model=os.getenv('PRIMARY_MODEL', 'o3-mini'),
+                model=os.getenv('PRIMARY_MODEL', 'gpt-4o-mini'),
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=4000
             )
@@ -510,7 +510,7 @@ async def coder_agent(state: AgentState, writer):
     # Check for MCP tool keywords in the user message
     try:
         # Import the MCP detection function
-        from archon.pydantic_ai_coder import detect_mcp_tool_keywords
+        from .pydantic_ai_coder import detect_mcp_tool_keywords
         tool_detection_results = detect_mcp_tool_keywords(user_request)
         
         if tool_detection_results and isinstance(tool_detection_results, dict) and len(tool_detection_results) > 0:
@@ -526,8 +526,8 @@ async def coder_agent(state: AgentState, writer):
                 writer("Looking for matching MCP tools...\n")
             
             # Import MCP tools
-            from archon.mcp_tools import combined_adaptive_flow
-            from archon.mcp_tools.mcp_tool_coder import MCPToolDeps, create_mcp_context
+            from .mcp_tools import combined_adaptive_flow
+            from .mcp_tools.mcp_tool_coder import MCPToolDeps, create_mcp_context
             
             # Set up MCPToolDeps for all components
             mcp_deps = MCPToolDeps(
@@ -544,7 +544,7 @@ async def coder_agent(state: AgentState, writer):
             
             # Step 1: First use mcp_tool_selector to get structured requirements
             try:
-                from archon.mcp_tools.mcp_tool_selector import extract_structured_requirements
+                from .mcp_tools.mcp_tool_selector import extract_structured_requirements
                 logger.info(f"MCP TOOL SELECTOR: Extracting structured requirements")
                 requirements = await extract_structured_requirements(user_request, openai_client)
                 logger.info(f"MCP TOOL SELECTOR: Got requirements with {len(requirements.primary_tools)} primary tools")
@@ -555,7 +555,7 @@ async def coder_agent(state: AgentState, writer):
                 requirements = {"primary_tools": primary_tools, "customization_level": "standard"}
             
             # Step 2: Use MCPToolCoder to find relevant tools
-            from archon.mcp_tools.mcp_tool_coder import find_relevant_mcp_tools
+            from .mcp_tools.mcp_tool_coder import find_relevant_mcp_tools
             tools_result = await find_relevant_mcp_tools(mcp_context, user_request)
             if not tools_result.get("found", False):
                 logger.warning(f"MCP TOOL CODER: No matching tools found in database")
@@ -795,7 +795,7 @@ async def coder_agent(state: AgentState, writer):
             # Only initialize context and search for templates if this is an agent creation request
             try:
                 # Import inside the function to ensure it's accessible
-                from archon.mcp_tools.mcp_tool_coder import MCPToolDeps, create_mcp_context
+                from .mcp_tools.mcp_tool_coder import MCPToolDeps, create_mcp_context
                 
                 # Now create the MCPToolDeps object
                 mcp_deps = MCPToolDeps(
@@ -862,7 +862,7 @@ async def coder_agent(state: AgentState, writer):
                                 output_dir = os.path.join(os.getcwd(), "output")
                                 logger.info(f"MCP TOOL CREATION: Starting MCP tool flow based on LLM recommendation")
                                 
-                                from archon.mcp_tools import combined_adaptive_flow
+                                from .mcp_tools import combined_adaptive_flow
                                 mcp_result = await combined_adaptive_flow(
                                     user_request=state['latest_user_message'],
                                     openai_client=openai_client,

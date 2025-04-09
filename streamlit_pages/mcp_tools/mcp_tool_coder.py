@@ -811,7 +811,7 @@ class MCPToolDeps:
             logger.warning("OpenAI client not provided in MCPToolDeps")
 
 # Initialize the model
-model_name = os.getenv('PRIMARY_MODEL', 'o3-mini')
+model_name = os.getenv('PRIMARY_MODEL', 'gpt-4o-mini')
 api_key = os.getenv('LLM_API_KEY', 'no-llm-api-key-provided')
 
 # Set OpenAI API key in environment variable if not already set
@@ -891,7 +891,7 @@ async def extract_tools_from_query(query: str, openai_client: AsyncOpenAI) -> Li
         """
         
         response = await openai_client.chat.completions.create(
-            model=os.getenv('PRIMARY_MODEL', 'o3-mini'),
+            model=os.getenv('PRIMARY_MODEL', 'gpt-4o-mini'),
             messages=[{"role": "user", "content": prompt}],
             max_tokens=100,
             temperature=0.1  # Low temperature for more deterministic answers
@@ -1281,10 +1281,10 @@ async def generate_complete_crewai_project(ctx: RunContext[MCPToolDeps],
         logger.info(f"Generated requirements.txt at {os.path.join(output_dir, 'requirements.txt')}")
         
         # Use template-based generation instead of standard generation
-        from archon.mcp_tools.mcp_template_integration import generate_from_template
+        from .mcp_tools.mcp_template_integration import generate_from_template
         
         # Use specified model for template generation
-        template_model = os.getenv("TEMPLATE_MODEL", "o3-mini")
+        template_model = os.getenv("TEMPLATE_MODEL", "gpt-4o-mini")
         logger.info(f"Using model {template_model} for template generation")
         
         # Update tools_data with extracted tool class names and other metadata
@@ -3653,7 +3653,7 @@ async def extract_specific_requirements(
         # Use OpenAI client if available
         if ctx.deps.openai_client:
             try:
-                model_name = os.environ.get("OPENAI_MODEL_NAME", "o3-mini")
+                model_name = os.environ.get("OPENAI_MODEL_NAME", "gpt-4o-mini")
                 response = await ctx.deps.openai_client.chat.completions.create(
                     model=model_name,
                     messages=[{"role": "user", "content": prompt}],
@@ -3858,7 +3858,7 @@ async def adapt_agents_to_requirements(
         
         # Call OpenAI to transform the code
         completion = await ctx.deps.openai_client.chat.completions.create(
-            model=os.getenv("OPENAI_MODEL_NAME", "o3-mini"),
+            model=os.getenv("OPENAI_MODEL_NAME", "gpt-4o-mini"),
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,  # Higher temperature for more creative customization
             max_tokens=4000
@@ -3911,7 +3911,7 @@ async def adapt_agents_to_requirements(
             
             # Try again with a more forceful prompt
             completion = await ctx.deps.openai_client.chat.completions.create(
-                model=os.getenv("OPENAI_MODEL_NAME", "o3-mini"),
+                model=os.getenv("OPENAI_MODEL_NAME", "gpt-4o-mini"),
                 messages=[{"role": "user", "content": enhanced_prompt}],
                 temperature=0.9,  # Even higher temperature for more divergent generation
                 max_tokens=4000
@@ -3956,7 +3956,7 @@ async def adapt_agents_to_requirements(
                 
                 # Final attempt
                 completion = await ctx.deps.openai_client.chat.completions.create(
-                    model=os.getenv("OPENAI_MODEL_NAME", "o3-mini"),
+                    model=os.getenv("OPENAI_MODEL_NAME", "gpt-4o-mini"),
                     messages=[{"role": "user", "content": final_prompt}],
                     temperature=1.0,  # Maximum creativity
                     max_tokens=4000
@@ -4009,7 +4009,7 @@ async def analyze_agent_requirements(ctx: RunContext[MCPToolDeps], user_query: s
         """
         
         completion = await ctx.deps.openai_client.chat.completions.create(
-            model=os.getenv("OPENAI_MODEL_NAME", "o3-mini"),
+            model=os.getenv("OPENAI_MODEL_NAME", "gpt-4o-mini"),
             messages=[{"role": "user", "content": prompt}],
             temperature=0.3,
             max_tokens=500,
@@ -4155,7 +4155,7 @@ async def adapt_tasks_to_requirements(
         
         # Call OpenAI to transform the code
         completion = await ctx.deps.openai_client.chat.completions.create(
-            model=os.getenv("OPENAI_MODEL_NAME", "o3-mini"),
+            model=os.getenv("OPENAI_MODEL_NAME", "gpt-4o-mini"),
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,  # Higher temperature for more creative customization
             max_tokens=4000
@@ -4191,7 +4191,7 @@ async def adapt_tasks_to_requirements(
             
             # Try again with a more forceful prompt
             completion = await ctx.deps.openai_client.chat.completions.create(
-                model=os.getenv("OPENAI_MODEL_NAME", "o3-mini"),
+                model=os.getenv("OPENAI_MODEL_NAME", "gpt-4o-mini"),
                 messages=[{"role": "user", "content": enhanced_prompt}],
                 temperature=0.9,  # Even higher temperature for more divergent generation
                 max_tokens=4000
@@ -4237,7 +4237,7 @@ async def analyze_task_requirements(ctx: RunContext[MCPToolDeps], user_query: st
         """
         
         completion = await ctx.deps.openai_client.chat.completions.create(
-            model=os.getenv("OPENAI_MODEL_NAME", "o3-mini"),
+            model=os.getenv("OPENAI_MODEL_NAME", "gpt-4o-mini"),
             messages=[{"role": "user", "content": prompt}],
             temperature=0.3,
             max_tokens=500,
@@ -4349,7 +4349,7 @@ async def adapt_crew_to_requirements(
         
         # Call OpenAI to transform the code
         completion = await ctx.deps.openai_client.chat.completions.create(
-            model=os.getenv("OPENAI_MODEL_NAME", "o3-mini"),
+            model=os.getenv("OPENAI_MODEL_NAME", "gpt-4o-mini"),
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,  # Higher temperature for more creative customization
             max_tokens=4000
@@ -4392,7 +4392,7 @@ async def adapt_crew_to_requirements(
             
             # Try again with the fix prompt
             completion = await ctx.deps.openai_client.chat.completions.create(
-                model=os.getenv("OPENAI_MODEL_NAME", "o3-mini"),
+                model=os.getenv("OPENAI_MODEL_NAME", "gpt-4o-mini"),
                 messages=[{"role": "user", "content": fix_prompt}],
                 temperature=0.5,  # Lower temperature for more precise corrections
                 max_tokens=4000
@@ -4438,7 +4438,7 @@ async def analyze_crew_requirements(ctx: RunContext[MCPToolDeps], user_query: st
         """
         
         completion = await ctx.deps.openai_client.chat.completions.create(
-            model=os.getenv("OPENAI_MODEL_NAME", "o3-mini"),
+            model=os.getenv("OPENAI_MODEL_NAME", "gpt-4o-mini"),
             messages=[{"role": "user", "content": prompt}],
             temperature=0.3,
             max_tokens=500,
@@ -4535,7 +4535,7 @@ async def generate_main_py(ctx: RunContext[MCPToolDeps],
         """
         
         # Use model to generate main.py
-        model_name = os.getenv('PRIMARY_MODEL', 'o3-mini')
+        model_name = os.getenv('PRIMARY_MODEL', 'gpt-4o-mini')
         
         # Use OpenAI API directly
         if ctx.deps.openai_client:

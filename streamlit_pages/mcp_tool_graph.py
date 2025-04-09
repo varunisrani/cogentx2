@@ -1,6 +1,6 @@
 from __future__ import annotations as _annotations
-from archon.pydantic_ai_coder import detect_mcp_tool_keywords
-from archon.mcp_tools.mcp_tool_selector import (
+from .pydantic_ai_coder import detect_mcp_tool_keywords
+from .mcp_tools.mcp_tool_selector import (
     extract_structured_requirements,
     UserRequirements,
     ToolRequirement,
@@ -9,7 +9,7 @@ from archon.mcp_tools.mcp_tool_selector import (
     get_crewai_tool_requirements,
     detect_keywords_in_query
 )
-from archon.mcp_tools.mcp_tool_coder import (
+from .mcp_tools.mcp_tool_coder import (
     mcp_tool_agent,
     MCPToolDeps,
     find_relevant_mcp_tools,
@@ -305,7 +305,7 @@ async def find_complementary_tools(
         """
 
         response = await deps.openai_client.chat.completions.create(
-            model=os.getenv('PRIMARY_MODEL', 'o3-mini'),
+            model=os.getenv('PRIMARY_MODEL', 'gpt-4o-mini'),
             messages=[{"role": "user", "content": prompt}],
             max_tokens=100,
             temperature=0.3
@@ -446,7 +446,7 @@ async def generate_multi_tool_example(
 
         # Generate crew.py
         crew_response = await ctx.deps.openai_client.chat.completions.create(
-            model=os.getenv('PRIMARY_MODEL', 'o3-mini'),
+            model=os.getenv('PRIMARY_MODEL', 'gpt-4o-mini'),
             messages=[{"role": "user", "content": crew_prompt}],
             max_tokens=3000,
             temperature=1.0  # Changed from 0.3 to 1.0
@@ -481,7 +481,7 @@ async def generate_multi_tool_example(
         """
 
         main_response = await ctx.deps.openai_client.chat.completions.create(
-            model=os.getenv('PRIMARY_MODEL', 'o3-mini'),
+            model=os.getenv('PRIMARY_MODEL', 'gpt-4o-mini'),
             messages=[{"role": "user", "content": main_prompt}],
             max_tokens=3000,
             temperature=1.0
@@ -500,7 +500,7 @@ async def generate_multi_tool_example(
 
         # Generate agents.py
         agents_response = await ctx.deps.openai_client.chat.completions.create(
-            model=os.getenv('PRIMARY_MODEL', 'o3-mini'),
+            model=os.getenv('PRIMARY_MODEL', 'gpt-4o-mini'),
             messages=[{"role": "user", "content": agents_prompt}],
             max_tokens=3000,
             temperature=1.0  # Changed from 0.3 to 1.0
@@ -511,7 +511,7 @@ async def generate_multi_tool_example(
 
         # Generate tasks.py
         tasks_response = await ctx.deps.openai_client.chat.completions.create(
-            model=os.getenv('PRIMARY_MODEL', 'o3-mini'),
+            model=os.getenv('PRIMARY_MODEL', 'gpt-4o-mini'),
             messages=[{"role": "user", "content": tasks_prompt}],
             max_tokens=3000,
             temperature=1.0  # Changed from 0.3 to 1.0
@@ -1231,10 +1231,10 @@ async def combined_adaptive_flow(
             f"Generated requirements.txt at {os.path.join(project_dir, 'requirements.txt')}")
 
         # Use the template integration module to generate files
-        from archon.mcp_tools.mcp_template_integration import generate_from_template
+        from .mcp_tools.mcp_template_integration import generate_from_template
 
         # Use a more capable model for template generation
-        template_model = os.getenv("TEMPLATE_MODEL", "o3-mini")
+        template_model = os.getenv("TEMPLATE_MODEL", "gpt-4o-mini")
         logger.info(f"Using model {template_model} for template generation")
 
         # Add tool class names and detected tool types to tools_data
@@ -1255,7 +1255,7 @@ async def combined_adaptive_flow(
 
         # Update the error_list.md file with info about applied fixes
         try:
-            from archon.mcp_tools.mcp_tool_coder import TOOLS_PY_COMMON_ERRORS
+            from .mcp_tools.mcp_tool_coder import TOOLS_PY_COMMON_ERRORS
             error_list_path = os.path.join(project_dir, "error_list.md")
             if os.path.exists(error_list_path):
                 with open(error_list_path, "a") as f:
@@ -1348,7 +1348,7 @@ async def generate_multi_tool_reasoning(
         """
 
         response = await openai_client.chat.completions.create(
-            model=os.getenv('PRIMARY_MODEL', 'o3-mini'),
+            model=os.getenv('PRIMARY_MODEL', 'gpt-4o-mini'),
             messages=[{"role": "user", "content": prompt}],
             max_tokens=1000,
             temperature=0.2
@@ -1400,7 +1400,7 @@ async def generate_architecture_plan(
         """
 
         response = await openai_client.chat.completions.create(
-            model=os.getenv('PRIMARY_MODEL', 'o3-mini'),
+            model=os.getenv('PRIMARY_MODEL', 'gpt-4o-mini'),
             messages=[{"role": "user", "content": prompt}],
             max_tokens=1000,
             temperature=0.2

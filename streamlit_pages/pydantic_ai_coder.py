@@ -54,7 +54,7 @@ class PydanticAIDeps:
         This is required for compatibility with functions that expect a model property.
         """
         # Use pydantic_ai_coder.model as the default model if available
-        from archon.pydantic_ai_coder import pydantic_ai_coder
+        from .pydantic_ai_coder import pydantic_ai_coder
         if hasattr(pydantic_ai_coder, 'model'):
             return pydantic_ai_coder.model
         return None
@@ -255,7 +255,7 @@ All new agents must include these files with complete, production-ready code:
 """
 
 # Initialize the model
-model_name = os.getenv('PRIMARY_MODEL', 'o3-mini')
+model_name = os.getenv('PRIMARY_MODEL', 'gpt-4o-mini')
 base_url = os.getenv('BASE_URL', 'https://api.openai.com/v1')
 api_key = os.getenv('LLM_API_KEY', 'no-llm-api-key-provided')
 
@@ -1010,7 +1010,7 @@ async def adapt_template_code(ctx: RunContext[PydanticAIDeps], template_code: Di
                 if hasattr(ctx.deps, 'openai_client') and ctx.deps.openai_client is not None:
                     logger.info(f"Adapting {file_type} code with AsyncOpenAI")
                     response = await ctx.deps.openai_client.chat.completions.create(
-                        model=os.getenv("OPENAI_MODEL", "o3-mini"),
+                        model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
                         messages=[{"role": "user", "content": prompt}],
                         temperature=0.5,
                         max_tokens=4000
@@ -1260,7 +1260,7 @@ async def determine_template_type(ctx: RunContext[PydanticAIDeps], user_request:
         if hasattr(ctx.deps, 'openai_client') and ctx.deps.openai_client is not None:
             logger.info("Determining template type with AsyncOpenAI")
             response = await ctx.deps.openai_client.chat.completions.create(
-                model=os.getenv("TEMPLATE_MODEL", "o3-mini"),
+                model=os.getenv("TEMPLATE_MODEL", "gpt-4o-mini"),
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.1,
                 max_tokens=20

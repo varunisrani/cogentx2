@@ -41,11 +41,20 @@ class CustomTerminal:
         if type(cmd) == list:
             cmd = " ".join(cmd)
 
+        # Add the command to outputs regardless
         self.__outputs.append({
             "type": "command",
             "value": cmd,
         })
         self.__run_count += 1
+
+        # Skip execution for comment lines (starting with #)
+        if cmd.strip().startswith('#'):
+            self.__outputs.append({
+                "type": "stdout",
+                "value": "# Comment line - not executed"
+            })
+            return
 
         # Start new process
         try:

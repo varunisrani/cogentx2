@@ -38,7 +38,7 @@ is_ollama = "localhost" in base_url.lower()
 is_anthropic = "anthropic" in base_url.lower()
 is_openai = "openai" in base_url.lower()
 
-reasoner_llm_model_name = get_env_var('REASONER_MODEL') or 'o3-mini'
+reasoner_llm_model_name = get_env_var('REASONER_MODEL') or 'gpt-4o-mini'
 reasoner_llm_model = AnthropicModel(reasoner_llm_model_name, api_key=api_key) if is_anthropic else OpenAIModel(reasoner_llm_model_name, base_url=base_url, api_key=api_key)
 
 reasoner = Agent(  

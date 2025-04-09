@@ -1011,7 +1011,7 @@ async def adapt_tools_code(
         
         # Import the validate_tools_py_content function to perform validation
         try:
-            from archon.mcp_tools.mcp_tool_coder import validate_tools_py_content
+            from .mcp_tools.mcp_tool_coder import validate_tools_py_content
             
             # Validate and fix common errors in the tools.py content
             fixed_content, applied_fixes = validate_tools_py_content(adapted_code)

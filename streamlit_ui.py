@@ -29,14 +29,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Import crew_stream components
-from crew_stream import (
-    agentic_flow, mcp_tools_available, report_analyzer_available,
-    debug_agent_available, process_mcp_request, process_reports,
-    process_debug_request, create_temp_directory, save_uploaded_file,
-    read_file_content
-)
-
 # Log setup
 logging.basicConfig(
     level=logging.INFO,
@@ -47,16 +39,6 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
-
-# Import the streamlit_terminal package
-try:
-    from streamlit_terminal import st_terminal
-    HAS_STREAMLIT_TERMINAL = True
-except Exception:
-    HAS_STREAMLIT_TERMINAL = False
-
-# Import our custom terminal implementation as a fallback
-from custom_terminal import st_custom_terminal
 
 # Import page modules
 try:
@@ -109,20 +91,47 @@ except ImportError:
         st.error("Chat tab module not found")
         return None
 
+# Import Crew AI Chat Tab
 try:
-    from streamlit_pages.crew_tab import crew_tab
-except ImportError:
-    logger.error("Failed to import crew_tab")
-    async def crew_tab():
-        st.error("Crew tab module not found")
+    logger.info("Attempting to import crew_ai_chat_tab from streamlit_pages")
+    from streamlit_pages.crew_ai_chat_tab import crew_ai_chat_tab
+    logger.info("Successfully imported crew_ai_chat_tab")
+except ImportError as e:
+    logger.error(f"Failed to import crew_ai_chat_tab: {str(e)}")
+    # Try the original import path as fallback
+    try:
+        logger.info("Attempting to import crew_ai_chat_tab from crewaii")
+        from streamlit_pages.crew_ai_chat_tab import crew_ai_chat_tab
+        logger.info("Successfully imported crew_ai_chat_tab from crewaii")
+    except ImportError as e2:
+        logger.error(f"Failed to import crew_ai_chat_tab from crewaii: {str(e2)}")
+        async def crew_ai_chat_tab():
+            st.error("Crew AI Chat tab module not found")
+            return None
+except Exception as e:
+    logger.error(f"Unexpected error importing crew_ai_chat_tab: {str(e)}")
+    async def crew_ai_chat_tab():
+        st.error(f"Crew AI Chat tab error: {str(e)}")
         return None
+
 
 try:
     from streamlit_pages.terminal import terminal_tab
 except ImportError:
     logger.error("Failed to import terminal_tab")
-    def terminal_tab():
+    async def terminal_tab():
         st.error("Terminal tab module not found")
+        return None
+
+# Import the streamlit_terminal package
+try:
+    from streamlit_terminal import st_terminal
+    HAS_STREAMLIT_TERMINAL = True
+except Exception:
+    HAS_STREAMLIT_TERMINAL = False
+
+# Import our custom terminal implementation as a fallback
+from custom_terminal import st_custom_terminal
 
 # Display icon and title in the sidebar
 try:
@@ -172,144 +181,6 @@ load_css()
 # Configure logfire to suppress warnings (optional)
 logfire.configure(send_to_logfire='never')
 
-# Helper functions from crew_stream.py
-async def run_agent_with_streaming(user_input: str):
-    """Run the agent with streaming text for the user_input prompt."""
-    config = {
-        "configurable": {
-            "thread_id": str(uuid.uuid4())
-        }
-    }
-
-    try:
-        # Check which mode to use (standard or MCP)
-        agent_mode = st.session_state.get("agent_mode", "standard")
-
-        # If using MCP mode, route the request through the MCP flow
-        if agent_mode == "mcp":
-            try:
-                mcp_response = await process_mcp_request(user_input, "single")
-                yield mcp_response
-                return
-            except Exception as e:
-                error_message = f"Error in MCP mode: {str(e)}"
-                yield error_message
-                return
-
-        # Standard mode using agentic_flow
-        # First message from user
-        if len(st.session_state.messages) == 1:
-            async for msg in agentic_flow.astream(
-                    {"latest_user_message": user_input}, config, stream_mode="custom"
-                ):
-                    yield msg
-        # Continue the conversation
-        else:
-            async for msg in agentic_flow.astream(
-                {"latest_user_message": user_input, "resume": user_input}, config, stream_mode="custom"
-            ):
-                yield msg
-    except Exception as e:
-        # Handle other errors
-        error_message = f"An error occurred: {str(e)}"
-        yield error_message
-
-# Add crew_stream tab function
-async def crew_stream_tab():
-    """Display the Crew Stream interface."""
-    st.markdown("""
-    <h1>Cogentx Crew Stream</h1>
-    <p style="font-size: 1.2rem; margin-bottom: 2rem;">Create intelligent agents that help with various tasks using natural language instructions.</p>
-    """, unsafe_allow_html=True)
-
-    # Create a container at the top for mode selection
-    with st.container(border=True):
-        st.markdown("### Agent Creation Mode")
-        st.markdown("Select how you want to create your agent:")
-
-        # Initialize mode selection in session state if not present
-        if "agent_mode" not in st.session_state:
-            st.session_state.agent_mode = "standard"
-
-        # Create two columns for mode selection cards
-        mode_col1, mode_col2 = st.columns(2)
-
-        with mode_col1:
-            standard_card_style = "background-color: " + ("#E3F2FD" if st.session_state.agent_mode == "standard" else "white") + "; padding: 20px; border-radius: 10px; height: 180px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: all 0.3s ease; border: 2px solid " + ("#1E88E5" if st.session_state.agent_mode == "standard" else "#e0e0e0")
-
-            st.markdown(f"""
-            <div style="{standard_card_style}" onclick="document.getElementById('standard_mode_btn').click()">
-                <div style="font-size: 32px; margin-bottom: 10px;">🤖</div>
-                <h3 style="margin: 0; margin-bottom: 5px;">Standard Mode</h3>
-                <p style="margin: 0; color: #666;">Create agents using templates and standard approach</p>
-            </div>
-            """, unsafe_allow_html=True)
-
-            # Hidden button for the click handler
-            standard_mode = st.button("🤖 Standard Mode", key="standard_mode_btn", use_container_width=True)
-            if standard_mode:
-                st.session_state.agent_mode = "standard"
-                st.rerun()
-
-        with mode_col2:
-            mcp_card_style = "background-color: " + ("#E3F2FD" if st.session_state.agent_mode == "mcp" else "white") + "; padding: 20px; border-radius: 10px; height: 180px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: all 0.3s ease; border: 2px solid " + ("#1E88E5" if st.session_state.agent_mode == "mcp" else "#e0e0e0")
-
-            st.markdown(f"""
-            <div style="{mcp_card_style}" onclick="document.getElementById('mcp_mode_btn').click()">
-                <div style="font-size: 32px; margin-bottom: 10px;">🔌</div>
-                <h3 style="margin: 0; margin-bottom: 5px;">MCP Mode</h3>
-                <p style="margin: 0; color: #666;">Create agents with advanced MCP tool integrations</p>
-            </div>
-            """, unsafe_allow_html=True)
-
-            # Hidden button for the click handler
-            mcp_mode = st.button("🔌 MCP Mode", key="mcp_mode_btn", use_container_width=True)
-            if mcp_mode:
-                st.session_state.agent_mode = "mcp"
-                st.rerun()
-
-    # Display current mode info
-    st.markdown(f"""
-    <div style="background-color: #E3F2FD; border-left: 4px solid #1E88E5; padding: 12px; border-radius: 4px; margin: 16px 0;">
-        <p style="margin: 0;"><strong>Currently in {st.session_state.agent_mode.title()} Mode</strong>: {
-            "Using traditional template-based approach for agent creation." if st.session_state.agent_mode == "standard"
-            else "Using MCP tools for advanced API integrations and agent creation."
-        }</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Initialize chat history in session state if not present
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-
-    # Display chat interface
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-
-    # Chat input
-    if prompt := st.chat_input("Type your message here..."):
-        # Add user message to chat history
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
-
-        # Get AI response with streaming
-        with st.chat_message("assistant"):
-            message_placeholder = st.empty()
-            full_response = ""
-
-            # Stream the response
-            async for chunk in run_agent_with_streaming(prompt):
-                full_response += chunk + " "
-                message_placeholder.markdown(full_response + "▌")
-            message_placeholder.markdown(full_response)
-
-        # Add assistant response to chat history
-        st.session_state.messages.append({"role": "assistant", "content": full_response})
-
-# Rest of your existing code...
-
 async def main():
     """Main function to run the Streamlit app."""
 
@@ -317,7 +188,7 @@ async def main():
     query_params = st.query_params
     if "tab" in query_params:
         tab_name = query_params["tab"]
-        if tab_name in ["Home", "Chat", "Template Browser", "Code Editor", "No-Code Builder", "Generated Code", "Crew"]:
+        if tab_name in ["Home", "Chat", "Crew AI Chat", "Template Browser", "Code Editor", "No-Code Builder", "Generated Code"]:
             st.session_state.selected_tab = tab_name
 
     # Add sidebar navigation
@@ -356,7 +227,7 @@ async def main():
         # Vertical navigation buttons
         intro_button = st.button("Home", use_container_width=True, key="home_button")
         chat_button = st.button("Chat", use_container_width=True, key="chat_button")
-        crew_button = st.button("Crew", use_container_width=True, key="crew_button")
+        crew_ai_chat_button = st.button("Crew AI Chat", use_container_width=True, key="crew_ai_chat_button")  # New Crew AI Chat Button
         template_browser_button = st.button("Template Browser", use_container_width=True, key="template_browser_button")
         code_editor_button = st.button("Code Editor", use_container_width=True, key="code_editor_button")
         nocode_builder_button = st.button("No-Code Builder", use_container_width=True, key="nocode_builder_button")
@@ -367,8 +238,8 @@ async def main():
             st.session_state.selected_tab = "Home"
         elif chat_button:
             st.session_state.selected_tab = "Chat"
-        elif crew_button:
-            st.session_state.selected_tab = "Crew"
+        elif crew_ai_chat_button:  # Handle Crew AI Chat button click
+            st.session_state.selected_tab = "Crew AI Chat"
         elif template_browser_button:
             st.session_state.selected_tab = "Template Browser"
         elif code_editor_button:
@@ -398,13 +269,18 @@ async def main():
         except Exception as e:
             st.error(f"Error in chat tab: {str(e)}")
             logger.error(f"Chat tab error: {str(e)}")
-    elif st.session_state.selected_tab == "Crew":
-        st.title("Cogentx - Crew")
+    elif st.session_state.selected_tab == "Crew AI Chat":  # Handle Crew AI Chat tab
+        st.title("Cogentx - Crew AI Chat")
         try:
-            await crew_tab()
+            # Import the initialize_clients function from crew_ai_chat_tab
+            from streamlit_pages.crew_ai_chat_tab import initialize_clients
+            # Initialize the clients in the crew_ai_chat_tab module
+            initialize_clients(openai_client, supabase)
+            # Call the crew_ai_chat_tab function
+            await crew_ai_chat_tab()
         except Exception as e:
-            st.error(f"Error in crew tab: {str(e)}")
-            logger.error(f"Crew tab error: {str(e)}")
+            st.error(f"Error in Crew AI Chat tab: {str(e)}")
+            logger.error(f"Crew AI Chat tab error: {str(e)}")
     elif st.session_state.selected_tab == "Generated Code":
         st.title("Cogentx - Generated Code")
 
