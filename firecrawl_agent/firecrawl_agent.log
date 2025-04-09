@@ -17,3 +17,267 @@ No Firecrawl MCP tools were discovered. This could mean either:
 2025-04-04 16:05:22,088 [INFO] [main.py:146] User interrupted the process
 2025-04-04 16:05:22,091 [INFO] [main.py:158] Firecrawl agent shutting down
 2025-04-04 16:05:22,092 [INFO] [main.py:165] Exiting gracefully...
+2025-04-09 17:08:33,336 [INFO] [main.py:101] Starting Firecrawl MCP Agent
+2025-04-09 17:08:33,382 [INFO] [tools.py:10] 
+==================================================
+2025-04-09 17:08:33,383 [INFO] [tools.py:11] FIRECRAWL MCP TOOLS AND FUNCTIONS
+2025-04-09 17:08:33,383 [INFO] [tools.py:12] ==================================================
+2025-04-09 17:08:33,383 [WARNING] [tools.py:119] 
+No Firecrawl MCP tools were discovered. This could mean either:
+2025-04-09 17:08:33,383 [WARNING] [tools.py:120] 1. The Firecrawl MCP server doesn't expose any tools
+2025-04-09 17:08:33,383 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-09 17:08:33,383 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-09 17:08:33,383 [INFO] [agent.py:46] Found 0 MCP tools available for Firecrawl operations
+2025-04-09 17:08:33,394 [ERROR] [main.py:155] Error during execution: [Errno 2] No such file or directory: 'npx'
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/firecrawl_agent/main.py", line 106, in main
+    async with agent.run_mcp_servers():
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1299, in run_mcp_servers
+    await exit_stack.enter_async_context(mcp_server)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 86, in __aenter__
+    self._read_stream, self._write_stream = await self._exit_stack.enter_async_context(self.client_streams())
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 100, in stdio_client
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_core/_subprocesses.py", line 190, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 2561, in open_process
+    process = await asyncio.create_subprocess_exec(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 223, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 1708, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 207, in _make_subprocess_transport
+    transp = _UnixSubprocessTransport(self, protocol, args, shell,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 36, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 818, in _start
+    self._proc = subprocess.Popen(
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'npx'
+2025-04-09 17:08:33,404 [INFO] [main.py:158] Firecrawl agent shutting down
+2025-04-09 17:08:47,668 [INFO] [main.py:101] Starting Firecrawl MCP Agent
+2025-04-09 17:08:47,712 [INFO] [tools.py:10] 
+==================================================
+2025-04-09 17:08:47,712 [INFO] [tools.py:11] FIRECRAWL MCP TOOLS AND FUNCTIONS
+2025-04-09 17:08:47,712 [INFO] [tools.py:12] ==================================================
+2025-04-09 17:08:47,712 [WARNING] [tools.py:119] 
+No Firecrawl MCP tools were discovered. This could mean either:
+2025-04-09 17:08:47,713 [WARNING] [tools.py:120] 1. The Firecrawl MCP server doesn't expose any tools
+2025-04-09 17:08:47,713 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-09 17:08:47,713 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-09 17:08:47,713 [INFO] [agent.py:46] Found 0 MCP tools available for Firecrawl operations
+2025-04-09 17:08:47,719 [ERROR] [main.py:155] Error during execution: [Errno 2] No such file or directory: 'npx'
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/firecrawl_agent/main.py", line 106, in main
+    async with agent.run_mcp_servers():
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1299, in run_mcp_servers
+    await exit_stack.enter_async_context(mcp_server)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 86, in __aenter__
+    self._read_stream, self._write_stream = await self._exit_stack.enter_async_context(self.client_streams())
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 100, in stdio_client
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_core/_subprocesses.py", line 190, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 2561, in open_process
+    process = await asyncio.create_subprocess_exec(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 223, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 1708, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 207, in _make_subprocess_transport
+    transp = _UnixSubprocessTransport(self, protocol, args, shell,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 36, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 818, in _start
+    self._proc = subprocess.Popen(
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'npx'
+2025-04-09 17:08:47,727 [INFO] [main.py:158] Firecrawl agent shutting down
+2025-04-09 17:09:19,452 [INFO] [main.py:101] Starting Firecrawl MCP Agent
+2025-04-09 17:09:19,499 [INFO] [tools.py:10] 
+==================================================
+2025-04-09 17:09:19,499 [INFO] [tools.py:11] FIRECRAWL MCP TOOLS AND FUNCTIONS
+2025-04-09 17:09:19,499 [INFO] [tools.py:12] ==================================================
+2025-04-09 17:09:19,499 [WARNING] [tools.py:119] 
+No Firecrawl MCP tools were discovered. This could mean either:
+2025-04-09 17:09:19,499 [WARNING] [tools.py:120] 1. The Firecrawl MCP server doesn't expose any tools
+2025-04-09 17:09:19,499 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-09 17:09:19,499 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-09 17:09:19,499 [INFO] [agent.py:46] Found 0 MCP tools available for Firecrawl operations
+2025-04-09 17:09:19,506 [ERROR] [main.py:155] Error during execution: [Errno 2] No such file or directory: 'npx'
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/firecrawl_agent/main.py", line 106, in main
+    async with agent.run_mcp_servers():
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1299, in run_mcp_servers
+    await exit_stack.enter_async_context(mcp_server)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 86, in __aenter__
+    self._read_stream, self._write_stream = await self._exit_stack.enter_async_context(self.client_streams())
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 100, in stdio_client
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_core/_subprocesses.py", line 190, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 2561, in open_process
+    process = await asyncio.create_subprocess_exec(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 223, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 1708, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 207, in _make_subprocess_transport
+    transp = _UnixSubprocessTransport(self, protocol, args, shell,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 36, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 818, in _start
+    self._proc = subprocess.Popen(
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'npx'
+2025-04-09 17:09:19,515 [INFO] [main.py:158] Firecrawl agent shutting down
+2025-04-09 17:09:34,475 [INFO] [main.py:101] Starting Firecrawl MCP Agent
+2025-04-09 17:09:34,515 [INFO] [tools.py:10] 
+==================================================
+2025-04-09 17:09:34,515 [INFO] [tools.py:11] FIRECRAWL MCP TOOLS AND FUNCTIONS
+2025-04-09 17:09:34,515 [INFO] [tools.py:12] ==================================================
+2025-04-09 17:09:34,516 [WARNING] [tools.py:119] 
+No Firecrawl MCP tools were discovered. This could mean either:
+2025-04-09 17:09:34,516 [WARNING] [tools.py:120] 1. The Firecrawl MCP server doesn't expose any tools
+2025-04-09 17:09:34,516 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-09 17:09:34,516 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-09 17:09:34,516 [INFO] [agent.py:46] Found 0 MCP tools available for Firecrawl operations
+2025-04-09 17:09:34,525 [ERROR] [main.py:155] Error during execution: [Errno 2] No such file or directory: 'npx'
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/firecrawl_agent/main.py", line 106, in main
+    async with agent.run_mcp_servers():
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1299, in run_mcp_servers
+    await exit_stack.enter_async_context(mcp_server)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 86, in __aenter__
+    self._read_stream, self._write_stream = await self._exit_stack.enter_async_context(self.client_streams())
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 100, in stdio_client
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_core/_subprocesses.py", line 190, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 2561, in open_process
+    process = await asyncio.create_subprocess_exec(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 223, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 1708, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 207, in _make_subprocess_transport
+    transp = _UnixSubprocessTransport(self, protocol, args, shell,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 36, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 818, in _start
+    self._proc = subprocess.Popen(
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'npx'
+2025-04-09 17:09:34,535 [INFO] [main.py:158] Firecrawl agent shutting down

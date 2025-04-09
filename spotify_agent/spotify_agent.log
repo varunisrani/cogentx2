@@ -302,3 +302,71 @@ mcp.shared.exceptions.McpError: MCP error -32602: market parameter is required f
 2025-04-04 16:25:18,601 [INFO] [tools.py:175] Processing query: 'search best song for night chill mode lofi'
 2025-04-04 16:25:32,819 [INFO] [tools.py:276] No specific tools were recorded for this query
 2025-04-04 16:25:32,820 [INFO] [main.py:158] Query completed in 14.22 seconds
+2025-04-09 17:12:12,629 [INFO] [main.py:113] Starting Spotify MCP Agent
+2025-04-09 17:12:12,997 [INFO] [main.py:120] Node.js version: v20.18.3, npm version: 10.8.2
+2025-04-09 17:12:12,998 [INFO] [main.py:125] Loading configuration...
+2025-04-09 17:12:13,002 [INFO] [main.py:129] Setting up agent...
+2025-04-09 17:12:13,002 [INFO] [agent.py:51] Creating Spotify MCP Server...
+2025-04-09 17:12:13,002 [INFO] [agent.py:55] Initializing agent with Spotify MCP Server...
+2025-04-09 17:12:13,046 [INFO] [tools.py:10] 
+==================================================
+2025-04-09 17:12:13,046 [INFO] [tools.py:11] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-09 17:12:13,046 [INFO] [tools.py:12] ==================================================
+2025-04-09 17:12:13,046 [WARNING] [tools.py:119] 
+No Spotify MCP tools were discovered. This could mean either:
+2025-04-09 17:12:13,046 [WARNING] [tools.py:120] 1. The Spotify MCP server doesn't expose any tools
+2025-04-09 17:12:13,046 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-09 17:12:13,046 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-09 17:12:13,046 [INFO] [agent.py:64] Found 0 MCP tools available for Spotify operations
+2025-04-09 17:12:24,560 [INFO] [main.py:134] Spotify MCP Server started successfully
+2025-04-09 17:12:28,775 [INFO] [main.py:149] Processing query: 'search song'
+2025-04-09 17:12:28,777 [INFO] [tools.py:175] Processing query: 'search song'
+2025-04-09 17:12:35,650 [INFO] [tools.py:276] No specific tools were recorded for this query
+2025-04-09 17:12:35,651 [INFO] [main.py:158] Query completed in 6.87 seconds
+2025-04-09 17:12:48,834 [INFO] [main.py:149] Processing query: 'search song elon musk'
+2025-04-09 17:12:48,836 [INFO] [tools.py:175] Processing query: 'search song elon musk'
+2025-04-09 17:15:09,456 [ERROR] [main.py:189] Error running MCP server: unhandled errors in a TaskGroup (1 sub-exception)
+2025-04-09 17:15:09,468 [ERROR] [main.py:190] Error details:   + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/spotify_agent/main.py", line 133, in main
+  |     async with agent.run_mcp_servers():
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(typ, value, traceback)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1302, in run_mcp_servers
+  |     await exit_stack.aclose()
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+  |     await self.__aexit__(None, None, None)
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+  |     raise exc_details[1]
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+  |     cb_suppress = await cb(*exc_details)
+  |                   ^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 97, in __aexit__
+  |     await self._exit_stack.aclose()
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+  |     await self.__aexit__(None, None, None)
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+  |     raise exc_details[1]
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+  |     cb_suppress = await cb(*exc_details)
+  |                   ^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+  |     async with stdio_client(server=server) as (read_stream, write_stream):
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 147, in stdio_client
+  |     async with (
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 127, in stdout_reader
+    |     await read_stream_writer.send(message)
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 255, in send
+    |     raise BrokenResourceError from None
+    | anyio.BrokenResourceError
+    +------------------------------------
+
+2025-04-09 17:15:09,468 [INFO] [main.py:205] Spotify agent shutting down

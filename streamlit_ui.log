@@ -605,3 +605,976 @@ openai.BadRequestError: Error code: 400 - {'error': {'message': "Unsupported par
 2025-04-09 12:31:03,392 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2025-04-09 12:31:03,399 - mcp_tool_graph - INFO - Generated README.md at output/spotify_tool_20250409_122811/README.md
 2025-04-09 12:31:03,399 - mcp_tool_graph - INFO - Successfully generated complete CrewAI project in output/spotify_tool_20250409_122811
+2025-04-09 16:45:06,160 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:45:06,160 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:45:06,160 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:45:06,160 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:45:06,160 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:45:06,162 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 16:45:06,162 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:45:06,162 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:45:06,162 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:45:06,162 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:45:06,162 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:45:09,506 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:45:09,507 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:45:11,506 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:45:11,507 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:45:15,709 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:45:15,710 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:45:32,680 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:45:32,681 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:45:34,588 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:45:34,588 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:45:35,390 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:45:35,391 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:47:23,154 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:47:23,155 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:47:23,275 - streamlit_pages.chat - INFO - Using thread ID: 20250409-164723-1455744f for conversation
+2025-04-09 16:47:24,101 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-09 16:47:24,120 - mcp_template_tools - INFO - Detected potential need for spotify MCP via keywords: spotify
+2025-04-09 16:47:26,514 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 16:47:26,523 - mcp_template_tools - INFO - Searching for MCP templates with query: create agent that can use serper and spotify ...
+2025-04-09 16:47:27,435 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 16:47:27,569 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 16:47:27,572 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 16:47:27,572 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 16:47:27,696 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 16:47:27,697 - mcp_template_tools - INFO - Found 2 templates with lower threshold
+2025-04-09 16:47:33,012 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:47:33,012 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:47:33,014 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 16:47:33,014 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:47:33,014 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:51:58,429 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:51:58,431 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 16:51:58,432 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 16:52:00,361 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 16:52:00,361 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:15:43,278 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:15:43,279 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:15:44,139 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:15:44,139 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:15:45,005 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:15:45,006 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:40:11,926 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:40:11,926 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:40:12,105 - streamlit_pages.chat - INFO - Using thread ID: 20250409-174012-a6971e58 for conversation
+2025-04-09 17:40:13,116 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-09 17:40:13,208 - mcp_template_tools - INFO - Detected potential need for spotify MCP via keywords: spotify, song
+2025-04-09 17:40:15,220 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 17:40:15,236 - mcp_template_tools - INFO - Searching for MCP templates with query: create agent that can recommend me songs from spotify...
+2025-04-09 17:40:16,091 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 17:40:16,267 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 17:40:16,272 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 17:40:16,272 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 17:40:16,433 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 17:40:16,435 - mcp_template_tools - INFO - Found 1 templates with lower threshold
+2025-04-09 17:40:36,183 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 17:40:41,095 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 17:40:52,259 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 17:40:53,384 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 17:40:53,389 - mcp_template_tools - INFO - Searching for MCP templates with query: spotify...
+2025-04-09 17:40:54,205 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 17:40:55,194 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 17:40:55,204 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 17:40:55,204 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 17:40:55,390 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 17:40:55,392 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-09 17:40:56,250 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 17:40:56,349 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 17:40:56,515 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 17:40:56,748 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 17:40:59,221 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 17:40:59,705 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 17:41:00,280 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 17:41:00,889 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 17:41:00,890 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 17:41:01,041 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 17:41:01,287 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 17:41:01,287 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 17:41:01,441 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 17:41:01,736 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 17:41:01,737 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 17:41:01,939 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 17:41:02,183 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 17:41:03,624 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 17:41:39,082 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:41:39,084 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:41:39,179 - streamlit_pages.chat - INFO - Using thread ID: 20250409-174012-a6971e58 for conversation
+2025-04-09 17:41:39,189 - openai._base_client - INFO - Retrying request to /chat/completions in 0.390541 seconds
+2025-04-09 17:41:40,836 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 17:41:42,385 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 17:42:14,067 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:42:14,068 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:42:21,653 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:42:21,655 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:42:21,800 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:42:21,800 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:43:33,433 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:43:33,435 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:43:33,667 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:43:33,667 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:43:34,325 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:43:34,326 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:43:34,465 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:43:34,465 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:48:30,918 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:48:30,920 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:48:32,423 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:48:32,424 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 17:48:32,873 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 17:48:32,873 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 18:56:47,598 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 18:56:47,600 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 18:56:47,600 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:12:27,524 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:12:27,529 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:17:24,741 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:17:24,743 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 19:17:24,743 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:22:29,027 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:22:29,030 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:22:31,559 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:22:31,560 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:22:33,225 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:22:33,225 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:22:35,110 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:22:35,110 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:22:35,686 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:22:35,686 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:22:36,294 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:22:36,295 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:22:38,142 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:22:38,142 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:22:41,976 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:22:41,976 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:22:47,096 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:22:47,096 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:22:55,583 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:22:55,583 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:22:55,867 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:22:55,867 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:22:58,909 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:22:58,909 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:36:37,692 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:36:37,695 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:36:42,410 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:36:42,411 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:36:42,558 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:36:42,558 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:36:43,875 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:36:43,875 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:36:45,294 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:36:45,294 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:39:53,002 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:39:53,003 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:39:53,249 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:39:53,249 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:39:53,885 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:39:53,885 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:39:56,801 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:39:56,802 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:39:56,954 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:39:56,954 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:40:00,684 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:40:00,685 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:40:02,135 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:40:02,136 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 19:40:02,752 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 19:40:02,753 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 20:55:44,718 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 20:55:44,719 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 20:55:47,080 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 20:55:47,081 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:03:48,242 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:03:48,244 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 21:03:48,244 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:03:51,415 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:03:51,415 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:04:37,010 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:04:37,012 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:04:37,139 - streamlit_pages.chat - INFO - Using thread ID: 20250409-210437-368b1649 for conversation
+2025-04-09 21:04:38,065 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-09 21:04:38,075 - mcp_template_tools - INFO - Detected potential need for spotify MCP via keywords: spotify, song
+2025-04-09 21:04:39,209 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:04:39,211 - openai._base_client - INFO - Retrying request to /chat/completions in 0.497817 seconds
+2025-04-09 21:04:39,279 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:04:39,280 - openai._base_client - INFO - Retrying request to /chat/completions in 0.471234 seconds
+2025-04-09 21:04:40,058 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:04:40,059 - openai._base_client - INFO - Retrying request to /chat/completions in 0.925366 seconds
+2025-04-09 21:04:40,267 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:04:40,269 - openai._base_client - INFO - Retrying request to /chat/completions in 0.919138 seconds
+2025-04-09 21:04:41,347 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:04:41,357 - streamlit_pages.chat - ERROR - Error running agent: status_code: 429, model_name: o3-mini, body: {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}
+2025-04-09 21:26:25,311 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:26:25,314 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 21:26:25,314 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:26:26,936 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:26:26,937 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:34:54,297 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:34:54,299 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 21:34:54,299 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:34:57,086 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:34:57,086 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:35:04,766 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:35:04,766 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:35:04,883 - streamlit_pages.chat - INFO - Using thread ID: 20250409-213504-8bea5537 for conversation
+2025-04-09 21:35:07,389 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-09 21:35:07,412 - mcp_template_tools - INFO - Detected potential need for spotify MCP via keywords: spotify, music
+2025-04-09 21:35:08,703 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:35:08,705 - openai._base_client - INFO - Retrying request to /chat/completions in 0.498165 seconds
+2025-04-09 21:35:09,215 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:35:09,216 - openai._base_client - INFO - Retrying request to /chat/completions in 0.494312 seconds
+2025-04-09 21:35:09,730 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:35:09,731 - openai._base_client - INFO - Retrying request to /chat/completions in 0.994255 seconds
+2025-04-09 21:35:10,366 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:35:10,366 - openai._base_client - INFO - Retrying request to /chat/completions in 0.795578 seconds
+2025-04-09 21:35:11,106 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:35:11,115 - streamlit_pages.chat - ERROR - Error running agent: status_code: 429, model_name: gpt-4o-mini, body: {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}
+2025-04-09 21:35:57,622 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:35:57,624 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 21:35:57,624 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:36:03,824 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:36:03,824 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:36:06,373 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:36:06,373 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:36:06,438 - streamlit_pages.chat - INFO - Using thread ID: 20250409-213606-962e5039 for conversation
+2025-04-09 21:36:07,626 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-09 21:36:07,646 - mcp_template_tools - INFO - Detected potential need for spotify MCP via keywords: spotify, music
+2025-04-09 21:36:09,541 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:36:09,543 - openai._base_client - INFO - Retrying request to /chat/completions in 0.410319 seconds
+2025-04-09 21:36:10,309 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:36:10,310 - openai._base_client - INFO - Retrying request to /chat/completions in 0.479524 seconds
+2025-04-09 21:36:11,064 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:36:11,065 - openai._base_client - INFO - Retrying request to /chat/completions in 0.785325 seconds
+2025-04-09 21:36:11,891 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:36:11,892 - openai._base_client - INFO - Retrying request to /chat/completions in 0.892106 seconds
+2025-04-09 21:36:12,502 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:36:12,511 - streamlit_pages.chat - ERROR - Error running agent: status_code: 429, model_name: o3-mini, body: {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}
+2025-04-09 21:39:16,070 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:39:16,072 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 21:39:16,072 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:39:17,623 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:39:17,623 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:39:23,087 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:39:23,087 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:39:23,166 - streamlit_pages.chat - INFO - Using thread ID: 20250409-213923-ab82b4f7 for conversation
+2025-04-09 21:39:24,252 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-09 21:39:24,267 - mcp_template_tools - INFO - Detected potential need for spotify MCP via keywords: spotify, music
+2025-04-09 21:39:25,098 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:39:25,100 - openai._base_client - INFO - Retrying request to /chat/completions in 0.447966 seconds
+2025-04-09 21:39:25,339 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:39:25,340 - openai._base_client - INFO - Retrying request to /chat/completions in 0.416274 seconds
+2025-04-09 21:39:25,947 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:39:25,948 - openai._base_client - INFO - Retrying request to /chat/completions in 0.883469 seconds
+2025-04-09 21:39:26,295 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:39:26,296 - openai._base_client - INFO - Retrying request to /chat/completions in 0.889275 seconds
+2025-04-09 21:39:27,207 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-09 21:39:27,217 - streamlit_pages.chat - ERROR - Error running agent: status_code: 429, model_name: o3-mini, body: {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}
+2025-04-09 21:44:14,415 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:44:14,418 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 21:44:14,418 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:44:16,224 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:44:16,224 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:44:23,850 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:44:23,850 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:44:23,935 - streamlit_pages.chat - INFO - Using thread ID: 20250409-214423-fd0f99f8 for conversation
+2025-04-09 21:44:26,621 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-09 21:44:26,641 - mcp_template_tools - INFO - Detected potential need for spotify MCP via keywords: spotify, song
+2025-04-09 21:44:31,495 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:44:31,505 - mcp_template_tools - INFO - Searching for MCP templates with query: Create an agent that can recommend Spotify songs. ...
+2025-04-09 21:44:33,433 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 21:44:45,580 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:44:45,585 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 21:44:45,586 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 21:44:48,265 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:44:48,266 - mcp_template_tools - INFO - Found 1 templates with lower threshold
+2025-04-09 21:44:48,269 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:44:53,910 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:45:06,464 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:45:08,507 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:45:09,478 - mcp_template_tools - INFO - Searching for MCP templates with query: spotify...
+2025-04-09 21:45:13,564 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 21:45:15,240 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:45:15,242 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 21:45:15,242 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 21:45:15,710 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:45:15,712 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-09 21:45:18,881 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:45:19,125 - mcp_template_tools - INFO - Searching for MCP templates with query: song recommendation...
+2025-04-09 21:45:22,141 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 21:45:26,548 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:45:26,555 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 21:45:26,555 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 21:45:28,760 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:45:29,277 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-09 21:45:31,084 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:45:31,346 - mcp_template_tools - INFO - Searching for MCP templates with query: music recommendation...
+2025-04-09 21:45:32,644 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 21:45:37,288 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:45:37,290 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 21:45:37,290 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 21:45:40,645 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:45:40,645 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-09 21:45:45,218 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:45:45,661 - mcp_template_tools - INFO - Searching for MCP templates with query: spotify_agent...
+2025-04-09 21:45:49,446 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 21:45:50,200 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:45:50,205 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 21:45:50,205 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 21:45:50,854 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:45:50,855 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-09 21:45:55,168 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:45:56,809 - mcp_template_tools - INFO - Detected potential need for spotify MCP via keywords: spotify, song
+2025-04-09 21:45:58,234 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:45:59,147 - mcp_template_tools - INFO - Searching for MCP templates with query: spotify_agent...
+2025-04-09 21:46:00,560 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 21:46:01,527 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:46:01,531 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 21:46:01,531 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 21:46:01,721 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:46:01,722 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-09 21:46:02,776 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:58:28,637 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:58:28,639 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 21:58:28,639 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:58:30,255 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:58:30,256 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:58:40,685 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 21:58:40,687 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 21:58:40,787 - streamlit_pages.chat - INFO - Using thread ID: 20250409-215840-7bc70d1a for conversation
+2025-04-09 21:58:43,165 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-09 21:58:43,650 - mcp_template_tools - INFO - Detected potential need for spotify MCP via keywords: spotify, song
+2025-04-09 21:58:52,759 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:58:53,481 - mcp_template_tools - INFO - Searching for MCP templates with query: Create an agent that can recommend Spotify songs....
+2025-04-09 21:58:55,110 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 21:58:56,715 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:58:56,721 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 21:58:56,721 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 21:58:57,026 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:58:57,026 - mcp_template_tools - INFO - Found 1 templates with lower threshold
+2025-04-09 21:59:04,985 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:59:09,955 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:59:30,549 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:59:31,930 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:59:32,840 - mcp_template_tools - INFO - Searching for MCP templates with query: spotify...
+2025-04-09 21:59:40,644 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 21:59:43,273 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:59:43,278 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 21:59:43,278 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 21:59:43,796 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 21:59:43,798 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-09 21:59:45,898 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:59:46,623 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 21:59:46,923 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 21:59:47,848 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 21:59:50,751 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 21:59:52,363 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 21:59:52,929 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 21:59:53,932 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 21:59:53,932 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 21:59:54,341 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 21:59:54,569 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 21:59:54,570 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 21:59:55,139 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 21:59:55,545 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 21:59:55,545 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 21:59:55,959 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 21:59:56,612 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 21:59:57,584 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:01:09,212 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 22:01:10,697 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 22:01:12,967 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 22:01:12,968 - mcp_template_tools - INFO - Adapting MCP template to user query: Create a Spotify song recommendation agent....
+2025-04-09 22:01:12,985 - mcp_template_tools - INFO - Using AI to adapt template
+2025-04-09 22:01:12,985 - mcp_template_tools - INFO - Adapting agents.py...
+2025-04-09 22:01:12,989 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 22:01:14,629 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 22:01:15,000 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 22:01:26,677 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:01:26,823 - mcp_template_tools - INFO - Successfully adapted agents.py
+2025-04-09 22:01:26,824 - mcp_template_tools - INFO - Adapting models.py...
+2025-04-09 22:01:36,329 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:01:36,445 - mcp_template_tools - INFO - Successfully adapted models.py
+2025-04-09 22:01:36,446 - mcp_template_tools - INFO - Adapting main.py...
+2025-04-09 22:02:02,669 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:02:04,191 - mcp_template_tools - INFO - Successfully adapted main.py
+2025-04-09 22:02:04,191 - mcp_template_tools - INFO - Adapting tools.py...
+2025-04-09 22:02:27,654 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:02:27,807 - mcp_template_tools - INFO - Successfully adapted tools.py
+2025-04-09 22:02:27,807 - mcp_template_tools - INFO - Adapting __init__.py...
+2025-04-09 22:02:30,822 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:02:30,826 - mcp_template_tools - INFO - Successfully adapted __init__.py
+2025-04-09 22:02:30,826 - mcp_template_tools - INFO - Adapting MCP JSON configuration...
+2025-04-09 22:02:30,826 - mcp_template_tools - INFO - Successfully adapted MCP JSON configuration
+2025-04-09 22:02:30,827 - mcp_template_tools - INFO - Performing final validation of adapted template...
+2025-04-09 22:02:30,828 - mcp_template_tools - WARNING - Found 2 issues in adapted template: ['Missing dependencies class in models.py', 'Missing setup_agent function in agents.py']
+2025-04-09 22:02:30,829 - mcp_template_tools - INFO - Fixing remaining issues...
+2025-04-09 22:02:35,824 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:02:35,853 - mcp_template_tools - INFO - Fixed 1 issues in models.py
+2025-04-09 22:02:40,835 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:02:41,389 - mcp_template_tools - INFO - Fixed 1 issues in agents.py
+2025-04-09 22:02:41,390 - mcp_template_tools - INFO - Template validation and fixing complete
+2025-04-09 22:12:10,881 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:12:10,883 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 22:12:10,883 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:12:13,028 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:12:13,029 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:12:18,528 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:12:18,529 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:12:25,344 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:12:25,345 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:12:25,473 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:12:25,473 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:12:32,649 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:12:32,650 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:12:32,817 - tool_validator_installer - ERROR - Error installing patches: No module named 'archon.mcp_tools'
+2025-04-09 22:12:32,818 - chat - INFO - Successfully imported MCP tool flow using absolute import
+2025-04-09 22:12:32,818 - mcp_tool_graph - INFO - Starting combined adaptive flow for request: Create an agent that can recommend Spotify songs....
+2025-04-09 22:12:32,818 - mcp_tool_graph - INFO - Performing deep requirement analysis for query
+2025-04-09 22:12:32,818 - mcp_selector - INFO - Extracting CrewAI tool requirements from query
+2025-04-09 22:12:35,878 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:12:35,893 - mcp_selector - INFO - Extracted CrewAI requirements for 1 tools
+2025-04-09 22:12:35,893 - mcp_tool_graph - INFO - Successfully extracted requirements with 1 tools
+2025-04-09 22:12:35,893 - mcp_tool_graph - INFO - Primary tool name: spotify recommendation agent
+2025-04-09 22:12:35,893 - mcp_tool_graph - INFO - Identified main tool type: spotify
+2025-04-09 22:12:35,893 - mcp_tools - INFO - MCP TOOL SEARCH: Looking for tools matching query: Create an agent that can recommend Spotify songs....
+2025-04-09 22:12:35,894 - mcp_tools - INFO - MCP DETECTION: Extracting tool needs from query using OpenAI
+2025-04-09 22:12:36,485 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:12:36,490 - mcp_tools - INFO - MCP DETECTION SUCCESS: OpenAI identified tools: spotify
+2025-04-09 22:12:36,491 - mcp_tools - INFO - MCP TOOL SEARCH: Found specific tools in query: spotify
+2025-04-09 22:12:37,443 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 22:12:37,447 - mcp_tools - INFO - MCP TOOL SEARCH: Query embedding generated successfully
+2025-04-09 22:12:44,790 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/match_mcp_tools "HTTP/2 200 OK"
+2025-04-09 22:12:44,796 - mcp_tools - INFO - MCP TOOL SEARCH: No matching tools with high threshold, trying lower threshold
+2025-04-09 22:12:47,034 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/match_mcp_tools "HTTP/2 200 OK"
+2025-04-09 22:12:47,770 - mcp_tools - INFO - MCP TOOL MATCH: Tool with purpose 'The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.' matches required service 'spotify'
+2025-04-09 22:12:47,770 - mcp_tools - INFO - MCP TOOL FILTER: Found 1 tools matching services: spotify
+2025-04-09 22:12:47,771 - mcp_tools - INFO - MCP TOOL SEARCH COMPLETE: Found 1 matching tools
+2025-04-09 22:12:47,771 - mcp_tools - INFO - MCP TOOL RESULT #1: 'The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.' (similarity: 0.483651639979886)
+2025-04-09 22:12:47,771 - mcp_tool_graph - INFO - Successfully extracted structured requirements with 1 tools
+2025-04-09 22:12:47,771 - mcp_tool_graph - INFO - Main tool type identified: spotify
+2025-04-09 22:12:47,771 - mcp_tool_graph - INFO - Using output directory for all generated files: output
+2025-04-09 22:12:47,772 - mcp_tool_graph - INFO - Created project directory: output/spotify_tool_20250409_221247
+2025-04-09 22:12:47,772 - mcp_selector - INFO - Performing deep requirement analysis for query
+2025-04-09 22:12:53,613 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:12:53,616 - mcp_selector - INFO - Successfully extracted structured requirements. Primary tools: ['Spotify API Integration']
+2025-04-09 22:13:12,058 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:13:12,062 - mcp_tool_graph - INFO - Generated architecture plan (4668 chars)
+2025-04-09 22:13:12,062 - mcp_tools - INFO - Generating complete CrewAI project in output/spotify_tool_20250409_221247
+2025-04-09 22:13:12,063 - mcp_tools - INFO - Found existing files in output/spotify_tool_20250409_221247: error_list.md
+2025-04-09 22:13:12,064 - mcp_tools - INFO - Generated .env file at output/spotify_tool_20250409_221247/.env
+2025-04-09 22:13:12,064 - mcp_tools - INFO - Generating tools.py file
+2025-04-09 22:13:12,064 - mcp_tools - INFO - MCP TOOL INTEGRATION: Processing 1 tools into a single file
+2025-04-09 22:13:12,064 - mcp_tools - INFO - MCP TOOL CONVERSION: Converting tool 1/1: The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.
+2025-04-09 22:13:12,065 - mcp_tools - INFO - MCP TOOL CONVERT: Converting tool for purpose: The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.
+2025-04-09 22:13:12,065 - mcp_tools - INFO - MCP TOOL CONVERT: Sending conversion request to LLM
+2025-04-09 22:13:53,325 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:13:53,679 - mcp_tools - INFO - MCP TOOL CONVERT SUCCESS: Generated CrewAI-compatible tool for The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.
+2025-04-09 22:13:53,679 - mcp_tools - INFO - MCP TOOL CONVERSION SUCCESS: Added tool to tools.py: The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.
+2025-04-09 22:13:53,680 - mcp_tools - INFO - Validating tools.py content for common errors
+2025-04-09 22:13:53,680 - mcp_tools - INFO - Detected error: Tool class names are inconsistent across files
+2025-04-09 22:13:53,680 - mcp_tools - INFO - Applied fix: Detected class naming inconsistency. Adding alias class for backward compatibility.
+2025-04-09 22:13:53,681 - mcp_tools - INFO - Detected error: Missing alias class for backward compatibility
+2025-04-09 22:13:53,681 - mcp_tools - INFO - Applied fix: Adding alias class with MCPTool suffix for backward compatibility.
+2025-04-09 22:13:53,682 - mcp_tools - INFO - MCP TOOL INTEGRATION: Applied 2 fixes to tools.py for common errors
+2025-04-09 22:13:53,682 - mcp_tools - INFO -   - Detected class naming inconsistency. Adding alias class for backward compatibility.
+2025-04-09 22:13:53,682 - mcp_tools - INFO -   - Adding alias class with MCPTool suffix for backward compatibility.
+2025-04-09 22:13:53,682 - mcp_tools - INFO - MCP TOOL INTEGRATION COMPLETE: Generated tools.py with 1 tools
+2025-04-09 22:13:53,682 - mcp_tools - INFO - Validating tools.py content for common errors
+2025-04-09 22:13:53,682 - mcp_tools - INFO - Detected error: Tool class names are inconsistent across files
+2025-04-09 22:13:53,682 - mcp_tools - INFO - Applied fix: Detected class naming inconsistency. Adding alias class for backward compatibility.
+2025-04-09 22:13:53,682 - mcp_tools - INFO - Detected error: Missing alias class for backward compatibility
+2025-04-09 22:13:53,682 - mcp_tools - INFO - Applied fix: Adding alias class with MCPTool suffix for backward compatibility.
+2025-04-09 22:13:53,682 - mcp_tools - INFO - MCP TOOL INTEGRATION: Applied 2 fixes to tools.py for common errors
+2025-04-09 22:13:53,682 - mcp_tools - INFO -   - Detected class naming inconsistency. Adding alias class for backward compatibility.
+2025-04-09 22:13:53,682 - mcp_tools - INFO -   - Adding alias class with MCPTool suffix for backward compatibility.
+2025-04-09 22:13:53,683 - mcp_tools - INFO - Generated and saved tools.py to output/spotify_tool_20250409_221247/tools.py
+2025-04-09 22:13:53,683 - mcp_tools - INFO - Generated error_list.md documenting common errors and fixes at output/spotify_tool_20250409_221247/error_list.md
+2025-04-09 22:13:53,683 - mcp_tools - INFO - Extracting tool class names from tools.py content
+2025-04-09 22:13:53,684 - mcp_tools - INFO - Found 2 classes with 'Tool' in name: SpotifyMCPMCPTool, SpotifyMCPMCPTool
+2025-04-09 22:13:53,684 - mcp_tools - INFO - Found 2 classes inheriting from Agent or Tool: SpotifyMCPMCPTool, SpotifyMCPMCPTool
+2025-04-09 22:13:53,689 - mcp_tools - INFO - Final extracted tool class names: SpotifyMCPMCPTool
+2025-04-09 22:13:53,689 - mcp_tools - INFO - Extracted tool class names: ['SpotifyMCPMCPTool']
+2025-04-09 22:13:53,690 - mcp_tools - INFO - Generated requirements.txt at output/spotify_tool_20250409_221247/requirements.txt
+2025-04-09 22:13:53,690 - mcp_tools - ERROR - Error generating complete CrewAI project: No module named 'streamlit_pages.mcp_tools.mcp_tools'
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/streamlit_pages/mcp_tools/mcp_tool_coder.py", line 1284, in generate_complete_crewai_project
+    from .mcp_tools.mcp_template_integration import generate_from_template
+ModuleNotFoundError: No module named 'streamlit_pages.mcp_tools.mcp_tools'
+2025-04-09 22:14:08,208 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:15:57,010 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:15:57,012 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 22:15:57,012 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:16:00,025 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:16:00,026 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:16:02,273 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:16:02,273 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:16:02,400 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:16:02,400 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:16:03,877 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:16:03,877 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:16:04,026 - tool_validator_installer - ERROR - Error installing patches: No module named 'archon.mcp_tools'
+2025-04-09 22:16:04,026 - chat - INFO - Successfully imported MCP tool flow using absolute import
+2025-04-09 22:16:04,026 - mcp_tool_graph - INFO - Starting combined adaptive flow for request: Create an agent that can recommend Spotify songs....
+2025-04-09 22:16:04,026 - mcp_tool_graph - INFO - Performing deep requirement analysis for query
+2025-04-09 22:16:04,026 - mcp_selector - INFO - Extracting CrewAI tool requirements from query
+2025-04-09 22:16:07,441 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:16:07,458 - mcp_selector - INFO - Extracted CrewAI requirements for 1 tools
+2025-04-09 22:16:07,458 - mcp_tool_graph - INFO - Successfully extracted requirements with 1 tools
+2025-04-09 22:16:07,458 - mcp_tool_graph - INFO - Primary tool name: spotify recommendation agent
+2025-04-09 22:16:07,458 - mcp_tool_graph - INFO - Identified main tool type: spotify
+2025-04-09 22:16:07,458 - mcp_tools - INFO - MCP TOOL SEARCH: Looking for tools matching query: Create an agent that can recommend Spotify songs....
+2025-04-09 22:16:07,459 - mcp_tools - INFO - MCP DETECTION: Extracting tool needs from query using OpenAI
+2025-04-09 22:16:08,424 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:16:08,427 - mcp_tools - INFO - MCP DETECTION SUCCESS: OpenAI identified tools: spotify
+2025-04-09 22:16:08,427 - mcp_tools - INFO - MCP TOOL SEARCH: Found specific tools in query: spotify
+2025-04-09 22:16:09,955 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 22:16:10,507 - mcp_tools - INFO - MCP TOOL SEARCH: Query embedding generated successfully
+2025-04-09 22:16:12,284 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/match_mcp_tools "HTTP/2 200 OK"
+2025-04-09 22:16:12,292 - mcp_tools - INFO - MCP TOOL SEARCH: No matching tools with high threshold, trying lower threshold
+2025-04-09 22:16:12,504 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/match_mcp_tools "HTTP/2 200 OK"
+2025-04-09 22:16:13,402 - mcp_tools - INFO - MCP TOOL MATCH: Tool with purpose 'The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.' matches required service 'spotify'
+2025-04-09 22:16:13,403 - mcp_tools - INFO - MCP TOOL FILTER: Found 1 tools matching services: spotify
+2025-04-09 22:16:13,403 - mcp_tools - INFO - MCP TOOL SEARCH COMPLETE: Found 1 matching tools
+2025-04-09 22:16:13,403 - mcp_tools - INFO - MCP TOOL RESULT #1: 'The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.' (similarity: 0.483661352614246)
+2025-04-09 22:16:13,403 - mcp_tool_graph - INFO - Successfully extracted structured requirements with 1 tools
+2025-04-09 22:16:13,404 - mcp_tool_graph - INFO - Main tool type identified: spotify
+2025-04-09 22:16:13,404 - mcp_tool_graph - INFO - Using output directory for all generated files: output
+2025-04-09 22:16:13,404 - mcp_tool_graph - INFO - Created project directory: output/spotify_tool_20250409_221613
+2025-04-09 22:16:13,405 - mcp_selector - INFO - Performing deep requirement analysis for query
+2025-04-09 22:16:17,563 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:16:17,994 - mcp_selector - INFO - Successfully extracted structured requirements. Primary tools: ['Spotify API Integration']
+2025-04-09 22:16:32,470 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:16:32,480 - mcp_tool_graph - INFO - Generated architecture plan (3947 chars)
+2025-04-09 22:16:32,481 - mcp_tools - INFO - Generating complete CrewAI project in output/spotify_tool_20250409_221613
+2025-04-09 22:16:32,481 - mcp_tools - INFO - Found existing files in output/spotify_tool_20250409_221613: error_list.md
+2025-04-09 22:16:32,482 - mcp_tools - INFO - Generated .env file at output/spotify_tool_20250409_221613/.env
+2025-04-09 22:16:32,482 - mcp_tools - INFO - Generating tools.py file
+2025-04-09 22:16:32,482 - mcp_tools - INFO - MCP TOOL INTEGRATION: Processing 1 tools into a single file
+2025-04-09 22:16:32,482 - mcp_tools - INFO - MCP TOOL CONVERSION: Converting tool 1/1: The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.
+2025-04-09 22:16:32,483 - mcp_tools - INFO - MCP TOOL CONVERT: Converting tool for purpose: The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.
+2025-04-09 22:16:32,483 - mcp_tools - INFO - MCP TOOL CONVERT: Sending conversion request to LLM
+2025-04-09 22:17:17,687 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:17:17,941 - mcp_tools - INFO - MCP TOOL CONVERT SUCCESS: Generated CrewAI-compatible tool for The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.
+2025-04-09 22:17:17,941 - mcp_tools - INFO - MCP TOOL CONVERSION SUCCESS: Added tool to tools.py: The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.
+2025-04-09 22:17:17,942 - mcp_tools - INFO - Validating tools.py content for common errors
+2025-04-09 22:17:17,942 - mcp_tools - INFO - Detected error: Tool class names are inconsistent across files
+2025-04-09 22:17:17,942 - mcp_tools - INFO - Applied fix: Detected class naming inconsistency. Adding alias class for backward compatibility.
+2025-04-09 22:17:17,943 - mcp_tools - INFO - Detected error: Missing alias class for backward compatibility
+2025-04-09 22:17:17,943 - mcp_tools - INFO - Applied fix: Adding alias class with MCPTool suffix for backward compatibility.
+2025-04-09 22:17:17,943 - mcp_tools - INFO - MCP TOOL INTEGRATION: Applied 2 fixes to tools.py for common errors
+2025-04-09 22:17:17,943 - mcp_tools - INFO -   - Detected class naming inconsistency. Adding alias class for backward compatibility.
+2025-04-09 22:17:17,943 - mcp_tools - INFO -   - Adding alias class with MCPTool suffix for backward compatibility.
+2025-04-09 22:17:17,943 - mcp_tools - INFO - MCP TOOL INTEGRATION COMPLETE: Generated tools.py with 1 tools
+2025-04-09 22:17:17,943 - mcp_tools - INFO - Validating tools.py content for common errors
+2025-04-09 22:17:17,943 - mcp_tools - INFO - Detected error: Tool class names are inconsistent across files
+2025-04-09 22:17:17,943 - mcp_tools - INFO - Applied fix: Detected class naming inconsistency. Adding alias class for backward compatibility.
+2025-04-09 22:17:17,944 - mcp_tools - INFO - Detected error: Missing alias class for backward compatibility
+2025-04-09 22:17:17,944 - mcp_tools - INFO - Applied fix: Adding alias class with MCPTool suffix for backward compatibility.
+2025-04-09 22:17:17,944 - mcp_tools - INFO - MCP TOOL INTEGRATION: Applied 2 fixes to tools.py for common errors
+2025-04-09 22:17:17,944 - mcp_tools - INFO -   - Detected class naming inconsistency. Adding alias class for backward compatibility.
+2025-04-09 22:17:17,944 - mcp_tools - INFO -   - Adding alias class with MCPTool suffix for backward compatibility.
+2025-04-09 22:17:17,944 - mcp_tools - INFO - Generated and saved tools.py to output/spotify_tool_20250409_221613/tools.py
+2025-04-09 22:17:17,945 - mcp_tools - INFO - Generated error_list.md documenting common errors and fixes at output/spotify_tool_20250409_221613/error_list.md
+2025-04-09 22:17:17,945 - mcp_tools - INFO - Extracting tool class names from tools.py content
+2025-04-09 22:17:17,945 - mcp_tools - INFO - Found 2 classes with 'Tool' in name: SpotifyMCPMCPTool, SpotifyMCPMCPTool
+2025-04-09 22:17:17,945 - mcp_tools - INFO - Found 2 classes inheriting from Agent or Tool: SpotifyMCPMCPTool, SpotifyMCPMCPTool
+2025-04-09 22:17:17,950 - mcp_tools - INFO - Final extracted tool class names: SpotifyMCPMCPTool
+2025-04-09 22:17:17,950 - mcp_tools - INFO - Extracted tool class names: ['SpotifyMCPMCPTool']
+2025-04-09 22:17:17,951 - mcp_tools - INFO - Generated requirements.txt at output/spotify_tool_20250409_221613/requirements.txt
+2025-04-09 22:17:17,951 - mcp_tools - INFO - Using model gpt-4o-mini for template generation
+2025-04-09 22:17:17,951 - mcp_templates - INFO - Searching for MCP templates matching query: 'Create an agent that can recommend Spotify songs....'
+2025-04-09 22:17:17,951 - mcp_templates - INFO - Detected tool type 'spotify' from keyword 'spotify' in query
+2025-04-09 22:17:17,951 - mcp_templates - INFO - Detected tool types: spotify
+2025-04-09 22:17:17,951 - mcp_templates - INFO - Detected tool names: spotifymcpmcptool, spotify
+2025-04-09 22:17:17,951 - mcp_templates - INFO - Combined search text: 'Create an agent that can recommend Spotify songs. Create an agent that can recommend Spotify songs. ...'
+2025-04-09 22:17:17,951 - mcp_templates - INFO - Key matching terms: spotify songs., recommend spotify, spotifymcpmcptool, spotify songs...., spotify
+2025-04-09 22:17:19,113 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/mcp_templates?select=%2A&purpose=ilike.%25spotifymcpmcptool%25 "HTTP/2 200 OK"
+2025-04-09 22:17:19,299 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/mcp_templates?select=%2A&purpose=ilike.%25spotify%25 "HTTP/2 200 OK"
+2025-04-09 22:17:20,542 - mcp_templates - INFO - Found 1 purpose matches for 'spotify'
+2025-04-09 22:17:20,542 - mcp_templates - INFO - Boosted score for spotifyagent - exact tool name/type match
+2025-04-09 22:17:20,714 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/mcp_templates?select=%2A&purpose=ilike.%25spotify%25 "HTTP/2 200 OK"
+2025-04-09 22:17:23,709 - mcp_templates - INFO - Found 1 purpose matches for 'spotify'
+2025-04-09 22:17:23,709 - mcp_templates - INFO - Boosted score for spotifyagent - exact tool name/type match
+2025-04-09 22:17:24,001 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/mcp_templates?select=%2A&folder_name=ilike.%25spotify%25 "HTTP/2 200 OK"
+2025-04-09 22:17:25,423 - mcp_templates - INFO - Found 1 folder matches for 'spotify'
+2025-04-09 22:17:25,580 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/mcp_templates?select=%2A&folder_name=ilike.%25spotifymcpmcptool%25 "HTTP/2 200 OK"
+2025-04-09 22:17:25,754 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/mcp_templates?select=%2A&folder_name=ilike.%25spotify%25 "HTTP/2 200 OK"
+2025-04-09 22:17:26,485 - mcp_templates - INFO - Found 1 folder matches for 'spotify'
+2025-04-09 22:17:26,486 - mcp_templates - INFO - Using 1 direct matches from tool name/type
+2025-04-09 22:17:26,486 - mcp_templates - INFO - Using template: spotifyagent (similarity: 0.920)
+2025-04-09 22:17:26,486 - mcp_templates - INFO - Template purpose: The SpotifyAgent is an agent-based system designed to interact with the Spotify API using natural la...
+2025-04-09 22:17:26,486 - mcp_templates - INFO - Adapting agents code...
+2025-04-09 22:17:26,486 - mcp_templates - INFO - Calling OpenAI API to adapt agents code with enhanced transformation
+2025-04-09 22:17:55,762 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:17:55,787 - mcp_templates - INFO - Initial change percentage for agents.py: 73.85%
+2025-04-09 22:17:55,787 - mcp_templates - INFO - Successfully adapted agents code, 6393 characters
+2025-04-09 22:17:55,788 - mcp_templates - INFO - Saved adapted agents.py to output/spotify_tool_20250409_221613/agents.py
+2025-04-09 22:17:57,448 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:18:27,328 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:18:27,484 - mcp_templates - INFO - Change percentage for tasks.py: 43.93%
+2025-04-09 22:18:27,484 - mcp_templates - INFO - Performing cross-file consistency validation...
+2025-04-09 22:18:27,484 - mcp_templates - INFO - Saved adapted tasks.py to output/spotify_tool_20250409_221613/tasks.py
+2025-04-09 22:18:29,016 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:18:53,938 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:18:53,969 - mcp_templates - INFO - Change percentage for crew.py: 56.19%
+2025-04-09 22:18:53,969 - mcp_templates - INFO - Performing cross-file consistency validation...
+2025-04-09 22:18:53,970 - mcp_templates - INFO - Saved adapted crew.py to output/spotify_tool_20250409_221613/crew.py
+2025-04-09 22:18:53,970 - mcp_templates - INFO - Adapting main.py code...
+2025-04-09 22:18:56,636 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:19:16,329 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:19:16,468 - mcp_templates - INFO - Change percentage for main.py: 43.61%
+2025-04-09 22:19:16,468 - mcp_templates - INFO - Performing cross-file consistency validation...
+2025-04-09 22:19:16,468 - mcp_templates - WARNING - main_code is not a string, it's a <class 'dict'>. Attempting to convert.
+2025-04-09 22:19:16,469 - mcp_templates - INFO - Made main.py executable
+2025-04-09 22:19:16,469 - mcp_templates - INFO - Saved default main.py to output/spotify_tool_20250409_221613/main.py
+2025-04-09 22:19:16,469 - mcp_templates - INFO - Generating default run_agent.py file...
+2025-04-09 22:19:25,724 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:19:25,726 - mcp_templates - INFO - Successfully generated run_agent.py with simplified agent execution interface
+2025-04-09 22:19:25,727 - mcp_templates - INFO - Made run_agent.py executable
+2025-04-09 22:19:25,727 - mcp_templates - INFO - Saved default run_agent.py to output/spotify_tool_20250409_221613/run_agent.py
+2025-04-09 22:19:25,727 - mcp_templates - INFO - Created and made executable: output/spotify_tool_20250409_221613/make_executable.sh
+2025-04-09 22:19:25,728 - mcp_templates - INFO - Created README.md with usage instructions
+2025-04-09 22:19:25,728 - mcp_templates - INFO - Performing final cross-file validation and consistency check...
+2025-04-09 22:19:25,728 - mcp_templates - INFO - Found agent classes: []
+2025-04-09 22:19:25,728 - mcp_templates - INFO - Found agent factory methods: ['spotify_tool', 'music_recommendation_agent', 'genre_based_recommendation_agent', 'mood_based_recommendation_agent']
+2025-04-09 22:19:25,737 - mcp_templates - INFO - No cross-file consistency issues detected
+2025-04-09 22:19:25,737 - mcp_tools - INFO - Template generation successful! Created CrewAI project files.
+2025-04-09 22:19:34,097 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:19:34,538 - mcp_tools - INFO - Generated README.md at output/spotify_tool_20250409_221613/README.md
+2025-04-09 22:19:34,538 - mcp_tools - INFO - Successfully generated complete CrewAI project in output/spotify_tool_20250409_221613
+2025-04-09 22:22:13,255 - openai._base_client - INFO - Retrying request to /chat/completions in 0.405348 seconds
+2025-04-09 22:22:15,487 - openai._base_client - INFO - Retrying request to /chat/completions in 0.840273 seconds
+2025-04-09 22:22:16,338 - mcp_tools - ERROR - Error generating README: Connection error.
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1500, in _request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/streamlit_pages/mcp_tools/mcp_tool_coder.py", line 1701, in generate_mcp_integration_readme
+    response = await ctx.deps.openai_client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 2000, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1767, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1461, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1524, in _request
+    return await self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1594, in _retry_request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1524, in _request
+    return await self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1594, in _retry_request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/openai/_base_client.py", line 1534, in _request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+2025-04-09 22:26:52,422 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:26:52,424 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 22:26:52,424 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:27:04,725 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:27:04,727 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:27:07,474 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:27:07,475 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:27:09,275 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:27:09,276 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:27:09,409 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:27:09,409 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:27:11,292 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:27:11,292 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:27:11,430 - tool_validator_installer - ERROR - Error installing patches: No module named 'archon.mcp_tools'
+2025-04-09 22:27:11,430 - chat - INFO - Successfully imported MCP tool flow using absolute import
+2025-04-09 22:27:11,430 - mcp_tool_graph - INFO - Starting combined adaptive flow for request: Create an agent that can recommend Spotify songs....
+2025-04-09 22:27:11,430 - mcp_tool_graph - INFO - Performing deep requirement analysis for query
+2025-04-09 22:27:11,430 - mcp_selector - INFO - Extracting CrewAI tool requirements from query
+2025-04-09 22:27:17,175 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:27:17,182 - mcp_selector - INFO - Extracted CrewAI requirements for 1 tools
+2025-04-09 22:27:17,182 - mcp_tool_graph - INFO - Successfully extracted requirements with 1 tools
+2025-04-09 22:27:17,182 - mcp_tool_graph - INFO - Primary tool name: spotify recommendation agent
+2025-04-09 22:27:17,182 - mcp_tool_graph - INFO - Identified main tool type: spotify
+2025-04-09 22:27:17,182 - mcp_tools - INFO - MCP TOOL SEARCH: Looking for tools matching query: Create an agent that can recommend Spotify songs....
+2025-04-09 22:27:17,182 - mcp_tools - INFO - MCP DETECTION: Extracting tool needs from query using OpenAI
+2025-04-09 22:27:17,827 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:27:17,831 - mcp_tools - INFO - MCP DETECTION SUCCESS: OpenAI identified tools: spotify
+2025-04-09 22:27:17,831 - mcp_tools - INFO - MCP TOOL SEARCH: Found specific tools in query: spotify
+2025-04-09 22:27:18,795 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 22:27:18,798 - mcp_tools - INFO - MCP TOOL SEARCH: Query embedding generated successfully
+2025-04-09 22:27:19,971 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/match_mcp_tools "HTTP/2 200 OK"
+2025-04-09 22:27:19,977 - mcp_tools - INFO - MCP TOOL SEARCH: No matching tools with high threshold, trying lower threshold
+2025-04-09 22:27:20,120 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/match_mcp_tools "HTTP/2 200 OK"
+2025-04-09 22:27:20,227 - mcp_tools - INFO - MCP TOOL MATCH: Tool with purpose 'The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.' matches required service 'spotify'
+2025-04-09 22:27:20,228 - mcp_tools - INFO - MCP TOOL FILTER: Found 1 tools matching services: spotify
+2025-04-09 22:27:20,228 - mcp_tools - INFO - MCP TOOL SEARCH COMPLETE: Found 1 matching tools
+2025-04-09 22:27:20,228 - mcp_tools - INFO - MCP TOOL RESULT #1: 'The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.' (similarity: 0.483651639979886)
+2025-04-09 22:27:20,228 - mcp_tool_graph - INFO - Successfully extracted structured requirements with 1 tools
+2025-04-09 22:27:20,228 - mcp_tool_graph - INFO - Main tool type identified: spotify
+2025-04-09 22:27:20,229 - mcp_tool_graph - INFO - Using output directory for all generated files: output
+2025-04-09 22:27:20,230 - mcp_tool_graph - INFO - Created project directory: output/spotify_tool_20250409_222720
+2025-04-09 22:27:20,231 - mcp_selector - INFO - Performing deep requirement analysis for query
+2025-04-09 22:27:24,542 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:27:24,544 - mcp_selector - INFO - Successfully extracted structured requirements. Primary tools: ['Spotify API Integration']
+2025-04-09 22:27:48,594 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:27:48,633 - mcp_tool_graph - INFO - Generated architecture plan (4255 chars)
+2025-04-09 22:27:48,633 - mcp_tools - INFO - Generating complete CrewAI project in output/spotify_tool_20250409_222720
+2025-04-09 22:27:48,633 - mcp_tools - INFO - Found existing files in output/spotify_tool_20250409_222720: error_list.md
+2025-04-09 22:27:48,634 - mcp_tools - INFO - Generated .env file at output/spotify_tool_20250409_222720/.env
+2025-04-09 22:27:48,634 - mcp_tools - INFO - Generating tools.py file
+2025-04-09 22:27:48,634 - mcp_tools - INFO - MCP TOOL INTEGRATION: Processing 1 tools into a single file
+2025-04-09 22:27:48,634 - mcp_tools - INFO - MCP TOOL CONVERSION: Converting tool 1/1: The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.
+2025-04-09 22:27:48,635 - mcp_tools - INFO - MCP TOOL CONVERT: Converting tool for purpose: The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.
+2025-04-09 22:27:48,635 - mcp_tools - INFO - MCP TOOL CONVERT: Sending conversion request to LLM
+2025-04-09 22:28:40,632 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:28:40,790 - mcp_tools - INFO - MCP TOOL CONVERT SUCCESS: Generated CrewAI-compatible tool for The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.
+2025-04-09 22:28:40,791 - mcp_tools - INFO - MCP TOOL CONVERSION SUCCESS: Added tool to tools.py: The `smithery_spotify_client` is an MCP tool designed to facilitate interaction with the Spotify API through a structured interface. It allows users to perform various operations such as searching for music, retrieving recommendations, and managing playlists. By utilizing the Model Context Protocol (MCP) system on Smithery, this tool provides a streamlined method for accessing Spotify's functionalities, making it easier for developers to integrate music-related features into their applications.
+2025-04-09 22:28:40,791 - mcp_tools - INFO - Validating tools.py content for common errors
+2025-04-09 22:28:40,791 - mcp_tools - INFO - Detected error: Tool class names are inconsistent across files
+2025-04-09 22:28:40,792 - mcp_tools - INFO - Applied fix: Detected class naming inconsistency. Adding alias class for backward compatibility.
+2025-04-09 22:28:40,792 - mcp_tools - INFO - Detected error: Missing alias class for backward compatibility
+2025-04-09 22:28:40,793 - mcp_tools - INFO - Applied fix: Adding alias class with MCPTool suffix for backward compatibility.
+2025-04-09 22:28:40,793 - mcp_tools - INFO - MCP TOOL INTEGRATION: Applied 2 fixes to tools.py for common errors
+2025-04-09 22:28:40,793 - mcp_tools - INFO -   - Detected class naming inconsistency. Adding alias class for backward compatibility.
+2025-04-09 22:28:40,793 - mcp_tools - INFO -   - Adding alias class with MCPTool suffix for backward compatibility.
+2025-04-09 22:28:40,793 - mcp_tools - INFO - MCP TOOL INTEGRATION COMPLETE: Generated tools.py with 1 tools
+2025-04-09 22:28:40,793 - mcp_tools - INFO - Validating tools.py content for common errors
+2025-04-09 22:28:40,793 - mcp_tools - INFO - Detected error: Tool class names are inconsistent across files
+2025-04-09 22:28:40,793 - mcp_tools - INFO - Applied fix: Detected class naming inconsistency. Adding alias class for backward compatibility.
+2025-04-09 22:28:40,793 - mcp_tools - INFO - Detected error: Missing alias class for backward compatibility
+2025-04-09 22:28:40,794 - mcp_tools - INFO - Applied fix: Adding alias class with MCPTool suffix for backward compatibility.
+2025-04-09 22:28:40,794 - mcp_tools - INFO - MCP TOOL INTEGRATION: Applied 2 fixes to tools.py for common errors
+2025-04-09 22:28:40,795 - mcp_tools - INFO -   - Detected class naming inconsistency. Adding alias class for backward compatibility.
+2025-04-09 22:28:40,795 - mcp_tools - INFO -   - Adding alias class with MCPTool suffix for backward compatibility.
+2025-04-09 22:28:40,796 - mcp_tools - INFO - Generated and saved tools.py to output/spotify_tool_20250409_222720/tools.py
+2025-04-09 22:28:40,796 - mcp_tools - INFO - Generated error_list.md documenting common errors and fixes at output/spotify_tool_20250409_222720/error_list.md
+2025-04-09 22:28:40,796 - mcp_tools - INFO - Extracting tool class names from tools.py content
+2025-04-09 22:28:40,797 - mcp_tools - INFO - Found 2 classes with 'Tool' in name: SpotifyMCPMCPTool, SpotifyMCPMCPTool
+2025-04-09 22:28:40,797 - mcp_tools - INFO - Found 2 classes inheriting from Agent or Tool: SpotifyMCPMCPTool, SpotifyMCPMCPTool
+2025-04-09 22:28:40,802 - mcp_tools - INFO - Final extracted tool class names: SpotifyMCPMCPTool
+2025-04-09 22:28:40,802 - mcp_tools - INFO - Extracted tool class names: ['SpotifyMCPMCPTool']
+2025-04-09 22:28:40,803 - mcp_tools - INFO - Generated requirements.txt at output/spotify_tool_20250409_222720/requirements.txt
+2025-04-09 22:28:40,803 - mcp_tools - INFO - Using model gpt-4o-mini for template generation
+2025-04-09 22:28:40,803 - mcp_templates - INFO - Searching for MCP templates matching query: 'Create an agent that can recommend Spotify songs....'
+2025-04-09 22:28:40,803 - mcp_templates - INFO - Detected tool type 'spotify' from keyword 'spotify' in query
+2025-04-09 22:28:40,803 - mcp_templates - INFO - Detected tool types: spotify
+2025-04-09 22:28:40,803 - mcp_templates - INFO - Detected tool names: spotifymcpmcptool, spotify
+2025-04-09 22:28:40,804 - mcp_templates - INFO - Combined search text: 'Create an agent that can recommend Spotify songs. Create an agent that can recommend Spotify songs. ...'
+2025-04-09 22:28:40,804 - mcp_templates - INFO - Key matching terms: recommend spotify, spotifymcpmcptool, spotify songs., spotify, spotify songs....
+2025-04-09 22:28:41,100 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/mcp_templates?select=%2A&purpose=ilike.%25spotifymcpmcptool%25 "HTTP/2 200 OK"
+2025-04-09 22:28:41,223 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/mcp_templates?select=%2A&purpose=ilike.%25spotify%25 "HTTP/2 200 OK"
+2025-04-09 22:28:41,226 - mcp_templates - INFO - Found 1 purpose matches for 'spotify'
+2025-04-09 22:28:41,226 - mcp_templates - INFO - Boosted score for spotifyagent - exact tool name/type match
+2025-04-09 22:28:41,339 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/mcp_templates?select=%2A&purpose=ilike.%25spotify%25 "HTTP/2 200 OK"
+2025-04-09 22:28:41,340 - mcp_templates - INFO - Found 1 purpose matches for 'spotify'
+2025-04-09 22:28:41,340 - mcp_templates - INFO - Boosted score for spotifyagent - exact tool name/type match
+2025-04-09 22:28:41,464 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/mcp_templates?select=%2A&folder_name=ilike.%25spotify%25 "HTTP/2 200 OK"
+2025-04-09 22:28:41,465 - mcp_templates - INFO - Found 1 folder matches for 'spotify'
+2025-04-09 22:28:41,574 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/mcp_templates?select=%2A&folder_name=ilike.%25spotifymcpmcptool%25 "HTTP/2 200 OK"
+2025-04-09 22:28:41,687 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/mcp_templates?select=%2A&folder_name=ilike.%25spotify%25 "HTTP/2 200 OK"
+2025-04-09 22:28:41,688 - mcp_templates - INFO - Found 1 folder matches for 'spotify'
+2025-04-09 22:28:41,688 - mcp_templates - INFO - Using 1 direct matches from tool name/type
+2025-04-09 22:28:41,688 - mcp_templates - INFO - Using template: spotifyagent (similarity: 0.920)
+2025-04-09 22:28:41,688 - mcp_templates - INFO - Template purpose: The SpotifyAgent is an agent-based system designed to interact with the Spotify API using natural la...
+2025-04-09 22:28:41,688 - mcp_templates - INFO - Adapting agents code...
+2025-04-09 22:28:41,689 - mcp_templates - INFO - Calling OpenAI API to adapt agents code with enhanced transformation
+2025-04-09 22:29:06,461 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:29:06,496 - mcp_templates - INFO - Initial change percentage for agents.py: 60.13%
+2025-04-09 22:29:06,496 - mcp_templates - INFO - Changes insufficient, attempting more aggressive transformation
+2025-04-09 22:29:31,420 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:29:31,457 - mcp_templates - INFO - Final change percentage for agents.py after retry: 69.97%
+2025-04-09 22:29:31,457 - mcp_templates - INFO - Successfully adapted agents code, 6827 characters
+2025-04-09 22:29:31,457 - mcp_templates - INFO - Saved adapted agents.py to output/spotify_tool_20250409_222720/agents.py
+2025-04-09 22:29:33,464 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:30:03,880 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:30:03,921 - mcp_templates - INFO - Change percentage for tasks.py: 46.61%
+2025-04-09 22:30:03,921 - mcp_templates - INFO - Performing cross-file consistency validation...
+2025-04-09 22:30:03,922 - mcp_templates - INFO - Saved adapted tasks.py to output/spotify_tool_20250409_222720/tasks.py
+2025-04-09 22:30:05,922 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:30:20,570 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:30:20,594 - mcp_templates - INFO - Change percentage for crew.py: 55.73%
+2025-04-09 22:30:20,594 - mcp_templates - INFO - Performing cross-file consistency validation...
+2025-04-09 22:30:20,595 - mcp_templates - INFO - Saved adapted crew.py to output/spotify_tool_20250409_222720/crew.py
+2025-04-09 22:30:20,595 - mcp_templates - INFO - Adapting main.py code...
+2025-04-09 22:30:22,286 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:30:40,855 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:30:40,876 - mcp_templates - INFO - Change percentage for main.py: 38.49%
+2025-04-09 22:30:40,877 - mcp_templates - INFO - Performing cross-file consistency validation...
+2025-04-09 22:30:40,877 - mcp_templates - WARNING - main_code is not a string, it's a <class 'dict'>. Attempting to convert.
+2025-04-09 22:30:40,877 - mcp_templates - INFO - Made main.py executable
+2025-04-09 22:30:40,878 - mcp_templates - INFO - Saved default main.py to output/spotify_tool_20250409_222720/main.py
+2025-04-09 22:30:40,878 - mcp_templates - INFO - Generating default run_agent.py file...
+2025-04-09 22:30:47,502 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:30:47,505 - mcp_templates - INFO - Successfully generated run_agent.py with simplified agent execution interface
+2025-04-09 22:30:47,506 - mcp_templates - INFO - Made run_agent.py executable
+2025-04-09 22:30:47,507 - mcp_templates - INFO - Saved default run_agent.py to output/spotify_tool_20250409_222720/run_agent.py
+2025-04-09 22:30:47,507 - mcp_templates - INFO - Created and made executable: output/spotify_tool_20250409_222720/make_executable.sh
+2025-04-09 22:30:47,507 - mcp_templates - INFO - Created README.md with usage instructions
+2025-04-09 22:30:47,507 - mcp_templates - INFO - Performing final cross-file validation and consistency check...
+2025-04-09 22:30:47,508 - mcp_templates - INFO - Found agent classes: []
+2025-04-09 22:30:47,508 - mcp_templates - INFO - Found agent factory methods: ['song_recommender_agent', 'playlist_discoverer_agent', 'create_genre_explorer_agent']
+2025-04-09 22:30:47,514 - mcp_templates - INFO - No cross-file consistency issues detected
+2025-04-09 22:30:47,514 - mcp_tools - INFO - Template generation successful! Created CrewAI project files.
+2025-04-09 22:31:05,607 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:31:05,616 - mcp_tools - INFO - Generated README.md at output/spotify_tool_20250409_222720/README.md
+2025-04-09 22:31:05,617 - mcp_tools - INFO - Successfully generated complete CrewAI project in output/spotify_tool_20250409_222720
+2025-04-09 22:31:20,996 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:31:21,010 - mcp_tool_graph - INFO - Read content for README.md
+2025-04-09 22:31:21,010 - mcp_tool_graph - INFO - Collected contents for 1 files to return to UI
+2025-04-09 22:36:21,896 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:36:21,898 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 22:36:21,898 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:36:32,561 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:36:32,562 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:36:35,272 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:36:35,272 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:36:35,353 - streamlit_pages.chat - INFO - Using thread ID: 20250409-223635-ed02c94d for conversation
+2025-04-09 22:36:36,216 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-09 22:36:36,233 - mcp_template_tools - INFO - Detected potential need for spotify MCP via keywords: spotify, song
+2025-04-09 22:36:39,765 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:36:39,780 - mcp_template_tools - INFO - Searching for MCP templates with query: Create an agent that can recommend Spotify songs....
+2025-04-09 22:36:40,683 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 22:36:41,372 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 22:36:41,377 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 22:36:41,378 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 22:36:41,712 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 22:36:41,713 - mcp_template_tools - INFO - Found 1 templates with lower threshold
+2025-04-09 22:37:04,648 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:37:08,022 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:37:21,762 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:37:23,005 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:37:23,084 - mcp_template_tools - INFO - Searching for MCP templates with query: spotify...
+2025-04-09 22:37:24,139 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 22:37:24,573 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 22:37:24,578 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 22:37:24,578 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 22:37:24,703 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 22:37:24,706 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-09 22:37:25,943 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:37:25,995 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 22:37:26,109 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 22:37:26,115 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 22:37:29,330 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:37:29,547 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 22:37:29,676 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 22:37:29,686 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 22:37:29,687 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 22:37:29,819 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 22:37:29,828 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 22:37:29,828 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 22:37:29,957 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 22:37:29,963 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 22:37:29,963 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 22:37:30,094 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 22:37:30,101 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 22:37:31,166 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:38:33,153 - streamlit_pages.chat - ERROR - Error running agent: 'StreamedRunResult' object has no attribute 'get_tool_calls'
+2025-04-09 22:41:11,436 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:41:11,438 - chat - INFO - crew_ai_chat_tab.py is being executed
+2025-04-09 22:41:11,438 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:41:15,247 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:41:15,249 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:41:16,687 - __main__ - INFO - Attempting to import crew_ai_chat_tab from streamlit_pages
+2025-04-09 22:41:16,687 - __main__ - INFO - Successfully imported crew_ai_chat_tab
+2025-04-09 22:41:16,759 - streamlit_pages.chat - INFO - Using thread ID: 20250409-224116-811da0c7 for conversation
+2025-04-09 22:41:17,438 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/site_pages?select=url&metadata-%3E%3Esource=eq.pydantic_ai_docs "HTTP/2 200 OK"
+2025-04-09 22:41:17,455 - mcp_template_tools - INFO - Detected potential need for spotify MCP via keywords: spotify, song
+2025-04-09 22:41:19,258 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:41:19,273 - mcp_template_tools - INFO - Searching for MCP templates with query: Create an agent that can recommend Spotify songs....
+2025-04-09 22:41:20,277 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 22:41:20,413 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 22:41:20,419 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 22:41:20,419 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 22:41:20,561 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 22:41:20,562 - mcp_template_tools - INFO - Found 1 templates with lower threshold
+2025-04-09 22:41:34,614 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:41:39,322 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:41:52,126 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:41:53,328 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:41:53,671 - mcp_template_tools - INFO - Searching for MCP templates with query: spotify agent...
+2025-04-09 22:41:55,749 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 22:41:56,087 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 22:41:56,091 - mcp_template_tools - INFO - Found 0 matching templates
+2025-04-09 22:41:56,091 - mcp_template_tools - INFO - Retrying with lower threshold: 0.45499999999999996
+2025-04-09 22:41:56,215 - httpx - INFO - HTTP Request: POST https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/rpc/search_agent_embeddings "HTTP/2 200 OK"
+2025-04-09 22:41:56,216 - mcp_template_tools - INFO - Found 0 templates with lower threshold
+2025-04-09 22:41:57,155 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:41:57,354 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 22:41:57,478 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 22:41:57,484 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 22:42:04,014 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 22:42:04,702 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 22:42:05,000 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 22:42:05,166 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 22:42:05,167 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 22:42:05,289 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 22:42:05,377 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 22:42:05,378 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 22:42:05,509 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 22:42:05,598 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 22:42:05,598 - mcp_template_tools - INFO - Fetching MCP template with ID: 4
+2025-04-09 22:42:05,856 - httpx - INFO - HTTP Request: GET https://reizphewyhtrezuxzwuf.supabase.co/rest/v1/agent_embeddings?select=%2A&id=eq.4 "HTTP/2 200 OK"
+2025-04-09 22:42:05,947 - mcp_template_tools - INFO - Found template: spotify_agent
+2025-04-09 22:42:06,972 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"

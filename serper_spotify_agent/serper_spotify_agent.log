@@ -658,3 +658,153 @@ During handling of the above exception, another exception occurred:
     +------------------------------------
 
 2025-04-06 08:05:05,064 [INFO] [main.py:218] Agent shutting down
+2025-04-09 17:01:58,186 [INFO] [main.py:128] Starting Serper-Spotify Combined Agent
+2025-04-09 17:01:58,778 [INFO] [main.py:135] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-09 17:01:58,778 [INFO] [main.py:140] Loading configuration...
+2025-04-09 17:01:58,782 [INFO] [main.py:144] Setting up combined agent...
+2025-04-09 17:01:58,782 [INFO] [agent.py:59] Creating Serper MCP Server...
+2025-04-09 17:01:58,782 [INFO] [agent.py:62] Creating Spotify MCP Server...
+2025-04-09 17:01:58,782 [INFO] [agent.py:66] Initializing agent with both Serper and Spotify MCP Servers...
+2025-04-09 17:01:58,827 [INFO] [tools.py:18] 
+==================================================
+2025-04-09 17:01:58,827 [INFO] [tools.py:19] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-09 17:01:58,827 [INFO] [tools.py:20] ==================================================
+2025-04-09 17:01:58,827 [WARNING] [tools.py:162] 
+No SERPER MCP tools were discovered. This could mean either:
+2025-04-09 17:01:58,827 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-09 17:01:58,827 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-09 17:01:58,827 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-09 17:01:58,828 [INFO] [agent.py:75] Found 0 MCP tools available for Serper operations
+2025-04-09 17:01:58,828 [INFO] [tools.py:18] 
+==================================================
+2025-04-09 17:01:58,828 [INFO] [tools.py:19] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-09 17:01:58,828 [INFO] [tools.py:20] ==================================================
+2025-04-09 17:01:58,828 [WARNING] [tools.py:162] 
+No SPOTIFY MCP tools were discovered. This could mean either:
+2025-04-09 17:01:58,828 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-09 17:01:58,828 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-09 17:01:58,828 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-09 17:01:58,828 [INFO] [agent.py:78] Found 0 MCP tools available for Spotify operations
+2025-04-09 17:02:13,456 [INFO] [main.py:149] Both MCP Servers started successfully
+2025-04-09 17:02:18,203 [INFO] [main.py:164] Processing query: 'search elon musk'
+2025-04-09 17:02:18,204 [INFO] [tools.py:218] Processing query: 'search elon musk'
+2025-04-09 17:02:47,925 [ERROR] [main.py:204] Error running MCP servers: unhandled errors in a TaskGroup (1 sub-exception)
+2025-04-09 17:02:47,932 [ERROR] [main.py:205] Error details:   + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/serper_spotify_agent/main.py", line 148, in main
+  |     async with agent.run_mcp_servers():
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(typ, value, traceback)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1302, in run_mcp_servers
+  |     await exit_stack.aclose()
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+  |     await self.__aexit__(None, None, None)
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+  |     raise exc_details[1]
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+  |     cb_suppress = await cb(*exc_details)
+  |                   ^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 97, in __aexit__
+  |     await self._exit_stack.aclose()
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+  |     await self.__aexit__(None, None, None)
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+  |     raise exc_details[1]
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+  |     cb_suppress = await cb(*exc_details)
+  |                   ^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+  |     async with stdio_client(server=server) as (read_stream, write_stream):
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 147, in stdio_client
+  |     async with (
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 127, in stdout_reader
+    |     await read_stream_writer.send(message)
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 255, in send
+    |     raise BrokenResourceError from None
+    | anyio.BrokenResourceError
+    +------------------------------------
+
+2025-04-09 17:02:47,932 [INFO] [main.py:218] Agent shutting down
+2025-04-09 17:02:58,041 [INFO] [main.py:128] Starting Serper-Spotify Combined Agent
+2025-04-09 17:02:58,601 [INFO] [main.py:135] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-09 17:02:58,602 [INFO] [main.py:140] Loading configuration...
+2025-04-09 17:02:58,606 [INFO] [main.py:144] Setting up combined agent...
+2025-04-09 17:02:58,606 [INFO] [agent.py:59] Creating Serper MCP Server...
+2025-04-09 17:02:58,606 [INFO] [agent.py:62] Creating Spotify MCP Server...
+2025-04-09 17:02:58,606 [INFO] [agent.py:66] Initializing agent with both Serper and Spotify MCP Servers...
+2025-04-09 17:02:58,650 [INFO] [tools.py:18] 
+==================================================
+2025-04-09 17:02:58,650 [INFO] [tools.py:19] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-09 17:02:58,650 [INFO] [tools.py:20] ==================================================
+2025-04-09 17:02:58,650 [WARNING] [tools.py:162] 
+No SERPER MCP tools were discovered. This could mean either:
+2025-04-09 17:02:58,650 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-09 17:02:58,650 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-09 17:02:58,651 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-09 17:02:58,651 [INFO] [agent.py:75] Found 0 MCP tools available for Serper operations
+2025-04-09 17:02:58,651 [INFO] [tools.py:18] 
+==================================================
+2025-04-09 17:02:58,651 [INFO] [tools.py:19] SPOTIFY MCP TOOLS AND FUNCTIONS
+2025-04-09 17:02:58,651 [INFO] [tools.py:20] ==================================================
+2025-04-09 17:02:58,651 [WARNING] [tools.py:162] 
+No SPOTIFY MCP tools were discovered. This could mean either:
+2025-04-09 17:02:58,651 [WARNING] [tools.py:163] 1. The MCP server doesn't expose any tools
+2025-04-09 17:02:58,651 [WARNING] [tools.py:164] 2. The tools discovery mechanism is not supported
+2025-04-09 17:02:58,651 [WARNING] [tools.py:165] 3. The server connection is not properly initialized
+2025-04-09 17:02:58,651 [INFO] [agent.py:78] Found 0 MCP tools available for Spotify operations
+2025-04-09 17:03:18,403 [INFO] [main.py:149] Both MCP Servers started successfully
+2025-04-09 17:03:28,084 [INFO] [main.py:164] Processing query: 'search elon musk using serper'
+2025-04-09 17:03:28,085 [INFO] [tools.py:218] Processing query: 'search elon musk using serper'
+2025-04-09 17:05:07,498 [ERROR] [main.py:204] Error running MCP servers: unhandled errors in a TaskGroup (1 sub-exception)
+2025-04-09 17:05:07,506 [ERROR] [main.py:205] Error details:   + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/serper_spotify_agent/main.py", line 148, in main
+  |     async with agent.run_mcp_servers():
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(typ, value, traceback)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1302, in run_mcp_servers
+  |     await exit_stack.aclose()
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+  |     await self.__aexit__(None, None, None)
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+  |     raise exc_details[1]
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+  |     cb_suppress = await cb(*exc_details)
+  |                   ^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 97, in __aexit__
+  |     await self._exit_stack.aclose()
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+  |     await self.__aexit__(None, None, None)
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+  |     raise exc_details[1]
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+  |     cb_suppress = await cb(*exc_details)
+  |                   ^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+  |     async with stdio_client(server=server) as (read_stream, write_stream):
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 147, in stdio_client
+  |     async with (
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 127, in stdout_reader
+    |     await read_stream_writer.send(message)
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 255, in send
+    |     raise BrokenResourceError from None
+    | anyio.BrokenResourceError
+    +------------------------------------
+
+2025-04-09 17:05:07,506 [INFO] [main.py:218] Agent shutting down

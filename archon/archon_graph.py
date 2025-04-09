@@ -278,6 +278,8 @@ async def coder_agent(state: AgentState, writer):
                 3. Make sure all merged files are properly written to the workbench directory
                 
                 The merged agent should seamlessly combine all functionality from the different templates.
+                
+                IMPORTANT: When you generate files, make sure to return all code for display in the UI - not just write them to workbench.
                 """
             else:
                 prompt = f"""
@@ -295,24 +297,75 @@ async def coder_agent(state: AgentState, writer):
                 Start by analyzing the templates that have been found and determine if they're suitable for this request.
                 
                 If you find multiple suitable templates, you MUST merge them using the merge_multiple_templates tool rather than creating separate agents.
+                
+                IMPORTANT: When you generate files, make sure to return all code for display in the UI - not just write them to workbench.
                 """
         else:
-            prompt = state['latest_user_message']
+            prompt = f"""
+            {state['latest_user_message']}
+            
+            IMPORTANT: When you generate files, make sure to return all code for display in the UI - not just write them to workbench.
+            """
+
+    # Custom handler to check for code_for_ui in the response
+    code_for_ui = None
+    
+    # Make this a regular function instead of async
+    def custom_writer(chunk):
+        nonlocal code_for_ui
+        # Check if this chunk contains a code_for_ui field from tool calls
+        if isinstance(chunk, dict) and chunk.get("code_for_ui"):
+            # Store the code_for_ui for adding to the final response
+            code_for_ui = chunk.get("code_for_ui")
+            # Write a message about the code
+            writer("\n\nCode generation complete. Here's the full code of all generated files:\n\n")
+            # Write the formatted code to the stream
+            writer(code_for_ui)
+        else:
+            # Normal text chunk, just write it
+            writer(chunk)
 
     # Run the agent in a stream
     if not is_openai:
-        writer = get_stream_writer()
         result = await pydantic_ai_coder.run(prompt, deps=deps, message_history=message_history)
-        writer(result.data)
+        custom_writer(result.data)
     else:
+        # Track tool call outputs during streaming
+        tool_outputs = []
+        
         async with pydantic_ai_coder.run_stream(
-            prompt,  # Changed from state['latest_user_message'] to use our constructed prompt
+            prompt,
             deps=deps,
             message_history=message_history
         ) as result:
             # Stream partial text as it arrives
             async for chunk in result.stream_text(delta=True):
-                writer(chunk)
+                custom_writer(chunk)
+            
+            # Check for tool outputs in the result's final state
+            # Different approach since get_tool_calls() isn't available
+            if hasattr(result, 'tools') and result.tools:
+                for tool_call in result.tools:
+                    if hasattr(tool_call, 'output') and isinstance(tool_call.output, dict):
+                        tool_outputs.append(tool_call.output)
+                        if 'code_for_ui' in tool_call.output:
+                            code_for_ui = tool_call.output['code_for_ui']
+                            # Write a message about the code
+                            writer("\n\nCode generation complete. Here's the full code of all generated files:\n\n")
+                            # Write the formatted code to the stream
+                            writer(code_for_ui)
+            
+            # Alternate approach to accessing tool outputs if above doesn't work
+            if hasattr(result, '_tools_by_id'):
+                for tool_id, tool_call in result._tools_by_id.items():
+                    if hasattr(tool_call, 'output') and isinstance(tool_call.output, dict):
+                        tool_outputs.append(tool_call.output)
+                        if 'code_for_ui' in tool_call.output:
+                            code_for_ui = tool_call.output['code_for_ui']
+                            # Write a message about the code
+                            writer("\n\nCode generation complete. Here's the full code of all generated files:\n\n")
+                            # Write the formatted code to the stream
+                            writer(code_for_ui)
 
     # Save any updates to templates from tool calls
     updated_state = {}
@@ -425,21 +478,44 @@ async def finish_conversation(state: AgentState, writer):
     for message_row in state['messages']:
         message_history.extend(ModelMessagesTypeAdapter.validate_json(message_row))
 
+    # Create an enhanced prompt that reminds about any code that was generated
+    finish_prompt = state['latest_user_message']
+    
+    # Check if we have code files in the workbench directory
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    parent_dir = os.path.dirname(current_dir)
+    workbench_dir = os.path.join(parent_dir, "workbench")
+    
+    if os.path.exists(workbench_dir):
+        code_files = [f for f in os.listdir(workbench_dir) 
+                     if os.path.isfile(os.path.join(workbench_dir, f)) 
+                     and f.endswith(('.py', '.json', '.md', '.txt'))]
+        
+        if code_files:
+            file_list = ", ".join(code_files)
+            finish_prompt = f"""
+            {state['latest_user_message']}
+            
+            The agent code has been generated successfully, with the following files in the workbench directory:
+            {file_list}
+            
+            Provide a nice conclusion to the conversation, explaining how to use the generated agent code.
+            """
+
     # Run the agent in a stream
     if not is_openai:
-        writer = get_stream_writer()
-        result = await end_conversation_agent.run(state['latest_user_message'], message_history= message_history)
+        result = await end_conversation_agent.run(finish_prompt, message_history=message_history)
         writer(result.data)   
     else: 
         async with end_conversation_agent.run_stream(
-            state['latest_user_message'],
-            message_history= message_history
+            finish_prompt,
+            message_history=message_history
         ) as result:
             # Stream partial text as it arrives
             async for chunk in result.stream_text(delta=True):
                 writer(chunk)
 
-    return {"messages": [result.new_messages_json()]}        
+    return {"messages": [result.new_messages_json()]}
 
 # Build workflow
 builder = StateGraph(AgentState)

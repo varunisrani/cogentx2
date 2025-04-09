@@ -1,4 +1,6 @@
 archon
+embeddings_agent
+file_agent
 firecrawl_agent
 github_agent
 mcp
@@ -9,4 +11,6 @@ spotify_agent
 streamlit_pages
 streamlit_terminal
 time_agent
+weather_agent
+workbench
 youtube_transcript_agent

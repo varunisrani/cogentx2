@@ -1281,7 +1281,7 @@ async def generate_complete_crewai_project(ctx: RunContext[MCPToolDeps],
         logger.info(f"Generated requirements.txt at {os.path.join(output_dir, 'requirements.txt')}")
         
         # Use template-based generation instead of standard generation
-        from .mcp_tools.mcp_template_integration import generate_from_template
+        from .mcp_template_integration import generate_from_template
         
         # Use specified model for template generation
         template_model = os.getenv("TEMPLATE_MODEL", "gpt-4o-mini")

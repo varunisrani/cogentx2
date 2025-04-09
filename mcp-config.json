@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "archon": {
+      "command": "/Users/varunisrani/sjuu/Archon/venv/Scripts/python.exe",
+      "args": [
+        "/Users/varunisrani/sjuu/Archon/mcp_server.py"
+      ]
+    }
+  }
+}

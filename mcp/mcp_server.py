@@ -1,44 +1,27 @@
-from mcp.server.fastmcp import FastMCP
-from datetime import datetime
-from dotenv import load_dotenv
-from typing import Dict, List
-import threading
-import requests
-import asyncio
-import uuid
-import sys
 import os
+import sys
+import asyncio
+import threading
+from fastmcp import FastMCP
+import requests
+from typing import Dict, List
+import uuid
+from utils.utils import write_to_log
+from graph_service import app
+import uvicorn
 
-# Load environment variables from .env file
-load_dotenv()
 
-# Initialize FastMCP server with ERROR logging level
-mcp = FastMCP("archon", log_level="ERROR")
+# Initialize FastMCP server
+mcp = FastMCP("archon")
+
 
 # Store active threads
 active_threads: Dict[str, List[str]] = {}
 
+
 # FastAPI service URL
-GRAPH_SERVICE_URL = os.getenv("GRAPH_SERVICE_URL", "http://localhost:8100")
+GRAPH_SERVICE_URL = "http://127.0.0.1:8100"
 
-def write_to_log(message: str):
-    """Write a message to the logs.txt file in the workbench directory.
-    
-    Args:
-        message: The message to log
-    """
-    # Get the directory one level up from the current file
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    parent_dir = os.path.dirname(current_dir)
-    workbench_dir = os.path.join(parent_dir, "workbench")
-    log_path = os.path.join(workbench_dir, "logs.txt")
-    os.makedirs(workbench_dir, exist_ok=True)
-
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    log_entry = f"[{timestamp}] {message}\n"
-
-    with open(log_path, "a", encoding="utf-8") as f:
-        f.write(log_entry)
 
 @mcp.tool()
 async def create_thread() -> str:
@@ -57,25 +40,17 @@ async def create_thread() -> str:
 
 def _make_request(thread_id: str, user_input: str, config: dict) -> str:
     """Make synchronous request to graph service"""
-    try:
-        response = requests.post(
-            f"{GRAPH_SERVICE_URL}/invoke",
-            json={
-                "message": user_input,
-                "thread_id": thread_id,
-                "is_first_message": not active_threads[thread_id],
-                "config": config
-            },
-            timeout=300  # 5 minute timeout for long-running operations
-        )
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.Timeout:
-        write_to_log(f"Request timed out for thread {thread_id}")
-        raise TimeoutError("Request to graph service timed out. The operation took longer than expected.")
-    except requests.exceptions.RequestException as e:
-        write_to_log(f"Request failed for thread {thread_id}: {str(e)}")
-        raise
+    response = requests.post(
+        f"{GRAPH_SERVICE_URL}/invoke",
+        json={
+            "message": user_input,
+            "thread_id": thread_id,
+            "is_first_message": not active_threads[thread_id],
+            "config": config
+    }
+    )
+    response.raise_for_status()
+    return response.json()
 
 
 @mcp.tool()
@@ -84,11 +59,6 @@ async def run_agent(thread_id: str, user_input: str) -> str:
     Only use this tool after you have called create_thread in this conversation to get a unique thread ID.
     If you already created a thread ID in this conversation, do not create another one. Reuse the same ID.
     After you receive the code from Archon, always implement it into the codebase unless asked not to.
-
-    After using this tool and implementing the code it gave back, ask the user if they want you to refine the agent
-    autonomously (they can just say 'refine') or they can just give feedback and you'll improve the agent that way.
-
-    If they want to refine the agent, just give 'refine' for user_input.
     
     Args:
         thread_id: The conversation thread ID
@@ -121,6 +91,22 @@ async def run_agent(thread_id: str, user_input: str) -> str:
 if __name__ == "__main__":
     write_to_log("Starting MCP server")
     
+    # Run the graph service in a separate thread
+    def run_graph_service():
+        uvicorn.run(
+            app, 
+            host="127.0.0.1", 
+            port=8100, 
+            log_level="info",
+            timeout_keep_alive=600,  # 10 minutes keep-alive timeout
+            timeout_graceful_shutdown=600,  # 10 minutes graceful shutdown
+        )
+    
+    # Start the graph service thread
+    graph_thread = threading.Thread(target=run_graph_service, daemon=True)
+    graph_thread.start()
+    
+    write_to_log("Graph service started on http://127.0.0.1:8100")
+    
     # Run MCP server
     mcp.run(transport='stdio')
-

@@ -40,3 +40,94 @@ No Serper MCP tools were discovered. This could mean either:
 2025-04-04 16:08:48,288 [INFO] [tools.py:175] Processing query: 'searserach elonmisl'
 2025-04-04 16:09:01,218 [INFO] [tools.py:205] No specific tools were recorded for this query
 2025-04-04 16:09:01,219 [INFO] [main.py:149] Search completed in 12.93 seconds
+2025-04-09 16:59:32,756 [INFO] [main.py:117] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-09 16:59:32,760 [INFO] [agent.py:31] Creating Serper MCP Server...
+2025-04-09 16:59:32,760 [INFO] [agent.py:35] Initializing agent with Serper MCP Server...
+2025-04-09 16:59:32,804 [INFO] [tools.py:10] 
+==================================================
+2025-04-09 16:59:32,804 [INFO] [tools.py:11] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-09 16:59:32,804 [INFO] [tools.py:12] ==================================================
+2025-04-09 16:59:32,804 [WARNING] [tools.py:119] 
+No Serper MCP tools were discovered. This could mean either:
+2025-04-09 16:59:32,804 [WARNING] [tools.py:120] 1. The Serper MCP server doesn't expose any tools
+2025-04-09 16:59:32,804 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-09 16:59:32,804 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-09 16:59:32,804 [INFO] [agent.py:41] Found 0 MCP tools available for Serper operations
+2025-04-09 16:59:48,452 [INFO] [main.py:117] Node.js version: v16.20.2, npm version: 8.19.4
+2025-04-09 16:59:48,457 [INFO] [agent.py:31] Creating Serper MCP Server...
+2025-04-09 16:59:48,457 [INFO] [agent.py:35] Initializing agent with Serper MCP Server...
+2025-04-09 16:59:48,529 [INFO] [tools.py:10] 
+==================================================
+2025-04-09 16:59:48,529 [INFO] [tools.py:11] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-09 16:59:48,529 [INFO] [tools.py:12] ==================================================
+2025-04-09 16:59:48,529 [WARNING] [tools.py:119] 
+No Serper MCP tools were discovered. This could mean either:
+2025-04-09 16:59:48,529 [WARNING] [tools.py:120] 1. The Serper MCP server doesn't expose any tools
+2025-04-09 16:59:48,530 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-09 16:59:48,530 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-09 16:59:48,530 [INFO] [agent.py:41] Found 0 MCP tools available for Serper operations
+2025-04-09 16:59:55,661 [INFO] [main.py:163] Processing query: 'search elon musk'
+2025-04-09 17:00:01,362 [INFO] [tools.py:175] Processing query: 'search elon musk'
+2025-04-09 17:10:52,336 [INFO] [main.py:102] Starting Serper MCP Agent
+2025-04-09 17:10:52,693 [INFO] [main.py:109] Node.js version: v20.18.3, npm version: 10.8.2
+2025-04-09 17:10:52,693 [INFO] [main.py:114] Loading configuration...
+2025-04-09 17:10:52,697 [INFO] [main.py:118] Setting up agent...
+2025-04-09 17:10:52,697 [INFO] [agent.py:31] Creating Serper MCP Server...
+2025-04-09 17:10:52,698 [INFO] [agent.py:35] Initializing agent with Serper MCP Server...
+2025-04-09 17:10:52,790 [INFO] [tools.py:10] 
+==================================================
+2025-04-09 17:10:52,790 [INFO] [tools.py:11] SERPER MCP TOOLS AND FUNCTIONS
+2025-04-09 17:10:52,790 [INFO] [tools.py:12] ==================================================
+2025-04-09 17:10:52,790 [WARNING] [tools.py:119] 
+No Serper MCP tools were discovered. This could mean either:
+2025-04-09 17:10:52,790 [WARNING] [tools.py:120] 1. The Serper MCP server doesn't expose any tools
+2025-04-09 17:10:52,790 [WARNING] [tools.py:121] 2. The tools discovery mechanism is not supported
+2025-04-09 17:10:52,791 [WARNING] [tools.py:122] 3. The server connection is not properly initialized
+2025-04-09 17:10:52,791 [INFO] [agent.py:41] Found 0 MCP tools available for Serper operations
+2025-04-09 17:10:57,346 [INFO] [main.py:123] Serper MCP Server started successfully
+2025-04-09 17:11:02,816 [INFO] [main.py:141] Processing query: 'search elon musk'
+2025-04-09 17:11:02,817 [INFO] [tools.py:175] Processing query: 'search elon musk'
+2025-04-09 17:11:11,697 [ERROR] [main.py:176] Error during execution: unhandled errors in a TaskGroup (1 sub-exception)
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/varunisrani/sjuu/Archon/serper_agent/main.py", line 122, in main
+  |     async with agent.run_mcp_servers():
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(typ, value, traceback)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1302, in run_mcp_servers
+  |     await exit_stack.aclose()
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+  |     await self.__aexit__(None, None, None)
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+  |     raise exc_details[1]
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+  |     cb_suppress = await cb(*exc_details)
+  |                   ^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 97, in __aexit__
+  |     await self._exit_stack.aclose()
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 687, in aclose
+  |     await self.__aexit__(None, None, None)
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 745, in __aexit__
+  |     raise exc_details[1]
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 728, in __aexit__
+  |     cb_suppress = await cb(*exc_details)
+  |                   ^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+  |     async with stdio_client(server=server) as (read_stream, write_stream):
+  |   File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+  |     await anext(self.gen)
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 147, in stdio_client
+  |     async with (
+  |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 127, in stdout_reader
+    |     await read_stream_writer.send(message)
+    |   File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/streams/memory.py", line 255, in send
+    |     raise BrokenResourceError from None
+    | anyio.BrokenResourceError
+    +------------------------------------
+2025-04-09 17:11:11,707 [INFO] [main.py:179] Serper agent shutting down

@@ -84,7 +84,7 @@ async def chat_tab():
         message_type = message["type"]
         if message_type in ["human", "ai", "system"]:
             with st.chat_message(message_type):
-                st.markdown(message["content"])
+                st.markdown(message["content"], unsafe_allow_html=True)
 
     # Chat input for the user
     user_input = st.chat_input("What do you want to build today?")
@@ -109,7 +109,8 @@ async def chat_tab():
                     async for chunk in run_agent_with_streaming(user_input):
                         response_content += chunk
                         # Update the placeholder with the current response content
-                        message_placeholder.markdown(response_content)
+                        # Use unsafe_allow_html=True to render code blocks with proper formatting
+                        message_placeholder.markdown(response_content, unsafe_allow_html=True)
                 except Exception as e:
                     error_msg = f"Error running agent: {str(e)}"
                     logger.error(error_msg)

@@ -436,36 +436,43 @@ async def generate_files_from_template(ctx: RunContext[PydanticAIDeps], template
     # Extract the files
     files = {}
     file_creation_results = {}
+    formatted_code_for_ui = ["# Generated Agent Code\n\nHere are all the generated files for your agent:\n"]
 
     if adapted_template.get("agents_code"):
         files["agents.py"] = adapted_template.get("agents_code")
         success, message = write_to_workbench("agents.py", adapted_template.get("agents_code"))
         file_creation_results["agents.py"] = message
+        formatted_code_for_ui.append(f"\n## agents.py\n```python\n{adapted_template.get('agents_code')}\n```\n")
 
     if adapted_template.get("models_code"):
         files["models.py"] = adapted_template.get("models_code")
         success, message = write_to_workbench("models.py", adapted_template.get("models_code"))
         file_creation_results["models.py"] = message
+        formatted_code_for_ui.append(f"\n## models.py\n```python\n{adapted_template.get('models_code')}\n```\n")
 
     if adapted_template.get("main_code"):
         files["main.py"] = adapted_template.get("main_code")
         success, message = write_to_workbench("main.py", adapted_template.get("main_code"))
         file_creation_results["main.py"] = message
+        formatted_code_for_ui.append(f"\n## main.py\n```python\n{adapted_template.get('main_code')}\n```\n")
 
     if adapted_template.get("tools_code"):
         files["tools.py"] = adapted_template.get("tools_code")
         success, message = write_to_workbench("tools.py", adapted_template.get("tools_code"))
         file_creation_results["tools.py"] = message
+        formatted_code_for_ui.append(f"\n## tools.py\n```python\n{adapted_template.get('tools_code')}\n```\n")
 
     if adapted_template.get("mcp_json"):
         files["mcp.json"] = adapted_template.get("mcp_json")
         success, message = write_to_workbench("mcp.json", adapted_template.get("mcp_json"))
         file_creation_results["mcp.json"] = message
+        formatted_code_for_ui.append(f"\n## mcp.json\n```json\n{adapted_template.get('mcp_json')}\n```\n")
 
     if adapted_template.get("init_code"):
         files["__init__.py"] = adapted_template.get("init_code")
         success, message = write_to_workbench("__init__.py", adapted_template.get("init_code"))
         file_creation_results["__init__.py"] = message
+        formatted_code_for_ui.append(f"\n## __init__.py\n```python\n{adapted_template.get('init_code')}\n```\n")
 
     # Create a .env.example file with MCP-specific environment variables
     if adapted_template.get("mcp_json"):
@@ -484,12 +491,14 @@ async def generate_files_from_template(ctx: RunContext[PydanticAIDeps], template
                 files[".env.example"] = env_example
                 success, message = write_to_workbench(".env.example", env_example)
                 file_creation_results[".env.example"] = message
+                formatted_code_for_ui.append(f"\n## .env.example\n```\n{env_example}\n```\n")
         except json.JSONDecodeError:
             # If JSON parsing fails, create a simple .env.example
             env_example = "# Add your MCP server environment variables here"
             files[".env.example"] = env_example
             success, message = write_to_workbench(".env.example", env_example)
             file_creation_results[".env.example"] = message
+            formatted_code_for_ui.append(f"\n## .env.example\n```\n{env_example}\n```\n")
 
     # Create a requirements.txt file with the necessary dependencies
     requirements = [
@@ -507,6 +516,7 @@ async def generate_files_from_template(ctx: RunContext[PydanticAIDeps], template
     files["requirements.txt"] = requirements_content
     success, message = write_to_workbench("requirements.txt", requirements_content)
     file_creation_results["requirements.txt"] = message
+    formatted_code_for_ui.append(f"\n## requirements.txt\n```\n{requirements_content}\n```\n")
 
     # Generate a README.md file
     project_name = adapted_template.get("folder_name", "MCP Agent").title().replace("_", " ")
@@ -547,11 +557,16 @@ This agent uses the following MCP servers:
     files["README.md"] = readme_content
     success, message = write_to_workbench("README.md", readme_content)
     file_creation_results["README.md"] = message
+    formatted_code_for_ui.append(f"\n## README.md\n```markdown\n{readme_content}\n```\n")
 
-    # Return both the file contents and creation results
+    # Combine all formatted code blocks for UI display
+    combined_code_for_ui = "\n".join(formatted_code_for_ui)
+
+    # Return both the file contents, creation results, and formatted code for UI
     return {
         "files": files,
         "results": file_creation_results,
+        "code_for_ui": combined_code_for_ui,
         "message": "Agent files have been successfully generated and written to the workbench directory."
     }
 
@@ -578,36 +593,43 @@ async def generate_files_from_merged_templates(ctx: RunContext[PydanticAIDeps], 
     # Extract the files
     files = {}
     file_creation_results = {}
+    formatted_code_for_ui = ["# Generated Agent Code (Merged Templates)\n\nHere are all the generated files for your agent:\n"]
 
     if adapted_templates.get("agents_code"):
         files["agents.py"] = adapted_templates.get("agents_code")
         success, message = write_to_workbench("agents.py", adapted_templates.get("agents_code"))
         file_creation_results["agents.py"] = message
+        formatted_code_for_ui.append(f"\n## agents.py\n```python\n{adapted_templates.get('agents_code')}\n```\n")
 
     if adapted_templates.get("models_code"):
         files["models.py"] = adapted_templates.get("models_code")
         success, message = write_to_workbench("models.py", adapted_templates.get("models_code"))
         file_creation_results["models.py"] = message
+        formatted_code_for_ui.append(f"\n## models.py\n```python\n{adapted_templates.get('models_code')}\n```\n")
 
     if adapted_templates.get("main_code"):
         files["main.py"] = adapted_templates.get("main_code")
         success, message = write_to_workbench("main.py", adapted_templates.get("main_code"))
         file_creation_results["main.py"] = message
+        formatted_code_for_ui.append(f"\n## main.py\n```python\n{adapted_templates.get('main_code')}\n```\n")
 
     if adapted_templates.get("tools_code"):
         files["tools.py"] = adapted_templates.get("tools_code")
         success, message = write_to_workbench("tools.py", adapted_templates.get("tools_code"))
         file_creation_results["tools.py"] = message
+        formatted_code_for_ui.append(f"\n## tools.py\n```python\n{adapted_templates.get('tools_code')}\n```\n")
 
     if adapted_templates.get("mcp_json"):
         files["mcp.json"] = adapted_templates.get("mcp_json")
         success, message = write_to_workbench("mcp.json", adapted_templates.get("mcp_json"))
         file_creation_results["mcp.json"] = message
+        formatted_code_for_ui.append(f"\n## mcp.json\n```json\n{adapted_templates.get('mcp_json')}\n```\n")
 
     if adapted_templates.get("init_code"):
         files["__init__.py"] = adapted_templates.get("init_code")
         success, message = write_to_workbench("__init__.py", adapted_templates.get("init_code"))
         file_creation_results["__init__.py"] = message
+        formatted_code_for_ui.append(f"\n## __init__.py\n```python\n{adapted_templates.get('init_code')}\n```\n")
 
     # Add any other files from adapted_templates
     for key, value in adapted_templates.items():
@@ -616,6 +638,7 @@ async def generate_files_from_merged_templates(ctx: RunContext[PydanticAIDeps], 
             files[file_name] = value
             success, message = write_to_workbench(file_name, value)
             file_creation_results[file_name] = message
+            formatted_code_for_ui.append(f"\n## {file_name}\n```python\n{value}\n```\n")
 
     # Create a .env.example file with MCP-specific environment variables
     if adapted_templates.get("env_example_code"):
@@ -623,6 +646,7 @@ async def generate_files_from_merged_templates(ctx: RunContext[PydanticAIDeps], 
         files[".env.example"] = env_example
         success, message = write_to_workbench(".env.example", env_example)
         file_creation_results[".env.example"] = message
+        formatted_code_for_ui.append(f"\n## .env.example\n```\n{env_example}\n```\n")
     elif adapted_templates.get("mcp_json"):
         try:
             mcp_data = json.loads(adapted_templates.get("mcp_json"))
@@ -639,12 +663,14 @@ async def generate_files_from_merged_templates(ctx: RunContext[PydanticAIDeps], 
                 files[".env.example"] = env_example
                 success, message = write_to_workbench(".env.example", env_example)
                 file_creation_results[".env.example"] = message
+                formatted_code_for_ui.append(f"\n## .env.example\n```\n{env_example}\n```\n")
         except json.JSONDecodeError:
             # If JSON parsing fails, create a simple .env.example
             env_example = "# Add your MCP server environment variables here"
             files[".env.example"] = env_example
             success, message = write_to_workbench(".env.example", env_example)
             file_creation_results[".env.example"] = message
+            formatted_code_for_ui.append(f"\n## .env.example\n```\n{env_example}\n```\n")
 
     # Create a requirements.txt file with the necessary dependencies
     if adapted_templates.get("requirements_code"):
@@ -652,6 +678,7 @@ async def generate_files_from_merged_templates(ctx: RunContext[PydanticAIDeps], 
         files["requirements.txt"] = requirements_content
         success, message = write_to_workbench("requirements.txt", requirements_content)
         file_creation_results["requirements.txt"] = message
+        formatted_code_for_ui.append(f"\n## requirements.txt\n```\n{requirements_content}\n```\n")
     else:
         requirements = [
             "pydantic-ai",
@@ -668,6 +695,7 @@ async def generate_files_from_merged_templates(ctx: RunContext[PydanticAIDeps], 
         files["requirements.txt"] = requirements_content
         success, message = write_to_workbench("requirements.txt", requirements_content)
         file_creation_results["requirements.txt"] = message
+        formatted_code_for_ui.append(f"\n## requirements.txt\n```\n{requirements_content}\n```\n")
 
     # Generate a README.md file
     if adapted_templates.get("readme_code"):
@@ -675,6 +703,7 @@ async def generate_files_from_merged_templates(ctx: RunContext[PydanticAIDeps], 
         files["README.md"] = readme_content
         success, message = write_to_workbench("README.md", readme_content)
         file_creation_results["README.md"] = message
+        formatted_code_for_ui.append(f"\n## README.md\n```markdown\n{readme_content}\n```\n")
     else:
         project_name = "Merged MCP Agent"
         readme_content = f"""# {project_name}
@@ -714,6 +743,7 @@ This agent uses the following MCP servers:
         files["README.md"] = readme_content
         success, message = write_to_workbench("README.md", readme_content)
         file_creation_results["README.md"] = message
+        formatted_code_for_ui.append(f"\n## README.md\n```markdown\n{readme_content}\n```\n")
 
     # Check if package.json is provided
     if adapted_templates.get("package_json_code"):
@@ -721,10 +751,15 @@ This agent uses the following MCP servers:
         files["package.json"] = package_json
         success, message = write_to_workbench("package.json", package_json)
         file_creation_results["package.json"] = message
+        formatted_code_for_ui.append(f"\n## package.json\n```json\n{package_json}\n```\n")
 
-    # Return both the file contents and creation results
+    # Combine all formatted code blocks for UI display
+    combined_code_for_ui = "\n".join(formatted_code_for_ui)
+
+    # Return both the file contents, creation results, and formatted code for UI
     return {
         "files": files,
         "results": file_creation_results,
+        "code_for_ui": combined_code_for_ui,
         "message": "Agent files have been successfully generated and written to the workbench directory."
     }

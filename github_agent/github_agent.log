@@ -503,3 +503,229 @@ No GitHub MCP tools were discovered. This could mean either:
 2025-04-04 16:01:29,887 [INFO] [tools.py:178] Processing query: 'search repo react'
 2025-04-04 16:01:47,120 [INFO] [tools.py:208] No specific tools were recorded for this query
 2025-04-04 16:01:47,121 [INFO] [main.py:157] Query completed in 17.23 seconds
+2025-04-09 16:58:25,223 [INFO] [tools.py:13] 
+==================================================
+2025-04-09 16:58:25,224 [INFO] [tools.py:14] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-09 16:58:25,224 [INFO] [tools.py:15] ==================================================
+2025-04-09 16:58:25,224 [WARNING] [tools.py:122] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-09 16:58:25,224 [WARNING] [tools.py:123] 1. The GitHub MCP server doesn't expose any tools
+2025-04-09 16:58:25,224 [WARNING] [tools.py:124] 2. The tools discovery mechanism is not supported
+2025-04-09 16:58:25,224 [WARNING] [tools.py:125] 3. The server connection is not properly initialized
+2025-04-09 16:58:25,225 [INFO] [agent.py:59] Found 0 MCP tools available for GitHub operations
+2025-04-09 16:58:34,660 [INFO] [main.py:151] Processing query: 'search python repo'
+2025-04-09 16:58:34,671 [ERROR] [main.py:172] Error processing query: [Errno 2] No such file or directory: 'npx'
+2025-04-09 16:58:34,679 [ERROR] [main.py:173] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/github_agent/main.py", line 154, in main
+    async with st.session_state.agent.run_mcp_servers():
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1299, in run_mcp_servers
+    await exit_stack.enter_async_context(mcp_server)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 86, in __aenter__
+    self._read_stream, self._write_stream = await self._exit_stack.enter_async_context(self.client_streams())
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 100, in stdio_client
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_core/_subprocesses.py", line 190, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 2561, in open_process
+    process = await asyncio.create_subprocess_exec(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 223, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 1708, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 207, in _make_subprocess_transport
+    transp = _UnixSubprocessTransport(self, protocol, args, shell,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 36, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 818, in _start
+    self._proc = subprocess.Popen(
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'npx'
+
+2025-04-09 17:05:20,312 [INFO] [tools.py:13] 
+==================================================
+2025-04-09 17:05:20,313 [INFO] [tools.py:14] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-09 17:05:20,313 [INFO] [tools.py:15] ==================================================
+2025-04-09 17:05:20,313 [WARNING] [tools.py:122] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-09 17:05:20,313 [WARNING] [tools.py:123] 1. The GitHub MCP server doesn't expose any tools
+2025-04-09 17:05:20,313 [WARNING] [tools.py:124] 2. The tools discovery mechanism is not supported
+2025-04-09 17:05:20,313 [WARNING] [tools.py:125] 3. The server connection is not properly initialized
+2025-04-09 17:05:20,313 [INFO] [agent.py:59] Found 0 MCP tools available for GitHub operations
+2025-04-09 17:05:36,900 [INFO] [tools.py:13] 
+==================================================
+2025-04-09 17:05:36,901 [INFO] [tools.py:14] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-09 17:05:36,901 [INFO] [tools.py:15] ==================================================
+2025-04-09 17:05:36,901 [WARNING] [tools.py:122] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-09 17:05:36,901 [WARNING] [tools.py:123] 1. The GitHub MCP server doesn't expose any tools
+2025-04-09 17:05:36,901 [WARNING] [tools.py:124] 2. The tools discovery mechanism is not supported
+2025-04-09 17:05:36,901 [WARNING] [tools.py:125] 3. The server connection is not properly initialized
+2025-04-09 17:05:36,901 [INFO] [agent.py:59] Found 0 MCP tools available for GitHub operations
+2025-04-09 17:07:18,361 [INFO] [main.py:113] Starting GitHub MCP Agent
+2025-04-09 17:07:18,473 [INFO] [main.py:119] Node.js version: v16.20.2
+2025-04-09 17:07:18,474 [INFO] [main.py:124] Loading configuration...
+2025-04-09 17:07:18,478 [INFO] [main.py:128] Setting up agent...
+2025-04-09 17:07:18,522 [INFO] [tools.py:13] 
+==================================================
+2025-04-09 17:07:18,522 [INFO] [tools.py:14] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-09 17:07:18,522 [INFO] [tools.py:15] ==================================================
+2025-04-09 17:07:18,522 [WARNING] [tools.py:122] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-09 17:07:18,523 [WARNING] [tools.py:123] 1. The GitHub MCP server doesn't expose any tools
+2025-04-09 17:07:18,523 [WARNING] [tools.py:124] 2. The tools discovery mechanism is not supported
+2025-04-09 17:07:18,523 [WARNING] [tools.py:125] 3. The server connection is not properly initialized
+2025-04-09 17:07:18,523 [INFO] [agent.py:59] Found 0 MCP tools available for GitHub operations
+2025-04-09 17:07:18,528 [ERROR] [main.py:188] Error running MCP server: [Errno 2] No such file or directory: 'npx'
+2025-04-09 17:07:18,537 [ERROR] [main.py:189] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/github_agent/main.py", line 132, in main
+    async with agent.run_mcp_servers():
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1299, in run_mcp_servers
+    await exit_stack.enter_async_context(mcp_server)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 86, in __aenter__
+    self._read_stream, self._write_stream = await self._exit_stack.enter_async_context(self.client_streams())
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 100, in stdio_client
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_core/_subprocesses.py", line 190, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 2561, in open_process
+    process = await asyncio.create_subprocess_exec(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 223, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 1708, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 207, in _make_subprocess_transport
+    transp = _UnixSubprocessTransport(self, protocol, args, shell,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 36, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 818, in _start
+    self._proc = subprocess.Popen(
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'npx'
+
+2025-04-09 17:07:18,537 [INFO] [main.py:204] GitHub agent shutting down
+2025-04-09 17:07:32,681 [INFO] [main.py:113] Starting GitHub MCP Agent
+2025-04-09 17:07:32,704 [INFO] [main.py:119] Node.js version: v20.18.3
+2025-04-09 17:07:32,705 [INFO] [main.py:124] Loading configuration...
+2025-04-09 17:07:32,709 [INFO] [main.py:128] Setting up agent...
+2025-04-09 17:07:32,750 [INFO] [tools.py:13] 
+==================================================
+2025-04-09 17:07:32,750 [INFO] [tools.py:14] GITHUB MCP TOOLS AND FUNCTIONS
+2025-04-09 17:07:32,750 [INFO] [tools.py:15] ==================================================
+2025-04-09 17:07:32,750 [WARNING] [tools.py:122] 
+No GitHub MCP tools were discovered. This could mean either:
+2025-04-09 17:07:32,750 [WARNING] [tools.py:123] 1. The GitHub MCP server doesn't expose any tools
+2025-04-09 17:07:32,750 [WARNING] [tools.py:124] 2. The tools discovery mechanism is not supported
+2025-04-09 17:07:32,750 [WARNING] [tools.py:125] 3. The server connection is not properly initialized
+2025-04-09 17:07:32,751 [INFO] [agent.py:59] Found 0 MCP tools available for GitHub operations
+2025-04-09 17:07:32,756 [ERROR] [main.py:188] Error running MCP server: [Errno 2] No such file or directory: 'npx'
+2025-04-09 17:07:32,764 [ERROR] [main.py:189] Error details: Traceback (most recent call last):
+  File "/Users/varunisrani/sjuu/Archon/github_agent/main.py", line 132, in main
+    async with agent.run_mcp_servers():
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/agent.py", line 1299, in run_mcp_servers
+    await exit_stack.enter_async_context(mcp_server)
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 86, in __aenter__
+    self._read_stream, self._write_stream = await self._exit_stack.enter_async_context(self.client_streams())
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/pydantic_ai/mcp.py", line 160, in client_streams
+    async with stdio_client(server=server) as (read_stream, write_stream):
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/mcp/client/stdio.py", line 100, in stdio_client
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_core/_subprocesses.py", line 190, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/sjuu/Archon/venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 2561, in open_process
+    process = await asyncio.create_subprocess_exec(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/subprocess.py", line 223, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_events.py", line 1708, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 207, in _make_subprocess_transport
+    transp = _UnixSubprocessTransport(self, protocol, args, shell,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/base_subprocess.py", line 36, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/asyncio/unix_events.py", line 818, in _start
+    self._proc = subprocess.Popen(
+                 ^^^^^^^^^^^^^^^^^
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/Users/varunisrani/.pyenv/versions/3.11.11/lib/python3.11/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'npx'
+
+2025-04-09 17:07:32,765 [INFO] [main.py:204] GitHub agent shutting down
